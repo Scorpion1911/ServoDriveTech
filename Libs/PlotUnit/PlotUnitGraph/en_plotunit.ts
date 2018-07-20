@@ -84,7 +84,7 @@
 <context>
     <name>MotionProgressBar</name>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="31"/>
+        <location filename="TabMotion/tabmotion.cpp" line="39"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -313,8 +313,8 @@
     </message>
     <message>
         <location filename="plotunitgraph129.cpp" line="183"/>
-        <location filename="plotunitgraph129.cpp" line="1073"/>
-        <location filename="plotunitgraph129.cpp" line="1368"/>
+        <location filename="plotunitgraph129.cpp" line="1080"/>
+        <location filename="plotunitgraph129.cpp" line="1375"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -345,97 +345,97 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="585"/>
+        <location filename="plotunitgraph129.cpp" line="590"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="585"/>
+        <location filename="plotunitgraph129.cpp" line="590"/>
         <source>Curve File(*.src)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="595"/>
+        <location filename="plotunitgraph129.cpp" line="600"/>
         <source>file error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="595"/>
+        <location filename="plotunitgraph129.cpp" line="600"/>
         <source>can not open file :
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="770"/>
-        <location filename="plotunitgraph129.cpp" line="1165"/>
-        <location filename="plotunitgraph129.cpp" line="1598"/>
+        <location filename="plotunitgraph129.cpp" line="777"/>
+        <location filename="plotunitgraph129.cpp" line="1172"/>
+        <location filename="plotunitgraph129.cpp" line="1605"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="776"/>
-        <location filename="plotunitgraph129.cpp" line="1159"/>
-        <location filename="plotunitgraph129.cpp" line="1604"/>
+        <location filename="plotunitgraph129.cpp" line="783"/>
+        <location filename="plotunitgraph129.cpp" line="1166"/>
+        <location filename="plotunitgraph129.cpp" line="1611"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="793"/>
+        <location filename="plotunitgraph129.cpp" line="800"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="800"/>
+        <location filename="plotunitgraph129.cpp" line="807"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="812"/>
+        <location filename="plotunitgraph129.cpp" line="819"/>
         <source>Open Curve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="812"/>
+        <location filename="plotunitgraph129.cpp" line="819"/>
         <source>Curve File(*.src);;Text File(*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="822"/>
-        <location filename="plotunitgraph129.cpp" line="834"/>
+        <location filename="plotunitgraph129.cpp" line="829"/>
+        <location filename="plotunitgraph129.cpp" line="841"/>
         <source>Saving Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="825"/>
-        <location filename="plotunitgraph129.cpp" line="837"/>
+        <location filename="plotunitgraph129.cpp" line="832"/>
+        <location filename="plotunitgraph129.cpp" line="844"/>
         <source>Saving Finish!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="904"/>
-        <location filename="plotunitgraph129.cpp" line="933"/>
-        <location filename="plotunitgraph129.cpp" line="1003"/>
+        <location filename="plotunitgraph129.cpp" line="911"/>
+        <location filename="plotunitgraph129.cpp" line="940"/>
+        <location filename="plotunitgraph129.cpp" line="1010"/>
         <source>warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="904"/>
+        <location filename="plotunitgraph129.cpp" line="911"/>
         <source>plugin load error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="933"/>
+        <location filename="plotunitgraph129.cpp" line="940"/>
         <source>%1 is BIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1003"/>
+        <location filename="plotunitgraph129.cpp" line="1010"/>
         <source>The numbers of selected curves is too much</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1073"/>
-        <location filename="plotunitgraph129.cpp" line="1368"/>
+        <location filename="plotunitgraph129.cpp" line="1080"/>
+        <location filename="plotunitgraph129.cpp" line="1375"/>
         <source>The curve = %1 is not in the device</source>
         <translation type="unfinished"></translation>
     </message>
@@ -491,12 +491,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="343"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="344"/>
         <source>Reading Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="356"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="357"/>
         <source>Reading Curve Finish!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -627,79 +627,64 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="482"/>
-        <source>fgn:</source>
+        <location filename="TabModeCtl/tabmodectl.ui" line="501"/>
+        <source>Rounds:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="515"/>
-        <source>Max Velocity:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="535"/>
-        <source>Acceleration:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="558"/>
-        <source>Mode:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="565"/>
-        <source>fgp:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="572"/>
-        <source>fgd:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="605"/>
-        <source>fgi:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="612"/>
-        <source>Pulse:</source>
+        <location filename="TabModeCtl/tabmodectl.ui" line="514"/>
+        <source>Deceleration(deg/ms^2):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="TabModeCtl/tabmodectl.ui" line="619"/>
-        <source>Deceleration:</source>
+        <source>fgn:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="655"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="632"/>
+        <source>Max Velocity(rpm):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="645"/>
+        <source>Acceleration(deg/ms^2):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="658"/>
+        <source>fgp:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="671"/>
+        <source>fgd:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="488"/>
+        <source>fgi:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="684"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="677"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="706"/>
         <source>Servo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="96"/>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="148"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="101"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="150"/>
         <source>SEV OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="98"/>
-        <source>Point Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="99"/>
-        <source>Reci Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="146"/>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="509"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="148"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="535"/>
         <source>SEV ON</source>
         <translation type="unfinished"></translation>
     </message>
@@ -727,38 +712,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="151"/>
-        <location filename="TabMotion/tabmotion.ui" line="181"/>
+        <location filename="TabMotion/tabmotion.ui" line="154"/>
+        <location filename="TabMotion/tabmotion.ui" line="187"/>
         <source>Servo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="196"/>
+        <location filename="TabMotion/tabmotion.ui" line="202"/>
         <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="239"/>
+        <location filename="TabMotion/tabmotion.ui" line="248"/>
         <source>GO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="84"/>
+        <location filename="TabMotion/tabmotion.cpp" line="92"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="94"/>
+        <location filename="TabMotion/tabmotion.cpp" line="102"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="100"/>
+        <location filename="TabMotion/tabmotion.cpp" line="108"/>
         <source>Velocity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="106"/>
+        <location filename="TabMotion/tabmotion.cpp" line="114"/>
         <source>Position</source>
         <translation type="unfinished"></translation>
     </message>

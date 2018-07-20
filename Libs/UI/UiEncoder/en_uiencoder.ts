@@ -134,110 +134,125 @@
     </message>
     <message>
         <location filename="graphencoder129.ui" line="420"/>
+        <source>associate pos gear prm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder129.ui" line="429"/>
+        <source>num b</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder129.ui" line="452"/>
+        <source>den a</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder129.ui" line="477"/>
         <source>prms active after reset device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="427"/>
+        <location filename="graphencoder129.ui" line="484"/>
         <source>save config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="470"/>
-        <location filename="graphencoder129.ui" line="507"/>
-        <location filename="graphencoder129.ui" line="544"/>
+        <location filename="graphencoder129.ui" line="530"/>
+        <location filename="graphencoder129.ui" line="567"/>
+        <location filename="graphencoder129.ui" line="604"/>
         <source>1024</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="480"/>
-        <location filename="graphencoder129.ui" line="517"/>
-        <location filename="graphencoder129.ui" line="554"/>
+        <location filename="graphencoder129.ui" line="540"/>
+        <location filename="graphencoder129.ui" line="577"/>
+        <location filename="graphencoder129.ui" line="614"/>
         <source>(pluse)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="487"/>
+        <location filename="graphencoder129.ui" line="547"/>
         <source>encoder input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="524"/>
+        <location filename="graphencoder129.ui" line="584"/>
         <source>encoder offset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="561"/>
+        <location filename="graphencoder129.ui" line="621"/>
         <source>encoder real</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="581"/>
+        <location filename="graphencoder129.ui" line="641"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="591"/>
+        <location filename="graphencoder129.ui" line="651"/>
         <source>motor phase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="49"/>
+        <location filename="graphencoder129.cpp" line="51"/>
         <source>Electronic Angle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="50"/>
+        <location filename="graphencoder129.cpp" line="52"/>
         <source>Mechanical Angle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="62"/>
+        <location filename="graphencoder129.cpp" line="64"/>
         <source>encoder lineNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="63"/>
+        <location filename="graphencoder129.cpp" line="65"/>
         <source>clearAlarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="67"/>
+        <location filename="graphencoder129.cpp" line="69"/>
         <source>Enc None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="68"/>
+        <location filename="graphencoder129.cpp" line="70"/>
         <source>Enc Absolute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="69"/>
+        <location filename="graphencoder129.cpp" line="71"/>
         <source>Enc Increase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="70"/>
+        <location filename="graphencoder129.cpp" line="72"/>
         <source>Enc Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="72"/>
+        <location filename="graphencoder129.cpp" line="74"/>
         <source>active after reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="256"/>
+        <location filename="graphencoder129.cpp" line="264"/>
         <source>EnclineNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="263"/>
+        <location filename="graphencoder129.cpp" line="271"/>
         <source>EncbitNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="441"/>
+        <location filename="graphencoder129.cpp" line="483"/>
         <source>Enc Lost</source>
         <translation type="unfinished"></translation>
     </message>

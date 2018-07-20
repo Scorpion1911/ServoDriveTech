@@ -848,8 +848,11 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
       IVerMatching *dbMatch=new DbVerMatching;
       IVerMatching::CheckStatus checkStatus=IVerMatching::CHECK_STA_OK;
       dbMatch->open();
-      foreach (SdAssembly*sd, m_sdAssemblyList)
+      for (int i = 0; i < m_sdAssemblyList.count(); i++)
+      //foreach (SdAssembly*sd, m_sdAssemblyList)
       {
+          SdAssembly* sd = m_sdAssemblyList.at(i);
+          qDebug()<<"sd i"<<i;
         ComDriver::ICom *com=sd->sevDevice()->socketCom();
         idHelper.setCom(com);
 

@@ -51,60 +51,60 @@
 <context>
     <name>SevDevice</name>
     <message>
-        <location filename="sevdevice.cpp" line="188"/>
+        <location filename="sevdevice.cpp" line="192"/>
         <source>SevDevice init</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="383"/>
-        <location filename="sevdevice.cpp" line="870"/>
+        <location filename="sevdevice.cpp" line="388"/>
+        <location filename="sevdevice.cpp" line="875"/>
         <source>Write Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="383"/>
+        <location filename="sevdevice.cpp" line="388"/>
         <source>Write Config Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="793"/>
+        <location filename="sevdevice.cpp" line="798"/>
         <source>reset dsp =%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="801"/>
+        <location filename="sevdevice.cpp" line="806"/>
         <source>dsp =%1 Reset Flag_Finish checking......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="870"/>
+        <location filename="sevdevice.cpp" line="875"/>
         <source>Write Flash Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="899"/>
-        <location filename="sevdevice.cpp" line="1105"/>
+        <location filename="sevdevice.cpp" line="904"/>
+        <location filename="sevdevice.cpp" line="1161"/>
         <source>CheckPrm Error
 :%1 %2 is out of range %3 -- %4
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="904"/>
-        <location filename="sevdevice.cpp" line="925"/>
-        <location filename="sevdevice.cpp" line="1110"/>
+        <location filename="sevdevice.cpp" line="909"/>
+        <location filename="sevdevice.cpp" line="930"/>
+        <location filename="sevdevice.cpp" line="1166"/>
         <source>Prm Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="925"/>
+        <location filename="sevdevice.cpp" line="930"/>
         <source>PowerBoard CheckPrm Error
 :%1 is out of range
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="1052"/>
+        <location filename="sevdevice.cpp" line="1108"/>
         <source>Checking axis%1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -112,22 +112,22 @@ paramater save fail!</source>
 <context>
     <name>SevDevicePrivate</name>
     <message>
-        <location filename="sevdevice.cpp" line="137"/>
+        <location filename="sevdevice.cpp" line="141"/>
         <source>init Config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="142"/>
+        <location filename="sevdevice.cpp" line="146"/>
         <source>findTargetTree</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="147"/>
+        <location filename="sevdevice.cpp" line="151"/>
         <source>New SevDspMap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="152"/>
+        <location filename="sevdevice.cpp" line="156"/>
         <source>New SevPwrBoard</source>
         <translation type="unfinished"></translation>
     </message>

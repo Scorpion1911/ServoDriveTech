@@ -2,6 +2,7 @@
 #define TABMODECTL_H
 
 #include <QWidget>
+#include <QTimer>
 #include "itabwidget.h"
 
 namespace Ui {
@@ -31,7 +32,8 @@ private slots:
   void onModeDoubleSpinBoxValueChanged(double value);
   void onModeCtlPanelModeChanged(quint16 axis, int mode);
   void onModeCtlPanelCheckChanged(quint16 axis, int mode);
-  void onBtnServoOnClicked(bool checked); 
+  void onBtnServoOnClicked(bool checked);
+  void onCheckingAutoTurning();
 
 private:
   void setupIcons(const QString &css);
@@ -39,6 +41,8 @@ private:
   Ui::TabModeCtl *ui;
   int m_currenAxis;
   QList<ModeCtlPrms *>m_dataList;
+  QTimer m_timer;
+  QList<int> m_finishList;
 
 };
 

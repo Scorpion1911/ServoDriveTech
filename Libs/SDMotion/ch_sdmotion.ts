@@ -17,47 +17,55 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="44"/>
         <source>Reciprocating Motion</source>
-        <translation>往复运动</translation>
+        <translation type="vanished">往复运动</translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="152"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="302"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="103"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="273"/>
         <source>TextLabel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="60"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="169"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="45"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="175"/>
         <source>Acceleration:</source>
         <translation>加速度：</translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="83"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="229"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="58"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="214"/>
         <source>Deceleration:</source>
         <translation>减速度：</translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="103"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="206"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="71"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="201"/>
         <source>Max Velocity:</source>
         <translation>最大速度：</translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="133"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="186"/>
-        <source>Pulse:</source>
-        <translation>脉冲数：</translation>
+        <location filename="MotionPosition/uimotionposition.ui" line="84"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="188"/>
+        <source>Rounds:</source>
+        <translation>圈数：</translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="255"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="343"/>
+        <source>REC</source>
+        <translation>往复运动</translation>
+    </message>
+    <message>
+        <source>Pulse:</source>
+        <translation type="vanished">脉冲数：</translation>
+    </message>
+    <message>
+        <location filename="MotionPosition/uimotionposition.ui" line="233"/>
         <source>Interval:</source>
         <translation>时间间隔：</translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="262"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="246"/>
         <source>Times:</source>
         <translation>往复次数：</translation>
     </message>

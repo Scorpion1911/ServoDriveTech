@@ -58,13 +58,13 @@
     </message>
     <message>
         <location filename="eprommanager.ui" line="139"/>
-        <location filename="eprommanager.ui" line="551"/>
+        <location filename="eprommanager.ui" line="529"/>
         <source>PowerBoard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="eprommanager.ui" line="144"/>
-        <location filename="eprommanager.ui" line="825"/>
+        <location filename="eprommanager.ui" line="803"/>
         <source>ControlBoard</source>
         <translation type="unfinished"></translation>
     </message>
@@ -84,184 +84,199 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="265"/>
+        <location filename="eprommanager.ui" line="243"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="278"/>
+        <location filename="eprommanager.ui" line="256"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="293"/>
+        <location filename="eprommanager.ui" line="271"/>
         <source>Sdt Document:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="305"/>
-        <location filename="eprommanager.ui" line="390"/>
-        <location filename="eprommanager.ui" line="1029"/>
+        <location filename="eprommanager.ui" line="283"/>
+        <location filename="eprommanager.ui" line="368"/>
+        <location filename="eprommanager.ui" line="1007"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="332"/>
+        <location filename="eprommanager.ui" line="310"/>
         <source>Hex</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="345"/>
+        <location filename="eprommanager.ui" line="323"/>
         <source>Rpd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="352"/>
+        <location filename="eprommanager.ui" line="330"/>
         <source>Xml</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="378"/>
+        <location filename="eprommanager.ui" line="356"/>
         <source>Xml Document:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="433"/>
+        <location filename="eprommanager.ui" line="411"/>
         <source>Flash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="465"/>
-        <location filename="eprommanager.ui" line="619"/>
-        <location filename="eprommanager.ui" line="736"/>
-        <location filename="eprommanager.ui" line="893"/>
+        <location filename="eprommanager.ui" line="443"/>
+        <location filename="eprommanager.ui" line="597"/>
+        <location filename="eprommanager.ui" line="714"/>
+        <location filename="eprommanager.ui" line="871"/>
         <source>Write</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="500"/>
-        <location filename="eprommanager.ui" line="771"/>
+        <location filename="eprommanager.ui" line="478"/>
+        <location filename="eprommanager.ui" line="749"/>
         <source>PCBA Code:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="556"/>
-        <location filename="eprommanager.ui" line="701"/>
-        <location filename="eprommanager.ui" line="830"/>
-        <location filename="eprommanager.ui" line="936"/>
+        <location filename="eprommanager.ui" line="534"/>
+        <location filename="eprommanager.ui" line="679"/>
+        <location filename="eprommanager.ui" line="808"/>
+        <location filename="eprommanager.ui" line="914"/>
         <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="561"/>
-        <location filename="eprommanager.ui" line="835"/>
+        <location filename="eprommanager.ui" line="539"/>
+        <location filename="eprommanager.ui" line="813"/>
         <source>Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="566"/>
-        <location filename="eprommanager.ui" line="840"/>
+        <location filename="eprommanager.ui" line="544"/>
+        <location filename="eprommanager.ui" line="818"/>
         <source>Scale</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="571"/>
-        <location filename="eprommanager.ui" line="845"/>
+        <location filename="eprommanager.ui" line="549"/>
+        <location filename="eprommanager.ui" line="823"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="576"/>
-        <location filename="eprommanager.ui" line="850"/>
+        <location filename="eprommanager.ui" line="554"/>
+        <location filename="eprommanager.ui" line="828"/>
         <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="581"/>
-        <location filename="eprommanager.ui" line="855"/>
+        <location filename="eprommanager.ui" line="559"/>
+        <location filename="eprommanager.ui" line="833"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="629"/>
-        <location filename="eprommanager.ui" line="666"/>
-        <location filename="eprommanager.ui" line="903"/>
-        <location filename="eprommanager.ui" line="950"/>
+        <location filename="eprommanager.ui" line="607"/>
+        <location filename="eprommanager.ui" line="644"/>
+        <location filename="eprommanager.ui" line="881"/>
+        <location filename="eprommanager.ui" line="928"/>
         <source>Read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="679"/>
-        <location filename="eprommanager.ui" line="963"/>
+        <location filename="eprommanager.ui" line="657"/>
+        <location filename="eprommanager.ui" line="941"/>
         <source>Compare</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="696"/>
-        <location filename="eprommanager.ui" line="931"/>
+        <location filename="eprommanager.ui" line="674"/>
+        <location filename="eprommanager.ui" line="909"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="182"/>
-        <location filename="eprommanager.cpp" line="218"/>
-        <location filename="eprommanager.cpp" line="367"/>
+        <location filename="eprommanager.cpp" line="172"/>
+        <location filename="eprommanager.cpp" line="208"/>
+        <location filename="eprommanager.cpp" line="362"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="182"/>
-        <location filename="eprommanager.cpp" line="218"/>
+        <location filename="eprommanager.cpp" line="172"/>
+        <location filename="eprommanager.cpp" line="208"/>
         <source>Please enter a PCBA code!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="185"/>
-        <location filename="eprommanager.cpp" line="221"/>
-        <location filename="eprommanager.cpp" line="466"/>
+        <location filename="eprommanager.cpp" line="175"/>
+        <location filename="eprommanager.cpp" line="211"/>
+        <location filename="eprommanager.cpp" line="461"/>
         <source>Question</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="185"/>
-        <location filename="eprommanager.cpp" line="221"/>
+        <location filename="eprommanager.cpp" line="175"/>
+        <location filename="eprommanager.cpp" line="211"/>
         <source>Are you sure to write
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="367"/>
+        <location filename="eprommanager.cpp" line="266"/>
+        <source>Type Name: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eprommanager.cpp" line="268"/>
+        <source>Series Num: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eprommanager.cpp" line="270"/>
+        <source>Series Name: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="eprommanager.cpp" line="362"/>
         <source>Connection Failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="436"/>
-        <location filename="eprommanager.cpp" line="451"/>
+        <location filename="eprommanager.cpp" line="431"/>
+        <location filename="eprommanager.cpp" line="446"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="436"/>
+        <location filename="eprommanager.cpp" line="431"/>
         <source>Sdt Files( *.sdt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="451"/>
+        <location filename="eprommanager.cpp" line="446"/>
         <source>Xml Files( *.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="466"/>
+        <location filename="eprommanager.cpp" line="461"/>
         <source>Do you want to uboot?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="480"/>
+        <location filename="eprommanager.cpp" line="475"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="480"/>
+        <location filename="eprommanager.cpp" line="475"/>
         <source>Please connect the device!</source>
         <translation type="unfinished"></translation>
     </message>

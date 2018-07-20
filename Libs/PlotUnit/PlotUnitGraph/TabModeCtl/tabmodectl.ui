@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>789</width>
+    <width>893</width>
     <height>196</height>
    </rect>
   </property>
@@ -45,7 +45,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>13</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page_idle">
       <layout class="QHBoxLayout" name="horizontalLayout_4">

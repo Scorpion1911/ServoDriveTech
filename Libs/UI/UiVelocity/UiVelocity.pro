@@ -39,3 +39,5 @@ FORMS += \
     uivelocity.ui \
     graphvelocity129.ui \
     velpid133.ui
+
+TRANSLATIONS    += ch_uivelocity.ts en_uivelocity.ts

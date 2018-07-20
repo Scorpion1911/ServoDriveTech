@@ -211,31 +211,36 @@
     </message>
     <message>
         <location filename="igraphstatus.cpp" line="99"/>
+        <source>13 Auto Turnning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="igraphstatus.cpp" line="100"/>
         <source>0 OFF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="99"/>
+        <location filename="igraphstatus.cpp" line="100"/>
         <source>1 INIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="99"/>
+        <location filename="igraphstatus.cpp" line="100"/>
         <source>2 ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="137"/>
+        <location filename="igraphstatus.cpp" line="138"/>
         <source>CurrentAxis:%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="205"/>
+        <location filename="igraphstatus.cpp" line="206"/>
         <source>col=%1 row=%2 rsv=%3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="216"/>
+        <location filename="igraphstatus.cpp" line="217"/>
         <source>Cause:
 %1
 Solution:
@@ -243,7 +248,7 @@ Solution:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="233"/>
+        <location filename="igraphstatus.cpp" line="234"/>
         <source>reserve</source>
         <translation type="unfinished"></translation>
     </message>

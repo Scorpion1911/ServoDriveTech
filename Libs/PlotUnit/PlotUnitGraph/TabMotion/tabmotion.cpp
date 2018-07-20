@@ -171,28 +171,30 @@ void TabMotion::resetUi()
   ui->tbtn_plot_servoGoMotion->setEnabled(false);
   ui->tbtn_plot_servoBtn->setEnabled(false);
 
-  MotionPosition *pMotion = dynamic_cast<MotionPosition*>(m_motionList.at(2));
-  if (pMotion->sevDevice()->isConnecting()) {
-      for (int i = 0; i < pMotion->UiMotion()->uiDataList().count(); i++) {
-          bool isOk;
-          quint64 acc = pMotion->sevDevice()->genCmdRead(CMD_POS_ACC, i ,isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_pointAcc = acc;
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciAcc = acc;
-          quint64 dec = pMotion->sevDevice()->genCmdRead(CMD_POS_DEC, i ,isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_pointDec = dec;
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciDec = dec;
+//  MotionPosition *pMotion = dynamic_cast<MotionPosition*>(m_motionList.at(2));
+//  if (pMotion->sevDevice()->isConnecting()) {
+//      for (int i = 0; i < pMotion->UiMotion()->uiDataList().count(); i++) {
+//          bool isOk;
+//          quint64 acc = pMotion->sevDevice()->genCmdRead(CMD_POS_ACC, i ,isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_pointAcc = acc;
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciAcc = acc;
+//          quint64 dec = pMotion->sevDevice()->genCmdRead(CMD_POS_DEC, i ,isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_pointDec = dec;
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciDec = dec;
 
-          quint64 nos = pMotion->sevDevice()->genCmdRead(CON_KEYNAME_MOT_NOS, i, isOk);
-          double scale = nos / qPow(2, 24);
 
-          quint64 maxSpd = pMotion->sevDevice()->genCmdRead(CMD_POS_MAXSPD, i, isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_pointMaxVel = maxSpd * scale;
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciMaxVel = maxSpd * scale;
+//          quint64 nos = pMotion->sevDevice()->genCmdRead(CON_KEYNAME_MOT_NOS, i, isOk);
+//          double scale = nos / qPow(2, 24);
 
-          quint64 delayTime = pMotion->sevDevice()->genCmdRead(CMD_POS_DELAY, i, isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciInterval = delayTime;
-      }
-  }
+//          quint64 maxSpd = pMotion->sevDevice()->genCmdRead(CMD_POS_MAXSPD, i, isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_pointMaxVel = maxSpd * scale;
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciMaxVel = maxSpd * scale;
+
+//          quint64 delayTime = pMotion->sevDevice()->genCmdRead(CMD_POS_DELAY, i, isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciInterval = delayTime;
+//          pMotion->updateAxisUi(i);
+//      }
+//  }
 }
 
 void TabMotion::setupIcons(const QString &css)

@@ -590,6 +590,7 @@ void PlotUnitGraph129::onBtnOpenCurveClicked(bool checked)
         fileName = QFileDialog::getOpenFileName(this, tr("Open File"), iniPath, tr("Curve File(*.src)"));
         if (fileName.compare("") == 0) {
             ui->tbtn_plot_open->setChecked(false);
+            d->m_isReadingCurve = false;
             return;
         }
         //qDebug()<<"fileName"<<fileName;
@@ -599,6 +600,7 @@ void PlotUnitGraph129::onBtnOpenCurveClicked(bool checked)
         if (!file.open(QIODevice::ReadOnly)) {
             QMessageBox::information(0,tr("file error"),tr("can not open file :\n%1").arg(fileName));
             ui->tbtn_plot_open->setChecked(false);
+            d->m_isReadingCurve = false;
             return;
         }
 //        qDebug()<<"curveCount1"<<d->m_curveManager->curveList().count();
@@ -844,23 +846,7 @@ void PlotUnitGraph129::onBtnSaveCurveClicked()
             emit sendSaveMsg(0, tr("Saving Finish!"), false);
             fdata.close();
         }
-    } else if (info.suffix().compare("src") == 0) {
-      if (fdata.open(QFile::WriteOnly))
-      {
-        QDataStream out(&fdata);
-        out.setVersion(QDataStream::Qt_5_5);
-        int size = d->m_curveManager->curveList().size();
-        out<<quint16(out.version())<< size;
-        for (int i = 0; i < d->m_curveManager->curveList().size(); i++)
-        {
-            d->m_curveManager->curveList().at(i)->saveCurve(out);
-        }
-        fdata.close();
-      }
     }
-
-
-
 }
 
 void PlotUnitGraph129::onPlotPosHoverChanged(const QPointF &point)
@@ -887,7 +873,7 @@ void PlotUnitGraph129::onTimeOut()
 {
   Q_D(PlotUnitGraph129);
   static quint32 i=0;
-  qDebug()<<"time out"<<i;
+  //qDebug()<<"time out"<<i;
   i++;
   //更新当前设备当前轴 tab1  mode servo状态
   //更新当前设备当前轴 tab2  控制权状态
