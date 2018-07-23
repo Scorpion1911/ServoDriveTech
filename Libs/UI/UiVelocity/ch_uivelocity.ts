@@ -62,7 +62,7 @@
     <message>
         <location filename="velpid133.ui" line="153"/>
         <source>ts(ms)</source>
-        <translation>时间(ms)</translation>
+        <translation>平滑时间(ms)</translation>
     </message>
     <message>
         <location filename="velpid133.ui" line="170"/>

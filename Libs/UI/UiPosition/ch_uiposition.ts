@@ -109,7 +109,7 @@ you need to stop autoturning and try again!</source>
     <message>
         <location filename="NolinearController/kuselectwidget133.ui" line="118"/>
         <source>Ku1</source>
-        <translation>第一增益</translation>
+        <translation>一段增益</translation>
     </message>
     <message>
         <location filename="NolinearController/kuselectwidget133.ui" line="135"/>
@@ -119,12 +119,12 @@ you need to stop autoturning and try again!</source>
     <message>
         <location filename="NolinearController/kuselectwidget133.ui" line="142"/>
         <source>Ku2</source>
-        <translation>第二增益</translation>
+        <translation>二段增益</translation>
     </message>
     <message>
         <location filename="NolinearController/kuselectwidget133.ui" line="149"/>
         <source>ts(ms)</source>
-        <translation>时间(ms)</translation>
+        <translation>平滑时间(ms)</translation>
     </message>
 </context>
 <context>
@@ -173,27 +173,27 @@ you need to stop autoturning and try again!</source>
     <message>
         <location filename="NolinearController/nolinearcontroller133.cpp" line="368"/>
         <source>max v(%)</source>
-        <translation>最大速度(%)</translation>
+        <translation>最大扭矩(%)</translation>
     </message>
     <message>
         <location filename="NolinearController/nolinearcontroller133.cpp" line="386"/>
         <source>positive v(%)</source>
-        <translation>正向速度(%)</translation>
+        <translation>正向扭矩缩放(%)</translation>
     </message>
     <message>
         <location filename="NolinearController/nolinearcontroller133.cpp" line="405"/>
         <source>negative v(%)</source>
-        <translation>反向速度(%)</translation>
+        <translation>反向扭矩缩放(%)</translation>
     </message>
     <message>
         <location filename="NolinearController/nolinearcontroller133.cpp" line="441"/>
         <source>pos max</source>
-        <translation>正向最大速度</translation>
+        <translation>正方向最大值</translation>
     </message>
     <message>
         <location filename="NolinearController/nolinearcontroller133.cpp" line="442"/>
         <source>neg max</source>
-        <translation>反向最大速度</translation>
+        <translation>反方向最大值</translation>
     </message>
     <message>
         <location filename="NolinearController/nolinearcontroller133.cpp" line="493"/>
@@ -374,7 +374,7 @@ you need to stop autoturning and try again!</source>
     <message>
         <location filename="pospid133.ui" line="59"/>
         <source>KP2(HZ)</source>
-        <translation>第二Kp增益(Hz)</translation>
+        <translation>二段比例增益(Hz)</translation>
     </message>
     <message>
         <location filename="pospid133.ui" line="86"/>
@@ -384,12 +384,12 @@ you need to stop autoturning and try again!</source>
     <message>
         <location filename="pospid133.ui" line="116"/>
         <source>KP1(HZ)</source>
-        <translation>第一Kp增益(Hz)</translation>
+        <translation>一段比例增益(Hz)</translation>
     </message>
     <message>
         <location filename="pospid133.ui" line="123"/>
         <source>ts (ms)</source>
-        <translation>时间(ms)</translation>
+        <translation>平滑时间(ms)</translation>
     </message>
     <message>
         <location filename="pospid133.ui" line="156"/>

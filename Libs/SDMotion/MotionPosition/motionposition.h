@@ -1,4 +1,4 @@
-#ifndef MOTIONPOSITION_H
+﻿#ifndef MOTIONPOSITION_H
 #define MOTIONPOSITION_H
 
 #include "motionposition_global.h"
@@ -23,6 +23,8 @@ public:
     bool stop(quint16 axisInx) Q_DECL_OVERRIDE;
     void updateAxisUi(quint16 axisInx) Q_DECL_OVERRIDE;
     void setMode() Q_DECL_OVERRIDE;
+    void setCmdSrc(quint16 axisInx) Q_DECL_OVERRIDE;
+    void resetCmdSrc(quint16 axisInx) Q_DECL_OVERRIDE;
     UiMotionPosition * UiMotion();
 private slots:
     void onMotionFinish(quint16 axisInx);

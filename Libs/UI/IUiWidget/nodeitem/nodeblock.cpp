@@ -9,7 +9,7 @@
 
 NodeBlock::NodeBlock(QGraphicsItem *parent) : QGraphicsProxyWidget(parent)
 {
-  setFlag(QGraphicsItem::ItemIsMovable);
+  //setFlag(QGraphicsItem::ItemIsMovable);
   setFlag(QGraphicsItem::ItemIsSelectable);
   m_leftPort = new NodePort(this);
   m_rightPort = new NodePort(this);

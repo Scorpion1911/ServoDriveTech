@@ -7,7 +7,7 @@ NodePort::NodePort(QGraphicsItem *parent):
   QGraphicsEllipseItem(parent)
 {
   setRect(0,0,1,1);
-  setFlag(GraphicsItemFlag::ItemIsMovable,true);
+  //setFlag(GraphicsItemFlag::ItemIsMovable,true);
   setFlag(GraphicsItemFlag::ItemIsSelectable,true);
   setFlag(GraphicsItemFlag::ItemSendsScenePositionChanges,true);
   setZValue(-1);

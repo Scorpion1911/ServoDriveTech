@@ -111,10 +111,13 @@ TabMotion::TabMotion(const QString &name, SevDevice *sev, QWidget *parent) :
   m_motionList.append(vMotion);
   //add new motion
 
-  MotionPosition *pMotion = new MotionPosition(ui->listWidget_plot_tab2_axis, m_sev, tr("Position"));
-  connect(pMotion,SIGNAL(progressValueChanged(quint16,int)),this,SLOT(onProgressValueChanged(quint16,int)));
-  //connect(pMotion,SIGNAL(motionAllDone()),this,SLOT(onMotionAllDone()));
-  m_motionList.append(pMotion);
+  int ver = sev->versionName().remove(0, 1).toInt();
+  if (ver > 130) {
+    MotionPosition *pMotion = new MotionPosition(ui->listWidget_plot_tab2_axis, m_sev, tr("Position"));
+    connect(pMotion,SIGNAL(progressValueChanged(quint16,int)),this,SLOT(onProgressValueChanged(quint16,int)));
+    //connect(pMotion,SIGNAL(motionAllDone()),this,SLOT(onMotionAllDone()));
+    m_motionList.append(pMotion);
+  }
 
   for(int i=0;i<m_motionList.size();i++)
   {
@@ -334,6 +337,7 @@ void TabMotion::onBtnServoOnClicked(bool checked)
             if (ui->listWidget_plot_tab2_axis->item(row)->isSelected()) {
                 m_axisMotionDataList.at(row)->m_curMotion->stop(row);
                 m_axisMotionDataList.at(row)->m_curMotion->setMode();
+                m_axisMotionDataList.at(row)->m_curMotion->setCmdSrc(row);
                 m_axisMotionDataList.at(row)->m_curMotion->sevDevice()->setAxisServoOn(row, true);
                 GTUtils::delayms(5);
             }
@@ -342,8 +346,9 @@ void TabMotion::onBtnServoOnClicked(bool checked)
     } else {
         for (int row = 0; row < ui->listWidget_plot_tab2_axis->count(); row++) {
             if (ui->listWidget_plot_tab2_axis->item(row)->isSelected()) {
-                m_axisMotionDataList.at(row)->m_curMotion->sevDevice()->setAxisServoOn(row, false);
                 m_axisMotionDataList.at(row)->m_curMotion->stop(row);
+                m_axisMotionDataList.at(row)->m_curMotion->sevDevice()->setAxisServoOn(row, false);
+                m_axisMotionDataList.at(row)->m_curMotion->resetCmdSrc(row);
             }
         }
         if (ui->listWidget_plot_motion_type_inx->currentRow() == 2) {

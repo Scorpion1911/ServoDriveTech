@@ -14,7 +14,7 @@ NodeSwitch::NodeSwitch(QGraphicsItem *parent):
   m_brushColor(Qt::lightGray),
   m_brushSelectedColor(QColor(Qt::lightGray).lighter(100))
 {
-  setFlag(QGraphicsItem::ItemIsMovable);
+  //setFlag(QGraphicsItem::ItemIsMovable);
   setFlag(QGraphicsItem::ItemIsSelectable);
   m_leftPort = new NodePort(this);
   m_topPort = new NodePort(this);

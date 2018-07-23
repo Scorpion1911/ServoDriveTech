@@ -11,6 +11,16 @@ IMotion::~IMotion()
   qDebug()<<"IMotion destruct -->";
 }
 
+void IMotion::setCmdSrc(quint16 axisInx)
+{
+
+}
+
+void IMotion::resetCmdSrc(quint16 axisInx)
+{
+
+}
+
 QWidget *IMotion::ui()
 {
   Q_D(IMotion);
