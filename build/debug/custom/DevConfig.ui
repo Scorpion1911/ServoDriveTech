@@ -57,7 +57,7 @@
                                 <string>0</string>
                             </property>
                             <property name="text">
-                                <string>1</string>
+                                <string>240</string>
                             </property>
                             <item>
                                 <property name="text">
@@ -75,61 +75,6 @@
                                     </property>
                                     <property name="text">
                                         <string>21000541</string>
-                                    </property>
-                                    <item>
-                                        <property name="text">
-                                            <string>V133</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>NULL</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>0</string>
-                                        </property>
-                                    </item>
-                                </item>
-                            </item>
-                        </item>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>Device</string>
-                        </property>
-                        <property name="text">
-                            <string>NULL</string>
-                        </property>
-                        <property name="text">
-                            <string>1</string>
-                        </property>
-                        <item>
-                            <property name="text">
-                                <string>RnNet</string>
-                            </property>
-                            <property name="text">
-                                <string>1</string>
-                            </property>
-                            <property name="text">
-                                <string>1</string>
-                            </property>
-                            <property name="text">
-                                <string>2</string>
-                            </property>
-                            <item>
-                                <property name="text">
-                                    <string>SD1x</string>
-                                </property>
-                                <property name="text">
-                                    <string>1</string>
-                                </property>
-                                <item>
-                                    <property name="text">
-                                        <string>SD1</string>
-                                    </property>
-                                    <property name="text">
-                                        <string>1</string>
-                                    </property>
-                                    <property name="text">
-                                        <string>21000506</string>
                                     </property>
                                     <item>
                                         <property name="text">
