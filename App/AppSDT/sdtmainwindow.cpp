@@ -698,8 +698,8 @@ void SDTMainWindow::onActnAdvUserClicked()
 
 void SDTMainWindow::onActnCompareClicked()
 {
-    ComparisonDialog compareDialog;
-    compareDialog.exec();
+    m_compareDialog = new ComparisonDialog(this);
+    m_compareDialog->show();
 }
 
 void SDTMainWindow::onActnUpdateFirmwareClicked()

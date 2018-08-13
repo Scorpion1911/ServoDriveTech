@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTcpSocket>
+#include "comparisondialog.h"
 
 namespace Ui {
 class SDTMainWindow;
@@ -184,6 +185,8 @@ private:
 
   QString m_downloadPath;
   QString m_uploadPath;
+
+  ComparisonDialog *m_compareDialog;
 };
 
 #endif // SDTMAINWINDOW_H

@@ -28,4 +28,4 @@ SUBDIRS += \
     AppPlotTest \
     AppCTKPluginFrameworkTest \
     consoleTest \
-    AppFillMaxRangeTest
+    AppFirmwareSegmentFlashTest \

@@ -26,6 +26,7 @@ ComparisonDialog::ComparisonDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint);
+    setAttribute(Qt::WA_DeleteOnClose,true);
     setAcceptDrops(true);
     initPath();
     m_newLoaded = false;
@@ -60,6 +61,7 @@ ComparisonDialog::ComparisonDialog(QWidget *parent) :
 ComparisonDialog::~ComparisonDialog()
 {
     delete ui;
+    qDebug()<<"ready delete comparisondialog!";
 }
 
 void ComparisonDialog::keyPressEvent(QKeyEvent *event)
@@ -150,11 +152,11 @@ void ComparisonDialog::onActionNewBtnClicked()
 void ComparisonDialog::clickNewBtn(const QString &path) {
     ui->btn_compUpdate->setEnabled(false);
     ui->checkBox_compDiff->setEnabled(false);
-    ui->splitter_compPart->hide();
+    ui->splitter_compPart->hide();  //?
     ui->splitter_compWhole->show();
     m_newItemList.clear();
     m_newFileInfo.setFile(path);
-    m_newFilePath = m_newFileInfo.filePath() + "/";
+    m_newFilePath = m_newFileInfo.filePath() + "/"; //?
     ui->treeWidget_compNew->clear();
     bool ok = loadTree(path, ui->treeWidget_compNew);
     if (!ok) {
@@ -162,7 +164,7 @@ void ComparisonDialog::clickNewBtn(const QString &path) {
     }
     ui->treeWidget_compNew->expandAll();
     ui->label_compNew->setText("New Version: " + m_newFileInfo.baseName());
-    ui->label_compNewPart->setText(ui->label_compNewPart->text() + " " + m_newFileInfo.baseName());
+    ui->label_compNewPart->setText(ui->label_compNewPart->text() + " " + m_newFileInfo.baseName());//?
     m_newLoaded = true;
     if (m_oldLoaded && m_newLoaded) {
         ui->btn_compComp->setEnabled(true);
@@ -173,7 +175,7 @@ bool ComparisonDialog::loadTree(const QString &path, QTreeWidget *treeWidget)
 {
     QTreeWidget *tree = NULL;
     tree = QtTreeManager::createTreeWidgetFromXmlFile(path);;
-    if(treeWidget == NULL)
+    if(treeWidget == NULL || tree == NULL)
         return false;
     else {
         QTreeWidgetItem *item;
@@ -201,7 +203,7 @@ void ComparisonDialog::onActionCompareClicked() {
     ui->progressBar_comp->show();
     m_barCount = 0;
     ui->progressBar_comp->setValue(m_barCount);
-    restoreItemList(m_oldItemList);
+    restoreItemList(m_oldItemList);//?
     restoreItemList(m_newItemList);
     m_oldItemList.clear();
     m_newItemList.clear();
@@ -215,14 +217,30 @@ void ComparisonDialog::onActionCompareClicked() {
     }
     ui->treeWidget_compNewPart->clear();
     ui->treeWidget_compOldPart->clear();
+    /*(amend)*/
+    restoreItemList(m_partOldItemList);//?
+    restoreItemList(m_partNewItemList);
+    m_partOldItemList.clear();
+    m_partNewItemList.clear();
+    /*(/amend)*/
     for (int i = 0; i < m_oldItemList.count(); i++) {
-        ui->treeWidget_compOldPart->addTopLevelItem(m_oldItemList.at(i)->clone());
-        ui->treeWidget_compNewPart->addTopLevelItem(m_newItemList.at(i)->clone());
+    /*(amend)*/
+//        ui->treeWidget_compOldPart->addTopLevelItem(m_oldItemList.at(i)->clone());
+//        ui->treeWidget_compNewPart->addTopLevelItem(m_newItemList.at(i)->clone());
+        m_partOldItemList.append(partCreateTreeAcorrdWhole(m_oldItemList.at(i),ui->treeWidget_compOld,ui->treeWidget_compOldPart));
+        m_partNewItemList.append(partCreateTreeAcorrdWhole(m_newItemList.at(i),ui->treeWidget_compNew,ui->treeWidget_compNewPart));
+    /*(/amend)*/
     }
     QTreeWidgetItem *item = ui->treeWidget_compOld->headerItem()->clone();
     ui->treeWidget_compOldPart->setHeaderItem(item);
     item = ui->treeWidget_compNew->headerItem()->clone();
     ui->treeWidget_compNewPart->setHeaderItem(item);
+    /*(amend)*/
+    ui->treeWidget_compOldPart->expandAll();
+    ui->treeWidget_compNewPart->expandAll();
+    ui->treeWidget_compOldPart->setColumnWidth(0,300);
+    ui->treeWidget_compNewPart->setColumnWidth(0,300);
+    /*(/amend)*/
 }
 
 void ComparisonDialog::onActionUpdateClicked()
@@ -236,7 +254,8 @@ void ComparisonDialog::onActionUpdateClicked()
         ui->progressBar_comp->setValue(100 * i / m_oldItemList.count());
         for (int j = 1; j < qMin(m_newItemList.at(i)->columnCount(), m_oldItemList.at(i)->columnCount()); j++) {
             m_newItemList.at(i)->setText(j, m_oldItemList.at(i)->text(j));
-            ui->treeWidget_compNewPart->topLevelItem(i)->setText(j, m_oldItemList.at(i)->text(j));
+//            ui->treeWidget_compNewPart->topLevelItem(i)->setText(j, m_oldItemList.at(i)->text(j));
+            m_partNewItemList.at(i)->setText(j, m_oldItemList.at(i)->text(j));
         }
     }
     ui->progressBar_comp->hide();
@@ -251,7 +270,7 @@ void ComparisonDialog::onActionSaveClicked()
     } else {
         QMessageBox::information(NULL, tr("Path"), tr("You selected ") + path);
         m_newFileInfo.setFile(path);
-        m_newFilePath = m_newFileInfo.filePath() + "/";
+        m_newFilePath = m_newFileInfo.filePath() + "/";//?
         QTreeWidget *tree = new QTreeWidget;
         QTreeWidgetItem *item;
         for(int i = 0; i < ui->treeWidget_compNew->topLevelItemCount(); i++)
@@ -354,14 +373,22 @@ void ComparisonDialog::onActionDiffBoxChanged()
 
 void ComparisonDialog::onTreeItemChanged(QTreeWidgetItem *item, int col)
 {
-    int index = ui->treeWidget_compNewPart->indexOfTopLevelItem(item);
+    /*(amend)*/
+//    int index = ui->treeWidget_compNewPart->indexOfTopLevelItem(item);
+    int index = m_partNewItemList.indexOf(item);
     m_newItemList.at(index)->setText(col, item->text(col));
+    /*(/amend)*/
 }
 
 void ComparisonDialog::onWholeTreeItemChanged(QTreeWidgetItem *item, int col)
 {
-    int index = m_newItemList.indexOf(item);
-    ui->treeWidget_compNewPart->topLevelItem(index)->setText(col, item->text(col));
+    /*(amend)*/
+    int index = m_newItemList.indexOf(item);    
+    if(index != -1){
+//        ui->treeWidget_compNewPart->topLevelItem(index)->setText(col, item->text(col));
+        m_partNewItemList.at(index)->setText(col, item->text(col));
+    }
+    /*(/amend)*/
 }
 
 void ComparisonDialog::compareNode(QTreeWidgetItem *oldNode, QTreeWidgetItem *newNode) {
@@ -371,7 +398,7 @@ void ComparisonDialog::compareNode(QTreeWidgetItem *oldNode, QTreeWidgetItem *ne
     }
     if (oldNode->text(TREE_NAME).compare(XML_INFO_NAME) == 0 || newNode->text(TREE_NAME).compare(XML_INFO_NAME) == 0) {
         return;
-    }
+    }//?
     int sameIndex = -1;
     for (int i = 0; i < newNode->childCount(); i++) {
         bool exist = false;
@@ -492,6 +519,41 @@ void ComparisonDialog::fillSpaceNode(QTreeWidgetItem *fillItem, QTreeWidgetItem 
         fillSpaceNode(fillItem->child(i), spaceItem->child(i), list);
     }
 }
+
+/*(amend)*/
+QTreeWidgetItem *ComparisonDialog::partCreateTreeAcorrdWhole(QTreeWidgetItem *inputItem, QTreeWidget *treeWidgetWhole, QTreeWidget *treeWidgetPart)
+{
+    QTreeWidgetItem *newItem;
+    QStringList stringlist;
+    static int time = 0;
+    time++;
+    for(int k = 0; k < inputItem->columnCount(); k++){
+        stringlist.append(inputItem->text(k));
+    }
+
+    int i;
+    for(i = 0; i < treeWidgetWhole->topLevelItemCount(); i++){
+        if(inputItem == treeWidgetWhole->topLevelItem(i)){
+            break;
+        }
+    }
+    if(i >= treeWidgetWhole->topLevelItemCount()){
+        QTreeWidgetItem *newItemparent = partCreateTreeAcorrdWhole(inputItem->parent(), treeWidgetWhole, treeWidgetPart);
+        if(time == 1){
+            newItem = inputItem->clone();
+            newItemparent->addChild(newItem);
+        }else{
+//            newItem = new QTreeWidgetItem(newItemparent,stringlist);
+            newItem = newItemparent;
+        }
+    }else{
+        newItem = new QTreeWidgetItem(stringlist);
+        treeWidgetPart->addTopLevelItem(newItem);
+    }
+    time--;
+    return newItem;
+}
+/*(/amend)*/
 
 //void ComparisonDialog::hideItems(QTreeWidgetItem *item, const QList<QTreeWidgetItem*> &list)
 //{

@@ -31,6 +31,7 @@ private:
 //    void hideItems(QTreeWidgetItem *item, const QList<QTreeWidgetItem *> &list);
 //    bool containChangedItems(QTreeWidgetItem *item, const QList<QTreeWidgetItem *> &list);
 //    void showItems(QTreeWidgetItem *item);
+    QTreeWidgetItem *partCreateTreeAcorrdWhole(QTreeWidgetItem *inputItem,QTreeWidget *treeWidgetWhole, QTreeWidget *treeWidgetPart);
 private:
     Ui::ComparisonDialog *ui;
     QString m_oldFilePath;
@@ -43,6 +44,8 @@ private:
     int m_barCount;
     QList<QTreeWidgetItem*> m_oldItemList;
     QList<QTreeWidgetItem*> m_newItemList;
+    QList<QTreeWidgetItem*> m_partOldItemList;
+    QList<QTreeWidgetItem*> m_partNewItemList;
     QTreeWidgetItem *m_editedItem;
     int m_editedCol;
     bool m_isEditingWhole;
