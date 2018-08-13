@@ -27,4 +27,5 @@ SUBDIRS += \
     AppXmlRWTest \
     AppPlotTest \
     AppCTKPluginFrameworkTest \
-    consoleTest
+    consoleTest \
+    AppFirmwareSegmentFlashTest
