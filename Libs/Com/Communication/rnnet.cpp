@@ -230,7 +230,7 @@ errcode_t RnNet::downLoadFPGAFLASH(uint8_t fpgaInx, const wstring &fileName, voi
 errcode_t RnNet::readEEPROM(uint16_t ofst, uint8_t *value, uint16_t num, uint8_t cs)
 {
     Q_D(RnNet);
-
+    qDebug()<<"rnStation"<<d->m_rnStation;
     int16_t ret=-1;
     EEPROMSelect select=EEPROMSelect(cs);
     switch (select)

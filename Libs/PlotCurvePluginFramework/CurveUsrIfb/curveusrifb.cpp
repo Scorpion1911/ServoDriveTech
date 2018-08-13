@@ -46,10 +46,10 @@ void CurveUsrIfb::init()
 {
   //设置单位
   //增加变量曲线，常量曲线读取 keyName
-  addUnit("A",1);
   addUnit("mA",1000);
   addUnit("10mA",100);
   addUnit("100mA",10);
+  addUnit("A",1);
   addVarInputByName(VAR_KEYNAME_CTL_IQ); //对应输入通道 dd.m_varInputs.at(0).datas
   addConstInputByName(CON_KEYNAME_MOT_IMAX);//对应输入值 dd.m_constInputs.at(0).constK
 }

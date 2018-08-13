@@ -5,9 +5,10 @@
 #-------------------------------------------------
 include (../UI.pri)
 
-QT       += widgets
+QT       += widgets sql
 QT       -= gui
 
+INCLUDEPATH += $${PWD}/MotorDBManager\
 
 TEMPLATE = lib
 
@@ -21,12 +22,16 @@ CONFIG(debug, debug|release){
 
 SOURCES += uimotor.cpp \
     graphmotor129.cpp \
-    graphmotor130.cpp
+    graphmotor130.cpp \
+    MotorDBManager/motordbui.cpp \
+    MotorDBManager/motordbmanager.cpp \
 
 HEADERS += uimotor.h\
         uimotor_global.h \
     graphmotor129.h \
-    graphmotor130.h
+    graphmotor130.h \
+    MotorDBManager/motordbui.h \
+    MotorDBManager/motordbmanager.h \
 
 unix {
     target.path = /usr/lib
@@ -36,6 +41,7 @@ unix {
 FORMS += \
     uimotor.ui \
     graphmotor129.ui \
-    graphmotor130.ui
+    graphmotor130.ui \
+    MotorDBManager/motordbui.ui
 
 TRANSLATIONS    += ch_uimotor.ts en_uimotor.ts

@@ -64,4 +64,6 @@ HEADERS  += eprommanager.h \
 
 FORMS    += eprommanager.ui
 
+RC_ICONS = Factory.ico
+
 TRANSLATIONS    += ch_eeprom.ts en_eeprom.ts

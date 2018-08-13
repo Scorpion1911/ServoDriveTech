@@ -97,7 +97,7 @@
     <message>
         <location filename="optpath.cpp" line="188"/>
         <source>Curve Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线文件路径：</translation>
     </message>
     <message>
         <location filename="optpath.cpp" line="193"/>

@@ -170,6 +170,8 @@ bool SevDevicePrivate::init(const DeviceConfig *dConfig)
     connect(ipaHelper,SIGNAL(ipaDone()),q_ptr,SIGNAL(ipaDone()));
     connect(ipaHelper,SIGNAL(ipaSearchPhaseInfo(int,QString)),q_ptr,SIGNAL(ipaSearchPhaseInfo(int,QString)));
     connect(ipaHelper,SIGNAL(ipaWarningMsg(QString)),q_ptr,SIGNAL(ipaWarningMsg(QString)));
+
+    m_brakeIsOnList.append(true);
   }
 
   m_imaxPrmAssociationHelper = new ImaxPrmAssociationHelper(q_ptr);
@@ -417,6 +419,18 @@ bool SevDevice::readPrmItemFlash(quint16 axisInx, QTreeWidgetItem *item)
     return d->m_socket->readPrmItemFlash(axisInx,item);
 }
 
+bool SevDevice::axisBrakeIsOn(quint16 axisInx)
+{
+    Q_D(SevDevice);
+    return d->m_brakeIsOnList.at(axisInx);
+}
+
+void SevDevice::setBrakeMarkOn(quint16 axisInx, bool enable)
+{
+    Q_D(SevDevice);
+    d->m_brakeIsOnList.replace(axisInx, enable);
+}
+
 bool SevDevice::writeAdvFlash(quint16 axisInx, QTreeWidgetItem *item)
 {
     Q_D(SevDevice);
@@ -626,6 +640,10 @@ void SevDevice::setAxisServoOn(quint16 axisInx , bool enable)
   Q_D(SevDevice);
   if(d->m_socket->isConnected()==false)
     return ;
+  if (!axisBrakeIsOn(axisInx)) {
+      QMessageBox::warning(0, tr("Warning"), tr("Axis%1 brake is off").arg(axisInx));
+      return;
+  }
 
   d->m_socket->setAxisServoOn(axisInx,enable);
 }

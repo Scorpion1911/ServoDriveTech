@@ -129,6 +129,8 @@ FORMS    += sdtmainwindow.ui \
     InfoDialog/infodialog.ui\
     ResetDspSelectDialog/resetdspselectdialog.ui
 
+RC_ICONS = AppIco.ico
+
 TRANSLATIONS    += ch_main.ts en_main.ts
 
 

@@ -4,7 +4,7 @@
 <context>
     <name>MotionNone</name>
     <message>
-        <location filename="IMotion/imotion.cpp" line="87"/>
+        <location filename="IMotion/imotion.cpp" line="97"/>
         <source>please select motion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -17,47 +17,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="44"/>
-        <source>Reciprocating Motion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="152"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="302"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="103"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="273"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="60"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="169"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="45"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="175"/>
         <source>Acceleration:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="83"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="229"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="58"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="214"/>
         <source>Deceleration:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="103"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="206"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="71"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="201"/>
         <source>Max Velocity:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="133"/>
-        <location filename="MotionPosition/uimotionposition.ui" line="186"/>
-        <source>Pulse:</source>
+        <location filename="MotionPosition/uimotionposition.ui" line="84"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="188"/>
+        <source>Rounds:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="255"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="343"/>
+        <source>REC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPosition/uimotionposition.ui" line="233"/>
         <source>Interval:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotionPosition/uimotionposition.ui" line="262"/>
+        <location filename="MotionPosition/uimotionposition.ui" line="246"/>
         <source>Times:</source>
         <translation type="unfinished"></translation>
     </message>

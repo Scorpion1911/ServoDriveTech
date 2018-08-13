@@ -51,60 +51,70 @@
 <context>
     <name>SevDevice</name>
     <message>
-        <location filename="sevdevice.cpp" line="188"/>
+        <location filename="sevdevice.cpp" line="194"/>
         <source>SevDevice init</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="383"/>
-        <location filename="sevdevice.cpp" line="870"/>
+        <location filename="sevdevice.cpp" line="390"/>
+        <location filename="sevdevice.cpp" line="893"/>
         <source>Write Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="383"/>
+        <location filename="sevdevice.cpp" line="390"/>
         <source>Write Config Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="793"/>
+        <location filename="sevdevice.cpp" line="644"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sevdevice.cpp" line="644"/>
+        <source>Axis%1 brake is off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sevdevice.cpp" line="816"/>
         <source>reset dsp =%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="801"/>
+        <location filename="sevdevice.cpp" line="824"/>
         <source>dsp =%1 Reset Flag_Finish checking......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="870"/>
+        <location filename="sevdevice.cpp" line="893"/>
         <source>Write Flash Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="899"/>
-        <location filename="sevdevice.cpp" line="1105"/>
+        <location filename="sevdevice.cpp" line="922"/>
+        <location filename="sevdevice.cpp" line="1179"/>
         <source>CheckPrm Error
 :%1 %2 is out of range %3 -- %4
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="904"/>
-        <location filename="sevdevice.cpp" line="925"/>
-        <location filename="sevdevice.cpp" line="1110"/>
+        <location filename="sevdevice.cpp" line="927"/>
+        <location filename="sevdevice.cpp" line="948"/>
+        <location filename="sevdevice.cpp" line="1184"/>
         <source>Prm Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="925"/>
+        <location filename="sevdevice.cpp" line="948"/>
         <source>PowerBoard CheckPrm Error
 :%1 is out of range
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="1052"/>
+        <location filename="sevdevice.cpp" line="1126"/>
         <source>Checking axis%1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -112,22 +122,22 @@ paramater save fail!</source>
 <context>
     <name>SevDevicePrivate</name>
     <message>
-        <location filename="sevdevice.cpp" line="137"/>
+        <location filename="sevdevice.cpp" line="141"/>
         <source>init Config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="142"/>
+        <location filename="sevdevice.cpp" line="146"/>
         <source>findTargetTree</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="147"/>
+        <location filename="sevdevice.cpp" line="151"/>
         <source>New SevDspMap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="152"/>
+        <location filename="sevdevice.cpp" line="156"/>
         <source>New SevPwrBoard</source>
         <translation type="unfinished"></translation>
     </message>

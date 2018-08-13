@@ -25,11 +25,12 @@ public:
 
   bool hasConfigFunc() {return false;}
   bool hasSaveFunc() {return false;}
-
+protected:
+  void setContextAction() Q_DECL_OVERRIDE;
 private:
-  QStackedWidget *getUiStackedWidget(void)Q_DECL_OVERRIDE;
-  QVBoxLayout *getVBoxLayout(void)Q_DECL_OVERRIDE;
-  void setDefaultUi()Q_DECL_OVERRIDE;
+  QStackedWidget *getUiStackedWidget(void) Q_DECL_OVERRIDE;
+  QVBoxLayout *getVBoxLayout(void) Q_DECL_OVERRIDE;
+  void setDefaultUi() Q_DECL_OVERRIDE;
 
 private:
   Ui::UiIO *ui;

@@ -50,3 +50,5 @@ FORMS += \
     posinputfilter.ui \
     pospid133.ui \
     NolinearController/kuselectwidget133.ui
+
+TRANSLATIONS    += ch_uiposition.ts en_uiposition.ts

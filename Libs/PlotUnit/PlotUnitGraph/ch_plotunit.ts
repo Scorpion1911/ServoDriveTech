@@ -84,7 +84,7 @@
 <context>
     <name>MotionProgressBar</name>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="31"/>
+        <location filename="TabMotion/tabmotion.cpp" line="39"/>
         <source>%1</source>
         <translation></translation>
     </message>
@@ -313,8 +313,8 @@
     </message>
     <message>
         <location filename="plotunitgraph129.cpp" line="183"/>
-        <location filename="plotunitgraph129.cpp" line="1073"/>
-        <location filename="plotunitgraph129.cpp" line="1368"/>
+        <location filename="plotunitgraph129.cpp" line="1066"/>
+        <location filename="plotunitgraph129.cpp" line="1361"/>
         <source>error</source>
         <translation>异常</translation>
     </message>
@@ -345,98 +345,98 @@
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="585"/>
+        <location filename="plotunitgraph129.cpp" line="590"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="585"/>
+        <location filename="plotunitgraph129.cpp" line="590"/>
         <source>Curve File(*.src)</source>
         <translation>曲线文件(*.src)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="595"/>
+        <location filename="plotunitgraph129.cpp" line="601"/>
         <source>file error</source>
         <translation>文件错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="595"/>
+        <location filename="plotunitgraph129.cpp" line="601"/>
         <source>can not open file :
 %1</source>
         <translation>无法打开文件：
 %1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="770"/>
-        <location filename="plotunitgraph129.cpp" line="1165"/>
-        <location filename="plotunitgraph129.cpp" line="1598"/>
+        <location filename="plotunitgraph129.cpp" line="779"/>
+        <location filename="plotunitgraph129.cpp" line="1158"/>
+        <location filename="plotunitgraph129.cpp" line="1591"/>
         <source>on</source>
         <translation>开</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="776"/>
-        <location filename="plotunitgraph129.cpp" line="1159"/>
-        <location filename="plotunitgraph129.cpp" line="1604"/>
+        <location filename="plotunitgraph129.cpp" line="785"/>
+        <location filename="plotunitgraph129.cpp" line="1152"/>
+        <location filename="plotunitgraph129.cpp" line="1597"/>
         <source>off</source>
         <translation>关</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="793"/>
+        <location filename="plotunitgraph129.cpp" line="802"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="800"/>
+        <location filename="plotunitgraph129.cpp" line="809"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="812"/>
+        <location filename="plotunitgraph129.cpp" line="821"/>
         <source>Open Curve</source>
         <translation>打开曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="812"/>
+        <location filename="plotunitgraph129.cpp" line="821"/>
         <source>Curve File(*.src);;Text File(*.txt)</source>
         <translation>曲线文件(*.src);;文本文件(*.txt)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="822"/>
-        <location filename="plotunitgraph129.cpp" line="834"/>
+        <location filename="plotunitgraph129.cpp" line="831"/>
+        <location filename="plotunitgraph129.cpp" line="843"/>
         <source>Saving Curve %1</source>
         <translation>保存曲线%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="825"/>
-        <location filename="plotunitgraph129.cpp" line="837"/>
+        <location filename="plotunitgraph129.cpp" line="834"/>
+        <location filename="plotunitgraph129.cpp" line="846"/>
         <source>Saving Finish!</source>
         <translation>保存完成！</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="904"/>
-        <location filename="plotunitgraph129.cpp" line="933"/>
-        <location filename="plotunitgraph129.cpp" line="1003"/>
+        <location filename="plotunitgraph129.cpp" line="897"/>
+        <location filename="plotunitgraph129.cpp" line="926"/>
+        <location filename="plotunitgraph129.cpp" line="996"/>
         <source>warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="904"/>
+        <location filename="plotunitgraph129.cpp" line="897"/>
         <source>plugin load error</source>
         <translation>插件加载错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="933"/>
+        <location filename="plotunitgraph129.cpp" line="926"/>
         <source>%1 is BIT</source>
         <translation>%1是位变量，不能增加</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1003"/>
+        <location filename="plotunitgraph129.cpp" line="996"/>
         <source>The numbers of selected curves is too much</source>
         <translation>所选曲线过多</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1073"/>
-        <location filename="plotunitgraph129.cpp" line="1368"/>
+        <location filename="plotunitgraph129.cpp" line="1066"/>
+        <location filename="plotunitgraph129.cpp" line="1361"/>
         <source>The curve = %1 is not in the device</source>
         <translation>曲线变量  = %1 不在当前设备</translation>
     </message>
@@ -494,12 +494,12 @@
         <translation>错误：建立插件  = %1</translation>
     </message>
     <message>
-        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="343"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="344"/>
         <source>Reading Curve %1</source>
         <translation>正在读取曲线%1</translation>
     </message>
     <message>
-        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="356"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="357"/>
         <source>Reading Curve Finish!</source>
         <translation>曲线读取完成！</translation>
     </message>
@@ -630,79 +630,92 @@
         <translation>周期同步电流跟踪</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="482"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="501"/>
+        <source>Rounds:</source>
+        <translation>圈数：</translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="514"/>
+        <source>Deceleration(deg/ms^2):</source>
+        <translation>减速度(deg/ms^2):</translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="619"/>
         <source>fgn:</source>
         <translation>自整定非线性增益：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="515"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="632"/>
+        <source>Max Velocity(rpm):</source>
+        <translation>最大速度(rpm):</translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/tabmodectl.ui" line="645"/>
+        <source>Acceleration(deg/ms^2):</source>
+        <translation>加速度(deg/ms^2):</translation>
+    </message>
+    <message>
         <source>Max Velocity:</source>
-        <translation>最大规划速度：</translation>
+        <translation type="vanished">最大规划速度：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="535"/>
         <source>Acceleration:</source>
-        <translation>加速度：</translation>
+        <translation type="vanished">加速度：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="558"/>
         <source>Mode:</source>
-        <translation>运动模式：</translation>
+        <translation type="vanished">运动模式：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="565"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="658"/>
         <source>fgp:</source>
         <translation>自整定比例增益：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="572"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="671"/>
         <source>fgd:</source>
         <translation>自整定微分增益：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="605"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="488"/>
         <source>fgi:</source>
         <translation>自整定积分增益：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="612"/>
         <source>Pulse:</source>
-        <translation>脉冲数：</translation>
+        <translation type="vanished">脉冲数：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="619"/>
         <source>Deceleration:</source>
-        <translation>减速度：</translation>
+        <translation type="vanished">减速度：</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="655"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="684"/>
         <source>TextLabel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="677"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="706"/>
         <source>Servo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="96"/>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="148"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="101"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="150"/>
         <source>SEV OFF</source>
         <translation>伺服关</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="98"/>
         <source>Point Mode</source>
-        <translation>点位运动</translation>
+        <translation type="vanished">点位运动</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="99"/>
         <source>Reci Mode</source>
-        <translation>往复运动</translation>
+        <translation type="vanished">往复运动</translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="146"/>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="509"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="148"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="535"/>
         <source>SEV ON</source>
         <translation>伺服开</translation>
     </message>
@@ -730,38 +743,38 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="151"/>
-        <location filename="TabMotion/tabmotion.ui" line="181"/>
+        <location filename="TabMotion/tabmotion.ui" line="154"/>
+        <location filename="TabMotion/tabmotion.ui" line="187"/>
         <source>Servo</source>
         <translation>伺服开关</translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="196"/>
+        <location filename="TabMotion/tabmotion.ui" line="202"/>
         <source>Move</source>
         <translation>开始运动</translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="239"/>
+        <location filename="TabMotion/tabmotion.ui" line="248"/>
         <source>GO</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="84"/>
+        <location filename="TabMotion/tabmotion.cpp" line="92"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="94"/>
+        <location filename="TabMotion/tabmotion.cpp" line="102"/>
         <source>None</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="100"/>
+        <location filename="TabMotion/tabmotion.cpp" line="108"/>
         <source>Velocity</source>
         <translation>速度模式</translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="106"/>
+        <location filename="TabMotion/tabmotion.cpp" line="116"/>
         <source>Position</source>
         <translation>位置模式</translation>
     </message>

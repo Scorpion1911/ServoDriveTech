@@ -102,6 +102,9 @@ public:
   bool writePrmItemFlash(quint16 axisInx, QTreeWidgetItem *item);
   bool readPrmItemFlash(quint16 axisInx, QTreeWidgetItem *item);
 
+  bool axisBrakeIsOn(quint16 axisInx);
+  void setBrakeMarkOn(quint16 axisInx, bool enable);
+
   bool axisServoIsOn(quint16 axisInx);
   void setAxisServoOn(quint16 axisInx, bool enable);
 

@@ -134,7 +134,7 @@ more-&gt;option-&gt;autolaod-&gt;unchecked clicked apply
     <name>SevUiControler</name>
     <message>
         <location filename="../../Common/src/Kernel/sevuicontroler.cpp" line="64"/>
-        <location filename="../../Common/src/Kernel/sevuicontroler.cpp" line="83"/>
+        <location filename="../../Common/src/Kernel/sevuicontroler.cpp" line="90"/>
         <source>build ui %1</source>
         <translation type="unfinished"></translation>
     </message>

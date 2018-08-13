@@ -4,11 +4,6 @@
 <context>
     <name>CombinedWindow</name>
     <message>
-        <location filename="CombinedWindow/combinedwindow.ui" line="14"/>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="CombinedWindow/combinedwindow.ui" line="83"/>
         <location filename="CombinedWindow/combinedwindow.cpp" line="42"/>
         <source>GOOGOLTECH</source>
@@ -22,6 +17,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="CombinedWindow/combinedwindow.ui" line="14"/>
         <location filename="CombinedWindow/combinedwindow.ui" line="108"/>
         <location filename="CombinedWindow/combinedwindow.cpp" line="45"/>
         <source>SDT</source>
@@ -105,38 +101,38 @@
     </message>
     <message>
         <location filename="ComparisonDialog/comparisondialog.cpp" line="107"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="138"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="242"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="141"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="248"/>
         <source>Files(*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="ComparisonDialog/comparisondialog.cpp" line="109"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="140"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="244"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="246"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="143"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="250"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="252"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="ComparisonDialog/comparisondialog.cpp" line="109"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="140"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="244"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="143"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="250"/>
         <source>You did not select any files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="138"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="141"/>
         <source>Open New File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="242"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="248"/>
         <source>Save File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="246"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="252"/>
         <source>You selected </source>
         <translation type="unfinished"></translation>
     </message>
@@ -175,27 +171,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="154"/>
+        <location filename="ConfigDialog/configdialog.ui" line="151"/>
         <source>station info:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="171"/>
+        <location filename="ConfigDialog/configdialog.ui" line="168"/>
         <source>query</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="181"/>
+        <location filename="ConfigDialog/configdialog.ui" line="178"/>
         <source>add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="194"/>
+        <location filename="ConfigDialog/configdialog.ui" line="191"/>
         <source>current select:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="216"/>
+        <location filename="ConfigDialog/configdialog.ui" line="213"/>
         <source>remove</source>
         <translation type="unfinished"></translation>
     </message>
@@ -210,27 +206,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="187"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="190"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="187"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="190"/>
         <source>Unable to open com.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="201"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="205"/>
         <source>Station Index: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="202"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="206"/>
         <source>Axis Number: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="203"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="207"/>
         <source>DSP Version: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -981,121 +977,121 @@ you should reset the system to make it active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="432"/>
+        <location filename="sdtmainwindow.cpp" line="431"/>
         <source>Motor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="433"/>
+        <location filename="sdtmainwindow.cpp" line="432"/>
         <source>Encoder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="434"/>
+        <location filename="sdtmainwindow.cpp" line="433"/>
         <source>Power</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="435"/>
+        <location filename="sdtmainwindow.cpp" line="434"/>
         <source>Current</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="436"/>
+        <location filename="sdtmainwindow.cpp" line="435"/>
         <source>Velocity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="437"/>
+        <location filename="sdtmainwindow.cpp" line="436"/>
         <source>Position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="438"/>
+        <location filename="sdtmainwindow.cpp" line="437"/>
         <source>Brake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="439"/>
+        <location filename="sdtmainwindow.cpp" line="438"/>
         <source>Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="440"/>
+        <location filename="sdtmainwindow.cpp" line="439"/>
         <source>RAM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="441"/>
+        <location filename="sdtmainwindow.cpp" line="440"/>
         <source>FLASH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="442"/>
+        <location filename="sdtmainwindow.cpp" line="441"/>
         <source>IO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="451"/>
+        <location filename="sdtmainwindow.cpp" line="450"/>
         <source>[%1] </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="460"/>
+        <location filename="sdtmainwindow.cpp" line="459"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="490"/>
+        <location filename="sdtmainwindow.cpp" line="489"/>
         <source>Plot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="491"/>
+        <location filename="sdtmainwindow.cpp" line="490"/>
         <source>-1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="742"/>
-        <location filename="sdtmainwindow.cpp" line="763"/>
+        <location filename="sdtmainwindow.cpp" line="741"/>
+        <location filename="sdtmainwindow.cpp" line="762"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="742"/>
+        <location filename="sdtmainwindow.cpp" line="741"/>
         <source>refuse to reset dsp :
 device :%1 axis =%2 servo is on 
  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="748"/>
+        <location filename="sdtmainwindow.cpp" line="747"/>
         <source>Do you want to reset device ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="763"/>
+        <location filename="sdtmainwindow.cpp" line="762"/>
         <source>reset device = %1 dsp fail:
  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="765"/>
+        <location filename="sdtmainwindow.cpp" line="764"/>
         <source>reset dsp successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="797"/>
+        <location filename="sdtmainwindow.cpp" line="796"/>
         <source>PcDebug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="799"/>
+        <location filename="sdtmainwindow.cpp" line="798"/>
         <source>RnNet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="869"/>
+        <location filename="sdtmainwindow.cpp" line="867"/>
         <source>current SDT version = %1
 device version = %2
 not match !
@@ -1104,7 +1100,7 @@ do you want to force to continue?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="906"/>
+        <location filename="sdtmainwindow.cpp" line="901"/>
         <source>device&apos;s componoent C%1-V%2-F%3-P%4 is not supported
 it maybe cause some error!
 do you want to continue?
@@ -1112,7 +1108,7 @@ do you want to continue?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="908"/>
+        <location filename="sdtmainwindow.cpp" line="903"/>
         <source>device&apos;s componoent C%1-V%2-F%3-P%4 can not find in your soft database
 you should update your software from
 http://www.googoltech.com.cn
@@ -1122,17 +1118,17 @@ do you want to continue?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="948"/>
+        <location filename="sdtmainwindow.cpp" line="940"/>
         <source>your connect com is wrong</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="949"/>
+        <location filename="sdtmainwindow.cpp" line="941"/>
         <source>your select com type is wrong</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="951"/>
+        <location filename="sdtmainwindow.cpp" line="943"/>
         <source>Net Error
 
 exception cause maybe:
@@ -1141,7 +1137,7 @@ exception cause maybe:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1000"/>
+        <location filename="sdtmainwindow.cpp" line="992"/>
         <source>Version:%1
 
 get more help from:
@@ -1149,75 +1145,75 @@ http://www.googoltech.com</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="748"/>
-        <location filename="sdtmainwindow.cpp" line="1049"/>
-        <location filename="sdtmainwindow.cpp" line="1100"/>
-        <location filename="sdtmainwindow.cpp" line="1435"/>
+        <location filename="sdtmainwindow.cpp" line="747"/>
+        <location filename="sdtmainwindow.cpp" line="1040"/>
+        <location filename="sdtmainwindow.cpp" line="1087"/>
+        <location filename="sdtmainwindow.cpp" line="1421"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1049"/>
-        <location filename="sdtmainwindow.cpp" line="1100"/>
+        <location filename="sdtmainwindow.cpp" line="1040"/>
+        <location filename="sdtmainwindow.cpp" line="1087"/>
         <source>Please open com first!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1057"/>
-        <location filename="sdtmainwindow.cpp" line="1111"/>
+        <location filename="sdtmainwindow.cpp" line="1048"/>
+        <location filename="sdtmainwindow.cpp" line="1098"/>
         <source>Open XML File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1057"/>
-        <location filename="sdtmainwindow.cpp" line="1111"/>
+        <location filename="sdtmainwindow.cpp" line="1048"/>
+        <location filename="sdtmainwindow.cpp" line="1098"/>
         <source>XML Files(*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1087"/>
+        <location filename="sdtmainwindow.cpp" line="1074"/>
         <source>Download xml file OK !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1091"/>
+        <location filename="sdtmainwindow.cpp" line="1078"/>
         <source>Error: Download xml file fails !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1141"/>
+        <location filename="sdtmainwindow.cpp" line="1128"/>
         <source>Upload xml file OK !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1145"/>
+        <location filename="sdtmainwindow.cpp" line="1132"/>
         <source>Error: Upload xml file fails !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1254"/>
+        <location filename="sdtmainwindow.cpp" line="1241"/>
         <source>dev:%1,axis:%2,page:%3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1301"/>
+        <location filename="sdtmainwindow.cpp" line="1288"/>
         <source>Device:%1 NetError!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1316"/>
+        <location filename="sdtmainwindow.cpp" line="1303"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1322"/>
-        <location filename="sdtmainwindow.cpp" line="1323"/>
+        <location filename="sdtmainwindow.cpp" line="1309"/>
+        <location filename="sdtmainwindow.cpp" line="1310"/>
         <source>search phase complete !</source>
         <oldsource>search phase complete</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="951"/>
+        <location filename="sdtmainwindow.cpp" line="943"/>
         <source>connect error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1334,7 +1330,7 @@ http://www.googoltech.com</source>
     <name>SevUiControler</name>
     <message>
         <location filename="../../Common/src/Kernel/sevuicontroler.cpp" line="64"/>
-        <location filename="../../Common/src/Kernel/sevuicontroler.cpp" line="83"/>
+        <location filename="../../Common/src/Kernel/sevuicontroler.cpp" line="90"/>
         <source>build ui %1</source>
         <translation type="unfinished"></translation>
     </message>

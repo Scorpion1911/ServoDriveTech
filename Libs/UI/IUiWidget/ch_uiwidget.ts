@@ -211,31 +211,36 @@
     </message>
     <message>
         <location filename="igraphstatus.cpp" line="99"/>
+        <source>13 Auto Turnning</source>
+        <translation>13 自整定</translation>
+    </message>
+    <message>
+        <location filename="igraphstatus.cpp" line="100"/>
         <source>0 OFF</source>
         <translation>0 关</translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="99"/>
+        <location filename="igraphstatus.cpp" line="100"/>
         <source>1 INIT</source>
         <translation>1 初始化</translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="99"/>
+        <location filename="igraphstatus.cpp" line="100"/>
         <source>2 ON</source>
         <translation>2 开</translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="137"/>
+        <location filename="igraphstatus.cpp" line="138"/>
         <source>CurrentAxis:%1</source>
         <translation>当前轴：%1</translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="205"/>
+        <location filename="igraphstatus.cpp" line="206"/>
         <source>col=%1 row=%2 rsv=%3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="216"/>
+        <location filename="igraphstatus.cpp" line="217"/>
         <source>Cause:
 %1
 Solution:
@@ -246,7 +251,7 @@ Solution:
 %2</translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="233"/>
+        <location filename="igraphstatus.cpp" line="234"/>
         <source>reserve</source>
         <translation>保留</translation>
     </message>
@@ -322,23 +327,23 @@ Solution:
 <context>
     <name>IUiWidget</name>
     <message>
-        <location filename="iuiwidget.cpp" line="63"/>
-        <location filename="iuiwidget.cpp" line="246"/>
+        <location filename="iuiwidget.cpp" line="66"/>
+        <location filename="iuiwidget.cpp" line="250"/>
         <source>switch to list view</source>
         <translation>列表视图</translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="80"/>
+        <location filename="iuiwidget.cpp" line="84"/>
         <source>RAM value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="85"/>
+        <location filename="iuiwidget.cpp" line="89"/>
         <source>FLASH value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="240"/>
+        <location filename="iuiwidget.cpp" line="244"/>
         <source>switch to graph view</source>
         <translation>图形视图</translation>
     </message>

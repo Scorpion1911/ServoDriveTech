@@ -20,10 +20,16 @@ CONFIG(debug, debug|release){
     TARGET = UiIO
 }
 
-SOURCES += uiio.cpp
+SOURCES += uiio.cpp \
+    graphio133.cpp \
+    graphio129.cpp \
+    graphio126.cpp
 
 HEADERS += uiio.h\
-        uiio_global.h
+        uiio_global.h \
+    graphio133.h \
+    graphio129.h \
+    graphio126.h
 
 unix {
     target.path = /usr/lib
@@ -31,4 +37,9 @@ unix {
 }
 
 FORMS += \
-    uiio.ui
+    uiio.ui \
+    graphio133.ui \
+    graphio129.ui \
+    graphio126.ui
+
+TRANSLATIONS    += ch_uiio.ts en_uiio.ts

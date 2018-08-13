@@ -111,10 +111,13 @@ TabMotion::TabMotion(const QString &name, SevDevice *sev, QWidget *parent) :
   m_motionList.append(vMotion);
   //add new motion
 
-  MotionPosition *pMotion = new MotionPosition(ui->listWidget_plot_tab2_axis, m_sev, tr("Position"));
-  connect(pMotion,SIGNAL(progressValueChanged(quint16,int)),this,SLOT(onProgressValueChanged(quint16,int)));
-  //connect(pMotion,SIGNAL(motionAllDone()),this,SLOT(onMotionAllDone()));
-  m_motionList.append(pMotion);
+  int ver = sev->versionName().remove(0, 1).toInt();
+  if (ver > 130) {
+    MotionPosition *pMotion = new MotionPosition(ui->listWidget_plot_tab2_axis, m_sev, tr("Position"));
+    connect(pMotion,SIGNAL(progressValueChanged(quint16,int)),this,SLOT(onProgressValueChanged(quint16,int)));
+    //connect(pMotion,SIGNAL(motionAllDone()),this,SLOT(onMotionAllDone()));
+    m_motionList.append(pMotion);
+  }
 
   for(int i=0;i<m_motionList.size();i++)
   {
@@ -171,28 +174,30 @@ void TabMotion::resetUi()
   ui->tbtn_plot_servoGoMotion->setEnabled(false);
   ui->tbtn_plot_servoBtn->setEnabled(false);
 
-  MotionPosition *pMotion = dynamic_cast<MotionPosition*>(m_motionList.at(2));
-  if (pMotion->sevDevice()->isConnecting()) {
-      for (int i = 0; i < pMotion->UiMotion()->uiDataList().count(); i++) {
-          bool isOk;
-          quint64 acc = pMotion->sevDevice()->genCmdRead(CMD_POS_ACC, i ,isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_pointAcc = acc;
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciAcc = acc;
-          quint64 dec = pMotion->sevDevice()->genCmdRead(CMD_POS_DEC, i ,isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_pointDec = dec;
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciDec = dec;
+//  MotionPosition *pMotion = dynamic_cast<MotionPosition*>(m_motionList.at(2));
+//  if (pMotion->sevDevice()->isConnecting()) {
+//      for (int i = 0; i < pMotion->UiMotion()->uiDataList().count(); i++) {
+//          bool isOk;
+//          quint64 acc = pMotion->sevDevice()->genCmdRead(CMD_POS_ACC, i ,isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_pointAcc = acc;
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciAcc = acc;
+//          quint64 dec = pMotion->sevDevice()->genCmdRead(CMD_POS_DEC, i ,isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_pointDec = dec;
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciDec = dec;
 
-          quint64 nos = pMotion->sevDevice()->genCmdRead(CON_KEYNAME_MOT_NOS, i, isOk);
-          double scale = nos / qPow(2, 24);
 
-          quint64 maxSpd = pMotion->sevDevice()->genCmdRead(CMD_POS_MAXSPD, i, isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_pointMaxVel = maxSpd * scale;
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciMaxVel = maxSpd * scale;
+//          quint64 nos = pMotion->sevDevice()->genCmdRead(CON_KEYNAME_MOT_NOS, i, isOk);
+//          double scale = nos / qPow(2, 24);
 
-          quint64 delayTime = pMotion->sevDevice()->genCmdRead(CMD_POS_DELAY, i, isOk);
-          pMotion->UiMotion()->uiDataList().at(i)->m_reciInterval = delayTime;
-      }
-  }
+//          quint64 maxSpd = pMotion->sevDevice()->genCmdRead(CMD_POS_MAXSPD, i, isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_pointMaxVel = maxSpd * scale;
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciMaxVel = maxSpd * scale;
+
+//          quint64 delayTime = pMotion->sevDevice()->genCmdRead(CMD_POS_DELAY, i, isOk);
+//          pMotion->UiMotion()->uiDataList().at(i)->m_reciInterval = delayTime;
+//          pMotion->updateAxisUi(i);
+//      }
+//  }
 }
 
 void TabMotion::setupIcons(const QString &css)
@@ -332,6 +337,7 @@ void TabMotion::onBtnServoOnClicked(bool checked)
             if (ui->listWidget_plot_tab2_axis->item(row)->isSelected()) {
                 m_axisMotionDataList.at(row)->m_curMotion->stop(row);
                 m_axisMotionDataList.at(row)->m_curMotion->setMode();
+                m_axisMotionDataList.at(row)->m_curMotion->setCmdSrc(row);
                 m_axisMotionDataList.at(row)->m_curMotion->sevDevice()->setAxisServoOn(row, true);
                 GTUtils::delayms(5);
             }
@@ -340,8 +346,9 @@ void TabMotion::onBtnServoOnClicked(bool checked)
     } else {
         for (int row = 0; row < ui->listWidget_plot_tab2_axis->count(); row++) {
             if (ui->listWidget_plot_tab2_axis->item(row)->isSelected()) {
-                m_axisMotionDataList.at(row)->m_curMotion->sevDevice()->setAxisServoOn(row, false);
                 m_axisMotionDataList.at(row)->m_curMotion->stop(row);
+                m_axisMotionDataList.at(row)->m_curMotion->sevDevice()->setAxisServoOn(row, false);
+                m_axisMotionDataList.at(row)->m_curMotion->resetCmdSrc(row);
             }
         }
         if (ui->listWidget_plot_motion_type_inx->currentRow() == 2) {

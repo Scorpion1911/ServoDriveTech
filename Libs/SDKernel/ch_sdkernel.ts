@@ -51,39 +51,49 @@
 <context>
     <name>SevDevice</name>
     <message>
-        <location filename="sevdevice.cpp" line="188"/>
+        <location filename="sevdevice.cpp" line="194"/>
         <source>SevDevice init</source>
         <translation>设备初始化</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="383"/>
-        <location filename="sevdevice.cpp" line="870"/>
+        <location filename="sevdevice.cpp" line="390"/>
+        <location filename="sevdevice.cpp" line="893"/>
         <source>Write Error</source>
         <translation>写入错误</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="383"/>
+        <location filename="sevdevice.cpp" line="390"/>
         <source>Write Config Parameter Error:%1 </source>
         <translation>写入配置参数错误：%1</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="793"/>
+        <location filename="sevdevice.cpp" line="644"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="sevdevice.cpp" line="644"/>
+        <source>Axis%1 brake is off</source>
+        <translation>轴%1抱闸处于松开状态</translation>
+    </message>
+    <message>
+        <location filename="sevdevice.cpp" line="816"/>
         <source>reset dsp =%1</source>
         <translation>复位DSP%1</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="801"/>
+        <location filename="sevdevice.cpp" line="824"/>
         <source>dsp =%1 Reset Flag_Finish checking......</source>
         <translation>正在检查DSP%1的复位完成标志位......</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="870"/>
+        <location filename="sevdevice.cpp" line="893"/>
         <source>Write Flash Parameter Error:%1 </source>
         <translation>写入Flash参数错误：%1</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="899"/>
-        <location filename="sevdevice.cpp" line="1105"/>
+        <location filename="sevdevice.cpp" line="922"/>
+        <location filename="sevdevice.cpp" line="1179"/>
         <source>CheckPrm Error
 :%1 %2 is out of range %3 -- %4
 paramater save fail!</source>
@@ -92,14 +102,14 @@ paramater save fail!</source>
 参数保存失败！</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="904"/>
-        <location filename="sevdevice.cpp" line="925"/>
-        <location filename="sevdevice.cpp" line="1110"/>
+        <location filename="sevdevice.cpp" line="927"/>
+        <location filename="sevdevice.cpp" line="948"/>
+        <location filename="sevdevice.cpp" line="1184"/>
         <source>Prm Error</source>
         <translation>参数错误</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="925"/>
+        <location filename="sevdevice.cpp" line="948"/>
         <source>PowerBoard CheckPrm Error
 :%1 is out of range
 paramater save fail!</source>
@@ -108,7 +118,7 @@ paramater save fail!</source>
 参数保存错误！</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="1052"/>
+        <location filename="sevdevice.cpp" line="1126"/>
         <source>Checking axis%1</source>
         <translation>正在检查轴%1</translation>
     </message>
@@ -116,22 +126,22 @@ paramater save fail!</source>
 <context>
     <name>SevDevicePrivate</name>
     <message>
-        <location filename="sevdevice.cpp" line="137"/>
+        <location filename="sevdevice.cpp" line="141"/>
         <source>init Config</source>
         <translation>初始化配置</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="142"/>
+        <location filename="sevdevice.cpp" line="146"/>
         <source>findTargetTree</source>
         <translation>查找目标文件</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="147"/>
+        <location filename="sevdevice.cpp" line="151"/>
         <source>New SevDspMap</source>
         <translation>新建DSP对照表</translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="152"/>
+        <location filename="sevdevice.cpp" line="156"/>
         <source>New SevPwrBoard</source>
         <translation>新建功率板文件</translation>
     </message>

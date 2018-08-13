@@ -156,21 +156,21 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="PluginsManager/pluginsmanager.cpp" line="343"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="344"/>
         <source>Reading Curve %1</source>
-        <translation type="unfinished"></translation>
+        <translation>正在读取曲线%1</translation>
     </message>
     <message>
-        <location filename="PluginsManager/pluginsmanager.cpp" line="356"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="357"/>
         <source>Reading Curve Finish!</source>
-        <translation type="unfinished"></translation>
+        <translation>曲线读取完成！</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <location filename="ICurve/icurve.cpp" line="66"/>
-        <location filename="CurveRaw/curveraw.cpp" line="64"/>
+        <location filename="CurveRaw/curveraw.cpp" line="68"/>
         <source>%1</source>
         <translation></translation>
     </message>

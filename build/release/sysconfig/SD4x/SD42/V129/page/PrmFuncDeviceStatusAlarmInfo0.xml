@@ -465,6 +465,7 @@
        <property name="text">
         <string/>
        </property>
+	   </item>
       <item>
        <property name="text">
         <string>gSevDrv.sev_obj.cur.pro.alm_code.bit.SOC</string>

@@ -17,6 +17,7 @@
 #define GEN_CMD_DEC "gSevDrv.sev_obj.pos.mkr.prm.decrate"
 #define GEN_CMD_MOVEMODE "gSevDrv.sev_obj.pos.seq.prm.move_mode"
 #define GEN_CMD_MAXVEL "gSevDrv.sev_obj.pos.mkr.prm.maxspd"
+#define GEN_CMD_AUT_FINISH "gSevDrv.sev_obj.vel.atn.finish_flag"
 
 class ModeCtlPrms
 {
@@ -251,14 +252,14 @@ bool TabModeCtl::eventFilter(QObject *obj, QEvent *event)
           bool ok;
           quint64 nos = m_sev->genCmdReadNos(axisInx, ok);
           double scale = nos / (pow(2, 24));
-          modePrms->m_autAcc = ui->doubleSpinBox_mode_autAcc->value() / 360.0 * 65536;
-          modePrms->m_autDec = ui->doubleSpinBox_mode_autDec->value() / 360.0 * 65536;
-          modePrms->m_autVel = ui->doubleSpinBox_mode_autMaxVel->value() / scale;
-          modePrms->m_autPulse = ui->doubleSpinBox_mode_aut_pulse->value() * 65536;
-          m_sev->genCmdWritePlanSpdAcc(axisInx, modePrms->m_autAcc);
-          m_sev->genCmdWritePlanSpdDec(axisInx, modePrms->m_autDec);
-          m_sev->genCmdWritePlanSpdMax(axisInx, modePrms->m_autVel);
-          m_sev->cmdSetPosRef(axisInx, modePrms->m_autPulse);
+          modePrms->m_autAcc = ui->doubleSpinBox_mode_autAcc->value();
+          modePrms->m_autDec = ui->doubleSpinBox_mode_autDec->value();
+          modePrms->m_autVel = ui->doubleSpinBox_mode_autMaxVel->value();
+          modePrms->m_autPulse = ui->doubleSpinBox_mode_aut_pulse->value();
+          m_sev->genCmdWritePlanSpdAcc(axisInx, modePrms->m_autAcc / 360.0 * 65536);
+          m_sev->genCmdWritePlanSpdDec(axisInx, modePrms->m_autDec / 360.0 * 65536);
+          m_sev->genCmdWritePlanSpdMax(axisInx, modePrms->m_autVel / scale);
+          m_sev->cmdSetPosRef(axisInx, modePrms->m_autPulse * 65536);
 
           modePrms->m_autfgd = m_sev->genCmdReadAutoTurnningFgd(axisInx, ok);
           ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
@@ -489,14 +490,21 @@ void TabModeCtl::onModeCtlPanelCheckChanged(quint16 axis, int mode)
     case GT::MODE_CSC:break;
     case GT::MODE_AUT:
     {
+        bool ok;
+        quint64 nos = m_sev->genCmdReadNos(axis, ok);
+        double scale = nos / (pow(2, 24));
+        modePrms->m_autAcc = m_sev->genCmdRead(GEN_CMD_ACC, axis, ok) / 65536.0 * 360;
+        ui->doubleSpinBox_mode_autAcc->setValue(modePrms->m_autAcc);
+        modePrms->m_autDec = m_sev->genCmdRead(GEN_CMD_DEC, axis, ok) / 65536.0 * 360;
+        ui->doubleSpinBox_mode_autDec->setValue(modePrms->m_autDec);
+        modePrms->m_autVel = m_sev->genCmdRead(GEN_CMD_MAXVEL, axis, ok) * scale;
+        ui->doubleSpinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
+
         ui->doubleSpinBox_mode_aut_pulse->setValue(modePrms->m_autPulse);
         ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
         ui->label_mode_aut_fgp->setText(QString::number(modePrms->m_autfgp));
         ui->label_mode_aut_fgi->setText(QString::number(modePrms->m_autfgi));
         ui->label_mode_aut_fgn->setText(QString::number(modePrms->m_autfgn));
-        ui->doubleSpinBox_mode_autAcc->setValue(modePrms->m_autAcc);
-        ui->doubleSpinBox_mode_autDec->setValue(modePrms->m_autDec);
-        ui->doubleSpinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
 
         ui->doubleSpinBox_mode_aut_pulse->setStyleSheet("color:black");
         ui->label_mode_aut_fgd->setStyleSheet("color:black");
@@ -529,4 +537,45 @@ void TabModeCtl::onBtnServoOnClicked(bool checked)
       qDebug()<<"----------sev axis is on"<<m_sev->axisServoIsOn(i)<<"-----------";
     }
   }
+  if (checked && ui->stackedWidget_plot_mode->currentIndex() == 13) {
+      for(int i = 0;i<ui->modeCtlPanel->axisCount();i++)
+      {
+        if(ui->modeCtlPanel->isChecked(i))
+        {
+            m_finishList.append(0);
+        }
+      }
+      connect(&m_timer, SIGNAL(timeout()), this, SLOT(onCheckingAutoTurning()));
+      m_timer.start(1000);
+  }
+}
+
+void TabModeCtl::onCheckingAutoTurning()
+{
+    for (int i = 0; i < ui->modeCtlPanel->axisCount(); i++) {
+        int count = 0;
+        if (ui->modeCtlPanel->isChecked(i)) {
+            bool isOk;
+            quint64 finish = m_sev->genCmdRead(GEN_CMD_AUT_FINISH, i, isOk);
+            m_finishList.replace(count, finish);
+            if (m_finishList.at(count) == 1) {
+                ModeCtlPrms* modePrms = m_dataList.at(i);
+                modePrms->m_autfgd = m_sev->genCmdReadAutoTurnningFgd(i, isOk);
+                ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
+                modePrms->m_autfgp = m_sev->genCmdReadAutoTurnningFgp(i, isOk);
+                ui->label_mode_aut_fgp->setText(QString::number(modePrms->m_autfgp));
+                modePrms->m_autfgi = m_sev->genCmdReadAutoTurnningFgi(i, isOk);
+                ui->label_mode_aut_fgi->setText(QString::number(modePrms->m_autfgi));
+                modePrms->m_autfgn = m_sev->genCmdReadAutoTurnningFgn(i, isOk);
+                ui->label_mode_aut_fgn->setText(QString::number(modePrms->m_autfgn));
+            }
+            count++;
+        }
+    }
+    for (int i = 0; i < m_finishList.count(); i++) {
+        if (m_finishList.at(i) == 0) {
+            break;
+        }
+        m_timer.stop();
+    }
 }

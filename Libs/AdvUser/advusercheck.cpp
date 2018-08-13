@@ -66,10 +66,10 @@ QString AdvUserCheck::nickName()
 bool AdvUserCheck::advUserActive()
 {
     Q_D(AdvUserCheck);
-    d->m_isChecked = ui->checkBox_advCheckData->isChecked();
     QString psw = ui->lineEdit_advPsw->text();
     if (psw.compare(d->m_pw) == 0) {
         ui->lineEdit_advPsw->clear();
+        d->m_isChecked = ui->checkBox_advCheckData->isChecked();
         emit checkChanged(d->m_isChecked);
     } else {
         d->m_errMsg = tr("Wrong Password!");

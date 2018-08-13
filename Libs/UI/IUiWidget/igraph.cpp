@@ -22,19 +22,12 @@ IGraph::IGraph(IGraphPrivate &dd,QWidget *parent):d_ptr(&dd),QWidget(parent)
 void IGraph::visit(IUiWidget *uiWidget)
 {
   initPrivateData(uiWidget);
-
   setUiVersionName();
-
   setDoubleSpinBoxConnections();
-
   installDoubleSpinBoxEventFilter();
-
   setupDataMappings();
-
   setCommonConnections();
-
   setEditTextStatusDefaultAll();
-
   setCustomVisitActive(uiWidget);
 }
 void IGraph::syncTreeDataToUiFace()

@@ -21,7 +21,8 @@ public:
   ~GraphMotor129();
 
   void syncTreeDataToUiFace() Q_DECL_OVERRIDE;
-
+signals:
+  void installMotor();
 protected:
   void setCustomVisitActive(IUiWidget *uiWidget) Q_DECL_OVERRIDE;
   void setUiVersionName() Q_DECL_OVERRIDE;
@@ -29,7 +30,9 @@ protected:
 
 protected slots:
   void onDoubleSpinBoxFocusOut();
-
+  void onMotorInstallationBtnClicked();
+  void onReturnBtnClicked() Q_DECL_OVERRIDE;
+  void onInstallMotorReceived(const QStringList &paraList) Q_DECL_OVERRIDE;
 private:
   Ui::GraphMotor129 *ui;
 };

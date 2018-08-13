@@ -101,15 +101,15 @@ void GraphCurrent130::createPidControllerItem()
   iedit->setButtonSymbols(QAbstractSpinBox::NoButtons);
   vlayoutTest->addWidget(iedit);
 
-  QLabel *dgain=new QLabel(tr("D gain(ms)"),wpid);
-  dgain->setObjectName("label_currentDgain");
-  vlayoutTest->addWidget(dgain);
-  QDoubleSpinBox *dedit=new QDoubleSpinBox(wpid);
-  dedit->setObjectName("dspinBox_currentDedit");
-  dedit->setMinimum(0);
-  dedit->setMaximum(65535);
-  dedit->setButtonSymbols(QAbstractSpinBox::NoButtons);
-  vlayoutTest->addWidget(dedit);
+//  QLabel *dgain=new QLabel(tr("D gain(ms)"),wpid);
+//  dgain->setObjectName("label_currentDgain");
+//  vlayoutTest->addWidget(dgain);
+//  QDoubleSpinBox *dedit=new QDoubleSpinBox(wpid);
+//  dedit->setObjectName("dspinBox_currentDedit");
+//  dedit->setMinimum(0);
+//  dedit->setMaximum(65535);
+//  dedit->setButtonSymbols(QAbstractSpinBox::NoButtons);
+//  vlayoutTest->addWidget(dedit);
 
   wpid->setLayout(vlayoutTest);
 

@@ -46,6 +46,8 @@ ConfigDialog::ConfigDialog(QList<DeviceConfig *> *devList, QWidget *parent) :
 
   ui->progressBar->setVisible(false);
 
+  ui->comboBox_rnStation->addItem("240");
+
 }
 
 ConfigDialog::~ConfigDialog()
@@ -181,6 +183,7 @@ void ConfigDialog::onBtnQueryClicked()
 {
     if (m_curSelectSta == SELECT_STATUS_RNNET) {
         ui->progressBar->setVisible(true);
+        ui->comboBox_rnStation->clear();
         ComDriver::RnNet *rnCom = new ComDriver::RnNet("RnNet");
         ComDriver::errcode_t err = rnCom->open(processCallBack, ui->progressBar);
         if (err != 0) {
@@ -194,6 +197,7 @@ void ConfigDialog::onBtnQueryClicked()
         QString staInfo = "";
         for (uint i = 0; i < stnList.size(); i++) {
             ComDriver::int16_t rnSta = stnList.at(i);
+            ui->comboBox_rnStation->addItem(QString::number(rnSta));
             rnCom->setRnStation(rnSta);
             ComDriver::int16_t axisNum = rnCom->getCurrentAxisNumByReadFPGA();
             ComDriver::uint16_t version = 0;
@@ -287,7 +291,7 @@ void ConfigDialog::createDstDevice(QTreeWidgetItem*curItem)
   QTreeWidgetItem *comItemDst;
   QTreeWidgetItem *curItemDst;
   comItemDst=addChildItem(comItem,devItem);
-  comItemDst->setText(COL_PRM_EX0,QString::number(ui->spinBox_rnStation->value()));
+  comItemDst->setText(COL_PRM_EX0,QString::number(ui->comboBox_rnStation->currentText().toInt()));
   typeItemDst=addChildItem(typeItem,comItemDst);
   modelItemDst=addChildItem(modelItem,typeItemDst);
   curItemDst=addChildItem(curItem,modelItemDst);

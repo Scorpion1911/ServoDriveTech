@@ -1,4 +1,4 @@
-#include "motionposition.h"
+﻿#include "motionposition.h"
 #include "uimotionposition.h"
 #include "imotion_p.h"
 #include "sevdevice.h"
@@ -71,10 +71,6 @@ void MotionPosition::movePrepare(quint16 axisInx)
     quint64 nos = d->m_sev->genCmdRead(CON_KEYNAME_MOT_NOS, axisInx, isOk);
     double scale = nos / qPow(2, 24);
 
-    d->m_cmdSrc = d->m_sev->genCmdRead(CMD_POS_CMDSRC, axisInx, isOk);
-
-    d->m_sev->genCmdWrite(CMD_POS_CMDSRC, 1, axisInx);
-
     UiPosMotionData* data = UiMotion()->uiDataList().at(axisInx);
     if (data->m_isReci) {
         double maxVel = data->m_reciMaxVel / scale;
@@ -132,7 +128,6 @@ bool MotionPosition::move(quint16 axisInx)
 bool MotionPosition::stop(quint16 axisInx)
 {
     Q_D(MotionPosition);
-    d->m_sev->genCmdWrite(CMD_POS_CMDSRC, d->m_cmdSrc, axisInx);
     d->m_sev->cmdSetPosRef(axisInx, 0);
     d->m_sev->genCmdWrite(CMD_POS_MOV_EN, 0, axisInx);
 //    bool isOk;
@@ -156,6 +151,19 @@ void MotionPosition::setMode()
             d->m_sev->setCurrentTaskServoMode(i, GT::MODE_PT);
         }
     }
+}
+
+void MotionPosition::setCmdSrc(quint16 axisInx) {
+  Q_D(MotionPosition);
+  bool isOk;
+  d->m_cmdSrc = d->m_sev->genCmdRead(CMD_POS_CMDSRC, axisInx, isOk);
+  d->m_sev->genCmdWrite(CMD_POS_CMDSRC, 1, axisInx);
+}
+
+void MotionPosition::resetCmdSrc(quint16 axisInx)
+{
+  Q_D(MotionPosition);
+  d->m_sev->genCmdWrite(CMD_POS_CMDSRC, d->m_cmdSrc, axisInx);
 }
 
 void MotionPosition::onMotionFinish(quint16 axisInx)

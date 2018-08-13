@@ -26,7 +26,7 @@ CONFIG(debug, debug|release){
 }
 
 SOURCES += uiencoder.cpp \
-    graphencoder129.cpp \
+    graphencoder130.cpp \
     ./EncConfig/encconfigmanage.cpp \
     ./EncConfig/iencconfigitem.cpp \
     EncConfig/encconfigduomoitem.cpp \
@@ -36,11 +36,13 @@ SOURCES += uiencoder.cpp \
     EncConfig/encconfigsongxiaitem.cpp \
     EncConfig/encconfigyaskawaitem.cpp \
     linenumberbinding.cpp \
-    encconfigbinding129.cpp
+    encconfigbinding130.cpp \
+    encconfigbinding126.cpp \
+    graphencoder126.cpp
 
 HEADERS += uiencoder.h\
         uiencoder_global.h \
-    graphencoder129.h \
+    graphencoder130.h \
     ./EncConfig/encconfigmanage.h \
     ./EncConfig/iencconfigitem.h \
     EncConfig/encconfigduomoitem.h \
@@ -51,7 +53,9 @@ HEADERS += uiencoder.h\
     EncConfig/encconfigyaskawaitem.h \
     EncConfig/EncConfig \
     linenumberbinding.h \
-    encconfigbinding129.h
+    encconfigbinding130.h \
+    encconfigbinding126.h \
+    graphencoder126.h
 
 unix {
     target.path = /usr/lib
@@ -60,6 +64,7 @@ unix {
 
 FORMS += \
     uiencoder.ui \
-    graphencoder129.ui
+    graphencoder130.ui \
+    graphencoder126.ui
 
 TRANSLATIONS    += ch_uiencoder.ts en_uiencoder.ts
