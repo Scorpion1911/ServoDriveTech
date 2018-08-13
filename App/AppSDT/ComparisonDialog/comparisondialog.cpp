@@ -123,7 +123,10 @@ void ComparisonDialog::clickOldBtn(const QString &path) {
     m_oldFileInfo.setFile(path);
     m_oldFilePath = m_oldFileInfo.filePath() + "/";
     ui->treeWidget_compOld->clear();
-    loadTree(path, ui->treeWidget_compOld);
+    bool ok = loadTree(path, ui->treeWidget_compOld);
+    if (!ok) {
+        return;
+    }
     ui->treeWidget_compOld->expandAll();
     ui->label_compOld->setText("Old Version: " + m_oldFileInfo.baseName());
     ui->label_compOldPart->setText(ui->label_compOldPart->text() + " " + m_oldFileInfo.baseName());
@@ -153,7 +156,10 @@ void ComparisonDialog::clickNewBtn(const QString &path) {
     m_newFileInfo.setFile(path);
     m_newFilePath = m_newFileInfo.filePath() + "/";
     ui->treeWidget_compNew->clear();
-    loadTree(path, ui->treeWidget_compNew);
+    bool ok = loadTree(path, ui->treeWidget_compNew);
+    if (!ok) {
+        return;
+    }
     ui->treeWidget_compNew->expandAll();
     ui->label_compNew->setText("New Version: " + m_newFileInfo.baseName());
     ui->label_compNewPart->setText(ui->label_compNewPart->text() + " " + m_newFileInfo.baseName());

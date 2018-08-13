@@ -32,11 +32,6 @@
         <oldsource>I gain(ms)</oldsource>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="graphcurrent130.cpp" line="104"/>
-        <source>D gain(ms)</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>GraphCurrent133</name>

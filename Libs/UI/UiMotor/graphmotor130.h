@@ -29,7 +29,10 @@ protected:
 
 protected slots:
   void onDoubleSpinBoxFocusOut();
+  void onReturnBtnClicked() Q_DECL_OVERRIDE;
+  void onInstallMotorReceived(const QStringList &paraList) Q_DECL_OVERRIDE;
 
+  void onMotorInstallationBtnClicked();
 private:
   Ui::GraphMotor130 *ui;
 };

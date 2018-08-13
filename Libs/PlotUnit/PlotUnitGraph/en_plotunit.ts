@@ -313,8 +313,8 @@
     </message>
     <message>
         <location filename="plotunitgraph129.cpp" line="183"/>
-        <location filename="plotunitgraph129.cpp" line="1080"/>
-        <location filename="plotunitgraph129.cpp" line="1375"/>
+        <location filename="plotunitgraph129.cpp" line="1066"/>
+        <location filename="plotunitgraph129.cpp" line="1361"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -355,87 +355,87 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="600"/>
+        <location filename="plotunitgraph129.cpp" line="601"/>
         <source>file error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="600"/>
+        <location filename="plotunitgraph129.cpp" line="601"/>
         <source>can not open file :
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="777"/>
-        <location filename="plotunitgraph129.cpp" line="1172"/>
-        <location filename="plotunitgraph129.cpp" line="1605"/>
+        <location filename="plotunitgraph129.cpp" line="779"/>
+        <location filename="plotunitgraph129.cpp" line="1158"/>
+        <location filename="plotunitgraph129.cpp" line="1591"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="783"/>
-        <location filename="plotunitgraph129.cpp" line="1166"/>
-        <location filename="plotunitgraph129.cpp" line="1611"/>
+        <location filename="plotunitgraph129.cpp" line="785"/>
+        <location filename="plotunitgraph129.cpp" line="1152"/>
+        <location filename="plotunitgraph129.cpp" line="1597"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="800"/>
+        <location filename="plotunitgraph129.cpp" line="802"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="807"/>
+        <location filename="plotunitgraph129.cpp" line="809"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="819"/>
+        <location filename="plotunitgraph129.cpp" line="821"/>
         <source>Open Curve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="819"/>
+        <location filename="plotunitgraph129.cpp" line="821"/>
         <source>Curve File(*.src);;Text File(*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="829"/>
-        <location filename="plotunitgraph129.cpp" line="841"/>
+        <location filename="plotunitgraph129.cpp" line="831"/>
+        <location filename="plotunitgraph129.cpp" line="843"/>
         <source>Saving Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="832"/>
-        <location filename="plotunitgraph129.cpp" line="844"/>
+        <location filename="plotunitgraph129.cpp" line="834"/>
+        <location filename="plotunitgraph129.cpp" line="846"/>
         <source>Saving Finish!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="911"/>
-        <location filename="plotunitgraph129.cpp" line="940"/>
-        <location filename="plotunitgraph129.cpp" line="1010"/>
+        <location filename="plotunitgraph129.cpp" line="897"/>
+        <location filename="plotunitgraph129.cpp" line="926"/>
+        <location filename="plotunitgraph129.cpp" line="996"/>
         <source>warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="911"/>
+        <location filename="plotunitgraph129.cpp" line="897"/>
         <source>plugin load error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="940"/>
+        <location filename="plotunitgraph129.cpp" line="926"/>
         <source>%1 is BIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1010"/>
+        <location filename="plotunitgraph129.cpp" line="996"/>
         <source>The numbers of selected curves is too much</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1080"/>
-        <location filename="plotunitgraph129.cpp" line="1375"/>
+        <location filename="plotunitgraph129.cpp" line="1066"/>
+        <location filename="plotunitgraph129.cpp" line="1361"/>
         <source>The curve = %1 is not in the device</source>
         <translation type="unfinished"></translation>
     </message>
@@ -743,7 +743,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="114"/>
+        <location filename="TabMotion/tabmotion.cpp" line="116"/>
         <source>Position</source>
         <translation type="unfinished"></translation>
     </message>

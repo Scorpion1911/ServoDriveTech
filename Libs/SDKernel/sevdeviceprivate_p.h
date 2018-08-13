@@ -37,6 +37,7 @@ public :
   IDspMap *m_dspMap;
   DeviceConfig *m_devConfig;
   VerAttribute *m_verAttribute;
+  QList<bool> m_brakeIsOnList;
 
   QString m_filePath;
   QTreeWidgetItem *m_targetTree;

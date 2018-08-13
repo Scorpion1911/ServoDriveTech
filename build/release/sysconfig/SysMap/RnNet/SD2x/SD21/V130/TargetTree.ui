@@ -178,7 +178,7 @@
          <string>1</string>
         </property>
         <property name="text">
-         <string>GraphCurrent130</string>
+         <string>GraphCurrent129</string>
         </property>
        </item>
        <item>
@@ -359,7 +359,7 @@
          <string>0</string>
         </property>
         <property name="text">
-         <string>NULL</string>
+         <string>GraphIO129</string>
         </property>
        </item>
       </item>

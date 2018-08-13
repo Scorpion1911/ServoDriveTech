@@ -22,9 +22,11 @@ protected:
 
 
 signals:
-
+  void installMotor();
 public slots:
 protected slots:
+  virtual void onReturnBtnClicked() = 0;
+  virtual void onInstallMotorReceived(const QStringList &paraList) = 0;
 
 
 protected:

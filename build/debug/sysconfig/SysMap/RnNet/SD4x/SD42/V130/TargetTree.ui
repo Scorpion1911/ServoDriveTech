@@ -109,7 +109,7 @@
          <string>1</string>
         </property>
         <property name="text">
-         <string>GraphMotor130</string>
+         <string>GraphMotor129</string>
         </property>
        </item>
        <item>
@@ -132,7 +132,7 @@
          <string>1</string>
         </property>
         <property name="text">
-         <string>GraphEncoder129</string>
+         <string>GraphEncoder130</string>
         </property>
        </item>
        <item>
@@ -322,7 +322,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Global</string>
+        <string>UiGlobal</string>
        </property>
        <property name="text">
         <string>NULL</string>
@@ -357,6 +357,19 @@
         </property>
         <property name="text">
          <string>0</string>
+        </property>
+        <property name="text">
+         <string>GraphIO129</string>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Global</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Plot</string>
         </property>
         <property name="text">
          <string>NULL</string>

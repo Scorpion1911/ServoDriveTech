@@ -55,204 +55,455 @@
     </message>
 </context>
 <context>
-    <name>GraphEncoder129</name>
+    <name>GraphEncoder126</name>
     <message>
-        <location filename="graphencoder129.ui" line="14"/>
+        <location filename="graphencoder126.ui" line="14"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="47"/>
+        <location filename="graphencoder126.ui" line="47"/>
         <source>search phase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="54"/>
+        <location filename="graphencoder126.ui" line="54"/>
         <source>save phase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="61"/>
+        <location filename="graphencoder126.ui" line="61"/>
         <source>enc config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="87"/>
+        <location filename="graphencoder126.ui" line="87"/>
         <source>search phase percent:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="100"/>
+        <location filename="graphencoder126.ui" line="100"/>
         <source>20</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="208"/>
+        <location filename="graphencoder126.ui" line="208"/>
         <source>PushButton</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="268"/>
+        <location filename="graphencoder126.ui" line="268"/>
         <source>encoder configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="290"/>
-        <location filename="graphencoder129.ui" line="356"/>
+        <location filename="graphencoder126.ui" line="290"/>
+        <location filename="graphencoder126.ui" line="356"/>
         <source>页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="303"/>
+        <location filename="graphencoder126.ui" line="303"/>
         <source>Page 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="343"/>
+        <location filename="graphencoder126.ui" line="343"/>
         <source>Page 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="364"/>
+        <location filename="graphencoder126.ui" line="364"/>
         <source>GroupBox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="370"/>
+        <location filename="graphencoder126.ui" line="370"/>
         <source>LineNum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="380"/>
+        <location filename="graphencoder126.ui" line="380"/>
         <source>BitNum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="392"/>
+        <location filename="graphencoder126.ui" line="392"/>
         <source>linenumber</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="420"/>
-        <source>associate pos gear prm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphencoder129.ui" line="429"/>
-        <source>num b</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphencoder129.ui" line="452"/>
-        <source>den a</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphencoder129.ui" line="477"/>
+        <location filename="graphencoder126.ui" line="420"/>
         <source>prms active after reset device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="484"/>
+        <location filename="graphencoder126.ui" line="427"/>
         <source>save config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="530"/>
-        <location filename="graphencoder129.ui" line="567"/>
-        <location filename="graphencoder129.ui" line="604"/>
+        <location filename="graphencoder126.ui" line="472"/>
+        <location filename="graphencoder126.ui" line="509"/>
+        <location filename="graphencoder126.ui" line="546"/>
         <source>1024</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="540"/>
-        <location filename="graphencoder129.ui" line="577"/>
-        <location filename="graphencoder129.ui" line="614"/>
+        <location filename="graphencoder126.ui" line="482"/>
+        <location filename="graphencoder126.ui" line="519"/>
+        <location filename="graphencoder126.ui" line="556"/>
         <source>(pluse)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="547"/>
+        <location filename="graphencoder126.ui" line="489"/>
         <source>encoder input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="584"/>
+        <location filename="graphencoder126.ui" line="526"/>
         <source>encoder offset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="621"/>
+        <location filename="graphencoder126.ui" line="563"/>
         <source>encoder real</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="641"/>
+        <location filename="graphencoder126.ui" line="583"/>
+        <location filename="graphencoder126.cpp" line="149"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.ui" line="651"/>
+        <location filename="graphencoder126.ui" line="593"/>
         <source>motor phase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="51"/>
+        <location filename="graphencoder126.cpp" line="51"/>
         <source>Electronic Angle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="52"/>
+        <location filename="graphencoder126.cpp" line="52"/>
         <source>Mechanical Angle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="64"/>
+        <location filename="graphencoder126.cpp" line="64"/>
         <source>encoder lineNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="65"/>
+        <location filename="graphencoder126.cpp" line="65"/>
         <source>clearAlarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="69"/>
+        <location filename="graphencoder126.cpp" line="69"/>
         <source>Enc None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="70"/>
+        <location filename="graphencoder126.cpp" line="70"/>
         <source>Enc Absolute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="71"/>
+        <location filename="graphencoder126.cpp" line="71"/>
         <source>Enc Increase</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="72"/>
+        <location filename="graphencoder126.cpp" line="72"/>
         <source>Enc Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="74"/>
+        <location filename="graphencoder126.cpp" line="74"/>
         <source>active after reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="264"/>
+        <location filename="graphencoder126.cpp" line="145"/>
+        <location filename="graphencoder126.cpp" line="177"/>
+        <source>Over Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="146"/>
+        <source>Full absolute status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="147"/>
+        <source>Counting Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="148"/>
+        <source>Counter Overflow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="150"/>
+        <location filename="graphencoder126.cpp" line="179"/>
+        <source>Multi-turn Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="151"/>
+        <location filename="graphencoder126.cpp" line="181"/>
+        <location filename="graphencoder126.cpp" line="195"/>
+        <source>Battery Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="152"/>
+        <location filename="graphencoder126.cpp" line="164"/>
+        <location filename="graphencoder126.cpp" line="184"/>
+        <location filename="graphencoder126.cpp" line="193"/>
+        <source>Battery Alarm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="178"/>
+        <source>MR Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="180"/>
+        <source>Position Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="182"/>
+        <source>EEP Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="183"/>
+        <source>Over temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder126.cpp" line="292"/>
         <source>EnclineNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="271"/>
+        <location filename="graphencoder126.cpp" line="299"/>
         <source>EncbitNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder129.cpp" line="483"/>
+        <location filename="graphencoder126.cpp" line="479"/>
+        <source>Enc Lost</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GraphEncoder130</name>
+    <message>
+        <location filename="graphencoder130.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="47"/>
+        <source>search phase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="54"/>
+        <source>save phase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="61"/>
+        <source>enc config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="87"/>
+        <source>search phase percent:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="100"/>
+        <source>20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="208"/>
+        <source>PushButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="268"/>
+        <source>encoder configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="290"/>
+        <location filename="graphencoder130.ui" line="356"/>
+        <source>页</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="303"/>
+        <source>Page 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="343"/>
+        <source>Page 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="364"/>
+        <source>GroupBox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="370"/>
+        <source>LineNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="380"/>
+        <source>BitNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="392"/>
+        <source>linenumber</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="420"/>
+        <source>associate pos gear prm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="429"/>
+        <source>num b</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="452"/>
+        <source>den a</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="477"/>
+        <source>prms active after reset device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="484"/>
+        <source>save config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="530"/>
+        <location filename="graphencoder130.ui" line="567"/>
+        <location filename="graphencoder130.ui" line="604"/>
+        <source>1024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="540"/>
+        <location filename="graphencoder130.ui" line="577"/>
+        <location filename="graphencoder130.ui" line="614"/>
+        <source>(pluse)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="547"/>
+        <source>encoder input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="584"/>
+        <source>encoder offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="621"/>
+        <source>encoder real</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="641"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.ui" line="651"/>
+        <source>motor phase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="51"/>
+        <source>Electronic Angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="52"/>
+        <source>Mechanical Angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="64"/>
+        <source>encoder lineNumber:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="65"/>
+        <source>clearAlarm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="69"/>
+        <source>Enc None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="70"/>
+        <source>Enc Absolute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="71"/>
+        <source>Enc Increase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="72"/>
+        <source>Enc Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="74"/>
+        <source>active after reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="264"/>
+        <source>EnclineNumber:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="271"/>
+        <source>EncbitNumber:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphencoder130.cpp" line="483"/>
         <source>Enc Lost</source>
         <translation type="unfinished"></translation>
     </message>

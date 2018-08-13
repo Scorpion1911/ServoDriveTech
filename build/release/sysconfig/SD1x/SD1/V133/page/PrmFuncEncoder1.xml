@@ -66,7 +66,7 @@
        <string>gSevDrv.sev_obj.cur.rsv.prm.coder_typ_3</string>
       </property>
       <property name="text">
-       <string>0</string>
+       <string>1</string>
       </property>
       <property name="text">
        <string>tEncoderType</string>

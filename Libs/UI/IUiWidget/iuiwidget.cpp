@@ -41,8 +41,11 @@ bool IUiWidget::init(SevDevice *device)
   d->m_uiStackedWidget=getUiStackedWidget();
   d->m_vboxLayout=getVBoxLayout();
   d->m_device=device;
-  if(device !=NULL)
+  if(device !=NULL) {
     connect(device,SIGNAL(dspReset()),this,SLOT(onDspReset()));
+  } else {
+      qDebug()<<"dev NULL";
+  }
 
   setDefaultUi();
 
@@ -70,6 +73,7 @@ void IUiWidget::createActionSwitchView()
 void IUiWidget::setContextAction()
 {
   Q_D(IUiWidget);
+    qDebug()<<"iuiwidget context";
   createActionSwitchView();
 
   QAction *actSeparator=new QAction(this);

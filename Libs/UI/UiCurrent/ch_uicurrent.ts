@@ -33,9 +33,8 @@
         <translation>积分常数(us)</translation>
     </message>
     <message>
-        <location filename="graphcurrent130.cpp" line="104"/>
         <source>D gain(ms)</source>
-        <translation>微分常数(ms)</translation>
+        <translation type="vanished">微分常数(ms)</translation>
     </message>
 </context>
 <context>

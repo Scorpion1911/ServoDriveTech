@@ -51,60 +51,70 @@
 <context>
     <name>SevDevice</name>
     <message>
-        <location filename="sevdevice.cpp" line="192"/>
+        <location filename="sevdevice.cpp" line="194"/>
         <source>SevDevice init</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="388"/>
-        <location filename="sevdevice.cpp" line="875"/>
+        <location filename="sevdevice.cpp" line="390"/>
+        <location filename="sevdevice.cpp" line="893"/>
         <source>Write Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="388"/>
+        <location filename="sevdevice.cpp" line="390"/>
         <source>Write Config Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="798"/>
+        <location filename="sevdevice.cpp" line="644"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sevdevice.cpp" line="644"/>
+        <source>Axis%1 brake is off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sevdevice.cpp" line="816"/>
         <source>reset dsp =%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="806"/>
+        <location filename="sevdevice.cpp" line="824"/>
         <source>dsp =%1 Reset Flag_Finish checking......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="875"/>
+        <location filename="sevdevice.cpp" line="893"/>
         <source>Write Flash Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="904"/>
-        <location filename="sevdevice.cpp" line="1161"/>
+        <location filename="sevdevice.cpp" line="922"/>
+        <location filename="sevdevice.cpp" line="1179"/>
         <source>CheckPrm Error
 :%1 %2 is out of range %3 -- %4
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="909"/>
-        <location filename="sevdevice.cpp" line="930"/>
-        <location filename="sevdevice.cpp" line="1166"/>
+        <location filename="sevdevice.cpp" line="927"/>
+        <location filename="sevdevice.cpp" line="948"/>
+        <location filename="sevdevice.cpp" line="1184"/>
         <source>Prm Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="930"/>
+        <location filename="sevdevice.cpp" line="948"/>
         <source>PowerBoard CheckPrm Error
 :%1 is out of range
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="1108"/>
+        <location filename="sevdevice.cpp" line="1126"/>
         <source>Checking axis%1</source>
         <translation type="unfinished"></translation>
     </message>

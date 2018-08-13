@@ -440,10 +440,10 @@ void SDTMainWindow::navigationTreeInit()
   navTreeNameSwitchHash.insert("FLASH",tr("FLASH"));
   navTreeNameSwitchHash.insert("IO",tr("IO"));
 
-  for(int  i=0;i<m_sdAssemblyList.count();i++)
+  for(int  k=0;k<m_sdAssemblyList.count();k++)
   {
     int axisNum;
-    sd=m_sdAssemblyList.at(i);
+    sd=m_sdAssemblyList.at(k);
     axisNum=sd->sevDevice()->axisNum();
     deviceItem=new QTreeWidgetItem(ui->treeWidget);
     QString prefix;
@@ -1007,7 +1007,6 @@ void SDTMainWindow::onActnNewConfigClicked()
     setUiAllEnable(true);
     return;
   }
-
   emit beforeSevDeviceChanged();
   m_statusBar->statusProgressBar()->setVisible(true);
   m_statusBar->statusProgressBar()->setValue(0);
@@ -1054,12 +1053,10 @@ void SDTMainWindow::onActnDownloadClicked()
         qDebug()<<"downloadfilename"<<downloadFileName;
         qDebug()<<"downloadIndex"<<downloadIndex;
     }
-    qDebug()<<"1";
     //fileName = QFileDialog::getOpenFileName(this, tr("Open XML File"), m_downloadPath, tr("XML Files(*.xml)"));
     if (downloadFileName.isNull() || downloadIndex == -1) {
         return;
     }
-    qDebug()<<"2";
     QFileInfo fileInfo;
     fileInfo.setFile(downloadFileName);
     m_downloadPath = fileInfo.filePath() + "/";
@@ -1067,11 +1064,9 @@ void SDTMainWindow::onActnDownloadClicked()
     m_statusBar->statusProgressBar()->setValue(0);
     ServoFile *servoFile = new ServoFile(0);
     connect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
-    qDebug()<<"3";
     bool downOk = false;
     downOk = servoFile->downLoadFile(processCallBack, (void *)(mp_progressBar), downloadFileName, devList.at(downloadIndex));
     disconnect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
-    qDebug()<<"4";
     delete servoFile;
     m_statusBar->statusProgressBar()->setVisible(false);
     if(downOk)
@@ -1334,7 +1329,6 @@ SdAssembly *SDTMainWindow::createSdAssembly(DeviceConfig *cfg)
   bool initOK=true;
   SdAssembly *sd= new SdAssembly();
   connect(sd,SIGNAL(initProgressInfo(int,QString)),this,SLOT(onProgressInfo(int,QString)));
-
   initOK=sd->init(cfg);
   if(initOK)
   {
@@ -1484,22 +1478,24 @@ void SDTMainWindow::createSdAssemblyListByDevConfig(const QList<DeviceConfig *> 
 
   //全部移除了再新建，解决界面不响应问题
   disactiveAllUi();
-  emit beforeSevDeviceChanged();
 
+  emit beforeSevDeviceChanged();
   SdAssembly* currentSdAssembly;
   GT::deepClearList(m_sdAssemblyList);
 
   for(int i=0;i<configList.size();i++)
   {
+      qDebug()<<"i"<<i;
     DeviceConfig *cfg=configList.at(i);
+    qDebug()<<"s";
     currentSdAssembly=createSdAssembly(cfg);
+    qDebug()<<"ss";
     if(currentSdAssembly!=NULL)
     {
       m_sdAssemblyList.append(currentSdAssembly);
     }
   }
   //------全部移除了再新建，解决界面不响应问题
-
 
 
 
@@ -1531,7 +1527,6 @@ void SDTMainWindow::updateSDTMainUiByConfigList(const QList<DeviceConfig *> &con
   createSdAssemblyListByDevConfig(configList);
   removeAllStackedWidget();
   clearNavigationTree();
-
   navigationTreeInit();
   stackedWidgetInit();
 //  ui->progressBar->setValue(100);

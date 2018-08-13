@@ -76,7 +76,8 @@ SOURCES += iuiwidget.cpp \
     nodeitem/nodeline.cpp \
     nodeitem/nodeport.cpp \
     nodeitem/nodequadline.cpp \
-    nodeitem/nodeswitch.cpp
+    nodeitem/nodeswitch.cpp \
+    igraphio.cpp
 
 HEADERS += iuiwidget.h\
         iuiwidget_global.h \
@@ -125,7 +126,9 @@ HEADERS += iuiwidget.h\
     nodeitem/nodeport.h \
     nodeitem/nodequadline.h \
     nodeitem/nodeswitch.h\
-    nodeitem/NodeItems.h
+    nodeitem/NodeItems.h \
+    igraphio.h \
+    igraphio_p.h
 
 unix {
     target.path = /usr/lib

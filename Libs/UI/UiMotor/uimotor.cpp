@@ -52,6 +52,7 @@ void UiMotor::accept(QWidget *w)
   ui->qmlHboxLayout->addWidget(w);
   d->m_graphMotor=dynamic_cast<IGraphMotor *>(w);
   d->m_graphMotor->visit(this);
+  connect(d->m_graphMotor, SIGNAL(installMotor()), this, SLOT(onInstallMotor()));
 }
 void UiMotor::setUiActive(bool actived)
 {
@@ -102,6 +103,11 @@ QVBoxLayout *UiMotor::getVBoxLayout(void)
 }
 void UiMotor::setDefaultUi()
 {
-  setCurrentUiIndex(0);
+    setCurrentUiIndex(0);
+}
+
+void UiMotor::onInstallMotor()
+{
+    writePageFLASH();
 }
 

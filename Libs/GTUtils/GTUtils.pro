@@ -62,3 +62,5 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+TRANSLATIONS    += ch_gtutils.ts en_gtutils.ts

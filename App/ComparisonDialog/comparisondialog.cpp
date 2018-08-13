@@ -1,4 +1,4 @@
-#include "comparisondialog.h"
+﻿#include "comparisondialog.h"
 #include "ui_comparisondialog.h"
 #include "gtutils.h"
 #include "qttreemanager.h"
@@ -166,7 +166,7 @@ bool ComparisonDialog::loadTree(const QString &path, QTreeWidget *treeWidget)
 {
     QTreeWidget *tree = NULL;
     tree = QtTreeManager::createTreeWidgetFromXmlFile(path);;
-    if(treeWidget == NULL)
+    if(treeWidget == NULL || tree == NULL)
         return false;
     else {
         QTreeWidgetItem *item;
@@ -344,6 +344,9 @@ void ComparisonDialog::onActionDiffBoxChanged()
 void ComparisonDialog::onTreeItemChanged(QTreeWidgetItem *item, int col)
 {
     int index = ui->treeWidget_compNewPart->indexOfTopLevelItem(item);
+    if (index == -1) {
+        return;
+    }
     m_newItemList.at(index)->setText(col, item->text(col));
 }
 
