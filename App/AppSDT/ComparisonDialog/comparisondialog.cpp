@@ -547,8 +547,18 @@ QTreeWidgetItem *ComparisonDialog::partCreateTreeAcorrdWhole(QTreeWidgetItem *in
             newItem = newItemparent;
         }
     }else{
-        newItem = new QTreeWidgetItem(stringlist);
-        treeWidgetPart->addTopLevelItem(newItem);
+        int ii;
+        for(ii = 0; ii < treeWidgetPart->topLevelItemCount(); ii++){
+            if(treeWidgetPart->topLevelItem(ii)->text(0).compare(stringlist.at(0))==0){
+                break;
+            }
+        }
+        if(ii >= treeWidgetPart->topLevelItemCount()){
+            newItem = new QTreeWidgetItem(stringlist);
+            treeWidgetPart->addTopLevelItem(newItem);
+        }else{
+            newItem = treeWidgetPart->topLevelItem(ii);
+        }
     }
     time--;
     return newItem;
