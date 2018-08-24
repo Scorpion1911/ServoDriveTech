@@ -5,6 +5,7 @@
 #include "iadvuser.h"
 #include "advusercheck.h"
 #include "advusermask.h"
+#include "advuserfirmwaresegmentflash.h"
 #include "advusercontainer.h"
 #include "dialogoption.h"
 #include "dialogadvusr.h"
@@ -689,6 +690,10 @@ void SDTMainWindow::onActnAdvUserClicked()
             AdvUserMask *advMask = dynamic_cast<AdvUserMask*>(adv);
             advMask->setSevList(sevList());
             advMask->uiInit();
+        }else if (adv->name().compare("FirmFlash") == 0) {
+            AdvUserFirmwareSegmentFlash *advFirmFlash = dynamic_cast<AdvUserFirmwareSegmentFlash*>(adv);
+            advFirmFlash->setSevList(sevList());
+            advFirmFlash->uiInit();
         } else {
             adv->uiInit();
         }
