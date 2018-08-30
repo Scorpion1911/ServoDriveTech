@@ -19,6 +19,7 @@
 #include "advusermask.h"
 #include "advusercontainer.h"
 #include "advusercompress.h"
+#include "advuserfirmwaresegmentflash.h"
 
 #include "gtutils.h"
 
@@ -89,12 +90,16 @@ int main(int argc, char *argv[])
   opt = new OptPath("optpath", 0);
   optc->addOptItem(opt);
 
+
+
   AdvUserContainer *advc = AdvUserContainer::instance();
   IAdvUser *adv = new AdvUserCheck("advusercheck", 0);
   advc->addAdvUserItem(adv);
   adv = new AdvUserMask("advusermask", 0);
   advc->addAdvUserItem(adv);
   adv = new AdvUserCompress("advusercompress", 0);
+  advc->addAdvUserItem(adv);
+  adv = new AdvUserFirmwareSegmentFlash("advuserfirmwaresegmentflash", 0);
   advc->addAdvUserItem(adv);
 
   opt=optc->optItem("optface");
