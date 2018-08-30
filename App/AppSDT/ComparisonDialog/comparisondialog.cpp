@@ -215,14 +215,12 @@ void ComparisonDialog::onActionCompareClicked() {
         ui->btn_compUpdate->setEnabled(true);
         ui->checkBox_compDiff->setEnabled(true);
     }
-    ui->treeWidget_compNewPart->clear();
-    ui->treeWidget_compOldPart->clear();
     /*(amend)*/
-    restoreItemList(m_partOldItemList);//?
-    restoreItemList(m_partNewItemList);
     m_partOldItemList.clear();
     m_partNewItemList.clear();
     /*(/amend)*/
+    ui->treeWidget_compNewPart->clear();
+    ui->treeWidget_compOldPart->clear();
     for (int i = 0; i < m_oldItemList.count(); i++) {
     /*(amend)*/
 //        ui->treeWidget_compOldPart->addTopLevelItem(m_oldItemList.at(i)->clone());
@@ -547,8 +545,18 @@ QTreeWidgetItem *ComparisonDialog::partCreateTreeAcorrdWhole(QTreeWidgetItem *in
             newItem = newItemparent;
         }
     }else{
-        newItem = new QTreeWidgetItem(stringlist);
-        treeWidgetPart->addTopLevelItem(newItem);
+        int ii;
+        for(ii = 0; ii < treeWidgetPart->topLevelItemCount(); ii++){
+            if(treeWidgetPart->topLevelItem(ii)->text(0).compare(stringlist.at(0))==0){
+                break;
+            }
+        }
+        if(ii >= treeWidgetPart->topLevelItemCount()){
+            newItem = new QTreeWidgetItem(stringlist);
+            treeWidgetPart->addTopLevelItem(newItem);
+        }else{
+            newItem = treeWidgetPart->topLevelItem(ii);
+        }
     }
     time--;
     return newItem;
