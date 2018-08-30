@@ -42,6 +42,7 @@ public:
 
   QTreeWidget *navTreeWidget() const;
 
+
 private:
   void staticUiInit();
   void createActions();
