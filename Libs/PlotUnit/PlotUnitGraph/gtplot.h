@@ -16,6 +16,10 @@ public:
   void createVertiMea();
   void clearHorizMea();
   void clearVertiMea();
+  qreal getHorizX1();
+  qreal getHorizX2();
+  qreal getVertiY1();
+  qreal getVertiY2();
 
 protected:
   void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;

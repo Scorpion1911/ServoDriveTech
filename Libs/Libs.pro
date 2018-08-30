@@ -3,6 +3,7 @@ CONFIG   += ordered
 
 SUBDIRS += \
     Com \
+    ServoDriverAlgorithmDll\
     GTUtils \
     DbManager \
     Option\
