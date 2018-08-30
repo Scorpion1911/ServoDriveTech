@@ -42,7 +42,8 @@ SOURCES += iadvuser.cpp \
     advusercheck.cpp \
     advusercontainer.cpp \
     advusermask.cpp \
-    advusercompress.cpp
+    advusercompress.cpp \
+    advuserfirmwaresegmentflash.cpp
 
 HEADERS += iadvuser.h\
         advuser_global.h \
@@ -50,7 +51,8 @@ HEADERS += iadvuser.h\
     advusercheck.h \
     advusercontainer.h \
     advusermask.h \
-    advusercompress.h
+    advusercompress.h \
+    advuserfirmwaresegmentflash.h
 
 unix {
     target.path = /usr/lib
@@ -60,6 +62,7 @@ unix {
 FORMS += \
     advusercheck.ui \
     advusermask.ui \
-    advusercompress.ui
+    advusercompress.ui \
+    advuserfirmwaresegmentflash.ui
 
 TRANSLATIONS    += ch_advuser.ts en_advuser.ts
