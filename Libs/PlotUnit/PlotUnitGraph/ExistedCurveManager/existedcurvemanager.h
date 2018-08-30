@@ -1,4 +1,4 @@
-#ifndef EXISTEDCURVEMANAGER_H
+﻿#ifndef EXISTEDCURVEMANAGER_H
 #define EXISTEDCURVEMANAGER_H
 #include "gtplot.h"
 #include "icurve.h"
@@ -20,6 +20,7 @@ public:
     void removeTable(QVBoxLayout* layout);
     void removePlot(QVBoxLayout* layout);
     void addCurvesToTable();
+    QList<ICurve *> curveList();
     void getTableColor(const QColor &showColor, const QColor &backShowColor, const QColor &hideColor, const QColor &backHideColor);
 private:
 
