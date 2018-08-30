@@ -61,6 +61,7 @@ private slots:
   void onBtnLoadAllCurveClicked();
   void onBtnOpenCurveClicked(bool checked);
   void onBtnSaveCurveClicked();
+  void onBtnFFTClicked(bool checked);
   void onPlotPosHoverChanged(const QPointF &point);
   void onPlotMeaVposChanged(qreal v1, qreal v2, qreal dv);
   void onPlotMeaHposChanged(qreal v1, qreal v2, qreal dv);
@@ -89,6 +90,8 @@ private slots:
 
   void onPopupMenuAxisClicked();
   void onPlotCurveTablePopupMenuRequested(const QPoint &point);
+
+  void onFFTDialogClosed();
 
 private:
   void createConnections();

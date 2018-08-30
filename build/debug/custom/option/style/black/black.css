@@ -960,4 +960,38 @@ TabMotion QProgressBar {
 	border-radius: 0px;
 	text-align: center;
 }
+
+/*=========================FFT Dialog==========================*/
+QWidget#widget_fft_up  QToolButton:hover{
+	background-color:#D0D0D0;
+} 
+QWidget#widget_fft_up  QToolButton:checked{
+	background-color:#E0E0E0;
+	border: 1px solid #D0D0D0;
+	border-radius:5px;
+}
+QWidget#widget_fft_up  QToolButton:checked:hover{
+	background-color:#D0D0D0;
+	border: 1px solid #D0D0D0;
+	border-radius:5px;
+}
+QWidget#widget_fft_up QToolButton:hover:pressed{
+	background-color:gray;
+} 
+QWidget#widget_fft_up QToolButton{
+	background-color:transparent;
+	min-width:40px;
+} 
+
+QWidget#widget_fft_right QToolButton:hover{
+	background-color:#C0C0C0;
+} 
+QWidget#widget_fft_right QToolButton:hover:pressed{
+	background-color:gray;
+} 
+QWidget#widget_fft_right QToolButton{
+	background-color:transparent;
+	min-width:40px;
+	color:black;
+}
 	

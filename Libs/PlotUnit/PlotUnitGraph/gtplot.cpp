@@ -129,6 +129,38 @@ void GtPlot::clearVertiMea()
   }
 }
 
+qreal GtPlot::getHorizX1()
+{
+    if (m_horizMea != NULL) {
+        return m_horizMea->tag1()->position->coords().x();
+    }
+    return 0;
+}
+
+qreal GtPlot::getHorizX2()
+{
+    if (m_horizMea != NULL) {
+        return m_horizMea->tag2()->position->coords().x();
+    }
+    return 0;
+}
+
+qreal GtPlot::getVertiY1()
+{
+    if (m_vertiMea != NULL) {
+        return m_vertiMea->tag1()->position->coords().y();
+    }
+    return 0;
+}
+
+qreal GtPlot::getVertiY2()
+{
+    if (m_vertiMea != NULL) {
+        return m_vertiMea->tag2()->position->coords().y();
+    }
+    return 0;
+}
+
 
 void GtPlot::mousePressEvent(QMouseEvent *event)
 {

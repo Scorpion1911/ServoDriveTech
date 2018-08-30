@@ -19,6 +19,7 @@
 #include "cmdmanager.h"
 #include "qttreemanager.h"
 #include "existedcurvemanager.h"
+#include "dftdialog.h"
 
 #include <QDebug>
 #include <QTimer>
@@ -51,6 +52,7 @@
 #define ICON_NAME_SAVE      "plot_save.png"
 #define ICON_NAME_EXTEND    "plot_extend.png"
 #define ICON_NAME_SHRINK    "plot_shrink.png"
+#define ICON_NAME_FFT       "plot_fft.png"
 
 #define ICON_NAME_CURVE_ALL    "plot_all.png"
 #define ICON_NAME_CURVE_ADD    "plot_add.png"
@@ -99,7 +101,8 @@ public:
     m_isShowAll(false),
     m_isShowDetail(false),
     m_popupMenuAxis(NULL),
-    m_isReadingCurve(false)
+    m_isReadingCurve(false),
+    m_dftDialog(NULL)
   {
 
   }
@@ -126,6 +129,7 @@ protected:
   bool m_isReadingCurve;
   QMenu *m_popupMenuAxis;
   ExistedCurveManager *m_exsitedCurveManager;
+  DFTDialog *m_dftDialog;
 };
 
 PlotUnitGraph129::PlotUnitGraph129(const QList<SevDevice *> &sevList, QWidget *parent) :
@@ -403,6 +407,7 @@ void PlotUnitGraph129::createConnections()
   connect(ui->tbtn_plot_startSampling,SIGNAL(clicked(bool)),this,SLOT(onBtnStartSampleClicked(bool)));
   connect(ui->tbtn_plot_open,SIGNAL(clicked(bool)),this,SLOT(onBtnOpenCurveClicked(bool)));
   connect(ui->tbtn_plot_save,SIGNAL(clicked(bool)),this,SLOT(onBtnSaveCurveClicked()));
+  connect(ui->tbtn_plot_fft, SIGNAL(clicked(bool)), this, SLOT(onBtnFFTClicked(bool)));
 
   connect(ui->plot,SIGNAL(currentPosChanged(QPointF)),this,SLOT(onPlotPosHoverChanged(QPointF)));
   connect(ui->plot,SIGNAL(horizMeaDataChanged(qreal,qreal,qreal)),this,SLOT(onPlotMeaHposChanged(qreal,qreal,qreal)));
@@ -818,7 +823,7 @@ void PlotUnitGraph129::onBtnSaveCurveClicked()
     Q_D(PlotUnitGraph129);
     QString iniPath = GTUtils::data(GTUtils::customPath() + "option/opt.ini", "path", "curvepath", ".").toString();
     iniPath = iniPath + "/curveData_" + QDate::currentDate().toString("yyyyMMdd") + "_" + QTime::currentTime().toString("hhmmss");
-    QString filePath = QFileDialog::getSaveFileName(0, tr("Open Curve"), iniPath , tr("Curve File(*.src);;Text File(*.txt)"));
+    QString filePath = QFileDialog::getSaveFileName(0, tr("Save Curve"), iniPath , tr("Curve File(*.src);;Text File(*.txt)"));
     if (filePath.compare("") == 0) {
         return;
     }
@@ -846,6 +851,45 @@ void PlotUnitGraph129::onBtnSaveCurveClicked()
             emit sendSaveMsg(0, tr("Saving Finish!"), false);
             fdata.close();
         }
+    }
+}
+
+void PlotUnitGraph129::onBtnFFTClicked(bool checked)
+{
+    Q_D(PlotUnitGraph129);
+    if (checked) {
+        if (d->m_dftDialog == NULL) {
+            d->m_dftDialog = new DFTDialog;
+            connect(d->m_dftDialog, SIGNAL(fftDialogClosed()), this, SLOT(onFFTDialogClosed()));
+            connect(ui->plot, SIGNAL(vertiMeaDataChanged(qreal, qreal, qreal)), d->m_dftDialog, SLOT(onFFTTimeChanged(qreal, qreal, qreal)));
+        }
+        QList<ICurve*> curveList;
+        for (int i = 0; i < d->m_curveManager->curveList().count(); i++) {
+            //QTableWidgetItem *item = ui->tableWidget_plot_curve->item(i, COL_TABLE_CURVE_SHOW);
+            ICurve *curve = d->m_curveManager->curveList().at(i);
+            curve->savePrepare();
+            curveList.append(curve);
+            if (i == 0) {
+                qDebug()<<"first"<<curve->sData()->keys.first();
+                qDebug()<<"last"<<curve->sData()->keys.last();
+                qDebug()<<"key count"<<curve->sData()->keys.count();
+                qDebug()<<"0"<<curve->sData()->keys.at(0);
+                qDebug()<<"count - 1"<<curve->sData()->keys.at(curve->sData()->keys.count() - 1);
+                d->m_dftDialog->setTimeRange(curve->sData()->keys.first(), curve->sData()->keys.last());
+            }
+        }
+        d->m_dftDialog->setCurveList(curveList);
+        d->m_dftDialog->setSamplingPeriod(0.0625 * ui->comboBox_plot_sampling->currentText().toInt());
+
+        ui->tbtn_plot_mea_vertical->setChecked(true);
+        onBtnMeaVClicked(true);
+
+        qreal x1 = ui->plot->getHorizX1();
+        qreal x2 = ui->plot->getHorizX2();
+        d->m_dftDialog->onFFTTimeChanged(x1, x2, x2 - x1);
+        d->m_dftDialog->show();
+    } else {
+        d->m_dftDialog->hide();
     }
 }
 
@@ -1400,6 +1444,12 @@ void PlotUnitGraph129::onPlotCurveTablePopupMenuRequested(const QPoint &point)
 
 }
 
+void PlotUnitGraph129::onFFTDialogClosed()
+{
+    ui->tbtn_plot_fft->setChecked(false);
+    onBtnFFTClicked(false);
+}
+
 void PlotUnitGraph129::setPlotIcons(const QString &css)
 {
   QSize iconSize(24,24);
@@ -1448,6 +1498,9 @@ void PlotUnitGraph129::setPlotIcons(const QString &css)
 
   ui->tbtn_plot_show_all->setIcon(QIcon(QPixmap(iconPath+ICON_NAME_SHOW_ALL)));
   ui->tbtn_plot_show_all->setIconSize(iconSize);
+
+  ui->tbtn_plot_fft->setIcon(QIcon(QPixmap(iconPath+ICON_NAME_FFT)));
+  ui->tbtn_plot_fft->setIconSize(iconSize);
 
 //  qDebug()<<"PlotUnitGraph129 css changed"<<css<<iconPath;
 }

@@ -1,4 +1,4 @@
-#include "eprommanager.h"
+﻿#include "eprommanager.h"
 #include "ui_eprommanager.h"
 #include "treemanager.h"
 #include <QMessageBox>
@@ -102,10 +102,18 @@ void EpromManager::initializeTree() {
 }
 
 com_type EpromManager::getComType() {
-    if (m_comText.compare("PcDebug") == 0) {
-        return GTSD_COM_TYPE_NET;
+    if (m_tcpSuccess) {
+        if (m_comText.compare("PcDebug") == 0) {
+            return GTSD_COM_TYPE_NET;
+        } else {
+            return GTSD_COM_TYPE_RNNET;
+        }
     } else {
-        return GTSD_COM_TYPE_RNNET;
+        if (ui->radioButton->isChecked()) {
+            return GTSD_COM_TYPE_NET;
+        } else {
+            return GTSD_COM_TYPE_RNNET;
+        }
     }
 }
 
@@ -141,6 +149,7 @@ void EpromManager::onOkClicked() {
 
 void EpromManager::showSelectTree() {
     if (m_typeName.compare("") != 0 && m_modeName.compare("") != 0) {
+        m_tcpSuccess = true;
         QTreeWidgetItem *typeItem = new QTreeWidgetItem;
         typeItem->setText(0, m_typeName);
         QTreeWidgetItem *modeItem = new QTreeWidgetItem;
@@ -149,8 +158,10 @@ void EpromManager::showSelectTree() {
         ui->selectTree->addTopLevelItem(typeItem);
         ui->selectTree->expandAll();
         ui->selectTree->resizeColumnToContents(0);
-        m_tcpSuccess = true;
+        ui->groupBox->setVisible(true);
+        ui->groupBox_2->setVisible(false);
     } else {
+        m_tcpSuccess = false;
         QTreeWidget *tree = TreeManager::createTreeWidgetFromXmlFile(GTUtils::databasePath() + "Board/SelectTree.ui");
         for (int i = 0; i < tree->topLevelItemCount(); i++) {
             ui->selectTree->addTopLevelItem(tree->topLevelItem(i)->clone());
@@ -158,7 +169,8 @@ void EpromManager::showSelectTree() {
         ui->selectTree->expandAll();
         ui->selectTree->resizeColumnToContents(0);
         delete tree;
-        m_tcpSuccess = false;
+        ui->groupBox->setVisible(false);
+        ui->groupBox_2->setVisible(true);
     }
 }
 

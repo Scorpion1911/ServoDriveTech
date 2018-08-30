@@ -26,9 +26,11 @@ INCLUDEPATH +=$${MYLIB_PATH}/UI/IUiWidget\
               $${PWD}/../../PlotCurvePluginFramework/PluginsManager\
               $${PWD}/DialogPickCurve\
               $${PWD}/CurveManager\
+              $${PWD}/DFTDialog\
               $${PWD}/Thread\
               $${PWD}/ExistedCurveManager\
-              $${PWD}/../../Com/Communication
+              $${PWD}/../../Com/Communication\
+              $${PWD}/../../ServoDriverAlgorithmDll
 
 CONFIG(debug, debug|release){
 
@@ -40,7 +42,8 @@ CONFIG(debug, debug|release){
            $${PLOT_OUT_PATH}/SDKerneld.lib\
            $${PLOT_OUT_PATH}/IPlotUnitd.lib\
            $${PLOT_OUT_PATH}/MotionVelocityd.lib\
-           $${PLOT_OUT_PATH}/MotionPositiond.lib
+           $${PLOT_OUT_PATH}/MotionPositiond.lib\
+           $${PLOT_OUT_PATH}/ServoDriverAlgorithmDlld.lib
 
     TARGET = PlotUnitGraphd
 } else{
@@ -52,7 +55,8 @@ CONFIG(debug, debug|release){
            $${PLOT_OUT_PATH}/SDKernel.lib\
            $${PLOT_OUT_PATH}/IPlotUnit.lib\
            $${PLOT_OUT_PATH}/MotionVelocity.lib\
-           $${PLOT_OUT_PATH}/MotionPosition.lib
+           $${PLOT_OUT_PATH}/MotionPosition.lib\
+           $${PLOT_OUT_PATH}/ServoDriverAlgorithmDll.lib
 
     TARGET = PlotUnitGraph
 }
@@ -80,7 +84,9 @@ SOURCES += \
     TabMotion/tabmotion.cpp \
     itabwidget.cpp \
     TabModeCtl/modectlpanel.cpp \
-    ExistedCurveManager/existedcurvemanager.cpp
+    ExistedCurveManager/existedcurvemanager.cpp \
+    DFTDialog/dftdialog.cpp \
+    DFTDialog/dftsettingdialog.cpp
 
 HEADERS += \
         plotunitgraph_global.h \
@@ -105,7 +111,9 @@ HEADERS += \
     TabMotion/tabmotion.h \
     itabwidget.h \
     TabModeCtl/modectlpanel.h \
-    ExistedCurveManager/existedcurvemanager.h
+    ExistedCurveManager/existedcurvemanager.h \
+    DFTDialog/dftdialog.h \
+    DFTDialog/dftsettingdialog.h
 
 unix {
     target.path = /usr/lib
@@ -117,6 +125,8 @@ FORMS += \
     tabctlpanel129.ui \
     DialogPickCurve/dialogpickcurve.ui \
     TabModeCtl/tabmodectl.ui \
-    TabMotion/tabmotion.ui
+    TabMotion/tabmotion.ui \
+    DFTDialog/dftdialog.ui \
+    DFTDialog/dftsettingdialog.ui
 
 TRANSLATIONS    += ch_plotunit.ts en_plotunit.ts
