@@ -26,14 +26,12 @@ CONFIG(debug, debug|release){
     ADVUSR_OUT_PATH = $${APP_BUILD_PATH}/debug/bin
     LIBS +=$${ADVUSR_OUT_PATH}/GTUtilsd.lib\
            $${ADVUSR_OUT_PATH}/SDKerneld.lib\
-            $${PWD}/../../build/debug/bin/ServoDriverComDlld.lib\
            $${ADVUSR_OUT_PATH}/DbManagerd.lib
     TARGET = AdvUserd
 } else{
     ADVUSR_OUT_PATH=$${APP_BUILD_PATH}/release/bin
     LIBS +=$${ADVUSR_OUT_PATH}/GTUtils.lib\
            $${ADVUSR_OUT_PATH}/SDKernel.lib\
-            $${PWD}/../../build/debug/bin/ServoDriverComDll.lib\
            $${ADVUSR_OUT_PATH}/DbManager.lib
     TARGET = AdvUser
 }

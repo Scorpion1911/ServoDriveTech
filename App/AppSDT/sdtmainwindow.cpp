@@ -690,7 +690,7 @@ void SDTMainWindow::onActnAdvUserClicked()
             AdvUserMask *advMask = dynamic_cast<AdvUserMask*>(adv);
             advMask->setSevList(sevList());
             advMask->uiInit();
-        }else if (adv->name().compare("FirmFlash") == 0) {
+        }else if (adv->name().compare("advuserfirmwaresegmentflash") == 0) {
             AdvUserFirmwareSegmentFlash *advFirmFlash = dynamic_cast<AdvUserFirmwareSegmentFlash*>(adv);
             advFirmFlash->setSevList(sevList());
             advFirmFlash->uiInit();

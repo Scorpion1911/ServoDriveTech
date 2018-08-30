@@ -29,6 +29,7 @@ protected:
     void respondErrorExecute()Q_DECL_OVERRIDE;
 
     static void updateProgressBar(void *arg,qint16 *value);
+    bool firmwareFlashCheck();
 
 private slots:
     void onActionComboBoxIndexChange(int index);
