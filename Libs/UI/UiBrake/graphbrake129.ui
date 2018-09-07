@@ -339,6 +339,13 @@
           </property>
          </spacer>
         </item>
+        <item>
+         <widget class="QPushButton" name="pushBtnConfigHelp">
+          <property name="text">
+           <string>Config Help</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </item>
