@@ -12,13 +12,20 @@
 #include <QTreeWidget>
 #include <QKeyEvent>
 #include <QPainter>
+#include <QLabel>
+#include <QPixmap>
+
+#define PIC_BRAKE_CONFIG_HELP_NAME "brake_config_help.png"
 
 class GraphBrake129Private:public IGraphBrakePrivate
 {
   Q_DECLARE_PUBLIC(GraphBrake129)
 public:
   GraphBrake129Private(){}
-  ~GraphBrake129Private(){}
+  ~GraphBrake129Private(){
+      delete m_picLabel;
+  }
+  QLabel *m_picLabel;
 
 };
 
@@ -40,11 +47,18 @@ void BrakePaintPrivate::paintEvent(QPaintEvent *event) {
     painter.drawPixmap(0, 0, this->width(), this->height(), pixMap);
 }
 
+
+
 GraphBrake129::GraphBrake129(QWidget *parent) :
   IGraphBrake(*(new GraphBrake129Private),parent),
   ui(new Ui::GraphBrake129)
 {
+  Q_D(GraphBrake129);
   ui->setupUi(this);
+  d->m_picLabel = new QLabel();
+  d->m_picLabel->setWindowTitle(tr("Brake config help"));
+  d->m_picLabel->setMinimumSize(1100,313);
+  connect(ui->pushBtnConfigHelp, SIGNAL(clicked(bool)), this, SLOT(onActionBtnConfigHelpClicked()));
 
 }
 GraphBrake129::~GraphBrake129()
@@ -94,4 +108,14 @@ void GraphBrake129::setupDataMappings()
       d->m_mapping->insertItem2Box(d->m_treeWidget->topLevelItem(i),bList.at(i));
     }
   }
+}
+
+void GraphBrake129::onActionBtnConfigHelpClicked()
+{
+    Q_D(GraphBrake129);
+    OptFace *optface = dynamic_cast<OptFace *>(OptContainer::instance()->optItem("optface"));
+    QString css = optface->css();
+    QString picPath = GTUtils::customPath()+"option/style/"+css+"/icon/"+PIC_BRAKE_CONFIG_HELP_NAME;
+    d->m_picLabel->setPixmap(QPixmap(picPath));
+    d->m_picLabel->show();
 }

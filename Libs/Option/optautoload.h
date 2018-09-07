@@ -19,6 +19,7 @@ public:
 
   void uiInit()Q_DECL_OVERRIDE;
   bool autoLoad() const;
+  bool versionMatch() const;
 
   QString nickName() Q_DECL_OVERRIDE;
 protected:
@@ -28,7 +29,8 @@ protected:
   void respondErrorExecute()Q_DECL_OVERRIDE;
 
 private slots:
-  void onCheckedBoxClicked();
+  void onCheckedBoxClicked(bool checked);
+  void onCheckedBoxVersionMatchClicked();
   void onRespondErrorExe();
 
 signals:
