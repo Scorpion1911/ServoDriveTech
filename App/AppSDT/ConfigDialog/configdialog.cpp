@@ -23,6 +23,7 @@ ConfigDialog::ConfigDialog(QList<DeviceConfig *> *devList, QWidget *parent) :
   m_curDstTreeSta(DST_TREE_STATUS_EMPTY)
 {
   ui->setupUi(this);
+  setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint);
   ui->widget_deviceInfo->setFixedHeight(180);
 
   m_iconProductPath=GTUtils::iconPath()+"product/";

@@ -6,6 +6,7 @@ DFTSettingDialog::DFTSettingDialog(QWidget *parent) :
     ui(new Ui::DFTSettingDialog)
 {
     ui->setupUi(this);
+    setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint);
     connect(ui->btn_fft_apply, SIGNAL(clicked()), this, SLOT(onActionApplyClicked()));
     connect(ui->btn_fft_exit, SIGNAL(clicked()), this, SLOT(onActionExitClicked()));
 }

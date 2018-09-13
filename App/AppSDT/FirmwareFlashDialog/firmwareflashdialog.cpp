@@ -55,7 +55,10 @@ void FirmwareFlashDialog::uiInit()
     ui->progressBar_firm->setVisible(false);
     ui->widget_firm->setVisible(false);
     for (int i = 0; i < m_devList.length(); i++) {
-        ui->comboBox_firm->addItem(m_devList.at(i)->modelName());
+        bool hasNickName = m_devList.count() > 1;
+        QString prefix;
+        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
+        ui->comboBox_firm->addItem(prefix + m_devList.at(i)->modelName());
     }
     ui->comboBox_firm->setCurrentIndex(0);
 }

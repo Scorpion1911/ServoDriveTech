@@ -1,4 +1,4 @@
-#include "advuserfirmwaresegmentflash.h"
+﻿#include "advuserfirmwaresegmentflash.h"
 #include "ui_advuserfirmwaresegmentflash.h"
 
 #include "iadvuser_p.h"
@@ -83,7 +83,10 @@ void AdvUserFirmwareSegmentFlash::uiInit()
     if(d->m_devList.count() != 0){
         d->m_crtDev = d->m_devList.at(0);
         for(int i = 0; i < d->m_devList.length(); i++){
-            ui->comboBox->addItem(d->m_devList.at(i)->modelName());
+            bool hasNickName = d->m_devList.count() > 1;
+            QString prefix;
+            prefix = hasNickName?tr("[%1] ").arg(d->m_devList.at(i)->aliasName()):"";
+            ui->comboBox->addItem(prefix + d->m_devList.at(i)->modelName());
         }
     }
     ui->comboBox->setCurrentIndex(0);

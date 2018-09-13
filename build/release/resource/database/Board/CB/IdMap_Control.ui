@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>399</width>
     <height>400</height>
    </rect>
   </property>
@@ -43,7 +43,7 @@
      </column>
      <item>
       <property name="text">
-       <string>21000506</string>
+       <string>21000649</string>
       </property>
       <property name="text">
        <string>SD1x</string>
@@ -83,10 +83,10 @@
        <string>SD4x</string>
       </property>
       <property name="text">
-       <string>SD41</string>
+       <string>SD42</string>
       </property>
       <property name="text">
-       <string>SD43P003</string>
+       <string>SD43P004</string>
       </property>
       <property name="text">
        <string>4</string>
@@ -100,10 +100,10 @@
        <string>SD4x</string>
       </property>
       <property name="text">
-       <string>SD42</string>
+       <string>SD43</string>
       </property>
       <property name="text">
-       <string>SD43P004</string>
+       <string/>
       </property>
       <property name="text">
        <string>4</string>

@@ -89,6 +89,7 @@ void DFTDialog::closeEvent(QCloseEvent *event)
 
 void DFTDialog::initUi()
 {
+    setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint);
     QSize iconSize(24,24);
     OptFace *face = dynamic_cast<OptFace *>(OptContainer::instance()->optItem("optface"));
     QString iconPath = GTUtils::customPath() + "option/style/" + face->css() + "/icon/";

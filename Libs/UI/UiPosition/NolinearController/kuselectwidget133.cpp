@@ -13,6 +13,7 @@ KuSelectWidget133::KuSelectWidget133(QWidget *parent) :
   ui->comboBox->setItemDelegate(itemDelegate);
 
   connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onComboBoxIndexChanged(int)));
+  onComboBoxIndexChanged(1);
 }
 
 KuSelectWidget133::~KuSelectWidget133()

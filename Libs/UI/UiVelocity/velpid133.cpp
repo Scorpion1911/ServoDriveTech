@@ -31,6 +31,7 @@ VelPid133::VelPid133(QWidget *parent) :
   m_helpPic = new QLabel;
   m_helpPic->setWindowTitle(tr("Velocity PID Config Help"));
 
+  ui->comboBox->setCurrentIndex(1);
   connect(ui->btn_configHelp,SIGNAL(clicked(bool)),this,SLOT(onBtnConfigHelpClicked()));
   connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onComboBoxIndexChanged(int)));
 }

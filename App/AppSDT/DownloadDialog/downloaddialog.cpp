@@ -1,4 +1,4 @@
-#include "downloaddialog.h"
+﻿#include "downloaddialog.h"
 #include "ui_downloaddialog.h"
 #include "sevdevice.h"
 
@@ -23,7 +23,10 @@ void DownloadDialog::uiInit(const QList<SevDevice *> &devList, const QString &do
     m_filePath = &filePath;
     m_index = &index;
     for (int i = 0; i < devList.count(); i++) {
-        ui->comboBox_devDownload->addItem(devList.at(i)->modelName());
+        bool hasNickName = devList.count() > 1;
+        QString prefix;
+        prefix = hasNickName?tr("[%1] ").arg(devList.at(i)->aliasName()):"";
+        ui->comboBox_devDownload->addItem(prefix + devList.at(i)->modelName());
     }
     ui->lineEdit_fileDownload->setReadOnly(true);
     connect(ui->toolBtn_download, SIGNAL(clicked()), this, SLOT(onToolButtonClicked()));

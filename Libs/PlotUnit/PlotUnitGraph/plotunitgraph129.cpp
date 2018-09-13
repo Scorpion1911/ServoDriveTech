@@ -773,7 +773,7 @@ void PlotUnitGraph129::setUiOpenChanged(bool checked)
     ui->comboBox_plot_sampling->setEnabled(checked);
     ui->tbtn_plot_auto->setEnabled(checked);
     ui->tbtn_plot_startSampling->setEnabled(checked);
-    ui->tbtn_plot_floatin->setEnabled(checked);
+    //ui->tbtn_plot_floatin->setEnabled(checked);
     ui->stackedWidget_tabCtlPanel->setEnabled(checked);
 }
 
@@ -864,7 +864,7 @@ void PlotUnitGraph129::onBtnFFTClicked(bool checked)
             connect(ui->plot, SIGNAL(vertiMeaDataChanged(qreal, qreal, qreal)), d->m_dftDialog, SLOT(onFFTTimeChanged(qreal, qreal, qreal)));
         }
         QList<ICurve*> curveList;
-        if (ui->tbtn_plot_open->isChecked()) {
+        if (!ui->tbtn_plot_open->isChecked()) {
             for (int i = 0; i < d->m_curveManager->curveList().count(); i++) {
                 //QTableWidgetItem *item = ui->tableWidget_plot_curve->item(i, COL_TABLE_CURVE_SHOW);
                 ICurve *curve = d->m_curveManager->curveList().at(i);

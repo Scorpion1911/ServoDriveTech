@@ -2,6 +2,301 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
+    <name>DFTDialog</name>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="14"/>
+        <source>FFT Analysis Tool</source>
+        <translation>傅里叶分析工具</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="30"/>
+        <source>Analyze type</source>
+        <translation>分析类型</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="36"/>
+        <source>Signal</source>
+        <translation>信号分析</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="46"/>
+        <source>System</source>
+        <translation>系统分析</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="58"/>
+        <source>Input:</source>
+        <translation>输入：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="68"/>
+        <source>Start time:</source>
+        <translation>开始时间：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="82"/>
+        <source>Terminal time:</source>
+        <translation>结束时间：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="96"/>
+        <source>Output:</source>
+        <translation>输出：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="109"/>
+        <source>Show</source>
+        <translation>显示</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="114"/>
+        <source>Curve Name</source>
+        <translation>曲线名</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="119"/>
+        <source>Note</source>
+        <translation>备注</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="148"/>
+        <source>All</source>
+        <translation>全选</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="170"/>
+        <source>Add</source>
+        <translation>增加</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="192"/>
+        <source>Rem</source>
+        <translation>移除</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="214"/>
+        <source>Clr</source>
+        <translation>清空</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="262"/>
+        <location filename="DFTDialog/dftdialog.ui" line="293"/>
+        <location filename="DFTDialog/dftdialog.ui" line="321"/>
+        <location filename="DFTDialog/dftdialog.ui" line="343"/>
+        <location filename="DFTDialog/dftdialog.ui" line="365"/>
+        <location filename="DFTDialog/dftdialog.ui" line="387"/>
+        <source>...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="409"/>
+        <source>Amp info:</source>
+        <translation>幅频信息：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="425"/>
+        <source>Phase info:</source>
+        <translation>相频信息：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="61"/>
+        <source>Axis_%1</source>
+        <translation>轴_%1</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="178"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="467"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="644"/>
+        <source>on</source>
+        <translation>开</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="180"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="478"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="641"/>
+        <source>off</source>
+        <translation>关</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
+        <source>Open File</source>
+        <translation>打开文件</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <source>FFT Curve File(*.dat)</source>
+        <translation>傅里叶曲线文件(*.dat)</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <source>file error</source>
+        <translation>文件错误</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <source>can not open file :
+%1</source>
+        <translation>无法打开文件：
+%1</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="399"/>
+        <source>Reading Curve %1</source>
+        <translation>正在读取曲线%1</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="404"/>
+        <source>Reading Finish!</source>
+        <translation>读取完成！</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <source>Save FFT Curve</source>
+        <translation>保存傅里叶曲线</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="430"/>
+        <source>Saving Curve %1</source>
+        <translation>保存曲线%1</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="448"/>
+        <source>Saving Finish!</source>
+        <translation>保存完成！</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <source>Range Error</source>
+        <translation>范围错误</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
+        <source>StartTime out range</source>
+        <translation>开始时间超限</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <source>EndTime out range</source>
+        <translation>结束时间超限</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="575"/>
+        <source>%1 ( %2 - %3 s)</source>
+        <translation>%1 ( %2 - %3 s)</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="578"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="662"/>
+        <source>%1</source>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="583"/>
+        <source>&gt;&gt;%1
+&lt;&lt;%2
+( %3 - %4 s)</source>
+        <translation>&gt;&gt;%1
+&lt;&lt;%2
+( %3 - %4 s)</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="589"/>
+        <source>&gt;&gt;%1
+&lt;&lt;%2</source>
+        <translation>&gt;&gt;%1
+&lt;&lt;%2</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="614"/>
+        <source>Amplitude Information:  frequency: %1 HZ , AMP: %2 DB</source>
+        <translation>幅频信息：频率：%1 HZ, 幅值：%2 DB</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="629"/>
+        <source>Phase Information:  frequency: %1 HZ , Phase: %2 deg</source>
+        <translation>相频信息：频率：%1 HZ, 相位：%2 deg</translation>
+    </message>
+</context>
+<context>
+    <name>DFTSettingDialog</name>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="14"/>
+        <source>Window Settings</source>
+        <translation>窗口视图设置</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="20"/>
+        <source>Amp Analysis</source>
+        <translation>幅频分析</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="26"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="155"/>
+        <source>X freq min:</source>
+        <translation>X轴频率最小值：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="52"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="79"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="181"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="208"/>
+        <source>HZ</source>
+        <translation>HZ</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="59"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="188"/>
+        <source>X freq max:</source>
+        <oldsource>X frep max:</oldsource>
+        <translation>X轴频率最大值：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="86"/>
+        <source>Y DB min:</source>
+        <translation>Y轴幅值最小值：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="112"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="139"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="241"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="268"/>
+        <source>DB</source>
+        <translation>DB</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="119"/>
+        <source>Y DB max:</source>
+        <translation>Y轴幅值最大值：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="149"/>
+        <source>Phase Analysis</source>
+        <translation>相频分析</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="215"/>
+        <source>Y min:</source>
+        <translation>Y轴相位最小值：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="248"/>
+        <source>Y max:</source>
+        <translation>Y轴相位最大值：</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="293"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="300"/>
+        <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+</context>
+<context>
     <name>DialogPickCurve</name>
     <message>
         <location filename="DialogPickCurve/dialogpickcurve.ui" line="14"/>
@@ -52,31 +347,31 @@
 <context>
     <name>ExistedCurveManager</name>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="98"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
         <source>checked</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="98"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
         <source>name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="98"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
         <source>axis</source>
         <translation>轴</translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="128"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="193"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="275"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="133"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="198"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="280"/>
         <source>on</source>
         <translation>开</translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="134"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="187"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="281"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="139"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="192"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="286"/>
         <source>off</source>
         <translation>关</translation>
     </message>
@@ -137,306 +432,315 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="198"/>
+        <location filename="plotunitgraph129.ui" line="185"/>
+        <source>fft</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="plotunitgraph129.ui" line="214"/>
         <source>floatin</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="225"/>
+        <location filename="plotunitgraph129.ui" line="241"/>
         <source>XYCood:</source>
         <translation>XY坐标:</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="238"/>
+        <location filename="plotunitgraph129.ui" line="254"/>
         <source>X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="251"/>
+        <location filename="plotunitgraph129.ui" line="267"/>
         <source>Y</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="271"/>
+        <location filename="plotunitgraph129.ui" line="287"/>
         <source>Measure:</source>
         <translation>测量：</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="284"/>
+        <location filename="plotunitgraph129.ui" line="300"/>
         <source>dx</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="297"/>
+        <location filename="plotunitgraph129.ui" line="313"/>
         <source>dy</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="359"/>
+        <location filename="plotunitgraph129.ui" line="375"/>
         <source>Device</source>
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="367"/>
+        <location filename="plotunitgraph129.ui" line="383"/>
         <source>A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="375"/>
+        <location filename="plotunitgraph129.ui" line="391"/>
         <source>B</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="423"/>
+        <location filename="plotunitgraph129.ui" line="439"/>
         <source>Sampling(62.5us X):</source>
         <translation>采样周期(62.5us X):</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="440"/>
+        <location filename="plotunitgraph129.ui" line="456"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="445"/>
+        <location filename="plotunitgraph129.ui" line="461"/>
         <source>2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="450"/>
+        <location filename="plotunitgraph129.ui" line="466"/>
         <source>3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="455"/>
+        <location filename="plotunitgraph129.ui" line="471"/>
         <source>4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="460"/>
+        <location filename="plotunitgraph129.ui" line="476"/>
         <source>5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="465"/>
+        <location filename="plotunitgraph129.ui" line="481"/>
         <source>6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="470"/>
+        <location filename="plotunitgraph129.ui" line="486"/>
         <source>7</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="475"/>
+        <location filename="plotunitgraph129.ui" line="491"/>
         <source>8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="480"/>
+        <location filename="plotunitgraph129.ui" line="496"/>
         <source>9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="485"/>
+        <location filename="plotunitgraph129.ui" line="501"/>
         <source>10</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="498"/>
+        <location filename="plotunitgraph129.ui" line="514"/>
         <source>TextLabel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="519"/>
+        <location filename="plotunitgraph129.ui" line="535"/>
         <source>All</source>
         <translation>全选</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="541"/>
+        <location filename="plotunitgraph129.ui" line="557"/>
         <source>add</source>
         <translation>增加</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="563"/>
+        <location filename="plotunitgraph129.ui" line="579"/>
         <source>rev</source>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="585"/>
+        <location filename="plotunitgraph129.ui" line="601"/>
         <source>clr</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="159"/>
+        <location filename="plotunitgraph129.cpp" line="163"/>
         <source>startSampling</source>
         <translation>画图采集控制</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="160"/>
+        <location filename="plotunitgraph129.cpp" line="164"/>
         <source>auto fit window</source>
         <translation>全程自动适应窗口</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="161"/>
+        <location filename="plotunitgraph129.cpp" line="165"/>
         <source>fit window</source>
         <translation>单次适应窗口</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="162"/>
+        <location filename="plotunitgraph129.cpp" line="166"/>
         <source>horizontal measure</source>
         <translation>水平测量</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="163"/>
+        <location filename="plotunitgraph129.cpp" line="167"/>
         <source>vertical measure</source>
         <translation>垂直测量</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="164"/>
+        <location filename="plotunitgraph129.cpp" line="168"/>
         <source>open hostory curve</source>
         <translation>打开历史曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="165"/>
+        <location filename="plotunitgraph129.cpp" line="169"/>
         <source>save all curves</source>
         <translation>保存当前所有曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="166"/>
+        <location filename="plotunitgraph129.cpp" line="170"/>
         <source>load all range curves </source>
         <translation>加载全测量范围曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="167"/>
+        <location filename="plotunitgraph129.cpp" line="171"/>
         <source>full screen switch</source>
         <translation>全屏切换</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="183"/>
-        <location filename="plotunitgraph129.cpp" line="1066"/>
-        <location filename="plotunitgraph129.cpp" line="1361"/>
+        <location filename="plotunitgraph129.cpp" line="187"/>
+        <location filename="plotunitgraph129.cpp" line="1117"/>
+        <location filename="plotunitgraph129.cpp" line="1412"/>
         <source>error</source>
         <translation>异常</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="183"/>
+        <location filename="plotunitgraph129.cpp" line="187"/>
         <source>load plugin error!
 </source>
         <translation>加载插件出错！</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>checked</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>axis</source>
         <translation>轴</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>dev</source>
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="590"/>
+        <location filename="plotunitgraph129.cpp" line="595"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="590"/>
+        <location filename="plotunitgraph129.cpp" line="595"/>
         <source>Curve File(*.src)</source>
         <translation>曲线文件(*.src)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="601"/>
+        <location filename="plotunitgraph129.cpp" line="606"/>
         <source>file error</source>
         <translation>文件错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="601"/>
+        <location filename="plotunitgraph129.cpp" line="606"/>
         <source>can not open file :
 %1</source>
         <translation>无法打开文件：
 %1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="779"/>
-        <location filename="plotunitgraph129.cpp" line="1158"/>
-        <location filename="plotunitgraph129.cpp" line="1591"/>
+        <location filename="plotunitgraph129.cpp" line="784"/>
+        <location filename="plotunitgraph129.cpp" line="1209"/>
+        <location filename="plotunitgraph129.cpp" line="1651"/>
         <source>on</source>
         <translation>开</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="785"/>
-        <location filename="plotunitgraph129.cpp" line="1152"/>
-        <location filename="plotunitgraph129.cpp" line="1597"/>
+        <location filename="plotunitgraph129.cpp" line="790"/>
+        <location filename="plotunitgraph129.cpp" line="1203"/>
+        <location filename="plotunitgraph129.cpp" line="1657"/>
         <source>off</source>
         <translation>关</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="802"/>
+        <location filename="plotunitgraph129.cpp" line="807"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="809"/>
+        <location filename="plotunitgraph129.cpp" line="814"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="821"/>
         <source>Open Curve</source>
-        <translation>打开曲线</translation>
+        <translation type="vanished">打开曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="821"/>
+        <location filename="plotunitgraph129.cpp" line="826"/>
         <source>Curve File(*.src);;Text File(*.txt)</source>
         <translation>曲线文件(*.src);;文本文件(*.txt)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="831"/>
-        <location filename="plotunitgraph129.cpp" line="843"/>
+        <location filename="plotunitgraph129.cpp" line="826"/>
+        <source>Save Curve</source>
+        <translation>保存曲线</translation>
+    </message>
+    <message>
+        <location filename="plotunitgraph129.cpp" line="836"/>
+        <location filename="plotunitgraph129.cpp" line="848"/>
         <source>Saving Curve %1</source>
         <translation>保存曲线%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="834"/>
-        <location filename="plotunitgraph129.cpp" line="846"/>
+        <location filename="plotunitgraph129.cpp" line="839"/>
+        <location filename="plotunitgraph129.cpp" line="851"/>
         <source>Saving Finish!</source>
         <translation>保存完成！</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="897"/>
-        <location filename="plotunitgraph129.cpp" line="926"/>
-        <location filename="plotunitgraph129.cpp" line="996"/>
+        <location filename="plotunitgraph129.cpp" line="948"/>
+        <location filename="plotunitgraph129.cpp" line="977"/>
+        <location filename="plotunitgraph129.cpp" line="1047"/>
         <source>warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="897"/>
+        <location filename="plotunitgraph129.cpp" line="948"/>
         <source>plugin load error</source>
         <translation>插件加载错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="926"/>
+        <location filename="plotunitgraph129.cpp" line="977"/>
         <source>%1 is BIT</source>
         <translation>%1是位变量，不能增加</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="996"/>
+        <location filename="plotunitgraph129.cpp" line="1047"/>
         <source>The numbers of selected curves is too much</source>
         <translation>所选曲线过多</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1066"/>
-        <location filename="plotunitgraph129.cpp" line="1361"/>
+        <location filename="plotunitgraph129.cpp" line="1117"/>
+        <location filename="plotunitgraph129.cpp" line="1412"/>
         <source>The curve = %1 is not in the device</source>
         <translation>曲线变量  = %1 不在当前设备</translation>
     </message>

@@ -2,6 +2,303 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>DFTDialog</name>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="14"/>
+        <source>FFT Analysis Tool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="30"/>
+        <source>Analyze type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="36"/>
+        <source>Signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="46"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="58"/>
+        <source>Input:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="68"/>
+        <source>Start time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="82"/>
+        <source>Terminal time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="96"/>
+        <source>Output:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="109"/>
+        <source>Show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="114"/>
+        <source>Curve Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="119"/>
+        <source>Note</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="148"/>
+        <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="170"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="192"/>
+        <source>Rem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="214"/>
+        <source>Clr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="262"/>
+        <location filename="DFTDialog/dftdialog.ui" line="293"/>
+        <location filename="DFTDialog/dftdialog.ui" line="321"/>
+        <location filename="DFTDialog/dftdialog.ui" line="343"/>
+        <location filename="DFTDialog/dftdialog.ui" line="365"/>
+        <location filename="DFTDialog/dftdialog.ui" line="387"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="409"/>
+        <source>Amp info:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.ui" line="425"/>
+        <source>Phase info:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="61"/>
+        <source>Axis_%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="178"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="467"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="644"/>
+        <source>on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="180"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="478"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="641"/>
+        <source>off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <source>FFT Curve File(*.dat)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <source>file error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <source>can not open file :
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="399"/>
+        <source>Reading Curve %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="404"/>
+        <source>Reading Finish!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <source>Save FFT Curve</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="430"/>
+        <source>Saving Curve %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="448"/>
+        <source>Saving Finish!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <source>Range Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
+        <source>StartTime out range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <source>EndTime out range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="575"/>
+        <source>%1 ( %2 - %3 s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="578"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="662"/>
+        <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="583"/>
+        <source>&gt;&gt;%1
+&lt;&lt;%2
+( %3 - %4 s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="589"/>
+        <source>&gt;&gt;%1
+&lt;&lt;%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="614"/>
+        <source>Amplitude Information:  frequency: %1 HZ , AMP: %2 DB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftdialog.cpp" line="629"/>
+        <source>Phase Information:  frequency: %1 HZ , Phase: %2 deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DFTSettingDialog</name>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="14"/>
+        <source>Window Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="20"/>
+        <source>Amp Analysis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="26"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="155"/>
+        <source>X freq min:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="52"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="79"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="181"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="208"/>
+        <source>HZ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="59"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="188"/>
+        <source>X freq max:</source>
+        <oldsource>X frep max:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="86"/>
+        <source>Y DB min:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="112"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="139"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="241"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="268"/>
+        <source>DB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="119"/>
+        <source>Y DB max:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="149"/>
+        <source>Phase Analysis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="59"/>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="188"/>
+        <source>X freq max:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="215"/>
+        <source>Y min:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="248"/>
+        <source>Y max:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="293"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DFTDialog/dftsettingdialog.ui" line="300"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DialogPickCurve</name>
     <message>
         <location filename="DialogPickCurve/dialogpickcurve.ui" line="14"/>
@@ -52,31 +349,31 @@
 <context>
     <name>ExistedCurveManager</name>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="98"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
         <source>checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="98"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
         <source>name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="98"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
         <source>axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="128"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="193"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="275"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="133"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="198"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="280"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="134"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="187"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="281"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="139"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="192"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="286"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
@@ -137,305 +434,310 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="198"/>
+        <location filename="plotunitgraph129.ui" line="185"/>
+        <source>fft</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="plotunitgraph129.ui" line="214"/>
         <source>floatin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="225"/>
+        <location filename="plotunitgraph129.ui" line="241"/>
         <source>XYCood:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="238"/>
+        <location filename="plotunitgraph129.ui" line="254"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="251"/>
+        <location filename="plotunitgraph129.ui" line="267"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="271"/>
+        <location filename="plotunitgraph129.ui" line="287"/>
         <source>Measure:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="284"/>
+        <location filename="plotunitgraph129.ui" line="300"/>
         <source>dx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="297"/>
+        <location filename="plotunitgraph129.ui" line="313"/>
         <source>dy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="359"/>
+        <location filename="plotunitgraph129.ui" line="375"/>
         <source>Device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="367"/>
+        <location filename="plotunitgraph129.ui" line="383"/>
         <source>A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="375"/>
+        <location filename="plotunitgraph129.ui" line="391"/>
         <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="423"/>
+        <location filename="plotunitgraph129.ui" line="439"/>
         <source>Sampling(62.5us X):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="440"/>
+        <location filename="plotunitgraph129.ui" line="456"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="445"/>
+        <location filename="plotunitgraph129.ui" line="461"/>
         <source>2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="450"/>
+        <location filename="plotunitgraph129.ui" line="466"/>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="455"/>
+        <location filename="plotunitgraph129.ui" line="471"/>
         <source>4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="460"/>
+        <location filename="plotunitgraph129.ui" line="476"/>
         <source>5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="465"/>
+        <location filename="plotunitgraph129.ui" line="481"/>
         <source>6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="470"/>
+        <location filename="plotunitgraph129.ui" line="486"/>
         <source>7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="475"/>
+        <location filename="plotunitgraph129.ui" line="491"/>
         <source>8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="480"/>
+        <location filename="plotunitgraph129.ui" line="496"/>
         <source>9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="485"/>
+        <location filename="plotunitgraph129.ui" line="501"/>
         <source>10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="498"/>
+        <location filename="plotunitgraph129.ui" line="514"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="519"/>
+        <location filename="plotunitgraph129.ui" line="535"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="541"/>
+        <location filename="plotunitgraph129.ui" line="557"/>
         <source>add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="563"/>
+        <location filename="plotunitgraph129.ui" line="579"/>
         <source>rev</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.ui" line="585"/>
+        <location filename="plotunitgraph129.ui" line="601"/>
         <source>clr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="159"/>
+        <location filename="plotunitgraph129.cpp" line="163"/>
         <source>startSampling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="160"/>
+        <location filename="plotunitgraph129.cpp" line="164"/>
         <source>auto fit window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="161"/>
+        <location filename="plotunitgraph129.cpp" line="165"/>
         <source>fit window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="162"/>
+        <location filename="plotunitgraph129.cpp" line="166"/>
         <source>horizontal measure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="163"/>
+        <location filename="plotunitgraph129.cpp" line="167"/>
         <source>vertical measure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="164"/>
+        <location filename="plotunitgraph129.cpp" line="168"/>
         <source>open hostory curve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="165"/>
+        <location filename="plotunitgraph129.cpp" line="169"/>
         <source>save all curves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="166"/>
+        <location filename="plotunitgraph129.cpp" line="170"/>
         <source>load all range curves </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="167"/>
+        <location filename="plotunitgraph129.cpp" line="171"/>
         <source>full screen switch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="183"/>
-        <location filename="plotunitgraph129.cpp" line="1066"/>
-        <location filename="plotunitgraph129.cpp" line="1361"/>
+        <location filename="plotunitgraph129.cpp" line="187"/>
+        <location filename="plotunitgraph129.cpp" line="1117"/>
+        <location filename="plotunitgraph129.cpp" line="1412"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="183"/>
+        <location filename="plotunitgraph129.cpp" line="187"/>
         <source>load plugin error!
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="209"/>
+        <location filename="plotunitgraph129.cpp" line="213"/>
         <source>dev</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="590"/>
+        <location filename="plotunitgraph129.cpp" line="595"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="590"/>
+        <location filename="plotunitgraph129.cpp" line="595"/>
         <source>Curve File(*.src)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="601"/>
+        <location filename="plotunitgraph129.cpp" line="606"/>
         <source>file error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="601"/>
+        <location filename="plotunitgraph129.cpp" line="606"/>
         <source>can not open file :
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="779"/>
-        <location filename="plotunitgraph129.cpp" line="1158"/>
-        <location filename="plotunitgraph129.cpp" line="1591"/>
+        <location filename="plotunitgraph129.cpp" line="784"/>
+        <location filename="plotunitgraph129.cpp" line="1209"/>
+        <location filename="plotunitgraph129.cpp" line="1651"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="785"/>
-        <location filename="plotunitgraph129.cpp" line="1152"/>
-        <location filename="plotunitgraph129.cpp" line="1597"/>
+        <location filename="plotunitgraph129.cpp" line="790"/>
+        <location filename="plotunitgraph129.cpp" line="1203"/>
+        <location filename="plotunitgraph129.cpp" line="1657"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="802"/>
+        <location filename="plotunitgraph129.cpp" line="807"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="809"/>
+        <location filename="plotunitgraph129.cpp" line="814"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="821"/>
-        <source>Open Curve</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="plotunitgraph129.cpp" line="821"/>
+        <location filename="plotunitgraph129.cpp" line="826"/>
         <source>Curve File(*.src);;Text File(*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="831"/>
-        <location filename="plotunitgraph129.cpp" line="843"/>
+        <location filename="plotunitgraph129.cpp" line="826"/>
+        <source>Save Curve</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="plotunitgraph129.cpp" line="836"/>
+        <location filename="plotunitgraph129.cpp" line="848"/>
         <source>Saving Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="834"/>
-        <location filename="plotunitgraph129.cpp" line="846"/>
+        <location filename="plotunitgraph129.cpp" line="839"/>
+        <location filename="plotunitgraph129.cpp" line="851"/>
         <source>Saving Finish!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="897"/>
-        <location filename="plotunitgraph129.cpp" line="926"/>
-        <location filename="plotunitgraph129.cpp" line="996"/>
+        <location filename="plotunitgraph129.cpp" line="948"/>
+        <location filename="plotunitgraph129.cpp" line="977"/>
+        <location filename="plotunitgraph129.cpp" line="1047"/>
         <source>warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="897"/>
+        <location filename="plotunitgraph129.cpp" line="948"/>
         <source>plugin load error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="926"/>
+        <location filename="plotunitgraph129.cpp" line="977"/>
         <source>%1 is BIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="996"/>
+        <location filename="plotunitgraph129.cpp" line="1047"/>
         <source>The numbers of selected curves is too much</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1066"/>
-        <location filename="plotunitgraph129.cpp" line="1361"/>
+        <location filename="plotunitgraph129.cpp" line="1117"/>
+        <location filename="plotunitgraph129.cpp" line="1412"/>
         <source>The curve = %1 is not in the device</source>
         <translation type="unfinished"></translation>
     </message>

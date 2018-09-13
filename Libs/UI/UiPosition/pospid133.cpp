@@ -22,7 +22,9 @@ PosPID133::PosPID133(QWidget *parent) :
   ui->comboBox_kpsw->addItems(list);
   QStyledItemDelegate* itemDelegate = new QStyledItemDelegate(ui->comboBox_kpsw);
   ui->comboBox_kpsw->setItemDelegate(itemDelegate);
+  ui->comboBox_kpsw->setCurrentIndex(1);
   connect(ui->comboBox_kpsw,SIGNAL(currentIndexChanged(int)),this,SLOT(onComboBoxIndexChanged(int)));
+
 
   ui->label_title->setObjectName("label_posPidTitle");
   ui->label_title->setAlignment(Qt::AlignCenter);
