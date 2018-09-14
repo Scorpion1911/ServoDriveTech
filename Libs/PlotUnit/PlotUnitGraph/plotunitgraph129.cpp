@@ -773,7 +773,7 @@ void PlotUnitGraph129::setUiOpenChanged(bool checked)
     ui->comboBox_plot_sampling->setEnabled(checked);
     ui->tbtn_plot_auto->setEnabled(checked);
     ui->tbtn_plot_startSampling->setEnabled(checked);
-    ui->tbtn_plot_floatin->setEnabled(checked);
+    //ui->tbtn_plot_floatin->setEnabled(checked);
     ui->stackedWidget_tabCtlPanel->setEnabled(checked);
 }
 
@@ -864,18 +864,25 @@ void PlotUnitGraph129::onBtnFFTClicked(bool checked)
             connect(ui->plot, SIGNAL(vertiMeaDataChanged(qreal, qreal, qreal)), d->m_dftDialog, SLOT(onFFTTimeChanged(qreal, qreal, qreal)));
         }
         QList<ICurve*> curveList;
-        for (int i = 0; i < d->m_curveManager->curveList().count(); i++) {
-            //QTableWidgetItem *item = ui->tableWidget_plot_curve->item(i, COL_TABLE_CURVE_SHOW);
-            ICurve *curve = d->m_curveManager->curveList().at(i);
-            curve->savePrepare();
-            curveList.append(curve);
-            if (i == 0) {
-                qDebug()<<"first"<<curve->sData()->keys.first();
-                qDebug()<<"last"<<curve->sData()->keys.last();
-                qDebug()<<"key count"<<curve->sData()->keys.count();
-                qDebug()<<"0"<<curve->sData()->keys.at(0);
-                qDebug()<<"count - 1"<<curve->sData()->keys.at(curve->sData()->keys.count() - 1);
-                d->m_dftDialog->setTimeRange(curve->sData()->keys.first(), curve->sData()->keys.last());
+        if (!ui->tbtn_plot_open->isChecked()) {
+            for (int i = 0; i < d->m_curveManager->curveList().count(); i++) {
+                //QTableWidgetItem *item = ui->tableWidget_plot_curve->item(i, COL_TABLE_CURVE_SHOW);
+                ICurve *curve = d->m_curveManager->curveList().at(i);
+                curve->savePrepare();
+                curveList.append(curve);
+                if (i == 0) {
+                    d->m_dftDialog->setTimeRange(curve->sData()->keys.first(), curve->sData()->keys.last());
+                }
+            }
+        } else {
+            for (int i = 0; i < d->m_exsitedCurveManager->curveList().count(); i++) {
+                //QTableWidgetItem *item = ui->tableWidget_plot_curve->item(i, COL_TABLE_CURVE_SHOW);
+                ICurve *curve = d->m_exsitedCurveManager->curveList().at(i);
+                curve->savePrepare();
+                curveList.append(curve);
+                if (i == 0) {
+                    d->m_dftDialog->setTimeRange(curve->sData()->keys.first(), curve->sData()->keys.last());
+                }
             }
         }
         d->m_dftDialog->setCurveList(curveList);

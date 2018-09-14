@@ -26,7 +26,7 @@ ComparisonDialog::ComparisonDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint);
-    setAttribute(Qt::WA_DeleteOnClose,true);
+    setAttribute(Qt::WA_DeleteOnClose, true);
     setAcceptDrops(true);
     initPath();
     m_newLoaded = false;

@@ -1,4 +1,4 @@
-#include "existedcurvemanager.h"
+﻿#include "existedcurvemanager.h"
 
 #include <QTableWidgetItem>
 #include <QTableWidget>
@@ -61,6 +61,11 @@ void ExistedCurveManager::addCurvesToTable()
     connect(dd->m_tableHistory,SIGNAL(itemClicked(QTableWidgetItem*)), this, SLOT(onCurveTableItemClicked(QTableWidgetItem*)));
     connect(dd->m_tableHistory,SIGNAL(itemDoubleClicked(QTableWidgetItem*)),this,SLOT(onCurveTableItemDoubleClicked(QTableWidgetItem*)));
     connect(dd->m_plotHistory,SIGNAL(currentPosChanged(QPointF)),this,SIGNAL(sendNewPos(QPointF)));
+}
+
+QList<ICurve *> ExistedCurveManager::curveList()
+{
+    return dd->m_curveList;
 }
 
 void ExistedCurveManager::insertTable(QVBoxLayout *layout, int index)

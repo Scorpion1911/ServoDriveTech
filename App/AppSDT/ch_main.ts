@@ -50,89 +50,89 @@
     </message>
     <message>
         <location filename="ComparisonDialog/comparisondialog.ui" line="47"/>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="94"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="97"/>
         <source>New Version:</source>
         <translation>新版本文件:</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="123"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="129"/>
         <source>Old File</source>
         <translation>打开旧文件</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="133"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="139"/>
         <source>New File</source>
         <translation>打开新文件</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="143"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="149"/>
         <source>Sync</source>
         <translation>同步滚动</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="156"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="162"/>
         <source>Only Diff</source>
         <translation>仅不同</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="166"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="172"/>
         <source>Editable</source>
         <translation>可编辑</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="173"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="179"/>
         <source>Compare</source>
         <translation>对比</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="183"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="189"/>
         <source>Update</source>
         <translation>升级</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.ui" line="193"/>
+        <location filename="ComparisonDialog/comparisondialog.ui" line="199"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="107"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="109"/>
         <source>Open Old File</source>
         <translation>打开旧版本文件</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="107"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="141"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="248"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="109"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="143"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="265"/>
         <source>Files(*.xml)</source>
         <translation>Xml文件(*.xml)</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="109"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="143"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="250"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="252"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="111"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="145"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="267"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="269"/>
         <source>Path</source>
         <translation>路径</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="109"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="143"/>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="250"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="111"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="145"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="267"/>
         <source>You did not select any files.</source>
         <translation>没有选择路径。</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="141"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="143"/>
         <source>Open New File</source>
         <translation>打开新版本文件</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="248"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="265"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="ComparisonDialog/comparisondialog.cpp" line="252"/>
+        <location filename="ComparisonDialog/comparisondialog.cpp" line="269"/>
         <source>You selected </source>
         <translation>选择</translation>
     </message>
@@ -168,12 +168,12 @@
     <message>
         <location filename="ConfigDialog/configdialog.ui" line="137"/>
         <source>input rnnet station:</source>
-        <translation>选择GLink2站号:</translation>
+        <translation>GLink2网络信息：</translation>
     </message>
     <message>
         <location filename="ConfigDialog/configdialog.ui" line="151"/>
         <source>station info:</source>
-        <translation>GLink2网络信息:</translation>
+        <translation>GLink2网络信息：</translation>
     </message>
     <message>
         <location filename="ConfigDialog/configdialog.ui" line="168"/>
@@ -899,272 +899,272 @@ more-&gt;option-&gt;autolaod-&gt;unchecked clicked apply
         <translation></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="143"/>
+        <location filename="sdtmainwindow.cpp" line="144"/>
         <source>connet</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="144"/>
+        <location filename="sdtmainwindow.cpp" line="145"/>
         <source>connect to servo:you can manul to load by change:toogle More-&gt;Option-&gt;AutoLoad</source>
         <translation>连接设备：可以通过点击更多-&gt;选项-&gt;自动匹配，取消勾选来进行手动连接</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="147"/>
+        <location filename="sdtmainwindow.cpp" line="148"/>
         <source>disnet</source>
         <translation>断开</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="157"/>
+        <location filename="sdtmainwindow.cpp" line="158"/>
         <source>new</source>
         <translation>新建</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="158"/>
+        <location filename="sdtmainwindow.cpp" line="159"/>
         <source>select your correct system</source>
         <translation>配置正确的设备版本</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="161"/>
+        <location filename="sdtmainwindow.cpp" line="162"/>
         <source>dwnload</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="162"/>
+        <location filename="sdtmainwindow.cpp" line="163"/>
         <source>download the  parameters to device</source>
         <translation>导入参数到设备，重启生效</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="165"/>
+        <location filename="sdtmainwindow.cpp" line="166"/>
         <source>upload</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="166"/>
+        <location filename="sdtmainwindow.cpp" line="167"/>
         <source>save the device parameters to xml files</source>
         <translation>保存当前设备参数到xml文件</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="169"/>
+        <location filename="sdtmainwindow.cpp" line="170"/>
         <source>compare</source>
         <translation>比较</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="170"/>
+        <location filename="sdtmainwindow.cpp" line="171"/>
         <source>compare the old xml with new xml files</source>
         <translation>对比不同的参数文件</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="173"/>
+        <location filename="sdtmainwindow.cpp" line="174"/>
         <source>config</source>
         <translation>配置</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="175"/>
+        <location filename="sdtmainwindow.cpp" line="176"/>
         <source>download the parameters to device and immediately active</source>
         <translation>暂存参数到设备中（参数立即生效）</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="178"/>
+        <location filename="sdtmainwindow.cpp" line="179"/>
         <source>save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="179"/>
+        <location filename="sdtmainwindow.cpp" line="180"/>
         <source>permanently save the parameters to device
 you should reset the system to make it active</source>
         <translation>参数永久保存到设备中，重启设备生效</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="187"/>
+        <location filename="sdtmainwindow.cpp" line="188"/>
         <source>help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="188"/>
+        <location filename="sdtmainwindow.cpp" line="189"/>
         <source>query the hardware and software infomation</source>
         <translation>查询设备详细信息</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="190"/>
+        <location filename="sdtmainwindow.cpp" line="191"/>
         <source>hinfo</source>
         <translation>硬件信息</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="192"/>
+        <location filename="sdtmainwindow.cpp" line="193"/>
         <source>vinfo</source>
         <translation>匹配信息</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="194"/>
+        <location filename="sdtmainwindow.cpp" line="195"/>
         <source>sinfo</source>
         <translation>关于软件</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="202"/>
+        <location filename="sdtmainwindow.cpp" line="203"/>
         <source>more</source>
         <translation>更多</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="209"/>
+        <location filename="sdtmainwindow.cpp" line="210"/>
         <source>online</source>
         <translation>在线模式</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="213"/>
+        <location filename="sdtmainwindow.cpp" line="214"/>
         <source>offline</source>
         <translation>离线模式</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="221"/>
+        <location filename="sdtmainwindow.cpp" line="222"/>
         <source>update</source>
         <translation>固件更新</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="222"/>
+        <location filename="sdtmainwindow.cpp" line="223"/>
         <source>rstdsp</source>
         <translation>复位DSP</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="224"/>
+        <location filename="sdtmainwindow.cpp" line="225"/>
         <source>option</source>
         <translation>选项</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="226"/>
+        <location filename="sdtmainwindow.cpp" line="227"/>
         <source>produce</source>
         <translation>出厂设置</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="228"/>
+        <location filename="sdtmainwindow.cpp" line="229"/>
         <source>Advanced User</source>
         <translation>高级用户选项</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="239"/>
+        <location filename="sdtmainwindow.cpp" line="240"/>
         <source>UpdateFirmware</source>
         <translation>固件管理</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="240"/>
+        <location filename="sdtmainwindow.cpp" line="241"/>
         <source>softmode</source>
         <translation>软件运行模式</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="431"/>
+        <location filename="sdtmainwindow.cpp" line="432"/>
         <source>Motor</source>
         <translation>电机参数</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="432"/>
+        <location filename="sdtmainwindow.cpp" line="433"/>
         <source>Encoder</source>
         <translation>编码器</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="433"/>
+        <location filename="sdtmainwindow.cpp" line="434"/>
         <source>Power</source>
         <translation>功率参数</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="434"/>
+        <location filename="sdtmainwindow.cpp" line="435"/>
         <source>Current</source>
         <translation>电流控制器</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="435"/>
+        <location filename="sdtmainwindow.cpp" line="436"/>
         <source>Velocity</source>
         <translation>速度控制器</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="436"/>
+        <location filename="sdtmainwindow.cpp" line="437"/>
         <source>Position</source>
         <translation>位置控制器</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="437"/>
+        <location filename="sdtmainwindow.cpp" line="438"/>
         <source>Brake</source>
         <translation>制动</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="438"/>
+        <location filename="sdtmainwindow.cpp" line="439"/>
         <source>Status</source>
         <translation>设备状态</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="439"/>
+        <location filename="sdtmainwindow.cpp" line="440"/>
         <source>RAM</source>
         <translation>RAM</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="440"/>
+        <location filename="sdtmainwindow.cpp" line="441"/>
         <source>FLASH</source>
         <translation>FLASH</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="441"/>
+        <location filename="sdtmainwindow.cpp" line="442"/>
         <source>IO</source>
         <translation>IO</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="450"/>
+        <location filename="sdtmainwindow.cpp" line="451"/>
         <source>[%1] </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="459"/>
+        <location filename="sdtmainwindow.cpp" line="460"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="489"/>
+        <location filename="sdtmainwindow.cpp" line="490"/>
         <source>Plot</source>
         <translation>示波器</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="490"/>
+        <location filename="sdtmainwindow.cpp" line="491"/>
         <source>-1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="741"/>
-        <location filename="sdtmainwindow.cpp" line="762"/>
+        <location filename="sdtmainwindow.cpp" line="746"/>
+        <location filename="sdtmainwindow.cpp" line="767"/>
         <source>error</source>
         <translation>异常</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="741"/>
+        <location filename="sdtmainwindow.cpp" line="746"/>
         <source>refuse to reset dsp :
 device :%1 axis =%2 servo is on 
  </source>
         <translation>无法复位DSP：设备%1的轴%2已经上伺服</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="747"/>
+        <location filename="sdtmainwindow.cpp" line="752"/>
         <source>Do you want to reset device ?</source>
         <translation>您想要重置设备吗？</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="762"/>
+        <location filename="sdtmainwindow.cpp" line="767"/>
         <source>reset device = %1 dsp fail:
  </source>
         <translation>复位DSP%1失败：</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="764"/>
+        <location filename="sdtmainwindow.cpp" line="769"/>
         <source>reset dsp successfully</source>
         <translation>复位DSP成功</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="796"/>
+        <location filename="sdtmainwindow.cpp" line="801"/>
         <source>PcDebug</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="798"/>
+        <location filename="sdtmainwindow.cpp" line="803"/>
         <source>RnNet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="867"/>
+        <location filename="sdtmainwindow.cpp" line="872"/>
         <source>current SDT version = %1
 device version = %2
 not match !
@@ -1176,7 +1176,7 @@ do you want to force to continue?
 确定要强制继续吗？</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="901"/>
+        <location filename="sdtmainwindow.cpp" line="906"/>
         <source>device&apos;s componoent C%1-V%2-F%3-P%4 is not supported
 it maybe cause some error!
 do you want to continue?
@@ -1186,7 +1186,7 @@ do you want to continue?
 确定要继续吗？</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="903"/>
+        <location filename="sdtmainwindow.cpp" line="908"/>
         <source>device&apos;s componoent C%1-V%2-F%3-P%4 can not find in your soft database
 you should update your software from
 http://www.googoltech.com.cn
@@ -1200,17 +1200,17 @@ http://www.googoltech.com.cn
 确定要继续吗？</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="940"/>
+        <location filename="sdtmainwindow.cpp" line="945"/>
         <source>your connect com is wrong</source>
         <translation>通信错误</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="941"/>
+        <location filename="sdtmainwindow.cpp" line="946"/>
         <source>your select com type is wrong</source>
         <translation>你当前选择的通信端口错误</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="943"/>
+        <location filename="sdtmainwindow.cpp" line="948"/>
         <source>Net Error
 
 exception cause maybe:
@@ -1223,7 +1223,7 @@ exception cause maybe:
 </translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="992"/>
+        <location filename="sdtmainwindow.cpp" line="997"/>
         <source>Version:%1
 
 get more help from:
@@ -1234,75 +1234,75 @@ http://www.googoltech.com</source>
 http://www.googoltech.com</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="747"/>
-        <location filename="sdtmainwindow.cpp" line="1040"/>
-        <location filename="sdtmainwindow.cpp" line="1087"/>
-        <location filename="sdtmainwindow.cpp" line="1421"/>
+        <location filename="sdtmainwindow.cpp" line="752"/>
+        <location filename="sdtmainwindow.cpp" line="1045"/>
+        <location filename="sdtmainwindow.cpp" line="1092"/>
+        <location filename="sdtmainwindow.cpp" line="1426"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1040"/>
-        <location filename="sdtmainwindow.cpp" line="1087"/>
+        <location filename="sdtmainwindow.cpp" line="1045"/>
+        <location filename="sdtmainwindow.cpp" line="1092"/>
         <source>Please open com first!</source>
         <translation>请先连接设备！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1048"/>
-        <location filename="sdtmainwindow.cpp" line="1098"/>
+        <location filename="sdtmainwindow.cpp" line="1053"/>
+        <location filename="sdtmainwindow.cpp" line="1103"/>
         <source>Open XML File</source>
         <translation>打开Xml文件</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1048"/>
-        <location filename="sdtmainwindow.cpp" line="1098"/>
+        <location filename="sdtmainwindow.cpp" line="1053"/>
+        <location filename="sdtmainwindow.cpp" line="1103"/>
         <source>XML Files(*.xml)</source>
         <translation>Xml文件(*.xml)</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1074"/>
+        <location filename="sdtmainwindow.cpp" line="1079"/>
         <source>Download xml file OK !</source>
         <translation>烧写参数文件成功 !</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1078"/>
+        <location filename="sdtmainwindow.cpp" line="1083"/>
         <source>Error: Download xml file fails !</source>
         <translation>异常：烧写参数文件失败 ！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1128"/>
+        <location filename="sdtmainwindow.cpp" line="1133"/>
         <source>Upload xml file OK !</source>
         <translation>导出参数文件成功 ！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1132"/>
+        <location filename="sdtmainwindow.cpp" line="1137"/>
         <source>Error: Upload xml file fails !</source>
         <translation>异常：导出参数文件失败 ！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1241"/>
+        <location filename="sdtmainwindow.cpp" line="1246"/>
         <source>dev:%1,axis:%2,page:%3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1288"/>
+        <location filename="sdtmainwindow.cpp" line="1293"/>
         <source>Device:%1 NetError!</source>
         <translation>设备：%1 通信异常 !</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1303"/>
+        <location filename="sdtmainwindow.cpp" line="1308"/>
         <source>Error</source>
         <translation>异常</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1309"/>
-        <location filename="sdtmainwindow.cpp" line="1310"/>
+        <location filename="sdtmainwindow.cpp" line="1314"/>
+        <location filename="sdtmainwindow.cpp" line="1315"/>
         <source>search phase complete !</source>
         <oldsource>search phase complete</oldsource>
         <translation>电机寻相结束！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="943"/>
+        <location filename="sdtmainwindow.cpp" line="948"/>
         <source>connect error</source>
         <translation>通信错误</translation>
     </message>

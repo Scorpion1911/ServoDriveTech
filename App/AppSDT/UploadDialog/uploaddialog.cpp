@@ -1,4 +1,4 @@
-#include "uploaddialog.h"
+﻿#include "uploaddialog.h"
 #include "ui_uploaddialog.h"
 #include "sevdevice.h"
 #include <QFileDialog>
@@ -23,7 +23,10 @@ void UploadDialog::uiInit(QList<SevDevice *> &devList, const QString &uploadPath
     m_filePath = &filePath;
     m_index = &index;
     for (int i = 0; i < devList.count(); i++) {
-        ui->comboBox_devUpload->addItem(devList.at(i)->modelName());
+        bool hasNickName = devList.count() > 1;
+        QString prefix;
+        prefix = hasNickName?tr("[%1] ").arg(devList.at(i)->aliasName()):"";
+        ui->comboBox_devUpload->addItem(prefix + devList.at(i)->modelName());
     }
     m_devList = devList;
     ui->lineEdit_fileUpload->setReadOnly(true);

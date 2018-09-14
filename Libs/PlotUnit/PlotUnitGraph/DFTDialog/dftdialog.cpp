@@ -89,6 +89,7 @@ void DFTDialog::closeEvent(QCloseEvent *event)
 
 void DFTDialog::initUi()
 {
+    setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint);
     QSize iconSize(24,24);
     OptFace *face = dynamic_cast<OptFace *>(OptContainer::instance()->optItem("optface"));
     QString iconPath = GTUtils::customPath() + "option/style/" + face->css() + "/icon/";
@@ -674,7 +675,6 @@ void DFTDialog::onComboBoxActivated(int index)
     double min, max;
     double tempMin, tempMax;
     min = dd->m_curveList.at(index)->sData()->keys.first();
-    qDebug()<<"min"<<min;
     tempMin = min;
     do {
         tempMin += dd->m_period / 1000;
@@ -682,7 +682,6 @@ void DFTDialog::onComboBoxActivated(int index)
     } while(ui->doubleSpinBox_fft_start->value() < min);
 
     max = dd->m_curveList.at(index)->sData()->keys.last();
-    qDebug()<<"max"<<max;
     tempMax = max;
     do {
         tempMax -= dd->m_period / 1000;

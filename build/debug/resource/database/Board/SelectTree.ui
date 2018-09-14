@@ -41,24 +41,11 @@
      </item>
      <item>
       <property name="text">
-       <string>SD2x</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>SD21</string>
-       </property>
-       <property name="text">
-        <string>1</string>
-       </property>
-      </item>
-     </item>
-     <item>
-      <property name="text">
        <string>SD4x</string>
       </property>
       <item>
        <property name="text">
-        <string>SD41</string>
+        <string>SD42</string>
        </property>
        <property name="text">
         <string>2</string>
@@ -66,7 +53,7 @@
       </item>
       <item>
        <property name="text">
-        <string>SD42</string>
+        <string>SD43</string>
        </property>
        <property name="text">
         <string>2</string>

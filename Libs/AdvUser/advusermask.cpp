@@ -1,4 +1,4 @@
-#include "advusermask.h"
+﻿#include "advusermask.h"
 #include "ui_advusermask.h"
 #include "iadvuser_p.h"
 #include "gtutils.h"
@@ -86,8 +86,11 @@ void AdvUserMask::uiInit()
     QList<QTreeWidgetItem*> topItemList;
     for (int i = 0; i < d->m_devList.count(); i++) {
         SevDevice* dev = d->m_devList.at(i);
+        bool hasNickName = d->m_devList.count() > 1;
+        QString prefix;
+        prefix = hasNickName?tr("[%1] ").arg(dev->aliasName()):"";
         QStringList strList;
-        strList<<dev->deviceConfig()->m_modeName;
+        strList<<prefix + dev->deviceConfig()->m_modeName;
         QTreeWidgetItem *item = new QTreeWidgetItem(strList);
         item->setText(GT::COL_BOARDTREE_ADDRESS, "-1");
         for (int j = 0; j < dev->axisNum(); j++) {
