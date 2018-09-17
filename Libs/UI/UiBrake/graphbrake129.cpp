@@ -12,13 +12,30 @@
 #include <QTreeWidget>
 #include <QKeyEvent>
 #include <QPainter>
+#include <QLabel>
+#include <QPixmap>
+#include "pixmapwidget.h"
+#include "pixmapwidget_p.h"
+
+#define PIC_BRAKE_CONFIG_HELP_NAME GTUtils::customPath()+"option/style/black/icon/brake_config_help.png"
+#define PROCESS_CLALL_PIXMAPWIDGET
 
 class GraphBrake129Private:public IGraphBrakePrivate
 {
   Q_DECLARE_PUBLIC(GraphBrake129)
 public:
   GraphBrake129Private(){}
-  ~GraphBrake129Private(){}
+  ~GraphBrake129Private(){
+#ifndef PROCESS_CLALL_PIXMAPWIDGET
+      delete m_picLabel;
+#endif
+  }
+
+#ifdef PROCESS_CLALL_PIXMAPWIDGET
+  PixmapWidget *m_pixmapWidget;
+#else
+  QLabel *m_picLabel;
+#endif
 
 };
 
@@ -40,12 +57,22 @@ void BrakePaintPrivate::paintEvent(QPaintEvent *event) {
     painter.drawPixmap(0, 0, this->width(), this->height(), pixMap);
 }
 
+
+
 GraphBrake129::GraphBrake129(QWidget *parent) :
   IGraphBrake(*(new GraphBrake129Private),parent),
   ui(new Ui::GraphBrake129)
 {
+  Q_D(GraphBrake129);
   ui->setupUi(this);
 
+#ifndef PROCESS_CLALL_PIXMAPWIDGET
+  d->m_picLabel = new QLabel;
+  d->m_picLabel->setWindowTitle(tr("Brake config help"));
+  d->m_picLabel->setMinimumSize(1100,313);
+#endif
+
+  connect(ui->pushBtnConfigHelp, SIGNAL(clicked(bool)), this, SLOT(onActionBtnConfigHelpClicked()));
 }
 GraphBrake129::~GraphBrake129()
 {
@@ -94,4 +121,24 @@ void GraphBrake129::setupDataMappings()
       d->m_mapping->insertItem2Box(d->m_treeWidget->topLevelItem(i),bList.at(i));
     }
   }
+}
+
+void GraphBrake129::onActionBtnConfigHelpClicked()
+{
+    Q_D(GraphBrake129);
+
+#ifdef PROCESS_CLALL_PIXMAPWIDGET
+//    if(d->m_pixmapWidget == NULL)
+        d->m_pixmapWidget = new PixmapWidget(new PixmapWidgetPrivate(), PIC_BRAKE_CONFIG_HELP_NAME);
+        d->m_pixmapWidget->setWindowTitle(tr("Brake config help"));
+        d->m_pixmapWidget->move(320,70);
+        d->m_pixmapWidget->setMiniSizeIsScreenTime(0.2);
+    d->m_pixmapWidget->show();
+#else
+    OptFace *optface = dynamic_cast<OptFace *>(OptContainer::instance()->optItem("optface"));
+    QString css = optface->css();
+    QString picPath = GTUtils::customPath()+"option/style/"+css+"/icon/"+PIC_BRAKE_CONFIG_HELP_NAME;
+    d->m_picLabel->setPixmap(QPixmap(picPath));
+    d->m_picLabel->show();
+#endif
 }
