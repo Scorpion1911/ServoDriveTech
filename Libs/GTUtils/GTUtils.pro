@@ -45,7 +45,9 @@ SOURCES += \
     BitItemHelper/bititemhelper.cpp \
     CmdManager/cmdmanager.cpp \
     ../../Common/src/Kernel/sdterror.cpp \
-    FolderCompressor/FolderCompressor.cpp
+    FolderCompressor/FolderCompressor.cpp \
+    AutoTurnning/autoturnning.cpp \
+    PixmapWidget/pixmapwidget.cpp
 
 HEADERS +=\
     QtTreeManager/qttreemanager.h \
@@ -56,7 +58,11 @@ HEADERS +=\
     BitItemHelper/bititemhelper.h \
     CmdManager/cmdmanager.h \
     ../../Common/src/Kernel/sdterror.h \
-    FolderCompressor/FolderCompressor.h
+    FolderCompressor/FolderCompressor.h \
+    PixmapWidget/pixmapwidget.h \
+    AutoTurnning/autoturnning.h \
+    PixmapWidget/pixmapwidget_p.h \
+    PixmapWidget/pixmapwidget.h
 
 unix {
     target.path = /usr/lib

@@ -38,6 +38,8 @@ protected:
   void setCustomVisitActive(IUiWidget *uiWidget) Q_DECL_OVERRIDE;
   void setUiVersionName() Q_DECL_OVERRIDE;
   void setupDataMappings() Q_DECL_OVERRIDE;
+private slots:
+  void onActionBtnConfigHelpClicked();
 
 private:
   Ui::GraphBrake129 *ui;
