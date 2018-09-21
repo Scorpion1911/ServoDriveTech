@@ -89,12 +89,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.ui" line="409"/>
+        <location filename="DFTDialog/dftdialog.ui" line="422"/>
         <source>Amp info:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.ui" line="425"/>
+        <location filename="DFTDialog/dftdialog.ui" line="438"/>
         <source>Phase info:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -104,113 +104,113 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="178"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="467"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="644"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="179"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="468"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="645"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="180"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="478"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="641"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="181"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="479"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="642"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="370"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="370"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="417"/>
         <source>FFT Curve File(*.dat)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="379"/>
         <source>file error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="379"/>
         <source>can not open file :
 %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="399"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="400"/>
         <source>Reading Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="404"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="405"/>
         <source>Reading Finish!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="417"/>
         <source>Save FFT Curve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="430"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="431"/>
         <source>Saving Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="448"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="449"/>
         <source>Saving Finish!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="543"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="548"/>
         <source>Range Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="543"/>
         <source>StartTime out range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="548"/>
         <source>EndTime out range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="575"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="576"/>
         <source>%1 ( %2 - %3 s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="578"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="662"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="579"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="663"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="583"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="584"/>
         <source>&gt;&gt;%1
 &lt;&lt;%2
 ( %3 - %4 s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="589"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="590"/>
         <source>&gt;&gt;%1
 &lt;&lt;%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="614"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="615"/>
         <source>Amplitude Information:  frequency: %1 HZ , AMP: %2 DB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="629"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="630"/>
         <source>Phase Information:  frequency: %1 HZ , Phase: %2 deg</source>
         <translation type="unfinished"></translation>
     </message>
@@ -269,12 +269,6 @@
     <message>
         <location filename="DFTDialog/dftsettingdialog.ui" line="149"/>
         <source>Phase Analysis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DFTDialog/dftsettingdialog.ui" line="59"/>
-        <location filename="DFTDialog/dftsettingdialog.ui" line="188"/>
-        <source>X freq max:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

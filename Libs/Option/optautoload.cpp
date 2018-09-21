@@ -45,6 +45,7 @@ void OptAutoLoad::uiInit()
     qDebug()<<"autoload uiInit";
   ui->checkBox->setChecked(d->m_auto);
   ui->checkBoxVersionMatch->setChecked(d->m_versionMatch);
+  ui->checkBoxVersionMatch->setVisible(false);
   if(d->m_auto==true){
       ui->checkBoxVersionMatch->setEnabled(false);
   }

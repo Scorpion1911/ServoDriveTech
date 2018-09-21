@@ -9,46 +9,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="53"/>
+        <location filename="graphbrake129.ui" line="56"/>
         <source>Emergency Brake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="60"/>
+        <location filename="graphbrake129.ui" line="63"/>
         <source>Deceleration Time(ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="111"/>
+        <location filename="graphbrake129.ui" line="114"/>
         <source>Dynamic Brake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="118"/>
-        <location filename="graphbrake129.ui" line="228"/>
+        <location filename="graphbrake129.ui" line="121"/>
+        <location filename="graphbrake129.ui" line="231"/>
         <source>Waiting Time(ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="144"/>
-        <location filename="graphbrake129.ui" line="254"/>
+        <location filename="graphbrake129.ui" line="147"/>
+        <location filename="graphbrake129.ui" line="257"/>
         <source>Duration Time(ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="170"/>
-        <location filename="graphbrake129.ui" line="280"/>
+        <location filename="graphbrake129.ui" line="173"/>
+        <location filename="graphbrake129.ui" line="283"/>
         <source>Lag Time(ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="221"/>
+        <location filename="graphbrake129.ui" line="224"/>
         <source>External Brake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphbrake129.ui" line="306"/>
+        <location filename="graphbrake129.ui" line="309"/>
         <source>Delay Time(ms)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphbrake129.ui" line="380"/>
+        <source>Config Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphbrake129.cpp" line="71"/>
+        <location filename="graphbrake129.cpp" line="133"/>
+        <source>Brake config help</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
