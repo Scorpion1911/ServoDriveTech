@@ -15,6 +15,9 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <item>
+    <layout class="QVBoxLayout" name="searchVBoxLayout"/>
+   </item>
+   <item>
     <widget class="QSplitter" name="splitter_compWhole">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>

@@ -9,6 +9,15 @@
 #include <QDebug>
 #include <QComboBox>
 #include <QStyledItemDelegate>
+#include <QDebug>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QHBoxLayout>
+#include <QSpacerItem>
+#include "searchitemfromtree.h"
+#include <QLabel>
+#include <QStringList>
+#include <QMessageBox>
 
 #define ICON_NAME_USR         "plot_curve_usr.png"
 #define ICON_NAME_EXPERT      "plot_curve_expert.png"
@@ -60,6 +69,26 @@ DialogPickCurve::DialogPickCurve(SevDevice *sev,QWidget *parent) :
   connect(ui->treeWidgetExpert,SIGNAL(itemExpanded(QTreeWidgetItem*)),this,SLOT(onTreeWidgetExpertExpandedClicked()));
   connect(ui->treeWidgetExpert,SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this,SLOT(onExpertTreeWidgetDoubleClicked(QTreeWidgetItem*,int)));
   connect(ui->tableWidget_usr,SIGNAL(cellDoubleClicked(int,int)),this,SLOT(onUsrTableCellDoubleClicked(int,int)));
+
+  QLabel *hintLabel = new QLabel(this);
+  hintLabel->setText(tr("Keyword:"));
+//  QSpacerItem *harizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+  m_partNameLineEdit = new QLineEdit(this);
+  m_partNameLineEdit->setPlaceholderText("such as:pro;pi");
+  QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
+  QPushButton *executeSearchItemBtn = new QPushButton(this);
+  executeSearchItemBtn->setText(tr("Execute Search Item"));
+  QPushButton *cancelSearchItemBtn = new QPushButton(this);
+  cancelSearchItemBtn->setText(tr("Cancel Search Item"));
+//  hBoxLayout->addItem(harizontalSpacer);
+  hBoxLayout->addWidget(hintLabel);
+  hBoxLayout->addWidget(m_partNameLineEdit);
+  hBoxLayout->addWidget(executeSearchItemBtn);
+  hBoxLayout->addWidget(cancelSearchItemBtn);
+  ui->searchVBoxLayout->addLayout(hBoxLayout);
+  connect(executeSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onExecuteSearchItemBtnClicked()));
+  connect(cancelSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onCancelSearchItemBtnClicked()));
+
 }
 
 DialogPickCurve::~DialogPickCurve()
@@ -70,6 +99,7 @@ DialogPickCurve::~DialogPickCurve()
 
 void DialogPickCurve::expertTreeWidgetInit(const QTreeWidget *tree)
 {
+
   QTreeWidgetItem *item;
   for(int i=0;i<tree->topLevelItemCount();i++)
   {
@@ -165,6 +195,28 @@ void DialogPickCurve::usrCurveTableInit(QList<ICurve *> curves)
   }
 }
 
+void DialogPickCurve::onExecuteSearchItemBtnClicked()
+{
+    qDebug()<<"ExecuteSearchItemBtn Clicked";
+    QStringList partNameList = m_partNameLineEdit->text().split(";");
+    bool exist = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidgetExpert);
+    if(!exist){
+        for(int i = 0; i<ui->treeWidgetExpert->topLevelItemCount(); i++){
+            QTreeWidgetItem *item = ui->treeWidgetExpert->topLevelItem(i);
+            ui->treeWidgetExpert->expandItem(item);
+            for(int k = 0; k<item->childCount(); k++){
+                item->child(k)->setExpanded(true);
+            }
+        }
+        QMessageBox::warning(0, QObject::tr("Warning!"), QObject::tr("No corresponding Item was found!\nPlease input again!"), QMessageBox::Ok);
+    }
+}
+
+void DialogPickCurve::onCancelSearchItemBtnClicked()
+{
+    qDebug()<<"CancelSearchItemBtn Clicked";
+    SearchItemFromTree::cancelSearchItemByName(ui->treeWidgetExpert);
+}
 
 void DialogPickCurve::onUserSelectChanged()
 {

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QFileInfo>
+#include <QLineEdit>
 
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -50,7 +51,10 @@ private:
     int m_editedCol;
     bool m_isEditingWhole;
     bool m_isEditingPart;
+    QLineEdit *m_partNameLineEdit;
 private slots:
+    void onExecuteSearchItemBtnClicked();
+    void onCancelSearchItemBtnClicked();
     void onActionOldBtnClicked();
     void onActionNewBtnClicked();
     void onActionCompareClicked();

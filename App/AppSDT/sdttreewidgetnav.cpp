@@ -5,7 +5,7 @@ SdtTreeWidgetNav::SdtTreeWidgetNav(QWidget *parent) : QTreeWidget(parent)
     m_szHint = QSize(180,600);
 }
 void SdtTreeWidgetNav::updateSizeHint(QSize & szHint2Set) {
-    m_szHint = szHinft2Set;
+    m_szHint = szHint2Set;
     updateGeometry();
 }
 
