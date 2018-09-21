@@ -14,7 +14,12 @@
         <translation>自动匹配</translation>
     </message>
     <message>
-        <location filename="optautoload.cpp" line="93"/>
+        <location filename="optautoload.ui" line="27"/>
+        <source>version match</source>
+        <translation>版本检测</translation>
+    </message>
+    <message>
+        <location filename="optautoload.cpp" line="125"/>
         <source>Autoload</source>
         <translation>自动匹配</translation>
     </message>

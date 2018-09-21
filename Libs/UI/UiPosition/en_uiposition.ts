@@ -412,12 +412,12 @@ you need to stop autoturning and try again!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pospid133.cpp" line="31"/>
+        <location filename="pospid133.cpp" line="33"/>
         <source>config help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pospid133.cpp" line="34"/>
+        <location filename="pospid133.cpp" line="36"/>
         <source>Position PID Config Help</source>
         <translation type="unfinished"></translation>
     </message>

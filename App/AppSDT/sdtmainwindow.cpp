@@ -994,6 +994,7 @@ void SDTMainWindow::onActnHelpSoftInfoClicked()
 {
   QMessageBox mess;
   mess.setIcon(QMessageBox::NoIcon);
+  mess.setWindowTitle(tr("About"));
   QString info;
   info=tr("Version:%1\n\nget more help from:"
           "\nhttp://www.googoltech.com").arg(SDT_VERSION);

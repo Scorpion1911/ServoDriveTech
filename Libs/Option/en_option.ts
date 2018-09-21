@@ -14,7 +14,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="optautoload.cpp" line="93"/>
+        <location filename="optautoload.ui" line="27"/>
+        <source>version match</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="optautoload.cpp" line="125"/>
         <source>Autoload</source>
         <translation type="unfinished"></translation>
     </message>

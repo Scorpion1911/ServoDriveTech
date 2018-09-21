@@ -150,7 +150,7 @@ void MotorDBUi::createConnections()
 {
     connect(ui->btn_motor_return, SIGNAL(clicked()), this, SIGNAL(returnClicked()));
     connect(ui->listWidget_motor_company, SIGNAL(currentRowChanged(int)), this, SLOT(onCompanyRowChanged(int)));
-    connect(ui->listWidget_motor_motor, SIGNAL(currentRowChanged(int)), this, SLOT(onMotorRowChanged(int)));
+    //connect(ui->listWidget_motor_motor, SIGNAL(currentRowChanged(int)), this, SLOT(onMotorRowChanged(int)));
     connect(ui->btn_motor_new, SIGNAL(clicked()), this, SLOT(onActionNewBtnClicked()));
     connect(ui->btn_motor_remove, SIGNAL(clicked()), this, SLOT(onActionRemoveBtnClicked()));
     connect(ui->btn_motor_save, SIGNAL(clicked()), this, SLOT(onActionSaveBtnClicked()));
@@ -176,12 +176,14 @@ void MotorDBUi::onCompanyRowChanged(int index)
         ui->btn_motor_save->setEnabled(false);
     }
     m_motorIdList.clear();
+    disconnect(ui->listWidget_motor_motor, SIGNAL(currentRowChanged(int)), this, SLOT(onMotorRowChanged(int)));
     ui->listWidget_motor_motor->clear();
     m_motorIdList = m_dbManager->getMotorIdList(companyId);
     for (int i = 0; i < m_motorIdList.count(); i++) {
         QString motorName = m_dbManager->getMotorName(m_motorIdList.at(i));
         ui->listWidget_motor_motor->addItem(motorName);
     }
+    connect(ui->listWidget_motor_motor, SIGNAL(currentRowChanged(int)), this, SLOT(onMotorRowChanged(int)));
     ui->listWidget_motor_motor->setCurrentRow(0);
     onMotorRowChanged(0);
 }

@@ -89,12 +89,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.ui" line="409"/>
+        <location filename="DFTDialog/dftdialog.ui" line="422"/>
         <source>Amp info:</source>
         <translation>幅频信息：</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.ui" line="425"/>
+        <location filename="DFTDialog/dftdialog.ui" line="438"/>
         <source>Phase info:</source>
         <translation>相频信息：</translation>
     </message>
@@ -104,96 +104,96 @@
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="178"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="467"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="644"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="179"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="468"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="645"/>
         <source>on</source>
         <translation>开</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="180"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="478"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="641"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="181"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="479"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="642"/>
         <source>off</source>
         <translation>关</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="370"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="369"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="370"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="417"/>
         <source>FFT Curve File(*.dat)</source>
         <translation>傅里叶曲线文件(*.dat)</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="379"/>
         <source>file error</source>
         <translation>文件错误</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="378"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="379"/>
         <source>can not open file :
 %1</source>
         <translation>无法打开文件：
 %1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="399"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="400"/>
         <source>Reading Curve %1</source>
         <translation>正在读取曲线%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="404"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="405"/>
         <source>Reading Finish!</source>
         <translation>读取完成！</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="416"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="417"/>
         <source>Save FFT Curve</source>
         <translation>保存傅里叶曲线</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="430"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="431"/>
         <source>Saving Curve %1</source>
         <translation>保存曲线%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="448"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="449"/>
         <source>Saving Finish!</source>
         <translation>保存完成！</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="543"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="548"/>
         <source>Range Error</source>
         <translation>范围错误</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="542"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="543"/>
         <source>StartTime out range</source>
         <translation>开始时间超限</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="547"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="548"/>
         <source>EndTime out range</source>
         <translation>结束时间超限</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="575"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="576"/>
         <source>%1 ( %2 - %3 s)</source>
         <translation>%1 ( %2 - %3 s)</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="578"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="662"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="579"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="663"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="583"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="584"/>
         <source>&gt;&gt;%1
 &lt;&lt;%2
 ( %3 - %4 s)</source>
@@ -202,19 +202,19 @@
 ( %3 - %4 s)</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="589"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="590"/>
         <source>&gt;&gt;%1
 &lt;&lt;%2</source>
         <translation>&gt;&gt;%1
 &lt;&lt;%2</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="614"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="615"/>
         <source>Amplitude Information:  frequency: %1 HZ , AMP: %2 DB</source>
         <translation>幅频信息：频率：%1 HZ, 幅值：%2 DB</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="629"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="630"/>
         <source>Phase Information:  frequency: %1 HZ , Phase: %2 deg</source>
         <translation>相频信息：频率：%1 HZ, 相位：%2 deg</translation>
     </message>
