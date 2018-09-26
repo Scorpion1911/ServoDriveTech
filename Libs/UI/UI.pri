@@ -9,6 +9,7 @@ INCLUDEPATH+=$${PWD}/IUiWidget\
             $${PWD}/../GTUtils\
             $${PWD}/../GTUtils/BitItemHelper\
             $${PWD}/../GTUtils/PixmapWidget\
+            $${PWD}/../GTUtils/SearchItemFromTree\
             $${PWD}/../Com/Communication\
 
 QT+=quickwidgets qml

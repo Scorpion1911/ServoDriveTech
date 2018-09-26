@@ -13,6 +13,13 @@
 #include <QAbstractSlider>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QHBoxLayout>
+#include <QSpacerItem>
+#include "searchitemfromtree.h"
+#include <QLabel>
+#include <QStringList>
 
 #define XML_INFO_NAME "XmlFileInformation"
 enum TREE{
@@ -56,6 +63,26 @@ ComparisonDialog::ComparisonDialog(QWidget *parent) :
     connect(ui->treeWidget_compNewPart, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(onTreeItemChanged(QTreeWidgetItem*,int)));
     connect(ui->treeWidget_compNew, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(onWholeTreeItemChanged(QTreeWidgetItem*,int)));
     onActionSyncBoxChanged();
+
+    QLabel *hintLabel = new QLabel(this);
+    hintLabel->setText(tr("Keyword:"));
+    QSpacerItem *harizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    m_partNameLineEdit = new QLineEdit(this);
+    m_partNameLineEdit->setPlaceholderText("such as:pro;pi");
+    QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
+    QPushButton *executeSearchItemBtn = new QPushButton(this);
+    executeSearchItemBtn->setText(tr("Execute Search Item"));
+    QPushButton *cancelSearchItemBtn = new QPushButton(this);
+    cancelSearchItemBtn->setText(tr("Cancel Search Item"));
+    hBoxLayout->addItem(harizontalSpacer);
+    hBoxLayout->addWidget(hintLabel);
+    hBoxLayout->addWidget(m_partNameLineEdit);
+    hBoxLayout->addWidget(executeSearchItemBtn);
+    hBoxLayout->addWidget(cancelSearchItemBtn);
+    ui->searchVBoxLayout->addLayout(hBoxLayout);
+    connect(executeSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onExecuteSearchItemBtnClicked()));
+    connect(cancelSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onCancelSearchItemBtnClicked()));
+
 }
 
 ComparisonDialog::~ComparisonDialog()
@@ -190,6 +217,48 @@ bool ComparisonDialog::loadTree(const QString &path, QTreeWidget *treeWidget)
         delete tree;
         return true;
     }
+}
+
+void ComparisonDialog::onExecuteSearchItemBtnClicked()
+{
+    qDebug()<<"ExecuteSearchItemBtn Clicked";
+    bool exist;
+    QStringList partNameList = m_partNameLineEdit->text().split(";");
+    if(ui->splitter_compWhole->isVisible()){
+        qDebug()<<"ui->splitter_compWhole show";
+        exist = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compNew);
+        SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compOld);
+        if(!exist){
+            ui->treeWidget_compNew->expandAll();
+            ui->treeWidget_compOld->expandAll();
+            QMessageBox::warning(0, QObject::tr("Warning!"), QObject::tr("No corresponding Item was found!\nPlease input again!"), QMessageBox::Ok);
+        }
+    }
+    if(ui->splitter_compPart->isVisible()){
+        qDebug()<<"ui->splitter_compPart show";
+        exist = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compNewPart);
+        SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compOldPart);
+        if(!exist){
+            ui->treeWidget_compNewPart->expandAll();
+            ui->treeWidget_compOldPart->expandAll();
+            QMessageBox::warning(0, QObject::tr("Warning!"), QObject::tr("No corresponding Item was found!\nPlease input again!"), QMessageBox::Ok);
+        }
+    }
+
+}
+
+void ComparisonDialog::onCancelSearchItemBtnClicked()
+{
+    qDebug()<<"CancelSearchItemBtn Clicked";
+    if(ui->splitter_compWhole->isVisible()){
+        SearchItemFromTree::cancelSearchItemByName(ui->treeWidget_compNew);
+        SearchItemFromTree::cancelSearchItemByName(ui->treeWidget_compOld);
+    }
+    if(ui->splitter_compPart->isVisible()){
+        SearchItemFromTree::cancelSearchItemByName(ui->treeWidget_compNewPart);
+        SearchItemFromTree::cancelSearchItemByName(ui->treeWidget_compOldPart);
+    }
+
 }
 
 void ComparisonDialog::onActionCompareClicked() {

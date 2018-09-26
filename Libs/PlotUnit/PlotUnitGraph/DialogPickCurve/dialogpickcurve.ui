@@ -142,7 +142,7 @@ QTreeView::item:selected:!active,QTableView::item:selected:!active,QListView::it
    <item>
     <widget class="QStackedWidget" name="stackedWidget_plotCurve">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page_user">
       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1">
@@ -211,6 +211,9 @@ QTreeView::item:selected:!active,QTableView::item:selected:!active,QListView::it
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item>
+        <layout class="QVBoxLayout" name="searchVBoxLayout"/>
+       </item>
        <item>
         <widget class="QTreeWidget" name="treeWidgetExpert">
          <column>
