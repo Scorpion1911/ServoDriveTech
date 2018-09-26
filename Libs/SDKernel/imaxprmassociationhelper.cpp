@@ -134,6 +134,7 @@ bool ImaxPrmAssociationHelper::active(quint16 axisInx)
   QTreeWidgetItem *gainItem = axisItem->child(ROW_AXIS_GAIN_INFO);
 
   bool ret = true;
+  bool small = false;
   for(int i=0;i<gainItem->childCount();i++)
   {
     QTreeWidgetItem *itemIx = gainItem->child(i);
@@ -153,7 +154,8 @@ bool ImaxPrmAssociationHelper::active(quint16 axisInx)
     if(k>32767)
     {
       k = 32767;
-      QMessageBox::information(0,tr("warning"),tr("Imax is too small !"));
+      small = true;
+      //QMessageBox::information(0,tr("warning"),tr("Imax is too small !"));
     }
 
     qDebug()<<"Ix : "<<itemIx->text(0)<<"gain = "<<gain<<"res value = "<<data.m_value<<"res type = "<<data.m_type<<"Imax = "<<imaxValue<<"k = "<<k;
@@ -166,6 +168,9 @@ bool ImaxPrmAssociationHelper::active(quint16 axisInx)
       if(false==writeIxDataToFlash(axisInx,flashType,flashOffset,(quint64)k))
          ret = false;
     }
+  }
+  if (small) {
+      QMessageBox::information(0,tr("warning"),tr("Imax is too small !"));
   }
   return ret;
 

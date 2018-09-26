@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "tabletest.h"
 #include <QMessageBox>
@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    dbTestManager = new DBManager("E:/Working/New/build/debug/resource/database/Version/", "root", "");
+    dbTestManager = new DBManager("E:/Jiang/ServoDriveTech/build/debug/resource/database/Version/", "root", "");
 
     connect(ui->logButton, SIGNAL(clicked()), this, SLOT(onActionLogButtonClicked()));
 }

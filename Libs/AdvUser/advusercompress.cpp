@@ -1,4 +1,4 @@
-#include "advusercompress.h"
+﻿#include "advusercompress.h"
 #include "ui_advusercompress.h"
 #include "iadvuser_p.h"
 #include "FolderCompressor.h"
@@ -66,9 +66,11 @@ void AdvUserCompress::uiInit()
     setModify(false);
     QString treePath = GTUtils::sysPath() + "SysMap/ConfigSelectTree.ui";
     QTreeWidget *tree = QtTreeManager::createTreeWidgetFromXmlFile(treePath);
-    QTreeWidgetItem *baseItem = tree->topLevelItem(1)->clone();
+    QTreeWidgetItem *baseItem0 = tree->topLevelItem(0)->clone();
+    QTreeWidgetItem *baseItem1 = tree->topLevelItem(1)->clone();
     delete tree;
-    ui->treeWidget->addTopLevelItem(baseItem);
+    ui->treeWidget->addTopLevelItem(baseItem0);
+    ui->treeWidget->addTopLevelItem(baseItem1);
     ui->treeWidget->expandAll();
 }
 

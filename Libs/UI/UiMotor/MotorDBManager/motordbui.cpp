@@ -13,7 +13,7 @@
 #define PARA_VALUE_INDEX 1
 #define PARA_UNIT_INDEX 2
 
-#define USER_INDEX 7
+#define USER_INDEX 5
 
 MotorDBUi::MotorDBUi(QWidget *parent) :
     QWidget(parent),

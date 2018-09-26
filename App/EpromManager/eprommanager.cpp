@@ -448,6 +448,13 @@ void EpromManager::selectHex() {
     m_filePath = fileInfo.filePath() + "/";
     ui->hexLine->setText(fileInfo.fileName());
     ui->widget_Check->setVisible(true);
+    if (getComType() == GTSD_COM_TYPE_NET) {
+        ui->checkBox_Xml->setChecked(false);
+        ui->checkBox_Xml->setEnabled(false);
+    } else {
+        ui->checkBox_Xml->setChecked(true);
+        ui->checkBox_Xml->setEnabled(true);
+    }
     m_hexPath = path;
     if (!m_hexPath.isNull() && !m_xmlPath.isNull()) {
         ui->flashButton->setEnabled(true);

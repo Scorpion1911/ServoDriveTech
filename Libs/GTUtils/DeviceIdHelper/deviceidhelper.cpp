@@ -174,16 +174,25 @@ quint32 DeviceIdHelper::readFpgaId(bool &isOk)
   //需要从硬件读取
     isOk = true;
   uint8_t fpgaInx = 0;
-  uint16_t version;
+  uint16_t year;
+  uint16_t day;
   errcode_t err=0;
-  err=m_com->readFPGAVersion(fpgaInx, version);
+  err=m_com->readFPGAYearDay(fpgaInx, year, day);
+  qDebug()<<"year"<<year;
+  qDebug()<<"day"<<day;
   if(err!=0)
   {
     isOk=false;
     m_fpgaId=0;
     return m_fpgaId;
   }
-  m_fpgaId = version;
+  QString str;
+  QString yearStr;
+  QString dayStr;
+  yearStr = QString("%1").arg(year, 4, 16, QLatin1Char('0'));
+  dayStr = QString("%1").arg(day, 4, 16, QLatin1Char('0'));
+  str = yearStr + dayStr;
+  m_fpgaId = str.toInt();
   return m_fpgaId;
 }
 
