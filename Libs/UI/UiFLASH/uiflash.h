@@ -49,6 +49,9 @@ private:
     Ui::UiFLASH *ui;
 
 private slots:
+  void onExecuteSearchItemBtnClicked();
+  void onCancelSearchItemBtnClicked();
+
   void onTreeItemClickedEdit(QTreeWidgetItem *item,int column);
   void onActionEditFinished();
   void onItemExpanded(QTreeWidgetItem *item);

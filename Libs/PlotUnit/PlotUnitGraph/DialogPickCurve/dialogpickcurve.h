@@ -2,6 +2,8 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QLineEdit>
+#include <QTreeWidget>
 
 namespace Ui {
 class DialogPickCurve;
@@ -32,6 +34,8 @@ signals:
 protected:
 
 private slots:
+  void onExecuteSearchItemBtnClicked();
+  void onCancelSearchItemBtnClicked();
   void onUserSelectChanged();
   void onTreeWidgetExpertExpandedClicked();
   void onExpertTreeWidgetDoubleClicked(QTreeWidgetItem *item,int column);
@@ -43,6 +47,8 @@ private:
   Ui::DialogPickCurve *ui;
   OptFace *m_face;
   SevDevice *m_sev;
+  QTreeWidget *m_dataTree;
+  QLineEdit *m_partNameLineEdit;
 };
 
 #endif // DIALOG_H

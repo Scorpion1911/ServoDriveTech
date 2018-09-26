@@ -25,7 +25,7 @@ public:
   bool hasSaveFunc()Q_DECL_OVERRIDE;
 
   QColor ramNodeColor();
-  void setRamNodeColor(const QColor &nodeColor);
+  void setRamNodeColor(const QColor &nodeColor); 
 
 signals:
   void ramNodeColorChanged(QColor &clr);
@@ -48,6 +48,9 @@ private:
   Ui::UiRAM *ui;
   UiRAMPrivate *dd;
 private slots:
+  void onExecuteSearchItemBtnClicked();
+  void onCancelSearchItemBtnClicked();
+
   void onTreeItemClickedEdit(QTreeWidgetItem *item,int column);
   void onActionEditFinished();
   void onItemExpanded(QTreeWidgetItem *item);

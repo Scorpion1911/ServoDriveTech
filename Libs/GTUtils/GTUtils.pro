@@ -47,7 +47,8 @@ SOURCES += \
     ../../Common/src/Kernel/sdterror.cpp \
     FolderCompressor/FolderCompressor.cpp \
     AutoTurnning/autoturnning.cpp \
-    PixmapWidget/pixmapwidget.cpp
+    PixmapWidget/pixmapwidget.cpp \
+    SearchItemFromTree/searchitemfromtree.cpp
 
 HEADERS +=\
     QtTreeManager/qttreemanager.h \
@@ -62,7 +63,8 @@ HEADERS +=\
     PixmapWidget/pixmapwidget.h \
     AutoTurnning/autoturnning.h \
     PixmapWidget/pixmapwidget_p.h \
-    PixmapWidget/pixmapwidget.h
+    PixmapWidget/pixmapwidget.h \
+    SearchItemFromTree/searchitemfromtree.h
 
 unix {
     target.path = /usr/lib

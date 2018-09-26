@@ -8,6 +8,13 @@
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <QDebug>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QHBoxLayout>
+#include <QSpacerItem>
+#include "searchitemfromtree.h"
+#include <QLabel>
+#include <QStringList>
 
 #define STR_MARK_ALL "all"
 #define STR_MARK_BIT "bit"
@@ -23,6 +30,8 @@ public:
   bool m_isEditing;
   QColor m_nodeColor;
   QString m_originText;
+
+  QLineEdit *m_partNameLineEdit;
 protected:
 };
 UiFLASHPrivate::UiFLASHPrivate()
@@ -82,6 +91,25 @@ void UiFLASH::setContextAction()
 void UiFLASH::addTreeWidget(QTreeWidget *tree)
 {
     Q_D(UiFLASH);
+    QLabel *hintLabel = new QLabel(this);
+    hintLabel->setText(tr("Keyword:"));
+    QSpacerItem *harizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    d->m_partNameLineEdit = new QLineEdit(this);
+    d->m_partNameLineEdit->setPlaceholderText("such as:pro;pi");
+    QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
+    QPushButton *executeSearchItemBtn = new QPushButton(this);
+    executeSearchItemBtn->setText(tr("Execute Search Item"));
+    QPushButton *cancelSearchItemBtn = new QPushButton(this);
+    cancelSearchItemBtn->setText(tr("Cancel Search Item"));
+    hBoxLayout->addItem(harizontalSpacer);
+    hBoxLayout->addWidget(hintLabel);
+    hBoxLayout->addWidget(d->m_partNameLineEdit);
+    hBoxLayout->addWidget(executeSearchItemBtn);
+    hBoxLayout->addWidget(cancelSearchItemBtn);
+    d->m_vboxLayout->addLayout(hBoxLayout);
+    connect(executeSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onExecuteSearchItemBtnClicked()));
+    connect(cancelSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onCancelSearchItemBtnClicked()));
+
     d->m_dataTree = tree;
     d->m_vboxLayout->addWidget(tree);
     tree->expandToDepth(1);
@@ -230,6 +258,31 @@ void UiFLASH::readItem(QTreeWidgetItem *item)
             }
         }
     }
+}
+
+void UiFLASH::onExecuteSearchItemBtnClicked()
+{
+    Q_D(UiFLASH);
+    qDebug()<<"ExecuteSearchItemBtn Clicked";
+    QStringList partNameList = d->m_partNameLineEdit->text().split(";");
+    bool exist = SearchItemFromTree::searchItemByName(partNameList, d->m_dataTree);
+    if(!exist){
+        for(int i = 0; i<d->m_dataTree->topLevelItemCount(); i++){
+            QTreeWidgetItem *item = d->m_dataTree->topLevelItem(i);
+            d->m_dataTree->expandItem(item);
+            for(int k = 0; k<item->childCount(); k++){
+                item->child(k)->setExpanded(true);
+            }
+        }
+        QMessageBox::warning(0, QObject::tr("Warning!"), QObject::tr("No corresponding Item was found!\nPlease input again!"), QMessageBox::Ok);
+    }
+}
+
+void UiFLASH::onCancelSearchItemBtnClicked()
+{
+    Q_D(UiFLASH);
+    qDebug()<<"CancelSearchItemBtn Clicked";
+    SearchItemFromTree::cancelSearchItemByName(d->m_dataTree);
 }
 
 void UiFLASH::onTreeItemClickedEdit(QTreeWidgetItem *item, int column)
