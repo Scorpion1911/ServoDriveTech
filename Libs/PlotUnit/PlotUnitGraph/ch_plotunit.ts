@@ -324,22 +324,37 @@
         <translation>单位</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="279"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="282"/>
         <source>user</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="307"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="310"/>
         <source>expert</source>
         <translation>专家</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="332"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="335"/>
         <source>custom</source>
         <translation>定制</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="107"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="75"/>
+        <source>Keyword:</source>
+        <translation>关键词：</translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="81"/>
+        <source>Execute Search Item</source>
+        <translation>搜索</translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="83"/>
+        <source>Cancel Search Item</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="138"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
@@ -806,6 +821,21 @@
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="357"/>
         <source>Reading Curve Finish!</source>
         <translation>曲线读取完成！</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <source>Warning!</source>
+        <translation>警告！</translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <source>No corresponding Item was found!
+Please input again!</source>
+        <translation>没有与关键词匹配的项！
+请重新输入关键词！</translation>
     </message>
 </context>
 <context>

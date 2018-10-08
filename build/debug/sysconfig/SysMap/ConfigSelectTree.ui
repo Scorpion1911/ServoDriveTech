@@ -153,6 +153,9 @@
        <property name="text">
         <string>SD1x</string>
        </property>
+       <property name="text">
+        <string>1</string>
+       </property>
        <item>
         <property name="text">
          <string>SD1</string>
@@ -166,6 +169,50 @@
         <item>
          <property name="text">
           <string>V130</string>
+         </property>
+         <property name="text">
+          <string>NULL</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </item>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>SD2x</string>
+       </property>
+       <property name="text">
+        <string>2</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <item>
+        <property name="text">
+         <string>SD21</string>
+        </property>
+        <property name="text">
+         <string>2</string>
+        </property>
+        <property name="text">
+         <string>21000645</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>V130</string>
+         </property>
+         <property name="text">
+          <string>NULL</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>V133</string>
          </property>
          <property name="text">
           <string>NULL</string>

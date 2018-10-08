@@ -188,21 +188,21 @@ void GraphEncoder130::onUpdateTimeOut()
   quint16 encInfo;
   quint16 absType;
   pos=readPos(KEY_NAME_POS);
-//  qDebug()<<"pos"<<pos;
+  //qDebug()<<"pos"<<pos;
   posIn=readPosInput(KEY_NAME_POS_IN);
-//  qDebug()<<"posIn"<<posIn;
+  //qDebug()<<"posIn"<<posIn;
   posOfst=readPosOffset(KEY_NAME_POS_OFFSET);
   d->m_posOffset = posOfst;
-//  qDebug()<<"posOfst"<<posOfst;
+  //qDebug()<<"posOfst"<<posOfst;
   ppn=readPPN(KEY_NAME_PPN);
-//  qDebug()<<"ppn"<<ppn;
+  //qDebug()<<"ppn"<<ppn;
   seqDir=readSeqDir(KEY_NAME_SEQ_DIR);
   d->m_phaseDir = seqDir;
-//  qDebug()<<"seqDir"<<seqDir;
+  //qDebug()<<"seqDir"<<seqDir;
   encInfo=readEncInfo(KEY_NAME_ENC_INFO);
-//  qDebug()<<"encInfo errorcode"<<encInfo;
+  //qDebug()<<"encInfo errorcode"<<encInfo;
   absType=readErrLost(KEY_NAME_LOST);
-//  qDebug()<<"absType lost"<<absType;
+ //qDebug()<<"absType lost"<<absType;
 
 //  qDebug()<<"encoder axisSize:"<<d->m_dev->axisNum()<<"current axis"<<d->m_uiWidget->uiIndexs().axisInx<<"update ...";
 //  var strPos=m_cmd.readCommand("gSevDrv.sev_obj.cur.rsv.pos");
@@ -219,7 +219,9 @@ void GraphEncoder130::onUpdateTimeOut()
 //  if(strPosIn!=="NULL")
 //      gauge.value=360*parseInt(strPosIn)/precision;
   quint32 lineNumber=getLineNumber();
+  //qDebug()<<"lineNumer"<<lineNumber;
   double machineValue=360*posIn/lineNumber;
+
   ui->Dial_encMachine->setValue(machineValue);
 
   double temp=(machineValue*ppn);

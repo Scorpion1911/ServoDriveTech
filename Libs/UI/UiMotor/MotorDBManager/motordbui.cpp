@@ -20,6 +20,7 @@ MotorDBUi::MotorDBUi(QWidget *parent) :
     ui(new Ui::MotorDBUi)
 {
     ui->setupUi(this);
+    qDebug()<<"motor db ui setup";
     initMap();
     initUi();
     createConnections();

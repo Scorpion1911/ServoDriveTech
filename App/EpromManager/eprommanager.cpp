@@ -13,6 +13,8 @@
 #include "optpath.h"
 #include "optcontainer.h"
 
+#define PCBA_LENGTH 8
+
 
 EpromManager::EpromManager(QWidget *parent) :
     QDialog(parent),
@@ -64,8 +66,12 @@ EpromManager::EpromManager(QWidget *parent) :
     ui->lineEdit->setValidator(new QRegExpValidator(regExp, this));
     ui->lineEdit_2->setValidator(new QRegExpValidator(regExp, this));
 
+    connect(ui->lineEdit_pwr_scan, SIGNAL(textChanged(QString)), this, SLOT(onScanTextChanged(QString)));
+    connect(ui->lineEdit_ctr_scan, SIGNAL(textChanged(QString)), this, SLOT(onScanTextChanged_2(QString)));
     connect(ui->lineEdit, SIGNAL(textChanged(QString)), this, SLOT(onLineTextChange(QString)));
     connect(ui->lineEdit_2, SIGNAL(textChanged(QString)), this, SLOT(onLineTextChange_2(QString)));
+    connect(ui->lineEdit_pwr_proNum, SIGNAL(textChanged(QString)), this, SLOT(onProNumTextChanged(QString)));
+    connect(ui->lineEdit_ctr_proNum, SIGNAL(textChanged(QString)), this, SLOT(onProNumTextChanged_2(QString)));
 
     connect(ui->selectTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(treeItemClicked(QTreeWidgetItem*,int)));
 
@@ -410,6 +416,12 @@ void EpromManager::onActionDisConnectClicked() {
         ui->xmlLine->clear();
         ui->treeWidget->clear();
         ui->treeWidget_2->clear();
+        ui->lineEdit->clear();
+        ui->lineEdit_2->clear();
+        ui->lineEdit_ctr_proNum->clear();
+        ui->lineEdit_ctr_scan->clear();
+        ui->lineEdit_pwr_proNum->clear();
+        ui->lineEdit_pwr_scan->clear();
         delete m_powerBoard;
         delete m_controlBoard;
     }
@@ -524,6 +536,62 @@ void EpromManager::scrollTree(QTreeWidgetItem *item) {
 
 void EpromManager::scrollTree_2(QTreeWidgetItem *item) {
     ui->treeWidget_2->scrollToItem(item);
+}
+
+void EpromManager::onScanTextChanged(QString text)
+{
+    int len = text.length();
+    QString pcbaCode;
+    QString proCode;
+    if (len <= PCBA_LENGTH) {
+        pcbaCode = text;
+        proCode = "0";
+    } else {
+        pcbaCode = text.left(PCBA_LENGTH);
+        proCode = text.right(len - PCBA_LENGTH);
+    }
+    ui->lineEdit->setText(pcbaCode);
+    ui->lineEdit_pwr_proNum->setText(proCode);
+}
+
+void EpromManager::onScanTextChanged_2(QString text)
+{
+    int len = text.length();
+    QString pcbaCode;
+    QString proCode;
+    if (len <= PCBA_LENGTH) {
+        pcbaCode = text;
+        proCode = "0";
+    } else {
+        pcbaCode = text.left(PCBA_LENGTH);
+        proCode = text.right(len - PCBA_LENGTH);
+    }
+    ui->lineEdit_2->setText(pcbaCode);
+    ui->lineEdit_ctr_proNum->setText(proCode);
+}
+
+void EpromManager::onProNumTextChanged(const QString &text)
+{
+    if (ui->treeWidget->topLevelItemCount() == 0) {
+        return;
+    }
+    QTreeWidgetItem *item = GLO::findItem("product number", ui->treeWidget, TREE_NAME);
+    if (item != NULL) {
+        item->setText(TREE_VALUE, text);
+        item->setTextColor(TREE_VALUE, Qt::red);
+    }
+}
+
+void EpromManager::onProNumTextChanged_2(const QString &text)
+{
+    if (ui->treeWidget_2->topLevelItemCount() == 0) {
+        return;
+    }
+    QTreeWidgetItem *item = GLO::findItem("product number", ui->treeWidget_2, TREE_NAME);
+    if (item != NULL) {
+        item->setText(TREE_VALUE, text);
+        item->setTextColor(TREE_VALUE, Qt::red);
+    }
 }
 
 void EpromManager::closeEvent(QCloseEvent *event)

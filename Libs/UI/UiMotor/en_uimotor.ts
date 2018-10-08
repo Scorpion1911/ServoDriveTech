@@ -115,12 +115,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphmotor129.cpp" line="119"/>
+        <location filename="graphmotor129.cpp" line="120"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphmotor129.cpp" line="119"/>
+        <location filename="graphmotor129.cpp" line="120"/>
         <source>Please connect the device!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -238,12 +238,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphmotor130.cpp" line="116"/>
+        <location filename="graphmotor130.cpp" line="124"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphmotor130.cpp" line="116"/>
+        <location filename="graphmotor130.cpp" line="124"/>
         <source>Please connect the device!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -331,109 +331,109 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="99"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="100"/>
         <source>Imax</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="100"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="101"/>
         <source>Irat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="101"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="102"/>
         <source>Sct</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="102"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="103"/>
         <source>Srat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="103"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="104"/>
         <source>Nos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="104"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="105"/>
         <source>Rm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="105"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="106"/>
         <source>Ldm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="106"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="107"/>
         <source>Lqm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="107"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="108"/>
         <source>Jm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="108"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="109"/>
         <source>Jrat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="109"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="110"/>
         <source>Fm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="110"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="111"/>
         <source>PPN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="111"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="112"/>
         <source>Tqr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="112"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="113"/>
         <source>Moment Coefficient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="113"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="114"/>
         <source>Vmax</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="227"/>
-        <location filename="MotorDBManager/motordbui.cpp" line="266"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="230"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="269"/>
         <source>Motor info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="227"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="230"/>
         <source>Are you sure to remove the motor?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="266"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="269"/>
         <source>Are you sure to install the motor?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="277"/>
-        <location filename="MotorDBManager/motordbui.cpp" line="283"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="280"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="286"/>
         <source>Motor Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="277"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="280"/>
         <source>Motor name cannot be empty!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MotorDBManager/motordbui.cpp" line="283"/>
+        <location filename="MotorDBManager/motordbui.cpp" line="286"/>
         <source>This motor has already existed. Please select another name.</source>
         <translation type="unfinished"></translation>
     </message>

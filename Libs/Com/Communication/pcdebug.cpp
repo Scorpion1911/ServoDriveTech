@@ -315,8 +315,10 @@ errcode_t PcDebug::sendGeneralCmd(uint8_t axis, GeneralPDU &pdu)
 errcode_t PcDebug::readDSPVersion(uint8_t dspInx,uint16_t &version)
 {
   Q_D(PcDebug);
-
+    qDebug()<<"dsp index"<<dspInx;
+    qDebug()<<"comType"<<d->m_comType;
   int16_t ret=GTSD_CMD_ReadProcessorVersion(dspInx*2,version,d->m_comType);
+  qDebug()<<"ss";
   return ret;
 }
 

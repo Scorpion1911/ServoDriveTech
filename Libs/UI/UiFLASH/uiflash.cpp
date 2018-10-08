@@ -95,17 +95,17 @@ void UiFLASH::addTreeWidget(QTreeWidget *tree)
     hintLabel->setText(tr("Keyword:"));
     QSpacerItem *harizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
     d->m_partNameLineEdit = new QLineEdit(this);
-    d->m_partNameLineEdit->setPlaceholderText("such as:pro;pi");
+    //d->m_partNameLineEdit->setPlaceholderText(tr("such as:pro;pi"));
     QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
     QPushButton *executeSearchItemBtn = new QPushButton(this);
     executeSearchItemBtn->setText(tr("Execute Search Item"));
     QPushButton *cancelSearchItemBtn = new QPushButton(this);
     cancelSearchItemBtn->setText(tr("Cancel Search Item"));
-    hBoxLayout->addItem(harizontalSpacer);
     hBoxLayout->addWidget(hintLabel);
     hBoxLayout->addWidget(d->m_partNameLineEdit);
     hBoxLayout->addWidget(executeSearchItemBtn);
     hBoxLayout->addWidget(cancelSearchItemBtn);
+    hBoxLayout->addItem(harizontalSpacer);
     d->m_vboxLayout->addLayout(hBoxLayout);
     connect(executeSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onExecuteSearchItemBtnClicked()));
     connect(cancelSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onCancelSearchItemBtnClicked()));
@@ -116,6 +116,7 @@ void UiFLASH::addTreeWidget(QTreeWidget *tree)
     tree->resizeColumnToContents(0);
 
     d->m_dataTree->installEventFilter(this);
+    d->m_partNameLineEdit->installEventFilter(this);
     setItemColor(d->m_dataTree->invisibleRootItem());
     connect(d->m_dataTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(onTreeItemClickedEdit(QTreeWidgetItem*,int)));
     connect(d->m_dataTree, SIGNAL(itemSelectionChanged()), this, SLOT(onActionEditFinished()));
@@ -163,6 +164,12 @@ bool UiFLASH::eventFilter(QObject *obj, QEvent *event)
                     }
                 }
             return true;
+            }
+        } else if (obj == d->m_partNameLineEdit) {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
+                onExecuteSearchItemBtnClicked();
+                return true;
             }
         }
     }

@@ -1,4 +1,4 @@
-#ifndef EPROMMANAGER_H
+﻿#ifndef EPROMMANAGER_H
 #define EPROMMANAGER_H
 
 #include <QDialog>
@@ -82,6 +82,11 @@ private slots:
     void selectXml();
     void scrollTree(QTreeWidgetItem* item);
     void scrollTree_2(QTreeWidgetItem* item);
+    void onScanTextChanged(QString text);
+    void onScanTextChanged_2(QString text);
+    void onProNumTextChanged(const QString &text);
+    void onProNumTextChanged_2(const QString &text);
+
 //    void onComButtonClicked();
     
     void receiveConfig(const QStringList &list);

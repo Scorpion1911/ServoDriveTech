@@ -18,6 +18,7 @@
 #include <QLabel>
 #include <QStringList>
 #include <QMessageBox>
+#include <QKeyEvent>
 
 #define ICON_NAME_USR         "plot_curve_usr.png"
 #define ICON_NAME_EXPERT      "plot_curve_expert.png"
@@ -74,7 +75,7 @@ DialogPickCurve::DialogPickCurve(SevDevice *sev,QWidget *parent) :
   hintLabel->setText(tr("Keyword:"));
 //  QSpacerItem *harizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
   m_partNameLineEdit = new QLineEdit(this);
-  m_partNameLineEdit->setPlaceholderText("such as:pro;pi");
+  //m_partNameLineEdit->setPlaceholderText(tr("such as:pro;pi"));
   QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
   QPushButton *executeSearchItemBtn = new QPushButton(this);
   executeSearchItemBtn->setText(tr("Execute Search Item"));
@@ -88,7 +89,7 @@ DialogPickCurve::DialogPickCurve(SevDevice *sev,QWidget *parent) :
   ui->searchVBoxLayout->addLayout(hBoxLayout);
   connect(executeSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onExecuteSearchItemBtnClicked()));
   connect(cancelSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onCancelSearchItemBtnClicked()));
-
+    m_partNameLineEdit->installEventFilter(this);
 }
 
 DialogPickCurve::~DialogPickCurve()
@@ -193,6 +194,22 @@ void DialogPickCurve::usrCurveTableInit(QList<ICurve *> curves)
       }
     }
   }
+}
+
+bool DialogPickCurve::eventFilter(QObject *obj, QEvent *event)
+{
+    if(event->type() == QEvent::KeyPress)
+    {
+        GTUtils::delayms(100);
+        if (obj == m_partNameLineEdit) {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
+                onExecuteSearchItemBtnClicked();
+                return true;
+            }
+        }
+    }
+    return QWidget::eventFilter(obj, event);
 }
 
 void DialogPickCurve::onExecuteSearchItemBtnClicked()

@@ -19,7 +19,7 @@
         <translation>版本检测</translation>
     </message>
     <message>
-        <location filename="optautoload.cpp" line="125"/>
+        <location filename="optautoload.cpp" line="126"/>
         <source>Autoload</source>
         <translation>自动匹配</translation>
     </message>

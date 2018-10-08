@@ -616,17 +616,17 @@
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="264"/>
+        <location filename="graphencoder130.cpp" line="266"/>
         <source>EnclineNumber:</source>
         <translation>线数：</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="271"/>
+        <location filename="graphencoder130.cpp" line="273"/>
         <source>EncbitNumber:</source>
         <translation>位数：</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="483"/>
+        <location filename="graphencoder130.cpp" line="485"/>
         <source>Enc Lost</source>
         <translation>编码器丢失</translation>
     </message>

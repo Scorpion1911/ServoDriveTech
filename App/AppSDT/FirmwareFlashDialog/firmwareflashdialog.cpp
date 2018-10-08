@@ -191,6 +191,9 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
     if (m_decompressPath.compare("") == 0) {
         return;
     }
+    if (!m_devList.at(ui->comboBox_firm->currentIndex())->isConnecting()) {
+        return;
+    }
     ui->progressBar_firm->setValue(0);
     ui->progressBar_firm->setVisible(true);
     ui->infoDisplay_firm->appendPlainText(tr("1.Checking version!"));
@@ -380,6 +383,7 @@ bool FirmwareFlashDialog::downloadRpdFile()
     }
     delete tree;
     for (int i = 0; i < fpgNum; i++) {
+        qDebug()<<"rpdPath"<<rpdPath;
         qint16 ret = dev->socketCom()->downLoadFPGAFLASH(i * fpgAxis, rpdPath.toStdWString(), processCallBack, (void *)ui->progressBar_firm);
         if (ret != 0) {
             return false;

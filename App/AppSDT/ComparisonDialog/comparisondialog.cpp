@@ -64,22 +64,25 @@ ComparisonDialog::ComparisonDialog(QWidget *parent) :
     connect(ui->treeWidget_compNew, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(onWholeTreeItemChanged(QTreeWidgetItem*,int)));
     onActionSyncBoxChanged();
 
+    ui->treeWidget_compNew->installEventFilter(this);
+    ui->treeWidget_compNewPart->installEventFilter(this);
     QLabel *hintLabel = new QLabel(this);
     hintLabel->setText(tr("Keyword:"));
     QSpacerItem *harizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
     m_partNameLineEdit = new QLineEdit(this);
-    m_partNameLineEdit->setPlaceholderText("such as:pro;pi");
+    //m_partNameLineEdit->setPlaceholderText(tr("such as:pro;pi"));
     QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
     QPushButton *executeSearchItemBtn = new QPushButton(this);
     executeSearchItemBtn->setText(tr("Execute Search Item"));
     QPushButton *cancelSearchItemBtn = new QPushButton(this);
     cancelSearchItemBtn->setText(tr("Cancel Search Item"));
-    hBoxLayout->addItem(harizontalSpacer);
     hBoxLayout->addWidget(hintLabel);
     hBoxLayout->addWidget(m_partNameLineEdit);
     hBoxLayout->addWidget(executeSearchItemBtn);
     hBoxLayout->addWidget(cancelSearchItemBtn);
+    hBoxLayout->addItem(harizontalSpacer);
     ui->searchVBoxLayout->addLayout(hBoxLayout);
+    m_partNameLineEdit->installEventFilter(this);
     connect(executeSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onExecuteSearchItemBtnClicked()));
     connect(cancelSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onCancelSearchItemBtnClicked()));
 
@@ -91,27 +94,66 @@ ComparisonDialog::~ComparisonDialog()
     qDebug()<<"ready delete comparisondialog!";
 }
 
-void ComparisonDialog::keyPressEvent(QKeyEvent *event)
+bool ComparisonDialog::eventFilter(QObject *obj, QEvent *event)
 {
-    qDebug()<<event->key();
-    if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
-        if (m_isEditingWhole) {
-            if (m_editedItem != NULL) {
-                ui->treeWidget_compNew->closePersistentEditor(m_editedItem, m_editedCol);
-                m_isEditingWhole = false;
-                m_editedItem->setSelected(false);
-            }
-        }
+    if(event->type() == QEvent::KeyPress)
+    {
+        GTUtils::delayms(100);
+        if(obj == ui->treeWidget_compNew || obj == ui->treeWidget_compNewPart)
+        {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            qDebug()<<keyEvent->key();
+            if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return)
+            {
+                if (m_isEditingWhole) {
+                    if (m_editedItem != NULL) {
+                        ui->treeWidget_compNew->closePersistentEditor(m_editedItem, m_editedCol);
+                        m_isEditingWhole = false;
+                        m_editedItem->setSelected(false);
+                    }
+                }
 
-        if (m_isEditingPart) {
-            if (m_editedItem != NULL) {
-                ui->treeWidget_compNewPart->closePersistentEditor(m_editedItem, m_editedCol);
-                m_isEditingPart = false;
-                m_editedItem->setSelected(false);
+                if (m_isEditingPart) {
+                    if (m_editedItem != NULL) {
+                        ui->treeWidget_compNewPart->closePersistentEditor(m_editedItem, m_editedCol);
+                        m_isEditingPart = false;
+                        m_editedItem->setSelected(false);
+                    }
+                }
+                return true;
+            }
+        } else if (obj == m_partNameLineEdit) {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
+                onExecuteSearchItemBtnClicked();
+                return true;
             }
         }
     }
+    return QWidget::eventFilter(obj, event);
 }
+
+//void ComparisonDialog::keyPressEvent(QKeyEvent *event)
+//{
+//    qDebug()<<event->key();
+//    if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
+//        if (m_isEditingWhole) {
+//            if (m_editedItem != NULL) {
+//                ui->treeWidget_compNew->closePersistentEditor(m_editedItem, m_editedCol);
+//                m_isEditingWhole = false;
+//                m_editedItem->setSelected(false);
+//            }
+//        }
+
+//        if (m_isEditingPart) {
+//            if (m_editedItem != NULL) {
+//                ui->treeWidget_compNewPart->closePersistentEditor(m_editedItem, m_editedCol);
+//                m_isEditingPart = false;
+//                m_editedItem->setSelected(false);
+//            }
+//        }
+//    }
+//}
 
 void ComparisonDialog::initPath()
 {
@@ -222,25 +264,34 @@ bool ComparisonDialog::loadTree(const QString &path, QTreeWidget *treeWidget)
 void ComparisonDialog::onExecuteSearchItemBtnClicked()
 {
     qDebug()<<"ExecuteSearchItemBtn Clicked";
-    bool exist;
+    bool existOld;
+    bool existNew;
     QStringList partNameList = m_partNameLineEdit->text().split(";");
     if(ui->splitter_compWhole->isVisible()){
         qDebug()<<"ui->splitter_compWhole show";
-        exist = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compNew);
-        SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compOld);
-        if(!exist){
+        existNew = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compNew);
+        existOld = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compOld);
+        if (!existNew) {
             ui->treeWidget_compNew->expandAll();
+        }
+        if (!existOld) {
             ui->treeWidget_compOld->expandAll();
+        }
+        if(!existNew && !existOld){
             QMessageBox::warning(0, QObject::tr("Warning!"), QObject::tr("No corresponding Item was found!\nPlease input again!"), QMessageBox::Ok);
         }
     }
     if(ui->splitter_compPart->isVisible()){
         qDebug()<<"ui->splitter_compPart show";
-        exist = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compNewPart);
-        SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compOldPart);
-        if(!exist){
+        existNew = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compNewPart);
+        existOld = SearchItemFromTree::searchItemByName(partNameList, ui->treeWidget_compOldPart);
+        if (!existNew) {
             ui->treeWidget_compNewPart->expandAll();
+        }
+        if (!existOld) {
             ui->treeWidget_compOldPart->expandAll();
+        }
+        if(!existNew && !existOld){
             QMessageBox::warning(0, QObject::tr("Warning!"), QObject::tr("No corresponding Item was found!\nPlease input again!"), QMessageBox::Ok);
         }
     }

@@ -32,7 +32,7 @@ signals:
   void addUsrCurveRequest(ICurve *newc);
 
 protected:
-
+    bool eventFilter(QObject *obj, QEvent *event);
 private slots:
   void onExecuteSearchItemBtnClicked();
   void onCancelSearchItemBtnClicked();

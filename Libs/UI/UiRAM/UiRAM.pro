@@ -31,3 +31,5 @@ unix {
 
 FORMS += \
     uiram.ui
+
+TRANSLATIONS    += ch_uiram.ts en_uiram.ts

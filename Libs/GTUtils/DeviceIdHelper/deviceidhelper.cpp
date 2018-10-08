@@ -183,6 +183,7 @@ quint32 DeviceIdHelper::readFpgaId(bool &isOk)
   if(err!=0)
   {
     isOk=false;
+    qDebug()<<"err"<<err;
     m_fpgaId=0;
     return m_fpgaId;
   }
@@ -191,6 +192,8 @@ quint32 DeviceIdHelper::readFpgaId(bool &isOk)
   QString dayStr;
   yearStr = QString("%1").arg(year, 4, 16, QLatin1Char('0'));
   dayStr = QString("%1").arg(day, 4, 16, QLatin1Char('0'));
+  qDebug()<<"year Str"<<yearStr;
+  qDebug()<<"day Str"<<dayStr;
   str = yearStr + dayStr;
   m_fpgaId = str.toInt();
   return m_fpgaId;

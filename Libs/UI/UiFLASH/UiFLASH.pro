@@ -31,3 +31,5 @@ unix {
 
 FORMS += \
     uiflash.ui
+
+TRANSLATIONS    += ch_uiflash.ts en_uiflash.ts

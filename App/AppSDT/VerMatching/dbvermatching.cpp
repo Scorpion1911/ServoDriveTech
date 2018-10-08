@@ -17,7 +17,7 @@ DbVerMatching::~DbVerMatching()
 bool DbVerMatching::open()
 {
   //打开数据库
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::addDatabase("QSQLITE", "connectVerDB");
     QString dbPath = GTUtils::databasePath() + "Version/";
     db.setDatabaseName(dbPath + "testdatabase.db");
     db.setUserName("root");

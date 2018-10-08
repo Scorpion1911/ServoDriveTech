@@ -13,12 +13,12 @@
 <context>
     <name>ImaxPrmAssociationHelper</name>
     <message>
-        <location filename="imaxprmassociationhelper.cpp" line="156"/>
+        <location filename="imaxprmassociationhelper.cpp" line="173"/>
         <source>warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="imaxprmassociationhelper.cpp" line="156"/>
+        <location filename="imaxprmassociationhelper.cpp" line="173"/>
         <source>Imax is too small !</source>
         <translation type="unfinished"></translation>
     </message>

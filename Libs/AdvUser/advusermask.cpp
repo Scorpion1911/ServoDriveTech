@@ -83,6 +83,7 @@ void AdvUserMask::uiInit()
     Q_D(AdvUserMask);
     setModify(false);
     ui->tree_advMask->clear();
+    d->m_changedItemList.clear();
     QList<QTreeWidgetItem*> topItemList;
     for (int i = 0; i < d->m_devList.count(); i++) {
         SevDevice* dev = d->m_devList.at(i);

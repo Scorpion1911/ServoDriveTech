@@ -54,17 +54,17 @@
     <message>
         <location filename="eprommanager.ui" line="134"/>
         <source>Uboot</source>
-        <translation>Uboot</translation>
+        <translation>烧录</translation>
     </message>
     <message>
         <location filename="eprommanager.ui" line="139"/>
-        <location filename="eprommanager.ui" line="543"/>
+        <location filename="eprommanager.ui" line="577"/>
         <source>PowerBoard</source>
         <translation>功率板</translation>
     </message>
     <message>
         <location filename="eprommanager.ui" line="144"/>
-        <location filename="eprommanager.ui" line="817"/>
+        <location filename="eprommanager.ui" line="885"/>
         <source>ControlBoard</source>
         <translation>控制板</translation>
     </message>
@@ -82,12 +82,12 @@
     <message>
         <location filename="eprommanager.ui" line="192"/>
         <source>PCDebug</source>
-        <translation type="unfinished"></translation>
+        <translation>PCDebug</translation>
     </message>
     <message>
         <location filename="eprommanager.ui" line="199"/>
         <source>RnNet</source>
-        <translation type="unfinished"></translation>
+        <translation>RnNet</translation>
     </message>
     <message>
         <location filename="eprommanager.ui" line="220"/>
@@ -112,7 +112,7 @@
     <message>
         <location filename="eprommanager.ui" line="297"/>
         <location filename="eprommanager.ui" line="382"/>
-        <location filename="eprommanager.ui" line="1021"/>
+        <location filename="eprommanager.ui" line="1089"/>
         <source>...</source>
         <translation></translation>
     </message>
@@ -143,151 +143,163 @@
     </message>
     <message>
         <location filename="eprommanager.ui" line="457"/>
-        <location filename="eprommanager.ui" line="611"/>
-        <location filename="eprommanager.ui" line="728"/>
-        <location filename="eprommanager.ui" line="885"/>
+        <location filename="eprommanager.ui" line="645"/>
+        <location filename="eprommanager.ui" line="762"/>
+        <location filename="eprommanager.ui" line="953"/>
         <source>Write</source>
         <translation>写入</translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="492"/>
-        <location filename="eprommanager.ui" line="763"/>
+        <location filename="eprommanager.ui" line="483"/>
+        <location filename="eprommanager.ui" line="788"/>
+        <source>Scan Code:</source>
+        <translation>扫描码：</translation>
+    </message>
+    <message>
+        <location filename="eprommanager.ui" line="525"/>
+        <location filename="eprommanager.ui" line="830"/>
         <source>PCBA Code:</source>
         <translation>PCBA码：</translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="548"/>
-        <location filename="eprommanager.ui" line="693"/>
-        <location filename="eprommanager.ui" line="822"/>
-        <location filename="eprommanager.ui" line="928"/>
+        <location filename="eprommanager.ui" line="554"/>
+        <location filename="eprommanager.ui" line="859"/>
+        <source>Product Num:</source>
+        <translation>产品编码：</translation>
+    </message>
+    <message>
+        <location filename="eprommanager.ui" line="582"/>
+        <location filename="eprommanager.ui" line="727"/>
+        <location filename="eprommanager.ui" line="890"/>
+        <location filename="eprommanager.ui" line="996"/>
         <source>Value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="553"/>
-        <location filename="eprommanager.ui" line="827"/>
+        <location filename="eprommanager.ui" line="587"/>
+        <location filename="eprommanager.ui" line="895"/>
         <source>Unit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="558"/>
-        <location filename="eprommanager.ui" line="832"/>
+        <location filename="eprommanager.ui" line="592"/>
+        <location filename="eprommanager.ui" line="900"/>
         <source>Scale</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="563"/>
-        <location filename="eprommanager.ui" line="837"/>
+        <location filename="eprommanager.ui" line="597"/>
+        <location filename="eprommanager.ui" line="905"/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="568"/>
-        <location filename="eprommanager.ui" line="842"/>
+        <location filename="eprommanager.ui" line="602"/>
+        <location filename="eprommanager.ui" line="910"/>
         <source>Type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="573"/>
-        <location filename="eprommanager.ui" line="847"/>
+        <location filename="eprommanager.ui" line="607"/>
+        <location filename="eprommanager.ui" line="915"/>
         <source>Address</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="621"/>
-        <location filename="eprommanager.ui" line="658"/>
-        <location filename="eprommanager.ui" line="895"/>
-        <location filename="eprommanager.ui" line="942"/>
+        <location filename="eprommanager.ui" line="655"/>
+        <location filename="eprommanager.ui" line="692"/>
+        <location filename="eprommanager.ui" line="963"/>
+        <location filename="eprommanager.ui" line="1010"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="671"/>
-        <location filename="eprommanager.ui" line="955"/>
+        <location filename="eprommanager.ui" line="705"/>
+        <location filename="eprommanager.ui" line="1023"/>
         <source>Compare</source>
         <translation>校验</translation>
     </message>
     <message>
-        <location filename="eprommanager.ui" line="688"/>
-        <location filename="eprommanager.ui" line="923"/>
+        <location filename="eprommanager.ui" line="722"/>
+        <location filename="eprommanager.ui" line="991"/>
         <source>Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="184"/>
-        <location filename="eprommanager.cpp" line="220"/>
-        <location filename="eprommanager.cpp" line="374"/>
+        <location filename="eprommanager.cpp" line="190"/>
+        <location filename="eprommanager.cpp" line="226"/>
+        <location filename="eprommanager.cpp" line="380"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="184"/>
-        <location filename="eprommanager.cpp" line="220"/>
+        <location filename="eprommanager.cpp" line="190"/>
+        <location filename="eprommanager.cpp" line="226"/>
         <source>Please enter a PCBA code!</source>
         <translation>请输入PCBA码！</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="187"/>
-        <location filename="eprommanager.cpp" line="223"/>
-        <location filename="eprommanager.cpp" line="473"/>
+        <location filename="eprommanager.cpp" line="193"/>
+        <location filename="eprommanager.cpp" line="229"/>
+        <location filename="eprommanager.cpp" line="492"/>
         <source>Question</source>
         <translation>写入</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="187"/>
-        <location filename="eprommanager.cpp" line="223"/>
+        <location filename="eprommanager.cpp" line="193"/>
+        <location filename="eprommanager.cpp" line="229"/>
         <source>Are you sure to write
 </source>
         <translation>确定要写入</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="278"/>
+        <location filename="eprommanager.cpp" line="284"/>
         <source>Type Name: </source>
         <translation>类型：</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="280"/>
+        <location filename="eprommanager.cpp" line="286"/>
         <source>Series Num: </source>
         <translation>系列号：</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="282"/>
+        <location filename="eprommanager.cpp" line="288"/>
         <source>Series Name: </source>
         <translation>系列名：</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="374"/>
+        <location filename="eprommanager.cpp" line="380"/>
         <source>Connection Failed!</source>
         <translation>连接失败！</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="443"/>
-        <location filename="eprommanager.cpp" line="458"/>
+        <location filename="eprommanager.cpp" line="455"/>
+        <location filename="eprommanager.cpp" line="477"/>
         <source>Open</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="443"/>
+        <location filename="eprommanager.cpp" line="455"/>
         <source>Sdt Files( *.sdt)</source>
         <translation>Sdt文件(*.sdt)</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="458"/>
+        <location filename="eprommanager.cpp" line="477"/>
         <source>Xml Files( *.xml)</source>
         <translation>Xml文件(*.xml)</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="473"/>
+        <location filename="eprommanager.cpp" line="492"/>
         <source>Do you want to uboot?</source>
         <translation>确定要uboot吗？</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="487"/>
+        <location filename="eprommanager.cpp" line="506"/>
         <source>Information</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="487"/>
+        <location filename="eprommanager.cpp" line="506"/>
         <source>Please connect the device!</source>
         <translation>请先连接设备！</translation>
     </message>

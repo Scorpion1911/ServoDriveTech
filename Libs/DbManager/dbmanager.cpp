@@ -1,4 +1,4 @@
-#include "dbmanager.h"
+﻿#include "dbmanager.h"
 #include <QDebug>
 #include <QSqlTableModel>
 #include <QSqlRecord>
@@ -8,7 +8,7 @@
 
 DBManager::DBManager(QString dbPath, QString userName, QString psw)
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::addDatabase("QSQLITE", "connectVerDB");
     db.setDatabaseName(dbPath + "testdatabase.db");
     db.setUserName(userName);
     db.setPassword(psw);

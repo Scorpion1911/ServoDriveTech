@@ -1220,11 +1220,9 @@ void SDTMainWindow::onNavTreeWidgetItemClicked(QTreeWidgetItem *item, int column
       ui->mainStackedWidget->setCurrentIndex(index);
       qDebug()<<"index"<<index <<"ui->mainStackedWidget->count()"<<ui->mainStackedWidget->count();
       GTUtils::delayms(10);
-
       disactiveAllUi();
       activeCurrentUi();
       changeConfigSaveBtnStatus();
-
       setNavCurrentSelectedInfo();
     }
   }

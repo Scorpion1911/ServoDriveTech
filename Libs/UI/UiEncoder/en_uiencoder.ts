@@ -493,17 +493,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="264"/>
+        <location filename="graphencoder130.cpp" line="266"/>
         <source>EnclineNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="271"/>
+        <location filename="graphencoder130.cpp" line="273"/>
         <source>EncbitNumber:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="483"/>
+        <location filename="graphencoder130.cpp" line="485"/>
         <source>Enc Lost</source>
         <translation type="unfinished"></translation>
     </message>

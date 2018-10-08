@@ -320,22 +320,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="279"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="282"/>
         <source>user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="307"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="310"/>
         <source>expert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="332"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="335"/>
         <source>custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="107"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="75"/>
+        <source>Keyword:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="81"/>
+        <source>Execute Search Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="83"/>
+        <source>Cancel Search Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="138"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -794,6 +809,20 @@
     <message>
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="357"/>
         <source>Reading Curve Finish!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <source>Warning!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <source>No corresponding Item was found!
+Please input again!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

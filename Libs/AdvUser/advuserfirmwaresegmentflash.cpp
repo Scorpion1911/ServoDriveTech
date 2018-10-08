@@ -53,7 +53,7 @@ AdvUserFirmwareSegmentFlash::AdvUserFirmwareSegmentFlash(const QString &advUserN
     //this->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
     uiInit();
 
-    QObject::connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onActionComboBoxIndexChange(int)));
+    //QObject::connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onActionComboBoxIndexChange(int)));
 
     QObject::connect(ui->toolButtonDSP,SIGNAL(clicked()),this,SLOT(onActionDSPToolBtnClicked()));
     QObject::connect(ui->toolButtonFPGA,SIGNAL(clicked()),this,SLOT(onActionFPGAToolBtnClicked()));
@@ -79,6 +79,7 @@ void AdvUserFirmwareSegmentFlash::uiInit()
     Q_D(AdvUserFirmwareSegmentFlash);
     readAdv();
     d->m_crtDev = 0;
+    disconnect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onActionComboBoxIndexChange(int)));
     ui->comboBox->clear();
     if(d->m_devList.count() != 0){
         d->m_crtDev = d->m_devList.at(0);
@@ -89,6 +90,7 @@ void AdvUserFirmwareSegmentFlash::uiInit()
             ui->comboBox->addItem(prefix + d->m_devList.at(i)->modelName());
         }
     }
+    connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onActionComboBoxIndexChange(int)));
     ui->comboBox->setCurrentIndex(0);
     ui->lineEditDSP->clear();
     ui->lineEditFPGA->clear();
@@ -344,6 +346,7 @@ void AdvUserFirmwareSegmentFlash::onActionFPGAFlashBtnClicked()
         }
         delete tree;
         for(int i = 0; i < fpgaNum; i++){
+            qDebug()<<"path"<<d->m_rpdFilePath;
             qint16 ret = d->m_crtDev->socketCom()->downLoadFPGAFLASH(i * fpgaAxisNum, d->m_rpdFilePath.toStdWString(), updateProgressBar, (void *)ui->progressBar);
             if(ret != 0){
                 ok = false;

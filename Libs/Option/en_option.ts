@@ -19,7 +19,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="optautoload.cpp" line="125"/>
+        <location filename="optautoload.cpp" line="126"/>
         <source>Autoload</source>
         <translation type="unfinished"></translation>
     </message>

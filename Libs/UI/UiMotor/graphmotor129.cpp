@@ -26,6 +26,14 @@ GraphMotor129::GraphMotor129(QWidget *parent) :
   ui(new Ui::GraphMotor129)
 {
   ui->setupUi(this);
+  connect(ui->tbtn_motorDB, SIGNAL(clicked()), this, SLOT(onMotorInstallationBtnClicked()));
+  QWidget *w = ui->stackedWidget->widget(1);
+  ui->stackedWidget->removeWidget(w);
+  delete w;
+  MotorDBUi *dbUi = new MotorDBUi;
+  ui->stackedWidget->insertWidget(1, dbUi);
+  connect(dbUi, SIGNAL(returnClicked()), this, SLOT(onReturnBtnClicked()));
+  connect(dbUi, SIGNAL(onMotorInstall(QStringList)), this, SLOT(onInstallMotorReceived(QStringList)));
 
 }
 
@@ -45,14 +53,7 @@ void GraphMotor129::setCustomVisitActive(IUiWidget *uiWidget)
   Q_D(GraphMotor129);
   Q_UNUSED(uiWidget);
   this->ui->dspinBox_maxVoltage->setEnabled(false);
-    connect(ui->tbtn_motorDB, SIGNAL(clicked()), this, SLOT(onMotorInstallationBtnClicked()));
-    QWidget *w = ui->stackedWidget->widget(1);
-    ui->stackedWidget->removeWidget(w);
-    delete w;
-    MotorDBUi *dbUi = new MotorDBUi;
-    ui->stackedWidget->insertWidget(1, dbUi);
-    connect(dbUi, SIGNAL(returnClicked()), this, SLOT(onReturnBtnClicked()));
-    connect(dbUi, SIGNAL(onMotorInstall(QStringList)), this, SLOT(onInstallMotorReceived(QStringList)));
+
 }
 void GraphMotor129::setUiVersionName()
 {
