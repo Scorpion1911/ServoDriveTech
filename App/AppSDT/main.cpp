@@ -6,13 +6,7 @@
 #include <QSettings>
 #include <QDebug>
 
-#include "optautoload.h"
-#include "iopt.h"
-#include "optcontainer.h"
-#include "optface.h"
-#include "optplot.h"
-#include "optuser.h"
-#include "optpath.h"
+#include "Option"
 
 #include "iadvuser.h"
 #include "advusercheck.h"
@@ -88,6 +82,8 @@ int main(int argc, char *argv[])
   opt=new OptFace("optface",0);
   optc->addOptItem(opt);
   opt = new OptPath("optpath", 0);
+  optc->addOptItem(opt);
+  opt = new OptMode("optmode", 0);
   optc->addOptItem(opt);
 
 

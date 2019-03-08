@@ -138,6 +138,8 @@ void GraphEncoder126::createSupportEncoderItem()
   Q_D(GraphEncoder126);
   d->m_encConfigManage=new EncConfigManage;
 
+  d->m_encConfigManage->creatItemLists(4);
+
   //注意在这里addEncItem的顺序位置不能改变
   IEncConfigItem *encItem=new EncConfigDuoMoItem;
   encItem->createAttributeUi();
@@ -155,7 +157,7 @@ void GraphEncoder126::createSupportEncoderItem()
 //  encItem->setWarningsString("aaa");
 //  encItem->setLostOper(xxx);
 //  encItem->setAlarmOper(xx);
-  d->m_encConfigManage->addEncItem(encItem);
+  d->m_encConfigManage->addEncItem(1, encItem);
 
   encItem=new EncConfigNiKangItem;
   encItem->createAttributeUi();
@@ -163,13 +165,13 @@ void GraphEncoder126::createSupportEncoderItem()
   warnList<<tr("")
          <<tr("Battery Alarm");
   encItem->setWarningsString(warnList);
-  d->m_encConfigManage->addEncItem(encItem);
+  d->m_encConfigManage->addEncItem(1, encItem);
 
   encItem=new EncConfigHaidehanItem;
   encItem->createAttributeUi();
   warnList.clear();
   encItem->setWarningsString(warnList);
-  d->m_encConfigManage->addEncItem(encItem);
+  d->m_encConfigManage->addEncItem(1, encItem);
 
   encItem=new EncConfigSanXieItem;
   encItem->createAttributeUi();
@@ -183,7 +185,7 @@ void GraphEncoder126::createSupportEncoderItem()
     <<tr("Over temperature")
    <<tr("Battery Alarm");
   encItem->setWarningsString(warnList);
-  d->m_encConfigManage->addEncItem(encItem);
+  d->m_encConfigManage->addEncItem(1, encItem);
 
   encItem=new EncConfigSongXiaItem;
   encItem->createAttributeUi();
@@ -194,13 +196,13 @@ void GraphEncoder126::createSupportEncoderItem()
        <<tr("")
       <<tr("Battery Error");
   encItem->setWarningsString(warnList);
-  d->m_encConfigManage->addEncItem(encItem);
+  d->m_encConfigManage->addEncItem(1, encItem);
 
   encItem=new EncConfigYaskawaItem;
   encItem->createAttributeUi();
-  d->m_encConfigManage->addEncItem(encItem);
+  d->m_encConfigManage->addEncItem(1, encItem);
 
-  ui->listWidget_encAbsolute->addItems(d->m_encConfigManage->itemNames());
+  ui->listWidget_encAbsolute->addItems(d->m_encConfigManage->itemNames().at(1));
 
   ui->rbtn_encLine->setChecked(true);
 }
@@ -328,7 +330,7 @@ void GraphEncoder126::onEncConfigListWidgetRowChanged(int curRow)
   Q_D(GraphEncoder126);
   if(curRow<d->m_encConfigManage->itemNames().count())
   {
-    d->m_curEncConfigItem=d->m_encConfigManage->encItem(curRow);
+    d->m_curEncConfigItem=d->m_encConfigManage->encItem(1, curRow);
     updateEncConfigUiByCurrentConfigItem();
   }
   qDebug()<<"current row="<<curRow;
@@ -352,7 +354,7 @@ void GraphEncoder126::onBtnEncConfigSaveClicked()
   Q_D(GraphEncoder126);
   quint8 inx=ui->listWidget_encAbsolute->currentRow();
 
-  d->m_curEncConfigItem=d->m_encConfigManage->encItem(inx);
+  d->m_curEncConfigItem=d->m_encConfigManage->encItem(1, inx);
   if(d->m_curEncConfigItem!=NULL)
   {
     if(ui->rbtn_encBit->isChecked())
@@ -371,8 +373,9 @@ void GraphEncoder126::onBtnEncConfigSaveClicked()
     d->m_iDataBinding->syncMultiUiDataToTree();
   }
   d->m_uiWidget->writePageFLASH();
-
-  ui->label_encMsg->setVisible(true);
+    if (d->m_dev->isConnecting() || d->m_dev->isOffline()) {
+        ui->label_encMsg->setVisible(true);
+    }
 
 }
 
@@ -475,7 +478,7 @@ void GraphEncoder126::showEncoderError(quint16 lost,quint16 encinfo)
     QStringList errList;
     if(d->m_curEncConfigItem->hasLostError(lost))
     {
-      qDebug()<<"hasLostError";
+      //qDebug()<<"hasLostError";
       errList<<tr("Enc Lost");
     }
     else
@@ -507,7 +510,7 @@ void GraphEncoder126::initCurEncConfigItem()
   //初始化当前encConfigItem
   d->m_iDataBinding->bind(ui->listWidget_encAbsolute,d->m_treeWidget->topLevelItem(FPGA_ABS_CFG_INDEX));//FPGA.prm.ABS_ENC_CFG.all
   d->m_iDataBinding->syncTreeItemToUiData();
-  d->m_curEncConfigItem=d->m_encConfigManage->encItem(ui->listWidget_encAbsolute->currentRow());
+  d->m_curEncConfigItem=d->m_encConfigManage->encItem(1, ui->listWidget_encAbsolute->currentRow());
 //  d->m_curEncConfigItem = new IEncConfigItem;
 //  d->m_curEncConfigItem->setEncType(0);
 //  d->m_curEncConfigItem->createAttributeUi();

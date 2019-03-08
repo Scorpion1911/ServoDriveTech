@@ -1,0 +1,12 @@
+#ifndef UIIOCONF_GLOBAL_H
+#define UIIOCONF_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(UIIOCONF_LIBRARY)
+#  define UIIOCONFSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define UIIOCONFSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // UIIOCONF_GLOBAL_H

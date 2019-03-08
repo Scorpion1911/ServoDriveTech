@@ -62,6 +62,7 @@ private slots:
   void onMotionAxisRowChanged(int row);
   void onBtnCtlSrcPcClicked();
   void onBtnCtlSrcGLink2Clicked();
+  void onBtnCtlSrcIOClicked();
   void onListWidgetMotionTypeInxClicked(QListWidgetItem *item);
   void onBtnServoOnClicked(bool checked);
   void onBtnMotionGoClicked(bool checked);

@@ -16,7 +16,8 @@ typedef enum{
   COL_TARGET_CONFIG_XML,
   COL_TARGET_CONFIG_INDEX,
   COL_TARGET_CONFIG_FILESRCTYPE,
-  COL_TARGET_CONFIG_ISPLOT
+  COL_TARGET_CONFIG_ISPLOT,
+  COL_TARGET_CONFIG_NICKNAME
 }TargetConfigColumn;
 typedef enum{
   COL_PAGE_TREE_NAME,
@@ -111,7 +112,8 @@ typedef enum {
 
 typedef enum {
   SEV_CTL_SRC_PC,
-  SEV_CTL_SRC_GLINK2
+  SEV_CTL_SRC_GLINK2,
+  SEV_CTL_SRC_IO
 }SevControlSrc;
 
 typedef enum{
@@ -128,7 +130,9 @@ typedef enum{
     MODE_PT,
     MODE_DB,
     MODE_CSC,
-    MODE_AUT
+    MODE_AUT,
+    MODE_HOME,
+    MODE_MID
 }ModeCtlType;
 
 template <typename T>

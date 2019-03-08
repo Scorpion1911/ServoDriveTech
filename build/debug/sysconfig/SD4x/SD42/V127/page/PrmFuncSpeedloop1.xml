@@ -220,7 +220,7 @@
        <string>NULL</string>
       </property>
       <property name="text">
-       <string>1</string>
+       <string>0</string>
       </property>
       <property name="text">
        <string>32767</string>
@@ -249,7 +249,7 @@
        <string>NULL</string>
       </property>
       <property name="text">
-       <string>1</string>
+       <string>0</string>
       </property>
       <property name="text">
        <string>32767</string>

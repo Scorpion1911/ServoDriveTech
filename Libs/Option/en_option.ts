@@ -63,6 +63,34 @@
     </message>
 </context>
 <context>
+    <name>OptMode</name>
+    <message>
+        <location filename="optmode.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="optmode.ui" line="20"/>
+        <source>Software Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="optmode.ui" line="29"/>
+        <source>Online Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="optmode.ui" line="42"/>
+        <source>Offline Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="optmode.cpp" line="50"/>
+        <source>Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OptPath</name>
     <message>
         <location filename="optpath.ui" line="14"/>

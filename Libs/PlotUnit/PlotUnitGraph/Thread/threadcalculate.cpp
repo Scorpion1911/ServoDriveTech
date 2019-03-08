@@ -64,8 +64,10 @@ void CalculateWorker::onSampleDataIn(SampleData data)
     quint16 size=c->cData()->values.size();
 
     int interval=size/maxPoint;
-    if(interval == 0)
+    if(interval == 0) {
+        qDebug()<<"interval 0";
       interval = 1;
+    }
 //    static quint32 oi = 0;
 //    if(oi % 20 ==0)
 //    {

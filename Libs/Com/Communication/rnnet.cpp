@@ -37,6 +37,7 @@ errcode_t RnNet::setServoEnable(uint8_t axis, bool on)
       ret=GTSD_CMD_SetServoOn(axis,d->m_comType,d->m_rnStation);
     else
       ret=GTSD_CMD_SetServoOff(axis,d->m_comType, d->m_rnStation);
+    qDebug()<<"ret"<<ret;
     return ret;
 }
 

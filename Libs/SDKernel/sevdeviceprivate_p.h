@@ -30,6 +30,7 @@ public :
   //软件模块
   //随版本属性附加类
   bool m_connected;
+  bool m_isOffline;
 
   LinkSocket *m_socket;
   ICtrBoard *m_ctrBoard;
@@ -55,6 +56,7 @@ protected:
   SevDevice *q_ptr;
 private:
   QTreeWidget *m_configTree;
+  QTreeWidget *m_offlineTree;
 
 private:
   void initConfig(const DeviceConfig *dConfig);

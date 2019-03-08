@@ -45,7 +45,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>15</number>
      </property>
      <widget class="QWidget" name="page_idle">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -674,6 +674,8 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="page_home"/>
+     <widget class="QWidget" name="page_mid"/>
     </widget>
    </item>
    <item>

@@ -20,11 +20,15 @@ CONFIG(debug, debug|release){
 }
 
 SOURCES += uistatus.cpp \
-    graphstatus129.cpp
+    graphstatus129.cpp \
+    graphstatus136.cpp \
+    alarmhistorydia136.cpp
 
 HEADERS += uistatus.h\
         uistatus_global.h \
-    graphstatus129.h
+    graphstatus129.h \
+    graphstatus136.h \
+    alarmhistorydia136.h
 
 unix {
     target.path = /usr/lib
@@ -33,6 +37,8 @@ unix {
 
 FORMS += \
     uistatus.ui \
-    graphstatus129.ui
+    graphstatus129.ui \
+    graphstatus136.ui \
+    alarmhistorydia136.ui
 
 TRANSLATIONS    += ch_uistatus.ts en_uistatus.ts

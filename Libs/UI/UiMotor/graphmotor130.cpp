@@ -120,7 +120,7 @@ void GraphMotor130::onReturnBtnClicked()
 void GraphMotor130::onInstallMotorReceived(const QStringList &paraList)
 {
     Q_D(GraphMotor130);
-    if (!d->m_dev->isConnecting()) {
+    if (!d->m_dev->isConnecting() && !d->m_dev->isOffline()) {
         QMessageBox::information(0, tr("Warning"), tr("Please connect the device!"));
         return;
     }

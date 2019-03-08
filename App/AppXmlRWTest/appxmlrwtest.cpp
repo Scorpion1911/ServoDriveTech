@@ -1,4 +1,4 @@
-#include "appxmlrwtest.h"
+﻿#include "appxmlrwtest.h"
 #include "ui_appxmlrwtest.h"
 #include "string.h"
 #include "QtTreeManager/qttreemanager.h"
@@ -117,9 +117,6 @@ void AppXmlRWTest::onActionWriteClicked()
     short count = 0;
 //    short ret0 = GTSD_CMD_Open(updateProgessBar, (void*)&aa, com_type);
 //    qDebug()<<"open ret"<<ret0;
-    qDebug()<<"1"<<pFileNameList[0];
-    qDebug()<<"2"<<pFileNameList[1];
-    qDebug()<<"3"<<pFileNameList[2];
     short ret = GTSD_CMD_XmlWriteFile(axis, pFileNameList, pFileTypeList, num, updateProgessBar, (void*)&aa, count, com_type, stationId);
     qDebug()<<"write ret"<<ret;
 

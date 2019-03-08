@@ -305,6 +305,7 @@ void AdvUserFirmwareSegmentFlash::onActionDSPFlashBtnClicked()
             dspNum = (d->m_crtDev->axisNum() + 1) / 2;
         }
         delete tree;
+        emit startDownload(false);
         for(int i = 0; i < dspNum; i++){
             qint16 ret = d->m_crtDev->socketCom()->downLoadDSPFLASH(i, d->m_hexFilePath.toStdWString(), updateProgressBar, (void *)ui->progressBar);
             ui->plainTextEdit->appendPlainText(tr("Downloading dsp:%1").arg(i+1));
@@ -313,6 +314,7 @@ void AdvUserFirmwareSegmentFlash::onActionDSPFlashBtnClicked()
                 ok = false;
             }
         }
+        emit startDownload(true);
     }
     if(ok){
         ui->plainTextEdit->appendPlainText(tr("Download dsp successful!"));
@@ -335,6 +337,7 @@ void AdvUserFirmwareSegmentFlash::onActionFPGAFlashBtnClicked()
         int fpgaAxisNum = 0;
         QString filePath = GTUtils::sysPath() + d->m_crtDev->typeName() + "/" + d->m_crtDev->modelName() + "/"\
                             + d->m_crtDev->versionName() + "/" + "PrmFirmwareUpdate.xml";
+        qDebug()<<"filePath"<<filePath;
         QTreeWidget *tree = QtTreeManager::createTreeWidgetFromXmlFile(filePath);
         QTreeWidgetItem *fpgaNameItem = GTUtils::findItem("fpga", tree, 0);
         if(fpgaNameItem != NULL){
@@ -345,13 +348,16 @@ void AdvUserFirmwareSegmentFlash::onActionFPGAFlashBtnClicked()
             fpgaAxisNum = d->m_crtDev->axisNum();
         }
         delete tree;
+        emit startDownload(false);
         for(int i = 0; i < fpgaNum; i++){
             qDebug()<<"path"<<d->m_rpdFilePath;
+            qDebug()<<"1"<<i * fpgaAxisNum;
             qint16 ret = d->m_crtDev->socketCom()->downLoadFPGAFLASH(i * fpgaAxisNum, d->m_rpdFilePath.toStdWString(), updateProgressBar, (void *)ui->progressBar);
             if(ret != 0){
                 ok = false;
             }
         }
+        emit startDownload(true);
     }
     if(ok){
         ui->plainTextEdit->appendPlainText(tr("Download fpga successful!"));
@@ -369,6 +375,7 @@ void AdvUserFirmwareSegmentFlash::onActionFLASHFlashBtnClicked()
     ui->progressBar->setVisible(true);
     ui->plainTextEdit->appendPlainText(tr("Start download flash!"));
     bool ok = firmwareFlashCheck();
+    emit startDownload(false);
     if(ok){
         quint8 axis = 0;
         short value = ui->progressBar->value();
@@ -376,6 +383,7 @@ void AdvUserFirmwareSegmentFlash::onActionFLASHFlashBtnClicked()
         fileTypeList<<0<<0<<0;
         ok = d->m_crtDev->writeXml(axis, d->m_xmlFilePaths, fileTypeList, d->m_xmlFilePaths.length(), updateProgressBar, (void *)ui->progressBar, value);        
     }
+    emit startDownload(true);
     if(ok){
         ui->plainTextEdit->appendPlainText(tr("Download flash successful!"));
     }else{

@@ -2,6 +2,7 @@
 #include "ui_uicurrent.h"
 #include "iuiwidget_p.h"
 #include "igraphcurrent.h"
+#include "sevdevice.h"
 
 #include <QDebug>
 #include <QGraphicsScene>
@@ -54,6 +55,7 @@ void UiCurrent::accept(QWidget *w)//take ownership of w
   d->m_graphCurrentView=dynamic_cast<IGraphCurrent *>(w);
 
   d->m_graphCurrentView->visit(this);
+  d->m_copyAll = false;
 }
 
 void UiCurrent::setUiActive(bool actived)
@@ -61,8 +63,15 @@ void UiCurrent::setUiActive(bool actived)
   if(actived)
   {
     Q_D(UiCurrent);
-    if(readGenPageRAM())
-      d->m_graphCurrentView->syncTreeDataToUiFace();
+      bool ok;
+      if (d->m_device->isOffline()) {
+          ok = readOfflinePrm();
+      } else {
+          ok = readGenPageRAM();
+      }
+      if (ok) {
+          d->m_graphCurrentView->syncTreeDataToUiFace();
+      }
   }
 }
 
@@ -76,7 +85,13 @@ void UiCurrent::onActionReadRAM()
 void UiCurrent::onActionReadFLASH()
 {
   Q_D(UiCurrent);
-  if(readPageFLASH())
+    bool ok;
+    if (d->m_device->isOffline()) {
+        ok = readOfflinePrm();
+    } else {
+        ok = readPageFLASH();
+    }
+  if(ok)
     d->m_graphCurrentView->syncTreeDataToUiFace();
 }
 

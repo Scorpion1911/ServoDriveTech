@@ -43,6 +43,7 @@ void UiPower::accept(QWidget *w)
     ui->qmlHboxLayout->addWidget(w);
     d->m_graphPower=dynamic_cast<IGraphPower *>(w);
     d->m_graphPower->visit(this);
+    d->m_copyAll = false;
 }
 
 void UiPower::setUiActive(bool actived)
@@ -50,7 +51,13 @@ void UiPower::setUiActive(bool actived)
   if(actived)
   {
     Q_D(UiPower);
-    if(readGenPageRAM())
+      bool ok;
+      if (d->m_device->isOffline()) {
+          ok = readOfflinePrm();
+      } else {
+          ok = readGenPageRAM();
+      }
+    if(ok)
       d->m_graphPower->syncTreeDataToUiFace();
   }
 }
@@ -65,6 +72,18 @@ bool UiPower::writePageFLASH()
     d->m_graphPower->syncTreeDataToUiFace();
   }
   return true;
+}
+
+bool UiPower::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_D(UiPower);
+    bool wOk=true;
+    wOk=IUiWidget::writePageFlashToOtherAxis(srcAxisInx, desAxisInx, tree);
+    if(wOk)
+    {
+      d->m_graphPower->syncTreeDataToUiFace();
+    }
+    return true;
 }
 
 bool UiPower::hasConfigFunc()

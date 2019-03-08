@@ -15,7 +15,9 @@ SUBDIRS += \
     CurveUsrIv\
     CurveUsrIw\
     CurveUsrTq\
-	CurveUsrTrate\
-    PluginsManager
+    CurveUsrTrate\
+    PluginsManager \
+    CurveCusAcc \
+    CurveCusAccd
 
 TRANSLATIONS    += ch_plugins.ts en_plugins.ts

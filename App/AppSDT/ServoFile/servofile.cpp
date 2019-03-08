@@ -80,7 +80,7 @@ bool ServoFile::downLoadFile(void (*processCallback)(void *pbar,short *value), v
     AdvUserCheck *usrCheck = dynamic_cast<AdvUserCheck *>(AdvUserContainer::instance()->advItem("advusercheck"));
     bool isAdmin = user->isAdmin();
     bool isChecked = usrCheck->isChecked();
-    bool isOk;
+    bool isOk = true;
     if (!isAdmin || (isAdmin && isChecked)) {
         isOk = dev->checkLoadParameters(downloadTree, m_downloadItemNum);
     }
@@ -164,14 +164,90 @@ bool ServoFile::upLoadFile(void (*processCallback)(void *pbar,short *value), voi
             return false;
         }
     }
-    qDebug()<<"a";
     if (versionNodeItem != NULL) {
         qDebug()<<"insert";
         dspTree->insertTopLevelItem(XMLFILE_ROW_INDEX, versionNodeItem);
     }
-    qDebug()<<"b";
     QtTreeManager::writeTreeWidgetToXmlFile(xmlPath, dspTree);
-    qDebug()<<"c";
+    delete dspTree;
+    return true;
+}
+
+bool ServoFile::downLoadOfflineFile(const QString &xmlPath, SevDevice *dev)
+{
+    m_barCount = 0;
+    QTreeWidget* downloadTree = QtTreeManager::createTreeWidgetFromXmlFile(xmlPath);
+    m_downloadItemNum = getItemNum(downloadTree);
+    if (downloadTree == NULL) {
+        QMessageBox::information(0, tr("Warning"), tr("Xml file error!"));
+        return false;
+    }
+    quint16 dspVersion;
+    dspVersion = dev->versionName().remove(0, 1).toUInt();
+    qDebug()<<"dsp version"<<dspVersion;
+
+    QString xmlNodeName = downloadTree->topLevelItem(XMLFILE_ROW_INDEX)->text(GT::COL_FLASH_ALLAXIS_NAME);
+    quint16 xmlVersion;
+    if (xmlNodeName.compare(XMLFILE_NODE_NAME) == 0) {
+        QTreeWidgetItem *versionNodeItem;
+        xmlVersion = downloadTree->topLevelItem(XMLFILE_ROW_INDEX)->child(XMLFILE_CHILD_VERSION_ROW_INDEX)->text(GT::COL_FLASH_RAM_TREE_VALUE).toUInt();
+        versionNodeItem = downloadTree->takeTopLevelItem(XMLFILE_ROW_INDEX);
+        delete versionNodeItem;
+    } else {
+        xmlVersion = 0;
+    }
+    qDebug()<<"xml version"<<xmlVersion;
+    if (downloadTree->topLevelItemCount() != dev->axisNum()) {
+        QString msg = tr("axis number of current xml file is not equal to the device");
+        QMessageBox::information(0, tr("Warning"), msg);
+        downloadTree->clear();
+        delete downloadTree;
+        return false;
+    }
+    connect(dev, SIGNAL(initProgressInfo(int,QString)), this, SIGNAL(sendProgressbarMsg(int,QString)));
+    OptUser *user = dynamic_cast<OptUser *>(OptContainer::instance()->optItem("optuser"));
+    AdvUserCheck *usrCheck = dynamic_cast<AdvUserCheck *>(AdvUserContainer::instance()->advItem("advusercheck"));
+    bool isAdmin = user->isAdmin();
+    bool isChecked = usrCheck->isChecked();
+    bool isOk;
+    if (!isAdmin || (isAdmin && isChecked)) {
+        isOk = dev->checkLoadParameters(downloadTree, m_downloadItemNum);
+    }
+    disconnect(dev, SIGNAL(initProgressInfo(int,QString)), this, SIGNAL(sendProgressbarMsg(int,QString)));
+    if (!isOk) {
+        delete downloadTree;
+        return false;
+    }
+    for (int i = 0; i < downloadTree->topLevelItemCount(); i++) {
+        updatePrmTreeItem(downloadTree->topLevelItem(i), dev->offlineTree()->topLevelItem(i));
+    }
+    delete downloadTree;
+    return true;
+}
+
+bool ServoFile::upLoadOfflineFile(const QString &xmlPath, SevDevice *dev)
+{
+    m_barCount = 0;
+    QString dspPath = GTUtils::sysPath() + dev->typeName() + "/" + dev->modelName() + "/" + dev->versionName() + "/";
+    QString dspFilePath = dspPath + FLASH_ALL_PRM_NAME;
+    qDebug()<<"dspFilePath"<<dspFilePath;
+    QTreeWidget* dspTree = QtTreeManager::createTreeWidgetFromXmlFile(dspFilePath);
+    QString xmlNodeName = dspTree->topLevelItem(XMLFILE_ROW_INDEX)->text(GT::COL_FLASH_RAM_TREE_NAME);
+    QTreeWidgetItem* versionNodeItem = NULL;
+    if (xmlNodeName.compare(XMLFILE_NODE_NAME) == 0) {
+        versionNodeItem = dspTree->takeTopLevelItem(XMLFILE_ROW_INDEX);
+    }
+    bool insert = false;
+    if (versionNodeItem != NULL) {
+        qDebug()<<"insert";
+        dev->offlineTree()->insertTopLevelItem(XMLFILE_ROW_INDEX, versionNodeItem);
+        insert = true;
+    }
+    QtTreeManager::writeTreeWidgetToXmlFile(xmlPath, dev->offlineTree());
+    if (insert) {
+        versionNodeItem = dev->offlineTree()->takeTopLevelItem(XMLFILE_ROW_INDEX);
+        delete versionNodeItem;
+    }
     delete dspTree;
     return true;
 }
@@ -218,7 +294,12 @@ bool ServoFile::downloadItem(SevDevice *dev, int axisIndex, QTreeWidgetItem *ite
         emit sendProgressbarMsg(m_barCount * 100 / m_downloadItemNum, tr("Downloading axis%1").arg(QString::number(axisIndex + 1)) + item->text(GT::COL_FLASH_ALLAXIS_NAME));
     }
     if (item->text(GT::COL_FLASH_ALLAXIS_ADDR).compare("-1") != 0) {
-        bool ok = dev->writePrmItemFlash(axisIndex, item);
+        bool ok;
+        if (dev->isOffline()) {
+            ok = dev->writeOfflineAdvItem(axisIndex, item);
+        } else {
+            ok = dev->writePrmItemFlash(axisIndex, item);
+        }
         if (!ok) {
             QMessageBox::information(0, tr("Error"), tr("Download Error"));
             return false;
@@ -241,7 +322,8 @@ bool ServoFile::uploadItem(SevDevice *dev, int axisIndex, QTreeWidgetItem *item)
         qApp->processEvents();
     }
     if (item->text(GT::COL_FLASH_ALLAXIS_ADDR).compare("-1") != 0) {
-        bool ok = dev->readPrmItemFlash(axisIndex, item);
+        bool ok;
+        ok = dev->readPrmItemFlash(axisIndex, item);
         if (!ok) {
             QMessageBox::information(0, tr("Error"), tr("Upload Error"));
             return false;
@@ -288,9 +370,6 @@ bool ServoFile::readXmlFromDsp(void (*processCallback)(void *pbar, short *value)
     pFileNameList[2] = p;
 
     short count = 0;
-    qDebug()<<"1"<<pFileNameList[0];
-    qDebug()<<"2"<<pFileNameList[1];
-    qDebug()<<"3"<<pFileNameList[2];
     int ret = dev->socketCom()->readXML(axis, pFileNameList, pFileTypeList, num, processCallback, processbar, count);
     qDebug()<<"ret"<<ret;
     for (int i = 0; i < num; i++)

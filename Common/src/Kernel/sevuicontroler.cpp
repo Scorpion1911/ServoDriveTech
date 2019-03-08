@@ -53,7 +53,7 @@ void SevUiControler::createUis()
       index.pageInx=j;
       ui->setUiIndexs(index);
       ui->addTreeWidget(m_sev->axisTreeSource(i,j));
-      //qDebug()<<"graph name"<<uiGraphName;
+      qDebug()<<"graph name"<<uiGraphName;
       if(uiGraphName!="NULL")
       {
         QWidget *uiGraph=UiFactory::createObject(uiGraphName.toLatin1());

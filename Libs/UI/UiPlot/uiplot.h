@@ -21,6 +21,9 @@ public:
   void accept(QWidget*w) Q_DECL_OVERRIDE;
   bool readPageFLASH() Q_DECL_OVERRIDE{return true;}
   bool writePageFLASH() Q_DECL_OVERRIDE{return true;}
+  bool readOfflinePrm()Q_DECL_OVERRIDE{return true;}
+  bool writeOfflinePrm()Q_DECL_OVERRIDE{return true;}
+  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)Q_DECL_OVERRIDE{return true;}
   QHBoxLayout *hBoxLayout();
   bool hasConfigFunc() {return false;}
   bool hasSaveFunc() {return false;}

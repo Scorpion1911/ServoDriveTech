@@ -177,7 +177,8 @@ void ComparisonDialog::onActionOldBtnClicked()
 {
     QString path = QFileDialog::getOpenFileName(this, tr("Open Old File"), m_oldFilePath, tr("Files(*.xml)"));
     if (path.length() == 0) {
-        QMessageBox::information(NULL, tr("Path"), tr("You did not select any files."));
+        //QMessageBox::information(NULL, tr("Path"), tr("You did not select any files."));
+        return;
     } else {
         //QMessageBox::information(NULL, tr("Path"), tr("You selected ") + path);
         clickOldBtn(path);
@@ -211,7 +212,8 @@ void ComparisonDialog::onActionNewBtnClicked()
 {
     QString path = QFileDialog::getOpenFileName(this, tr("Open New File"), m_newFilePath, tr("Files(*.xml)"));
     if (path.length() == 0) {
-        QMessageBox::information(NULL, tr("Path"), tr("You did not select any files."));
+        //QMessageBox::information(NULL, tr("Path"), tr("You did not select any files."));
+        return;
     } else {
         //QMessageBox::information(NULL, tr("Path"), tr("You selected ") + path);
         clickNewBtn(path);

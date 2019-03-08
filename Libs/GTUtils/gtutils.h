@@ -10,6 +10,7 @@
 #define DEVCONFIG_NAME                "DevConfig.ui"
 #define FLASH_ALL_PRM_NAME            "FlashPrm_AllAxis.xml"
 #define RAM_ALL_PRM_NAME              "RamPrm_AllAxis.xml"
+#define FLASH_OFFLINE_PRM_NAME        "FlashPrm_AllAxis_Off.xml"
 #define POWERBOAD_NAME                "PowerBoard.ui"
 #define COMINDEX_NAME                 "ComIndex.ui"
 #define CONFIG_SELECTTREE_NAME         "ConfigSelectTree.ui"
@@ -50,6 +51,8 @@ public:
   static int byteNumbers(const QString &str);
 
   static QVariant data(const QString &path, const QString &group, const QString &key, const QVariant &defaultValue);
+
+  static void getAllFolderNames(const QString &path, QStringList &nameList);
 private:
   inline static QString sdtPath();
 };

@@ -48,7 +48,10 @@ CONFIG(debug, debug|release){
           -lOptiond\
           -lPlotUnitGraphd\
           -lIPlotUnitd\
-          -lAdvUserd
+          -lAdvUserd\
+          -lUiIOConfd\
+          -lUiIOAnalogd\
+          -lUiHomed
 } else{
     APPTEST_OUT_PATH=$${PWD}/../build/release/bin
     LIBPATH=$${APPTEST_OUT_PATH}
@@ -74,6 +77,9 @@ CONFIG(debug, debug|release){
           -lOption\
           -lPlotUnitGraph\
           -lIPlotUnit\
-          -lAdvUser
+          -lAdvUser\
+          -lUiIOConf\
+          -lUiIOAnalog\
+          -lUiHome
 }
 DESTDIR =$${APPTEST_OUT_PATH}

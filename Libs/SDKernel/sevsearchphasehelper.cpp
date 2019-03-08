@@ -1,5 +1,6 @@
 ﻿#include "sevsearchphasehelper.h"
 #include "sevdevice.h"
+#include "gtutils.h"
 #include <QDebug>
 
 #define KEY_IPA_FINISH_FLAG "gSevDrv.sev_obj.mfj.pos_adj_flag"
@@ -38,6 +39,13 @@ bool SevSearchPhaseHelper::searchPhaseStart(int value)
   if(on)
   {
     emit ipaWarningMsg(tr("Servo is on now ! refuse to search phase !"));
+    return false;
+  }
+
+  on = m_sev->axisBrakeIsOn(m_axisInx);
+  if(!on)
+  {
+    emit ipaWarningMsg(tr("Brake is off now ! refuse to search phase !"));
     return false;
   }
 
@@ -138,6 +146,7 @@ void SevSearchPhaseHelper::onTimeOut()
     m_timer.stop();
     m_sev->setAxisServoOn(m_axisInx,false);
     m_sev->setControlSrc(m_axisInx,m_curControlSrc);
+    GTUtils::delayms(50);
     m_sev->setCurrentTaskServoMode(m_axisInx,m_curMode);
     m_sev->cmdSetPosAdjRef(m_axisInx,0);
     m_progressValue = 0 ;

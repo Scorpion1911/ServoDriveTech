@@ -2,6 +2,7 @@
 #include "ui_uiplot.h"
 #include "iuiwidget_p.h"
 #include "iplotunit.h"
+#include "Option"
 
 #include <QDebug>
 
@@ -43,6 +44,7 @@ void UiPlot::accept(QWidget *w)
   ui->qmlHboxLayout->addWidget(d->m_iplotUint);
   d->m_iplotUint->visit(this);
   connect(d->m_iplotUint,SIGNAL(winFloatingChange(bool)),this,SLOT(onWinFloatChanged(bool)));
+  d->m_copyAll = false;
 }
 
 QStackedWidget *UiPlot::getUiStackedWidget(void)
@@ -66,7 +68,11 @@ QHBoxLayout *UiPlot::hBoxLayout()
 void UiPlot::setUiActive(bool actived)
 {
   Q_D(UiPlot);
-  d->m_iplotUint->respondUiActive(actived);
+    OptMode *optmode = dynamic_cast<OptMode *>(OptContainer::instance()->optItem("optmode"));
+    if (optmode->isOffline()) {
+        actived = false;
+    }
+    d->m_iplotUint->respondUiActive(actived);
 }
 
 void UiPlot::onWinFloatChanged(bool isIn)

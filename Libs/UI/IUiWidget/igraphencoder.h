@@ -29,6 +29,7 @@ protected:
   virtual quint16 readSeqDir(const QString &key);
   virtual quint16 readEncInfo(const QString &key);
   virtual quint16 readErrLost(const QString &key);
+  virtual quint32 readAbsPos(const QString &key);
   virtual quint32 getLineNumber(){return 0;}
   virtual void createSupportEncoderItem(){}
 

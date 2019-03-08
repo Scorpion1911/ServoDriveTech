@@ -15,6 +15,7 @@
 #include "searchitemfromtree.h"
 #include <QLabel>
 #include <QStringList>
+#include <QTreeWidgetItemIterator>
 
 #define STR_MARK_ALL "all"
 #define STR_MARK_BIT "bit"
@@ -51,11 +52,35 @@ UiFLASH::UiFLASH(QWidget *parent):IUiWidget(*(new UiFLASHPrivate),parent),ui(new
   d->m_editedItem = NULL;
   d->m_isEditing = false;
   d->m_nodeColor = Qt::blue;
+  d->m_copyAll = true;
 }
 
 UiFLASH::~UiFLASH()
 {
-  delete ui;
+    delete ui;
+}
+
+bool UiFLASH::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_D(UiFLASH);
+    if (!d->m_device->isConnecting() && !d->m_device->isOffline()) {
+        return false;
+    }
+    d->m_msg = tr("Updating data Axis%1").arg(desAxisInx + 1);
+    updateTree(d->m_dataTree, tree);
+    d->m_barCount = 0;
+    d->m_msg = tr("Writing data Axis%1").arg(desAxisInx + 1);
+    QTreeWidgetItemIterator it(tree);
+    while (*it) {
+        if ((*it)->childCount() == 0) {
+//            qDebug()<<"item name"<<(*it)->text(0);
+//            qDebug()<<"item value"<<(*it)->text(1);
+            emit sendBarInfo((d->m_barCount++) % 100, d->m_msg);
+            writeItem(desAxisInx, (*it));
+        }
+        ++it;
+    }
+    return true;
 }
 
 bool UiFLASH::hasConfigFunc()
@@ -141,8 +166,8 @@ bool UiFLASH::eventFilter(QObject *obj, QEvent *event)
                         if (!isEditedDataValid(d->m_editedItem)) {
                             d->m_editedItem->setText(GT::COL_FLASH_RAM_TREE_VALUE, d->m_originText);
                         }
-                        if (d->m_device->isConnecting()) {
-                            writeItem(d->m_editedItem);
+                        if (d->m_device->isConnecting() || d->m_device->isOffline()) {
+                            writeItem(uiIndexs().axisInx, d->m_editedItem);
                             d->m_editedItem->setTextColor(d->m_editedCol, Qt::black);
                         } else {
                             QMessageBox::information(this, tr("Warning"), tr("Please connect the device!"));
@@ -154,8 +179,8 @@ bool UiFLASH::eventFilter(QObject *obj, QEvent *event)
                     if (d->m_dataTree->selectedItems().length() != 0) {
                         for (int i = 0; i < d->m_dataTree->selectedItems().length(); i++) {
                             QTreeWidgetItem *item = d->m_dataTree->selectedItems().at(i);
-                            if (d->m_device->isConnecting()) {
-                                writeItem(item);
+                            if (d->m_device->isConnecting() || d->m_device->isOffline()) {
+                                writeItem(uiIndexs().axisInx, item);
                                 item->setTextColor(GT::COL_FLASH_RAM_TREE_VALUE, Qt::black);
                             } else {
                                 QMessageBox::information(this, tr("Warning"), tr("Please connect the device!"));
@@ -174,6 +199,35 @@ bool UiFLASH::eventFilter(QObject *obj, QEvent *event)
         }
     }
     return QWidget::eventFilter(obj, event);
+}
+
+void UiFLASH::updateTree(QTreeWidget *srcTree, QTreeWidget *desTree)
+{
+    Q_D(UiFLASH);
+    d->m_barCount = 0;
+    updateTreeItem(srcTree->invisibleRootItem(), desTree->invisibleRootItem());
+}
+
+void UiFLASH::updateTreeItem(QTreeWidgetItem *srcTreeItem, QTreeWidgetItem *desTreeItem)
+{
+    Q_D(UiFLASH);
+    for (int i = 0; i < srcTreeItem->childCount(); i++) {
+        QString text = srcTreeItem->child(i)->text(GT::COL_PAGE_TREE_NAME);
+        for (int j = 0; j < desTreeItem->childCount(); j++) {
+            if (text.compare(desTreeItem->child(j)->text(GT::COL_PAGE_TREE_NAME)) == 0) {
+                emit sendBarInfo((d->m_barCount++) % 100, d->m_msg);
+                readItem(uiIndexs().axisInx, srcTreeItem->child(i));
+//                qDebug()<<"src name"<<srcTreeItem->child(i)->text(0);
+//                qDebug()<<"des name"<<desTreeItem->child(j)->text(0);
+//                qDebug()<<"src value"<<srcTreeItem->child(i)->text(1);
+//                qDebug()<<"des value"<<desTreeItem->child(j)->text(1);
+                desTreeItem->child(j)->setText(GT::COL_PAGE_TREE_VALUE, srcTreeItem->child(i)->text(GT::COL_PAGE_TREE_VALUE));
+                updateTreeItem(srcTreeItem->child(i), desTreeItem->child(j));
+//                qDebug()<<"updated des value"<<desTreeItem->child(j)->text(1);
+                break;
+            }
+        }
+    }
 }
 
 QStackedWidget *UiFLASH::getUiStackedWidget(void)
@@ -206,7 +260,7 @@ void UiFLASH::updateItemData(QTreeWidgetItem *item)
 {
     //Q_D(UiFLASH);
     if (item->text(GT::COL_FLASH_RAM_TREE_ADDR).compare("-1") != 0) {
-        readItem(item);
+        readItem(uiIndexs().axisInx, item);
     }
     for (int i = 0; i < item->childCount(); i++) {
         if (item->child(i)->isExpanded() || item->child(i)->childCount() == 0) {
@@ -215,7 +269,7 @@ void UiFLASH::updateItemData(QTreeWidgetItem *item)
     }
 }
 
-void UiFLASH::writeItem(QTreeWidgetItem *item)
+void UiFLASH::writeItem(int axisInx, QTreeWidgetItem *item)
 {
     Q_D(UiFLASH);
     QStringList list = item->text(GT::COL_FLASH_RAM_TREE_NAME).split(".");
@@ -233,18 +287,32 @@ void UiFLASH::writeItem(QTreeWidgetItem *item)
             quint16 value = BitItemHelper::calculate16Bits(item);
             allItem->setText(GT::COL_FLASH_RAM_TREE_VALUE, QString::number(value));
         }
-        d->m_device->writeAdvFlash(uiIndexs().axisInx, allItem);
-        d->m_device->readAdvFlash(uiIndexs().axisInx, allItem);
+        if (d->m_device->isOffline()) {
+            d->m_device->writeOfflineAdvItem(axisInx, allItem);
+            d->m_device->readOfflineAdvItem(axisInx, allItem);
+        } else {
+            d->m_device->writeAdvFlash(axisInx, allItem);
+            d->m_device->readAdvFlash(axisInx, allItem);
+        }
     } else {
-        d->m_device->writeAdvFlash(uiIndexs().axisInx, item);
-        d->m_device->readAdvFlash(uiIndexs().axisInx, item);
+        if (d->m_device->isOffline()) {
+            d->m_device->writeOfflineAdvItem(axisInx, item);
+            d->m_device->readOfflineAdvItem(axisInx, item);
+        } else {
+            d->m_device->writeAdvFlash(axisInx, item);
+            d->m_device->readAdvFlash(axisInx, item);
+        }
     }
 }
 
-void UiFLASH::readItem(QTreeWidgetItem *item)
+void UiFLASH::readItem(int axisInx, QTreeWidgetItem *item)
 {
     Q_D(UiFLASH);
-    d->m_device->readAdvFlash(uiIndexs().axisInx, item);
+    if (d->m_device->isOffline()) {
+        d->m_device->readOfflineAdvItem(axisInx, item);
+    } else {
+        d->m_device->readAdvFlash(axisInx, item);
+    }
     QStringList list = item->text(GT::COL_FLASH_RAM_TREE_NAME).split(".");
     int listIndex = list.length() - 1;
     if (BitItemHelper::isTargetItem(item, STR_MARK_ALL, listIndex)) {
@@ -329,7 +397,7 @@ void UiFLASH::onItemExpanded(QTreeWidgetItem *item)
 {
     Q_D(UiFLASH);
     d->m_dataTree->resizeColumnToContents(GT::COL_FLASH_RAM_TREE_NAME);
-    if (d->m_device->isConnecting()) {
+    if (d->m_device->isConnecting() || d->m_device->isOffline()) {
         updateItemData(item);
     } else {
         qDebug()<<"not connected";

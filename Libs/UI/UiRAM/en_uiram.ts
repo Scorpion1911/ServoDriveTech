@@ -4,12 +4,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="uiram.cpp" line="285"/>
+        <location filename="uiram.cpp" line="286"/>
         <source>Warning!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiram.cpp" line="285"/>
+        <location filename="uiram.cpp" line="286"/>
         <source>No corresponding Item was found!
 Please input again!</source>
         <translation type="unfinished"></translation>
@@ -23,29 +23,29 @@ Please input again!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiram.cpp" line="96"/>
+        <location filename="uiram.cpp" line="97"/>
         <source>Keyword:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiram.cpp" line="102"/>
+        <location filename="uiram.cpp" line="103"/>
         <source>Execute Search Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiram.cpp" line="104"/>
+        <location filename="uiram.cpp" line="105"/>
         <source>Cancel Search Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiram.cpp" line="149"/>
-        <location filename="uiram.cpp" line="162"/>
+        <location filename="uiram.cpp" line="150"/>
+        <location filename="uiram.cpp" line="163"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uiram.cpp" line="149"/>
-        <location filename="uiram.cpp" line="162"/>
+        <location filename="uiram.cpp" line="150"/>
+        <location filename="uiram.cpp" line="163"/>
         <source>Please connect the device!</source>
         <translation type="unfinished"></translation>
     </message>

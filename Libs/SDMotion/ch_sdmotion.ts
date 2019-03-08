@@ -10,6 +10,60 @@
     </message>
 </context>
 <context>
+    <name>UiMotionPTSL</name>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="14"/>
+        <source>Form</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="45"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="234"/>
+        <source>Deceleration time:</source>
+        <translation>减速时间：</translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="82"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="293"/>
+        <source>TextLabel</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="104"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="221"/>
+        <source>Max Velocity:</source>
+        <translation>最大速度：</translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="117"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="195"/>
+        <source>Acceleration time:</source>
+        <translation>加速时间：</translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="130"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="208"/>
+        <source>Constant time:</source>
+        <translation>匀速时间：</translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="156"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="266"/>
+        <source>Times:</source>
+        <translation>次数：</translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="253"/>
+        <source>Interval:</source>
+        <translation>时间间隔：</translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="363"/>
+        <source>REC</source>
+        <translation>往复运动</translation>
+    </message>
+</context>
+<context>
     <name>UiMotionPosition</name>
     <message>
         <location filename="MotionPosition/uimotionposition.ui" line="14"/>
@@ -92,7 +146,7 @@
         <location filename="MotionVelocity/uimotionvelocity.ui" line="78"/>
         <location filename="MotionVelocity/uimotionvelocity.ui" line="145"/>
         <source>Amp(%)</source>
-        <translation>幅值</translation>
+        <translation>幅值(%)</translation>
     </message>
     <message>
         <location filename="MotionVelocity/uimotionvelocity.ui" line="101"/>

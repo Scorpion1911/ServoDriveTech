@@ -9,36 +9,59 @@ EncConfigManage::EncConfigManage(QObject *parent) : QObject(parent),mp_curAttrib
 }
 EncConfigManage::~EncConfigManage()
 {
-  GT::deepClearList(m_encItemList);
+    for (int i = 0; i < m_encItemList.count(); i++) {
+        QList<IEncConfigItem*> itemList = m_encItemList.at(i);
+        GT::deepClearList(itemList);
+    }
+    m_encItemList.clear();
 }
 
-void EncConfigManage::addEncItem(IEncConfigItem *encItem)
+void EncConfigManage::creatItemLists(int num)
 {
-  m_encItemList.append(encItem);
+    for (int i = 0; i < num; i++) {
+        QList<IEncConfigItem*> list;
+        m_encItemList.append(list);
+    }
 }
-IEncConfigItem *EncConfigManage::encItem(quint8 index)
+
+void EncConfigManage::addEncItem(int index, IEncConfigItem *encItem)
 {
-  if(index<m_encItemList.count())
-    return m_encItemList.at(index);
-  else
+    QList<IEncConfigItem*> list = m_encItemList.at(index);
+    list.append(encItem);
+    m_encItemList.replace(index, list);
+}
+IEncConfigItem *EncConfigManage::encItem(int typeInx, quint8 index)
+{
+    if (typeInx < m_encItemList.count()) {
+        if (index < m_encItemList.at(typeInx).count()) {
+            return m_encItemList.at(typeInx).at(index);
+        }
+    }
     return NULL;
 }
 
-QStringList EncConfigManage::itemNames()
+QList<QStringList> EncConfigManage::itemNames()
 {
-  QStringList list;
-  for(int i=0;i<m_encItemList.count();i++)
-  {
-    list.append(m_encItemList.at(i)->objectName());
+  QList<QStringList> list;
+  for (int i = 0; i < m_encItemList.count(); i++) {
+      QStringList itemList;
+      for (int j = 0; j < m_encItemList.at(i).count(); j++) {
+          IEncConfigItem* item = m_encItemList.at(i).at(j);
+          itemList.append(item->objectName());
+      }
+      list.append(itemList);
   }
-  qDebug()<<"itemNames"<<list;
   return list;
 }
 
 void EncConfigManage::clearAllEncItem()
 {
   mp_curAttributeWidget=NULL;
-  GT::deepClearList(m_encItemList);
+  for (int i = 0; i < m_encItemList.count(); i++) {
+      QList<IEncConfigItem*> itemList = m_encItemList.at(i);
+      GT::deepClearList(itemList);
+  }
+  m_encItemList.clear();
 }
 
 QWidget *EncConfigManage::curAttributeWidget() const

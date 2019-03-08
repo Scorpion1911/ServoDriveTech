@@ -298,7 +298,7 @@
          </property>
          <item>
           <property name="text">
-           <string>SD1</string>
+           <string>SD10</string>
           </property>
           <property name="text">
            <string>21000612</string>
@@ -1306,10 +1306,10 @@
                 <string>gSevDrv.sev_obj.cur.pro.prm.vdc_ulim_2</string>
                </property>
                <property name="text">
-                <string>4300</string>
+                <string>4000</string>
                </property>
                <property name="text">
-                <string>3900</string>
+                <string>3800</string>
                </property>
                <item>
                 <property name="text">
@@ -1783,10 +1783,10 @@
                <string>gSevDrv.sev_obj.cur.pro.prm.bk_ulim_2</string>
               </property>
               <property name="text">
-               <string>4000</string>
+               <string>3800</string>
               </property>
               <property name="text">
-               <string>3800</string>
+               <string>3700</string>
               </property>
               <item>
                <property name="text">
@@ -1873,7 +1873,7 @@
                <string>gSevDrv.sev_obj.cur.pro.prm.bk_llim_2</string>
               </property>
               <property name="text">
-               <string>3750</string>
+               <string>3600</string>
               </property>
               <property name="text">
                <string>3500</string>
@@ -2758,7 +2758,7 @@
                  <string>kΩ</string>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -2787,7 +2787,7 @@
                  <string>kΩ</string>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -2816,7 +2816,7 @@
                  <string>kΩ</string>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -2845,7 +2845,7 @@
                  <string>kΩ</string>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -2874,7 +2874,7 @@
                  <string/>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -3106,7 +3106,7 @@
                  <string>kΩ</string>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -3135,7 +3135,7 @@
                  <string>kΩ</string>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -3164,7 +3164,7 @@
                  <string>kΩ</string>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -3193,7 +3193,7 @@
                  <string/>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -3222,7 +3222,7 @@
                  <string/>
                 </property>
                 <property name="text">
-                 <string>1000</string>
+                 <string>100</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -3760,7 +3760,7 @@
                 <string>gSevDrv.sev_obj.cur.mot.Irat_1</string>
                </property>
                <property name="text">
-                <string>55</string>
+                <string>150</string>
                </property>
                <property name="text">
                 <string>0</string>
@@ -3838,7 +3838,7 @@
                 <string>gSevDrv.sev_obj.cur.mot.Imax_1</string>
                </property>
                <property name="text">
-                <string>250</string>
+                <string>640</string>
                </property>
                <property name="text">
                 <string>0</string>
@@ -4374,7 +4374,7 @@
                    <string>kΩ</string>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4403,7 +4403,7 @@
                    <string>kΩ</string>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4432,7 +4432,7 @@
                    <string>kΩ</string>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4461,7 +4461,7 @@
                    <string>kΩ</string>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4490,7 +4490,7 @@
                    <string/>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4722,7 +4722,7 @@
                    <string>kΩ</string>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4751,7 +4751,7 @@
                    <string>kΩ</string>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4780,7 +4780,7 @@
                    <string>kΩ</string>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4809,7 +4809,7 @@
                    <string/>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -4838,7 +4838,7 @@
                    <string/>
                   </property>
                   <property name="text">
-                   <string>1000</string>
+                   <string>100</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -5597,13 +5597,13 @@
                     <string>A</string>
                    </property>
                    <property name="text">
-                    <string>1</string>
+                    <string>10</string>
                    </property>
                    <property name="text">
                     <string>额定采样电流值</string>
                    </property>
                    <property name="text">
-                    <string>Uint8</string>
+                    <string>Uint16</string>
                    </property>
                    <property name="text">
                     <string>0x00cb</string>
@@ -5664,7 +5664,7 @@
                     <string>Uint8</string>
                    </property>
                    <property name="text">
-                    <string>0x00cc</string>
+                    <string>0x00cd</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -5684,16 +5684,16 @@
                     <string>V</string>
                    </property>
                    <property name="text">
-                    <string>1</string>
+                    <string>100</string>
                    </property>
                    <property name="text">
                     <string>参考电压（抬升电压）</string>
                    </property>
                    <property name="text">
-                    <string>Uint8</string>
+                    <string>int16</string>
                    </property>
                    <property name="text">
-                    <string>0x00cd</string>
+                    <string>0x00ce</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -5858,7 +5858,7 @@
                     <string/>
                    </property>
                    <property name="text">
-                    <string>10000</string>
+                    <string>1000</string>
                    </property>
                    <property name="text">
                     <string>放大比例</string>
@@ -5867,7 +5867,7 @@
                     <string>Uint16</string>
                    </property>
                    <property name="text">
-                    <string>0x00ce</string>
+                    <string>0x00d0</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -5887,16 +5887,16 @@
                     <string>V</string>
                    </property>
                    <property name="text">
-                    <string>1</string>
+                    <string>100</string>
                    </property>
                    <property name="text">
                     <string>抬升电压</string>
                    </property>
                    <property name="text">
-                    <string>Uint8</string>
+                    <string>int16</string>
                    </property>
                    <property name="text">
-                    <string>0x00d0</string>
+                    <string>0x00d2</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -5983,7 +5983,7 @@
                     <string>Uint8</string>
                    </property>
                    <property name="text">
-                    <string>0x00d1</string>
+                    <string>0x00d4</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6012,7 +6012,7 @@
                     <string>Uint8</string>
                    </property>
                    <property name="text">
-                    <string>0x00d2</string>
+                    <string>0x00d5</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6148,16 +6148,16 @@
                     <string>A</string>
                    </property>
                    <property name="text">
-                    <string>1</string>
+                    <string>10</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
                    <property name="text">
-                    <string>Uint8</string>
+                    <string>Uint16</string>
                    </property>
                    <property name="text">
-                    <string>0x00d3</string>
+                    <string>0x00d6</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6215,7 +6215,7 @@
                     <string>Uint8</string>
                    </property>
                    <property name="text">
-                    <string>0x00d4</string>
+                    <string>0x00d8</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6244,7 +6244,7 @@
                     <string>Uint8</string>
                    </property>
                    <property name="text">
-                    <string>0x00d5</string>
+                    <string>0x00d9</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6406,7 +6406,7 @@
                     <string>0</string>
                    </property>
                    <property name="text">
-                    <string>Ω</string>
+                    <string>mΩ</string>
                    </property>
                    <property name="text">
                     <string>100</string>
@@ -6418,7 +6418,7 @@
                     <string>Uint16</string>
                    </property>
                    <property name="text">
-                    <string>0x00d6</string>
+                    <string>0x00da</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6438,7 +6438,7 @@
                     <string/>
                    </property>
                    <property name="text">
-                    <string>10000</string>
+                    <string>1000</string>
                    </property>
                    <property name="text">
                     <string/>
@@ -6447,7 +6447,7 @@
                     <string>Uint16</string>
                    </property>
                    <property name="text">
-                    <string>0x00d8</string>
+                    <string>0x00dc</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6467,16 +6467,16 @@
                     <string>V</string>
                    </property>
                    <property name="text">
-                    <string>1</string>
+                    <string>100</string>
                    </property>
                    <property name="text">
                     <string/>
                    </property>
                    <property name="text">
-                    <string>Uint8</string>
+                    <string>int16</string>
                    </property>
                    <property name="text">
-                    <string>0x00da</string>
+                    <string>0x00de</string>
                    </property>
                    <property name="text">
                     <string>null</string>
@@ -6622,7 +6622,7 @@
                    <string>Uint16</string>
                   </property>
                   <property name="text">
-                   <string>0x00db</string>
+                   <string>0x00e0</string>
                   </property>
                   <property name="text">
                    <string>null</string>
@@ -6744,7 +6744,7 @@
                    <string>Uint8</string>
                   </property>
                   <property name="text">
-                   <string>0x00dd</string>
+                   <string>0x00e2</string>
                   </property>
                   <property name="text">
                    <string>null</string>
@@ -6773,7 +6773,7 @@
                    <string>Uint8</string>
                   </property>
                   <property name="text">
-                   <string>0x00de</string>
+                   <string>0x00e3</string>
                   </property>
                   <property name="text">
                    <string>null</string>
@@ -6860,7 +6860,7 @@
                    <string>Case</string>
                   </property>
                   <property name="text">
-                   <string>0x00df</string>
+                   <string>0x00e4</string>
                   </property>
                   <property name="text">
                    <string>null</string>
@@ -6907,7 +6907,7 @@
                      <string/>
                     </property>
                     <property name="text">
-                     <string>10000</string>
+                     <string>1000</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -6916,7 +6916,7 @@
                      <string>Uint16</string>
                     </property>
                     <property name="text">
-                     <string>0x00e0</string>
+                     <string>0x00e5</string>
                     </property>
                     <property name="text">
                      <string>null</string>
@@ -6936,16 +6936,16 @@
                      <string>V</string>
                     </property>
                     <property name="text">
-                     <string>1</string>
+                     <string>100</string>
                     </property>
                     <property name="text">
                      <string/>
                     </property>
                     <property name="text">
-                     <string>Uint8</string>
+                     <string>int16</string>
                     </property>
                     <property name="text">
-                     <string>0x00e2</string>
+                     <string>0x00e7</string>
                     </property>
                     <property name="text">
                      <string>null</string>
@@ -7003,7 +7003,7 @@
                      <string>Uint8</string>
                     </property>
                     <property name="text">
-                     <string>0x00e3</string>
+                     <string>0x00e9</string>
                     </property>
                     <property name="text">
                      <string>null</string>
@@ -7061,7 +7061,7 @@
                      <string>Case</string>
                     </property>
                     <property name="text">
-                     <string>0x00e4</string>
+                     <string>0x00ea</string>
                     </property>
                     <property name="text">
                      <string>null</string>
@@ -7117,7 +7117,7 @@
                        <string>Case</string>
                       </property>
                       <property name="text">
-                       <string>0x00e5</string>
+                       <string>0x00eb</string>
                       </property>
                       <property name="text">
                        <string>null</string>
@@ -7145,7 +7145,7 @@
                         <string>Uint8</string>
                        </property>
                        <property name="text">
-                        <string>0x00e6</string>
+                        <string>0x00ec</string>
                        </property>
                        <property name="text">
                         <string>null</string>
@@ -7174,7 +7174,7 @@
                         <string>Uint8</string>
                        </property>
                        <property name="text">
-                        <string>0x00e7</string>
+                        <string>0x00ed</string>
                        </property>
                        <property name="text">
                         <string>null</string>
@@ -7204,7 +7204,7 @@
                        <string>Uint16</string>
                       </property>
                       <property name="text">
-                       <string>0x00e8</string>
+                       <string>0x00ee</string>
                       </property>
                       <property name="text">
                        <string>null</string>
@@ -7233,7 +7233,7 @@
                        <string>Uint8</string>
                       </property>
                       <property name="text">
-                       <string>0x00ea</string>
+                       <string>0x00f0</string>
                       </property>
                       <property name="text">
                        <string>null</string>
@@ -7436,7 +7436,7 @@
                        <string>Case</string>
                       </property>
                       <property name="text">
-                       <string>0x00eb</string>
+                       <string>0x00f1</string>
                       </property>
                       <property name="text">
                        <string>null</string>
@@ -7464,7 +7464,7 @@
                         <string>Uint8</string>
                        </property>
                        <property name="text">
-                        <string>0x00ec</string>
+                        <string>0x00f2</string>
                        </property>
                        <property name="text">
                         <string>null</string>
@@ -7493,7 +7493,7 @@
                         <string>Uint8</string>
                        </property>
                        <property name="text">
-                        <string>0x00ed</string>
+                        <string>0x00f3</string>
                        </property>
                        <property name="text">
                         <string>null</string>
@@ -7523,7 +7523,7 @@
                        <string>Uint16</string>
                       </property>
                       <property name="text">
-                       <string>0x00ee</string>
+                       <string>0x00f4</string>
                       </property>
                       <property name="text">
                        <string>null</string>
@@ -7552,7 +7552,7 @@
                        <string>Uint8</string>
                       </property>
                       <property name="text">
-                       <string>0x00f0</string>
+                       <string>0x00f6</string>
                       </property>
                       <property name="text">
                        <string>null</string>
@@ -7790,7 +7790,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f1</string>
+                 <string>0x00f7</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -7874,10 +7874,10 @@
                  <string>最大动态制动电流</string>
                 </property>
                 <property name="text">
-                 <string>Uint8</string>
+                 <string>Uint16</string>
                 </property>
                 <property name="text">
-                 <string>0x00f2</string>
+                 <string>0x00f8</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -7906,7 +7906,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f3</string>
+                 <string>0x00fa</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -7964,7 +7964,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f4</string>
+                 <string>0x00fb</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -7993,7 +7993,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f5</string>
+                 <string>0x00fc</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -8022,7 +8022,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f6</string>
+                 <string>0x00fd</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -8080,7 +8080,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f7</string>
+                 <string>0x00fe</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -8109,7 +8109,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f8</string>
+                 <string>0x00ff</string>
                 </property>
                 <property name="text">
                  <string>null</string>
@@ -8138,7 +8138,7 @@
                  <string>Uint8</string>
                 </property>
                 <property name="text">
-                 <string>0x00f9</string>
+                 <string>0x0100</string>
                 </property>
                 <property name="text">
                  <string>null</string>

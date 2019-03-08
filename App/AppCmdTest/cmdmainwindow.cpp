@@ -24,7 +24,7 @@ CmdMainWindow::~CmdMainWindow()
 
 void CmdMainWindow::on_pushButton_fillmaps_clicked()
 {
-  QString path="D:/Smart/ServoMaster/git-project/ServoDriveTech/ServoDriveTech/build/debug/sysconfig/SD6x/SD61/V129/cmd/GeneralCmd.xml";
+  QString path="D:/Smart/ServoMaster/git-project/ServoDriveTech/ServoDriveTech/build/debug/sysconfig/SD6x/SD61/V130/cmd/GeneralCmd.xml";
   QTreeWidget *tree=QtTreeManager::createTreeWidgetFromXmlFile(path);
   m_gencmd->fillCmdMaps(tree);
   delete tree;

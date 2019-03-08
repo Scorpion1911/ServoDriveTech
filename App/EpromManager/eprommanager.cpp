@@ -39,7 +39,6 @@ EpromManager::EpromManager(QWidget *parent) :
     m_tcpClient->waitforMs(1000);
     m_tcpClient->stopConnection();
     initializeTree();
-
     QString path = GTUtils::customPath() + "option/opt.ini";
     m_filePath = GTUtils::data(path, "path", "flashfilepath", ".").toString();
 
@@ -257,7 +256,7 @@ void EpromManager::onWriteClicked_2() {
 
 void EpromManager::treeItemClicked(QTreeWidgetItem* item, int column) {
     m_itemText = item->text(column);
-    //qDebug()<<"item text"<<m_itemText;
+    qDebug()<<"item text"<<m_itemText;
     if (item->childCount() == 0) {
         m_modeName = m_itemText;
         m_typeName = item->parent()->text(column);

@@ -19,6 +19,9 @@
 #include <QTreeWidgetItemIterator>
 #include <QMessageBox>
 
+#define XMLFILE_ROW_INDEX 0
+#define XMLFILE_CHILD_VERSION_ROW_INDEX 0
+#define XMLFILE_NODE_NAME "XmlFileInformation"
 
 #define CMD_PRO_ALM_FLAG "gSevDrv.sev_obj.cur.pro.alm_flag"
 #define FILENAME_PRM_PTY_TREE "PrmPrtyTree.xml"
@@ -41,17 +44,27 @@
 //偶数轴的地址加32678
 #define ADDR_POS_GEAR_PRM_ANU_0   13790
 #define ADDR_POS_GEAR_PRM_B       13798
+#define ADDR_PULSE_GEAR_PRM_C     13808
+#define ADDR_PULSE_GEAR_PRM_D     13810
+
+#define ADDR_ALARM_INDEX          24676
+#define ADDR_ALARM_HISTORY        24678
+#define ALARM_MAX_NUM             10
+
+#define ADDR_MOTOR_NOS            104
 
 SevDevicePrivate::SevDevicePrivate(SevDevice *sev, QObject *parent):QObject(parent),
   q_ptr(sev),
   m_configTree(NULL),
   m_targetTree(NULL),
+  m_offlineTree(NULL),
   m_dspMap(NULL),
   m_pwrBoard(NULL),
   m_ctrBoard(NULL),
   m_verAttribute(NULL),
   m_devConfig(new DeviceConfig),
   m_connected(false),
+  m_isOffline(false),
   m_barCount(0),
   m_imaxPrmAssociationHelper(NULL)
 {
@@ -63,6 +76,7 @@ SevDevicePrivate::~SevDevicePrivate()
   qDebug()<<"SevDevicePrivate destruct-->";
   GT::deletePtrObject(m_configTree);
   GT::deletePtrObject(m_targetTree);
+  GT::deletePtrObject(m_offlineTree);
   GT::deletePtrObject(m_dspMap);
   GT::deletePtrObject(m_pwrBoard);
   GT::deletePtrObject(m_ctrBoard);
@@ -215,7 +229,13 @@ bool SevDevice::adjustSocket(void (*processCallBack)(void *argv, short *value), 
 ComDriver::ICom *SevDevice::socketCom() const
 {
   Q_D(const SevDevice);
-  return d->m_socket->comObject();
+    return d->m_socket->comObject();
+}
+
+quint8 SevDevice::comType() const
+{
+    Q_D(const SevDevice);
+    return d->m_socket->socketTypeId();
 }
 bool SevDevice::enableConnection(void (*processCallBack)(void *argv, short *value), void *uiProcessBar)
 {
@@ -236,7 +256,32 @@ void SevDevice::disableConnection()
 bool SevDevice::isConnecting() const
 {
   Q_D(const SevDevice);
-  return d->m_connected;
+    return d->m_connected;
+}
+
+bool SevDevice::isOffline() const
+{
+    Q_D(const SevDevice);
+    return d->m_isOffline;
+}
+
+void SevDevice::setOfflineStatus(bool mode)
+{
+    Q_D(SevDevice);
+    d->m_isOffline = mode;
+    if (d->m_offlineTree != NULL) {
+        delete d->m_offlineTree;
+        d->m_offlineTree = NULL;
+    }
+    if (mode) {
+        QString treePath = GTUtils::sysPath() + typeName() + "/" + modelName() + "/" + versionName() + "/" + FLASH_ALL_PRM_NAME;
+        d->m_offlineTree = QtTreeManager::createTreeWidgetFromXmlFile(treePath);
+        if (d->m_offlineTree->topLevelItem(XMLFILE_ROW_INDEX)->text(GT::COL_FLASH_ALLAXIS_NAME).compare(XMLFILE_NODE_NAME) == 0) {
+            QTreeWidgetItem *versionNodeItem;
+            versionNodeItem = d->m_offlineTree->takeTopLevelItem(XMLFILE_ROW_INDEX);
+            delete versionNodeItem;
+        }
+    }
 }
 
 bool SevDevice::containsCmd(const QString &cmdKey)
@@ -393,6 +438,111 @@ bool SevDevice::writeGenPageRAM(quint16 axisInx, QTreeWidget *pageTree)
     it++;
   }
   return rOk;
+}
+
+bool SevDevice::readOffLinePagePrm(quint16 axisInx, QTreeWidget *pageTree)
+{
+    Q_D(SevDevice);
+    QTreeWidgetItem *item = d->m_offlineTree->topLevelItem(axisInx);
+    QTreeWidgetItemIterator it(pageTree);
+    QTreeWidgetItem *pageItem;
+    while (*it)
+    {
+        pageItem = (*it);
+        QString str = pageItem->text(GT::COL_PAGE_TREE_NAME);
+        QTreeWidgetItem* offItem = GTUtils::findItemInItem(str, item, GT::COL_FLASH_ALLAXIS_NAME);
+        if (offItem == NULL) {
+            continue;
+        }
+        pageItem->setText(GT::COL_FLASH_ALLAXIS_VALUE, offItem->text(GT::COL_PAGE_TREE_VALUE));
+        it++;
+    }
+    return true;
+}
+
+bool SevDevice::writeOffLinePagePrm(quint16 axisInx, QTreeWidget *pageTree)
+{
+    Q_D(SevDevice);
+    QTreeWidgetItem *item = d->m_offlineTree->topLevelItem(axisInx);    
+    QTreeWidgetItemIterator it(pageTree);
+    QTreeWidgetItem *pageItem;
+    while (*it)
+    {
+        pageItem = (*it);
+        QString str = pageItem->text(GT::COL_PAGE_TREE_NAME);
+        QTreeWidgetItem* offItem = GTUtils::findItemInItem(str, item, GT::COL_FLASH_ALLAXIS_NAME);
+        if (offItem == NULL) {
+            continue;
+        }
+        QString srcValueStr = pageItem->text(GT::COL_FLASH_ALLAXIS_VALUE);
+        int value;
+        if (str.compare("gSevDrv.sev_obj.cur.mot.Irat_1") == 0) {
+            value = (int)ceil(srcValueStr.toDouble());
+        } else {
+            value = (int)(srcValueStr.toDouble() + 0.5);
+        }
+        QString desValueStr = QString::number(value);
+        offItem->setText(GT::COL_FLASH_ALLAXIS_VALUE, desValueStr);
+        emit itemRangeValid(pageItem, (int)OptFace::EDIT_TEXT_STATUS_DEFAULT);
+        it++;
+    }
+    return true;
+}
+
+bool SevDevice::readOfflineAdvItem(quint16 axisInx, QTreeWidgetItem *item)
+{
+    Q_D(SevDevice);
+    QTreeWidgetItem *treeItem = d->m_offlineTree->topLevelItem(axisInx);
+    QString str = item->text(GT::COL_FLASH_ALLAXIS_NAME);
+    QTreeWidgetItem* offItem = GTUtils::findItemInItem(str, treeItem, GT::COL_FLASH_ALLAXIS_NAME);
+    if (offItem == NULL) {
+        return false;
+    }
+    item->setText(GT::COL_FLASH_ALLAXIS_VALUE, offItem->text(GT::COL_FLASH_ALLAXIS_VALUE));
+    return true;
+}
+
+bool SevDevice::writeOfflineAdvItem(quint16 axisInx, QTreeWidgetItem *item)
+{
+    Q_D(SevDevice);
+    QTreeWidgetItem *treeItem = d->m_offlineTree->topLevelItem(axisInx);
+    QString str = item->text(GT::COL_FLASH_ALLAXIS_NAME);
+    QTreeWidgetItem* offItem = GTUtils::findItemInItem(str, treeItem, GT::COL_FLASH_ALLAXIS_NAME);
+    if (offItem == NULL) {
+        return false;
+    }
+    QString srcValueStr = item->text(GT::COL_FLASH_ALLAXIS_VALUE);
+    int value = (int)(srcValueStr.toDouble() + 0.5);
+    QString desValueStr = QString::number(value);
+    offItem->setText(GT::COL_FLASH_ALLAXIS_VALUE, desValueStr);
+    return true;
+}
+
+bool SevDevice::readOffLinePrmByAddr(quint16 axisInx, quint16 offset, double &value)
+{
+    Q_D(SevDevice);
+    QTreeWidgetItem *treeItem = d->m_offlineTree->topLevelItem(axisInx);
+    QString addr = QString::number(offset);
+    QTreeWidgetItem* offItem = GTUtils::findItemInItem(addr, treeItem, GT::COL_FLASH_ALLAXIS_ADDR);
+    if (offItem == NULL) {
+        return false;
+    }
+    value = offItem->text(GT::COL_FLASH_ALLAXIS_VALUE).toDouble();
+    return true;
+}
+
+bool SevDevice::writeOffLinePrmByAddr(quint16 axisInx, quint16 offset, double &value)
+{
+    Q_D(SevDevice);
+    QTreeWidgetItem *treeItem = d->m_offlineTree->topLevelItem(axisInx);
+    QString addr = QString::number(offset);
+    QTreeWidgetItem* offItem = GTUtils::findItemInItem(addr, treeItem, GT::COL_FLASH_ALLAXIS_ADDR);
+    if (offItem == NULL) {
+        return false;
+    }
+    int intValue = (int)(value + 0.5);
+    offItem->setText(GT::COL_FLASH_ALLAXIS_VALUE, QString::number(intValue));
+    return true;
 }
 
 bool SevDevice::writePageItemFlash(quint16 axisInx, QTreeWidgetItem *item)
@@ -568,7 +718,13 @@ QTreeWidget *SevDevice::axisTreeSource(int axis, const QString &name) const
 QTreeWidget *SevDevice::globalTreeSource(int page) const
 {
   Q_D(const SevDevice);
-  return d->m_dspMap->globalTreeWidget(page);
+    return d->m_dspMap->globalTreeWidget(page);
+}
+
+QTreeWidget *SevDevice::offlineTree()
+{
+    Q_D(const SevDevice);
+    return d->m_offlineTree;
 }
 void SevDevice::setVersionAttributeActive()
 {
@@ -883,10 +1039,8 @@ bool SevDevice::writePageFlash(int axis, QTreeWidget *pageTree)
     qDebug()<<"writeOk"<<writeOk;
     if(writeOk)
     {
-      qDebug()<<"read 1";
       d->m_socket->readPageItemFlash(axis,item);
       emit itemRangeValid(item,(int)OptFace::EDIT_TEXT_STATUS_DEFAULT);
-      qDebug()<<"read 2";
     }
     else
     {
@@ -995,8 +1149,16 @@ bool SevDevice::checkPageParameters(int axis, QTreeWidget *tree)
 
 quint64 SevDevice::genCmdReadNos(int axisInx, bool &isOk)
 {
-  quint64 v=genCmdRead(CMD_MOT_NOS_KEY_NAME,axisInx,isOk);
-  return v;
+    quint64 v;
+    if (isOffline()) {
+        double value;
+        bool ok;
+        ok = readOffLinePrmByAddr(axisInx, ADDR_MOTOR_NOS + 32768 * (axisInx % 2), value);
+        v = (quint64)value;
+        return v;
+    }
+    v = genCmdRead(CMD_MOT_NOS_KEY_NAME,axisInx,isOk);
+    return v;
 }
 
 quint64 SevDevice::genCmdReadAutoTurnningFgd(int axisInx, bool &isOk)
@@ -1051,7 +1213,7 @@ bool SevDevice::genCmdWritePlanSpdDec(int axisInx, quint64 value)
 bool SevDevice::writeGearPrm(quint16 axisInx, qint32 a, qint32 b)
 {
   Q_D(SevDevice);
-  if(isConnecting() == false)
+  if(isConnecting() == false && !isOffline())
     return false;
 
   quint16 addr_a = ADDR_POS_GEAR_PRM_ANU_0;
@@ -1062,15 +1224,22 @@ bool SevDevice::writeGearPrm(quint16 axisInx, qint32 a, qint32 b)
     addr_b += 32768;
   }
   ComDriver::errcode_t err = 0;
-  err = d->m_socket->comObject()->writeFLASH32(axisInx,addr_a,0,a);
-  err = d->m_socket->comObject()->writeFLASH32(axisInx,addr_b,0,b);
+  if (isOffline()) {
+      double aa = a;
+      double bb = b;
+      err = writeOffLinePrmByAddr(axisInx, addr_a, aa);
+      err = writeOffLinePrmByAddr(axisInx, addr_b, bb);
+  } else {
+      err = d->m_socket->comObject()->writeFLASH32(axisInx,addr_a,0,a);
+      err = d->m_socket->comObject()->writeFLASH32(axisInx,addr_b,0,b);
+  }
   return err == 0;
 }
 
 bool SevDevice::readGearPrm(quint16 axisInx, qint32 &a, qint32 &b)
 {
   Q_D(SevDevice);
-  if(isConnecting() == false)
+  if(isConnecting() == false && !isOffline())
     return false;
 
   quint16 addr_a = ADDR_POS_GEAR_PRM_ANU_0;
@@ -1083,11 +1252,120 @@ bool SevDevice::readGearPrm(quint16 axisInx, qint32 &a, qint32 &b)
   ComDriver::errcode_t err = 0;
   ComDriver::int32_t va = 0;
   ComDriver::int32_t vb = 0;
-  err = d->m_socket->comObject()->readFLASH32(axisInx,addr_a,0,va);
-  err = d->m_socket->comObject()->readFLASH32(axisInx,addr_b,0,vb);
-  a = va;
-  b = vb;
+  if (isConnecting()) {
+      err = d->m_socket->comObject()->readFLASH32(axisInx,addr_a,0,va);
+      err = d->m_socket->comObject()->readFLASH32(axisInx,addr_b,0,vb);
+      a = va;
+      b = vb;
+  } else {
+      double vaa = va;
+      double vbb = vb;
+      err = readOffLinePrmByAddr(axisInx, addr_a, vaa);
+      err = readOffLinePrmByAddr(axisInx, addr_b, vbb);
+      a = vaa;
+      b = vbb;
+  }
   return err == 0;
+}
+
+bool SevDevice::writePulseGearPrm(quint16 axisInx, qint32 c, qint32 d2)
+{
+    Q_D(SevDevice);
+    if(isConnecting() == false && !isOffline())
+      return false;
+
+    quint16 addr_c = ADDR_PULSE_GEAR_PRM_C;
+    quint16 addr_d = ADDR_PULSE_GEAR_PRM_D;
+    if(axisInx%2 !=0)
+    {
+      addr_c += 32768;
+      addr_d += 32768;
+    }
+    ComDriver::errcode_t err = 0;
+    if (isOffline()) {
+        double cc = c;
+        double dd = d2;
+        err = writeOffLinePrmByAddr(axisInx, addr_c, cc);
+        err = writeOffLinePrmByAddr(axisInx, addr_d, dd);
+    } else {
+        err = d->m_socket->comObject()->writeFLASH32(axisInx,addr_c,0,c);
+        err = d->m_socket->comObject()->writeFLASH32(axisInx,addr_d,0,d2);
+    }
+    return err == 0;
+}
+
+bool SevDevice::readPulseGearPrm(quint16 axisInx, qint32 &c, qint32 &d2)
+{
+    Q_D(SevDevice);
+    if(isConnecting() == false && !isOffline())
+      return false;
+
+    quint16 addr_c = ADDR_PULSE_GEAR_PRM_C;
+    quint16 addr_d = ADDR_PULSE_GEAR_PRM_D;
+    if(axisInx%2 !=0)
+    {
+      addr_c += 32768;
+      addr_d += 32768;
+    }
+    ComDriver::errcode_t err = 0;
+    ComDriver::int32_t vc = 0;
+    ComDriver::int32_t vd = 0;
+    if (isConnecting()) {
+        err = d->m_socket->comObject()->readFLASH32(axisInx,addr_c,0,vc);
+        err = d->m_socket->comObject()->readFLASH32(axisInx,addr_d,0,vd);
+        c = vc;
+        d2 = vd;
+    } else {
+        double vcc = vc;
+        double vdd = vd;
+        err = readOffLinePrmByAddr(axisInx, addr_c, vcc);
+        err = readOffLinePrmByAddr(axisInx, addr_d, vdd);
+        c = vcc;
+        d2 = vdd;
+    }
+    return err == 0;
+}
+
+bool SevDevice::readAlarmHistoryIndex(quint16 axisInx, qint16 &index)
+{
+    Q_D(SevDevice);
+    if (isConnecting() == false) {
+        return false;
+    }
+    quint16 addr = ADDR_ALARM_INDEX;
+    if (axisInx % 2 != 0) {
+        addr += 32768;
+    }
+    ComDriver::errcode_t err = 0;
+    ComDriver::int16_t value = 0;
+    err = d->m_socket->comObject()->readFLASH16(axisInx, addr, 0, value);
+    index = value;
+    return err == 0;
+}
+
+bool SevDevice::readAlarmHistoryList(quint16 axisInx, QList<qint32> &alarmList)
+{
+    Q_D(SevDevice);
+    if (isConnecting() == false) {
+        return false;
+    }
+    quint16 addr = ADDR_ALARM_HISTORY;
+    if (axisInx % 2 != 0) {
+        addr += 32768;
+    }
+    ComDriver::errcode_t err = 0;
+    ComDriver::int16_t value_h = 0;
+    ComDriver::int16_t value_l = 0;
+    quint32 value = 0;
+    for (int i = 0; i < ALARM_MAX_NUM; i++) {
+        err = d->m_socket->comObject()->readFLASH16(axisInx, addr + 2 * i, 0, value_h);
+        err = d->m_socket->comObject()->readFLASH16(axisInx, addr + 2 * i + 1, 0, value_l);
+        quint32 value2_h = value_h;
+        quint32 value2_l = value_l;
+        value = value2_l + (value2_h << 16);
+        alarmList.append(value);
+    }
+    return err == 0;
 }
 
 bool SevDevice::checkLoadParameters(QTreeWidget *tree, int itemNum)

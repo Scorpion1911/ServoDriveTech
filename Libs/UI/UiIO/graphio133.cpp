@@ -77,6 +77,7 @@ void GraphIO133::onCheckBoxStateChanged(int axisIndex)
     if (checked) {
         QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Are you sure to loose the brake?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
         if (!(rb == QMessageBox::Yes)) {
+            d->m_boxList.at(axisIndex)->setChecked(!checked);
             return;
         }
         d->m_dev->genCmdWrite(GEN_CMD_IO_REVERSE, 1, axisIndex);
@@ -99,7 +100,6 @@ void GraphIO133::setBoxStyleSheet(QCheckBox *box)
 void GraphIO133::initUi()
 {
     Q_D(GraphIO133);
-    qDebug()<<"aa";
     if (d->m_dev == NULL) {
         return;
     }

@@ -64,12 +64,19 @@ DialogPickCurve::DialogPickCurve(SevDevice *sev,QWidget *parent) :
   ui->tableWidget_usr->setAlternatingRowColors(true);
   ui->tableWidget_usr->setSelectionBehavior(QAbstractItemView::SelectRows);//整行选中的方式
 
+  ui->tableWidgetCustom->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+  ui->tableWidgetCustom->setEditTriggers(QTableView::NoEditTriggers);
+  ui->tableWidgetCustom->setAlternatingRowColors(true);
+  ui->tableWidgetCustom->setSelectionBehavior(QAbstractItemView::SelectRows);
+
   connect(ui->btn_curve_custom,SIGNAL(clicked(bool)),this,SLOT(onUserSelectChanged()));
   connect(ui->btn_curve_user,SIGNAL(clicked(bool)),this,SLOT(onUserSelectChanged()));
   connect(ui->btn_curve_expert,SIGNAL(clicked(bool)),this,SLOT(onUserSelectChanged()));
   connect(ui->treeWidgetExpert,SIGNAL(itemExpanded(QTreeWidgetItem*)),this,SLOT(onTreeWidgetExpertExpandedClicked()));
   connect(ui->treeWidgetExpert,SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this,SLOT(onExpertTreeWidgetDoubleClicked(QTreeWidgetItem*,int)));
   connect(ui->tableWidget_usr,SIGNAL(cellDoubleClicked(int,int)),this,SLOT(onUsrTableCellDoubleClicked(int,int)));
+  connect(ui->comboBoxCustom, SIGNAL(currentIndexChanged(int)), this, SLOT(onCusBoxIndexChanged(int)));
+  connect(ui->tableWidgetCustom, SIGNAL(cellDoubleClicked(int,int)),this,SLOT(onCusTableCellDoubleClicked(int,int)));
 
   QLabel *hintLabel = new QLabel(this);
   hintLabel->setText(tr("Keyword:"));
@@ -196,6 +203,22 @@ void DialogPickCurve::usrCurveTableInit(QList<ICurve *> curves)
   }
 }
 
+void DialogPickCurve::cusCurveTableInit(QList<QList<ICurve *>> curves)
+{
+    qDebug()<<"cus init";
+    m_curveList = curves;
+    qDebug()<<"size"<<m_curveList.size();
+    for (int i = 0; i < m_curveList.size(); i++) {
+        qDebug()<<"i = "<<i;
+        qDebug()<<"length "<<m_curveList.at(i).length();
+    }
+    QStringList folderNames;
+    QString path = GTUtils::customPath()+"plugins/plot/custom";
+    GTUtils::getAllFolderNames(path, folderNames);
+    ui->comboBoxCustom->insertItems(0, folderNames);
+    onCusBoxIndexChanged(0);
+}
+
 bool DialogPickCurve::eventFilter(QObject *obj, QEvent *event)
 {
     if(event->type() == QEvent::KeyPress)
@@ -282,6 +305,84 @@ void DialogPickCurve::onUsrTableCellDoubleClicked(int row, int column)
       emit addUsrCurveRequest(newCurve);
     }
   }
+}
+
+void DialogPickCurve::onCusTableCellDoubleClicked(int row, int column)
+{
+    Q_UNUSED(column);
+    int axisCount = ui->tableWidget_axis->columnCount();
+    for(int axis=0;axis<axisCount;axis++)
+    {
+      if(ui->tableWidget_axis->item(0,axis)->isSelected())
+      {
+        ICurve *c = ui->tableWidgetCustom->item(row,COL_USR_CURVE_NAME)->data(ROLE_USR_TABLE_CURVE_ICURVE_PTR).value<ICurve *>();
+        QComboBox *box =dynamic_cast<QComboBox * >(ui->tableWidgetCustom->cellWidget(row,COL_USR_CURVE_UNIT)) ;
+        double k = box->currentData().toDouble();
+        QString uName = box->currentText();
+        ICurve *newCurve = c->clone();
+
+        qDebug()<<"unit k = "<<k;
+        newCurve->setUnit(uName);
+        newCurve->setAxisInx(axis);
+        newCurve->setAxisCount(axisCount);
+        newCurve->setDevInx(m_sev->devId());
+        qDebug()<<newCurve->curUnitName()<<" curve unit k = "<<newCurve->curUnitK() <<"axis = "<<newCurve->axisInx();
+        emit addUsrCurveRequest(newCurve);
+      }
+    }
+}
+
+void DialogPickCurve::onCusBoxIndexChanged(int index)
+{
+    ui->tableWidgetCustom->clearContents();
+    QList<ICurve*> list = m_curveList.at(index);
+    ICurve *c = NULL;
+    QTableWidgetItem *item = NULL;
+    for (int i = 0; i < list.size(); i++)
+    {
+        c = list.at(i);
+        ui->tableWidgetCustom->insertRow(i);
+        for (int col = 0; col < COL_USR_CURVE_SIZE; col++)
+        {
+
+            switch(col)
+            {
+                case COL_USR_CURVE_NAME:
+                {
+                    QVariant v;
+                    item = new QTableWidgetItem;
+                    item->setText(c->name());
+                    v.setValue(c);
+                    item->setData(ROLE_USR_TABLE_CURVE_ICURVE_PTR, v);
+                    ui->tableWidgetCustom->setItem(i, col, item);
+                }
+                break;
+
+                case COL_USR_CURVE_NOTE:
+                    item = new QTableWidgetItem;
+                    item->setText(c->note());
+                    item->setTextAlignment(Qt::AlignCenter);
+                    ui->tableWidgetCustom->setItem(i, col, item);
+                break;
+
+                case COL_USR_CURVE_UNIT:
+                {
+                    QComboBox *comboBox = new QComboBox;
+                    QStyledItemDelegate* itemDelegate = new QStyledItemDelegate(comboBox);
+                    comboBox->setItemDelegate(itemDelegate);
+                    qDebug()<<"unit names = "<<c->unitNames().size();
+                    for (int inx = 0;inx < c->unitNames().size(); inx++)
+                    {
+                        QString key = c->unitNames().at(inx);
+                        double factor = c->unitValue(key);
+                        comboBox->addItem(key, factor);
+                    }
+                    ui->tableWidgetCustom->setCellWidget(i, col, comboBox);
+                }
+                break;
+            }
+        }
+    }
 }
 
 void DialogPickCurve::setIcons()

@@ -21,6 +21,7 @@ protected:
   QStackedWidget *m_uiStackedWidget;
   QVBoxLayout *m_vboxLayout;
   QTreeWidget *m_dataTree;
+  QTreeWidget *m_offDataTree;
   SevDevice *m_device;
   IUiWidget *q_ptr;
   QString m_qmlpath;
@@ -29,6 +30,9 @@ protected:
   QAction *m_actSwitchView;
   QAction *m_actReadRAM;
   QAction *m_actReadFLASH;
+  bool m_copyAll;
+  int m_barCount;
+  QString m_msg;
 };
 
 #endif // IUIWIDGET_P_H

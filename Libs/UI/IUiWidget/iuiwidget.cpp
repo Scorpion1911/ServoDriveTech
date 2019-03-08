@@ -18,6 +18,7 @@
 #include <QLabel>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
+#include <QMessageBox>
 #include <QDebug>
 
 //IUiWidget::IUiWidget(QWidget *parent):QWidget(parent),d_ptr(new IUiWidgetPrivate())
@@ -42,7 +43,7 @@ bool IUiWidget::init(SevDevice *device)
   d->m_vboxLayout=getVBoxLayout();
   d->m_device=device;
   if(device !=NULL) {
-    connect(device,SIGNAL(dspReset()),this,SLOT(onDspReset()));
+    connect(device,SIGNAL(dspReset()),this,SLOT(onDspReset())); 
   } else {
       qDebug()<<"dev NULL";
   }
@@ -91,6 +92,46 @@ void IUiWidget::setContextAction()
   this->addAction(d->m_actReadFLASH);
 }
 
+void IUiWidget::updateTree(QTreeWidget *srcTree, QTreeWidget *desTree)
+{
+    updateTreeItem(srcTree->invisibleRootItem(), desTree->invisibleRootItem());
+}
+
+void IUiWidget::updateTreeItem(QTreeWidgetItem *srcTreeItem, QTreeWidgetItem *desTreeItem)
+{
+    Q_D(IUiWidget);
+    for (int i = 0; i < srcTreeItem->childCount(); i++) {
+        QString text = srcTreeItem->child(i)->text(GT::COL_PAGE_TREE_NAME);
+        for (int j = 0; j < desTreeItem->childCount(); j++) {
+            if (text.compare(desTreeItem->child(j)->text(GT::COL_PAGE_TREE_NAME)) == 0) {
+//                qDebug()<<"src name"<<srcTreeItem->child(i)->text(0);
+//                qDebug()<<"des name"<<desTreeItem->child(j)->text(0);
+//                qDebug()<<"src value"<<srcTreeItem->child(i)->text(1);
+//                qDebug()<<"des value"<<desTreeItem->child(j)->text(1);
+                emit sendBarInfo((d->m_barCount++) % 100, d->m_msg);
+                desTreeItem->child(j)->setText(GT::COL_PAGE_TREE_VALUE, srcTreeItem->child(i)->text(GT::COL_PAGE_TREE_VALUE));
+                updateTreeItem(srcTreeItem->child(i), desTreeItem->child(j));
+                //qDebug()<<"updated des value"<<desTreeItem->child(j)->text(1);
+                break;
+            }
+        }
+    }
+}
+
+bool IUiWidget::readOfflinePrm()
+{
+    Q_D(IUiWidget);
+    bool ok = d->m_device->readOffLinePagePrm(d->m_index.axisInx, d->m_dataTree);
+    return ok;
+}
+
+bool IUiWidget::writeOfflinePrm()
+{
+    Q_D(IUiWidget);
+    bool ok = d->m_device->writeOffLinePagePrm(d->m_index.axisInx, d->m_dataTree);
+    return ok;
+}
+
 SevDevice*IUiWidget::device()
 {
   Q_D(IUiWidget);
@@ -104,11 +145,27 @@ void IUiWidget::accept(QWidget *w)
 
 bool IUiWidget::hasConfigFunc()
 {
+    Q_D(IUiWidget);
+    if (d->m_device->isOffline()) {
+        return false;
+    }
   return true;
 }
 bool IUiWidget::hasSaveFunc()
 {
-  return true;
+    return true;
+}
+
+QTreeWidget *IUiWidget::getDataTree()
+{
+    Q_D(IUiWidget);
+    return d->m_dataTree;
+}
+
+bool IUiWidget::isCopyAll()
+{
+    Q_D(IUiWidget);
+    return d->m_copyAll;
 }
 
 void IUiWidget::addTreeWidget(QTreeWidget *tree)
@@ -118,7 +175,6 @@ void IUiWidget::addTreeWidget(QTreeWidget *tree)
   d->m_vboxLayout->addWidget(tree);
   tree->resizeColumnToContents(0);
   connect(tree,SIGNAL(itemClicked(QTreeWidgetItem*,int)),this,SLOT(onTreeItemClickedEdit(QTreeWidgetItem*,int)));
-
   setContextAction();
 }
 void IUiWidget::setUiIndexs(const UiIndexs &indexs)
@@ -144,6 +200,54 @@ bool IUiWidget::readPageFLASH()
   return rOk;
 }
 
+bool IUiWidget::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_D(IUiWidget);
+    if(d->m_device->isConnecting() == false && d->m_device->isOffline() == false)
+      return true;
+
+    bool rOk;
+    d->m_barCount = 25;
+    d->m_msg = tr("Reading data Axis%1").arg(srcAxisInx);
+    if (d->m_device->isOffline()) {
+        rOk = d->m_device->readOffLinePagePrm(srcAxisInx, d->m_dataTree);
+    } else {
+        rOk=d->m_device->readPageFlash(srcAxisInx, d->m_dataTree);
+    }
+
+    emit sendBarInfo((d->m_barCount) % 100, d->m_msg);
+    if (!rOk) {
+        return false;
+    }
+
+    d->m_msg = tr("Reading data Axis%1").arg(desAxisInx + 1);
+    updateTree(d->m_dataTree, tree);
+
+    bool wOk=true;
+    bool needChecked = parametersNeedChecked();
+    bool checkOk = true;
+    qDebug()<<"needChecked = "<<needChecked;
+    if(needChecked) {
+        d->m_msg = tr("Checking data Axis%1").arg(srcAxisInx + 1);
+        emit sendBarInfo((d->m_barCount += 25) % 100, d->m_msg);
+        checkOk = d->m_device->checkPageParameters(desAxisInx, tree);
+    }
+
+    if(checkOk) {
+        d->m_msg = tr("Writing data Axis%1").arg(srcAxisInx + 1);
+        emit sendBarInfo((d->m_barCount += 25) % 100, d->m_msg);
+        if (d->m_device->isOffline()) {
+            wOk = d->m_device->writeOffLinePagePrm(desAxisInx, tree);
+        } else {
+            wOk = d->m_device->writePageFlash(desAxisInx, tree);
+        }
+    }
+    else
+      wOk = false;
+
+    return wOk;
+}
+
 //!
 //! \brief IUiWidget::writePageFLASH 委托设备去写FLASH
 //!
@@ -165,7 +269,7 @@ bool IUiWidget::writePageFLASH()
 {
   Q_D(IUiWidget);
   qDebug()<<this->objectName()<<"write page flash";
-  if(d->m_device->isConnecting() == false)
+  if(d->m_device->isConnecting() == false && !d->m_device->isOffline())
     return true;
 
   bool wOk=true;
@@ -175,9 +279,16 @@ bool IUiWidget::writePageFLASH()
   qDebug()<<"needChecked = "<<needChecked;
   if(needChecked)
     checkOk = d->m_device->checkPageParameters(d->m_index.axisInx,d->m_dataTree);
-
-  if(checkOk)
-    wOk=d->m_device->writePageFlash(d->m_index.axisInx,d->m_dataTree);
+  if(checkOk) {
+      if (d->m_device->isOffline()) {
+          wOk = d->m_device->writeOffLinePagePrm(d->m_index.axisInx, d->m_dataTree);
+      } else {
+          wOk = d->m_device->writePageFlash(d->m_index.axisInx, d->m_dataTree);
+//          if (wOk) {
+//              QMessageBox::information(0, tr("Tips"), tr("Save success! Please reset DSP!"));
+//          }
+      }
+  }
   else
     wOk = false;
 
@@ -264,4 +375,9 @@ void IUiWidget::onActionReadFLASH()
 void IUiWidget::onDspReset()
 {
 
+}
+
+void IUiWidget::onOfflineChanged(bool offMode)
+{
+    Q_UNUSED(offMode);
 }

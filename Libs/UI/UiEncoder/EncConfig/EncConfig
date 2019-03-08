@@ -7,6 +7,11 @@
 #include "encconfigsanxieitem.h"
 #include "encconfigsongxiaitem.h"
 #include "encconfigyaskawaitem.h"
+#include "encconfigsinz.h"
+#include "encconfigsinhiperface.h"
+#include "encconfigsinendat.h"
+#include "encconfigrotation.h"
+#include "encconfigabz.h"
 
 #endif // ENCCONFIG
 

@@ -9,10 +9,13 @@ class IEncConfigItem : public QObject
   Q_OBJECT
 public:
   enum EncType{
-    ENC_TYPE_UNKNOW,
-    ENC_TYPE_ABSOLUTE,
-    ENC_TYPE_INCREASE,
-    ENC_TYPE_NONE
+    ENC_TYPE_UNKNOW = 0,
+    ENC_TYPE_ABSOLUTE = 1,
+    ENC_TYPE_INCREASE = 2,
+    ENC_TYPE_NONE = 3,
+    ENC_TYPE_SIN = 0,
+    ENC_TYPE_ROTA = 2,
+    ENC_TYPE_ABZ = 3
   };
   explicit IEncConfigItem(QObject *parent = 0);
   virtual ~IEncConfigItem();
@@ -23,6 +26,8 @@ public:
   virtual void createAttributeUi();
   virtual void updateAttributeUi(){}
   virtual bool execute();
+
+  virtual void setAbsPos(quint32 value);
 
   EncType encType() const;
   void setEncType(const EncType encType);
@@ -46,8 +51,38 @@ public:
   quint16 crcErrOper() const;
   void setCrcErrOper(const quint16 crcErrOper);
 
+  quint32 absLineNum() const;
+  void setAbsLineNum(const quint32 absLineNum);
+
+  quint16 adGain() const;
+  void setAdGain(const quint16 adGain);
+
+  quint16 sinCfg() const;
+  void setSinCfg(const quint16 sinCfg);
+
+  quint16 comboType() const;
+  void setComboType(const quint16 type);
+
+  quint32 pulseZCount();
+  void setPulseZCount(quint32 value);
+
+  quint16 shiftNum();
+  void setShiftNum(quint16 value);
+
+  quint16 pulseABModel();
+  void setPulseABModel(quint16 value);
+
+  quint16 aufCfg();
+  void setAufCfg(quint16 value);
+
+  bool isNeedTimer();
+
+
+  bool isLineNumEditable() const;
+
 
 signals:
+  void lineNumChanged(int num);
 
 public slots:
 protected:
@@ -60,6 +95,19 @@ protected:
   quint16 m_alarmOper;
   quint16 m_crcErrOper;
   QWidget *m_attributeUi;
+
+  quint16 m_comboType;
+  quint32 m_absLineNum;
+  quint16 m_adGain;
+  quint16 m_sinConf;
+  bool m_isLineNumEditable;
+
+  quint32 m_pulseZCount;
+  quint16 m_shiftNum;
+  quint16 m_pulseABModel;
+  quint16 m_auxCfg;
+
+  bool m_needTimer;
 };
 
 #endif // IENCCONFIGITEM_H

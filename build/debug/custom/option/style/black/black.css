@@ -537,6 +537,34 @@ border-left:none;
 border-right:none;
 padding-bottom: 10px;
 }
+/*====================IOAnalog 模拟量IO页面===================*/
+QGraphicsView#graphicsView_input{
+	background-color: #F0F0F0;
+	border:none;	
+}
+
+IGraphIOAnalog {
+	qproperty-arrowColor:gray;
+}
+
+QWidget#widget_analogIOOffset, QWidget#widget_analogIOScale, QWidget#widget_analogIOCommand{
+	background-color: #E0DDDD;
+	border:2px solid #BBB9B9;
+	border-radius:10px;
+}
+
+QLabel#label_ofstTitle, QLabel#label_scaleTitle, QLabel#label_commandTitle{
+	padding-bottom:10px;
+	margin-bottom:5px;
+	color:black;
+	border:1px solid transparent;
+	border-bottom-color:#BBB9B9;
+	font-weight:bold;
+}
+QLabel#label_analogIOStartText,QLabel#label_analogIOEndText{
+	background-color: transparent;
+	border:none;
+}
 
 /*====================Current 电流控制器页面===================*/
 IGraphWidget{
@@ -922,23 +950,23 @@ QToolButton#tbtn_plot_servoOnMode:hover,QToolButton#tbtn_plot_servoGoMotion:hove
 	
 }
 /************PC GLINK2 ToolButton******/
-QToolButton#tbtn_plot_ctlsrc_pc:hover,QToolButton#tbtn_plot_ctlsrc_glink2:hover{
+QToolButton#tbtn_plot_ctlsrc_pc:hover,QToolButton#tbtn_plot_ctlsrc_glink2:hover,QToolButton#tbtn_plot_ctlsrc_io:hover{
 	background-color:#D0D0D0;
 } 
-QToolButton#tbtn_plot_ctlsrc_pc:checked,QToolButton#tbtn_plot_ctlsrc_glink2:checked{
+QToolButton#tbtn_plot_ctlsrc_pc:checked,QToolButton#tbtn_plot_ctlsrc_glink2:checked,QToolButton#tbtn_plot_ctlsrc_io:checked{
 	background-color:#E0E0E0;
 	border: 1px solid gray;
 	border-radius:5px;
 }
-QToolButton#tbtn_plot_ctlsrc_pc:checked:hover,QToolButton#tbtn_plot_ctlsrc_glink2:checked:hover{
+QToolButton#tbtn_plot_ctlsrc_pc:checked:hover,QToolButton#tbtn_plot_ctlsrc_glink2:checked:hover,QToolButton#tbtn_plot_ctlsrc_io:checked:hover{
 	background-color:#D0D0D0;
 	border: 1px solid #D0D0D0;
 	border-radius:5px;
 }
-QToolButton#tbtn_plot_ctlsrc_pc:hover:pressed,QToolButton#tbtn_plot_ctlsrc_glink2:hover:pressed{
+QToolButton#tbtn_plot_ctlsrc_pc:hover:pressed,QToolButton#tbtn_plot_ctlsrc_glink2:hover:pressed,QToolButton#tbtn_plot_ctlsrc_io:hover:pressed{
 	background-color:gray;
 } 
-QToolButton#tbtn_plot_ctlsrc_pc,QToolButton#tbtn_plot_ctlsrc_glink2{
+QToolButton#tbtn_plot_ctlsrc_pc,QToolButton#tbtn_plot_ctlsrc_glink2,QToolButton#tbtn_plot_ctlsrc_io{
 	background-color:transparent;
 	min-width:40px;
 	color:black;

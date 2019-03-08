@@ -30,6 +30,8 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
+#include <QDebug>
+
 wstring NetCardName = L"";
 wstring NetCardNum = L"";
 
@@ -2220,9 +2222,7 @@ SERVODRIVERCOMDLL_API int16 GTSD_CMD_FirmwareFlashHandler(int16 axis, wstring& f
 	//百分比进度
 	progress = 5;
 	if (tpfUpdataProgressPt) (*tpfUpdataProgressPt)(ptr, &progress);
-
 	rtn = g_firmwareDl->WriteFPGAFileToFlash(com_type, ws2s(filePath), tpfUpdataProgressPt, ptr, progress,stationId);
-
 	if (rtn != 0)
 	{
     return Unlock(-2);

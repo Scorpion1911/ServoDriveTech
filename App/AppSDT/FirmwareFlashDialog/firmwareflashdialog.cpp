@@ -254,6 +254,7 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
             return;
         }
     }
+    emit startDownload(false);
     ok = true;
     if (ui->checkBox_firmHex->isChecked()) {
         ok = downloadHexFile();
@@ -276,6 +277,7 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
     if (ui->checkBox_firmRpd->isChecked()) {
         ok = downloadRpdFile();
     }
+    emit startDownload(true);
     if (!ok) {
         ui->infoDisplay_firm->appendPlainText(tr("Downloading rpd file fails!"));
         //deleteDir(m_desPath);
@@ -384,6 +386,7 @@ bool FirmwareFlashDialog::downloadRpdFile()
     delete tree;
     for (int i = 0; i < fpgNum; i++) {
         qDebug()<<"rpdPath"<<rpdPath;
+        qDebug()<<"1"<<i * fpgAxis;
         qint16 ret = dev->socketCom()->downLoadFPGAFLASH(i * fpgAxis, rpdPath.toStdWString(), processCallBack, (void *)ui->progressBar_firm);
         if (ret != 0) {
             return false;

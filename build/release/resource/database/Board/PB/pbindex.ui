@@ -82,10 +82,50 @@
          </property>
          <item>
           <property name="text">
-           <string>SD1</string>
+           <string>SD10</string>
           </property>
           <property name="text">
            <string>21000612</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SD15_11</string>
+          </property>
+          <property name="text">
+           <string>21000322</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SD15_06</string>
+          </property>
+          <property name="text">
+           <string>21000473</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SD15_15</string>
+          </property>
+          <property name="text">
+           <string>21000387</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>series2</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <item>
+          <property name="text">
+           <string>HD11_3A</string>
+          </property>
+          <property name="text">
+           <string>21000670</string>
           </property>
          </item>
         </item>
@@ -136,6 +176,14 @@
           </property>
           <property name="text">
            <string>21000650</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SD45</string>
+          </property>
+          <property name="text">
+           <string>21000648</string>
           </property>
          </item>
         </item>

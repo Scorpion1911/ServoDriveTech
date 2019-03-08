@@ -781,10 +781,16 @@ void GraphPosition133::syncTreeDataToUiFace()
   double n = nos;
   double k = POW2_24/n;
   d->m_treeWidget->topLevelItem(KP_SW_SPDL_INX)->setText(GT::COL_PAGE_TREE_SCALE,QString::number(k,'f',3));
+  qDebug()<<"temp"<<d->m_treeWidget->topLevelItem(KP_SW_SPDL_INX)->text(0);
   d->m_treeWidget->topLevelItem(KP_SW_SPDU_INX)->setText(GT::COL_PAGE_TREE_SCALE,QString::number(k,'f',3));
+  qDebug()<<"temp"<<d->m_treeWidget->topLevelItem(KP_SW_SPDU_INX)->text(0);
   d->m_treeWidget->topLevelItem(NLC_MTN_MAXSPD_INX)->setText(GT::COL_PAGE_TREE_SCALE,QString::number(k,'f',3));
+  qDebug()<<"temp"<<d->m_treeWidget->topLevelItem(NLC_MTN_MAXSPD_INX)->text(0);
   d->m_treeWidget->topLevelItem(NLC_SW_SPDU_INX)->setText(GT::COL_PAGE_TREE_SCALE,QString::number(k,'f',3));
+  qDebug()<<"temp"<<d->m_treeWidget->topLevelItem(NLC_SW_SPDU_INX)->text(0);
   d->m_treeWidget->topLevelItem(NLC_SW_SPDL_INX)->setText(GT::COL_PAGE_TREE_SCALE,QString::number(k,'f',3));
+  qDebug()<<"temp"<<d->m_treeWidget->topLevelItem(NLC_SW_SPDL_INX)->text(0);
+  qDebug()<<"k"<<k;
 
   //change ui
   quint16 sw_en = d->m_treeWidget->topLevelItem(KP_SW_EN_INX)->text(GT::COL_PAGE_TREE_VALUE).toUShort();

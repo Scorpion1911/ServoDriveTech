@@ -38,7 +38,14 @@ SOURCES += uiencoder.cpp \
     linenumberbinding.cpp \
     encconfigbinding130.cpp \
     encconfigbinding126.cpp \
-    graphencoder126.cpp
+    graphencoder126.cpp \
+    encconfigbinding136.cpp \
+    graphencoder136.cpp \
+    EncConfig/encconfigsinz.cpp \
+    EncConfig/encconfigsinhiperface.cpp \
+    EncConfig/encconfigsinendat.cpp \
+    EncConfig/encconfigrotation.cpp \
+    EncConfig/encconfigabz.cpp
 
 HEADERS += uiencoder.h\
         uiencoder_global.h \
@@ -55,7 +62,14 @@ HEADERS += uiencoder.h\
     linenumberbinding.h \
     encconfigbinding130.h \
     encconfigbinding126.h \
-    graphencoder126.h
+    graphencoder126.h \
+    encconfigbinding136.h \
+    graphencoder136.h \
+    EncConfig/encconfigsinz.h \
+    EncConfig/encconfigsinhiperface.h \
+    EncConfig/encconfigsinendat.h \
+    EncConfig/encconfigrotation.h \
+    EncConfig/encconfigabz.h
 
 unix {
     target.path = /usr/lib
@@ -65,6 +79,7 @@ unix {
 FORMS += \
     uiencoder.ui \
     graphencoder130.ui \
-    graphencoder126.ui
+    graphencoder126.ui \
+    graphencoder136.ui
 
 TRANSLATIONS    += ch_uiencoder.ts en_uiencoder.ts

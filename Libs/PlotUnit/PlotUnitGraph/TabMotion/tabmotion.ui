@@ -77,6 +77,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QToolButton" name="tbtn_plot_ctlsrc_io">
+         <property name="text">
+          <string>IO</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_4">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -136,6 +143,7 @@
         </layout>
        </widget>
        <widget class="QWidget" name="page_glink2"/>
+       <widget class="QWidget" name="page_io"/>
       </widget>
      </item>
     </layout>

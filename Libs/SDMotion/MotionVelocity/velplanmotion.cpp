@@ -96,7 +96,7 @@ void VelPlanMotion::onTimerOut()
   if(m_data->m_isCircle)
   {
     m_data->m_seqCircleUse ++;
-    if((m_data->m_seqCircleUse >= m_data->m_seqCircleCount*2)||(m_data->m_breakByHand == true))
+    if((m_data->m_seqCircleUse > m_data->m_seqCircleCount*2)||(m_data->m_breakByHand == true))
     {
       m_sev->cmdSetSpdRef(m_axisInx,0);
       m_data->m_runSta = UiMotionData::RUN_STA_STOPING;

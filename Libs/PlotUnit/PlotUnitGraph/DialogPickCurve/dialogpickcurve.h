@@ -26,6 +26,7 @@ public:
   void expertTreeWidgetInit(const QTreeWidget *tree);
   void axisTableInit(int axisCount);
   void usrCurveTableInit(QList<ICurve *> curves);
+  void cusCurveTableInit(QList<QList<ICurve *> > curves);
 
 signals:
   void expertTreeItemDoubleClicked(QTableWidget* axisTable,QTreeWidgetItem *item);
@@ -40,6 +41,8 @@ private slots:
   void onTreeWidgetExpertExpandedClicked();
   void onExpertTreeWidgetDoubleClicked(QTreeWidgetItem *item,int column);
   void onUsrTableCellDoubleClicked(int row, int column);
+  void onCusTableCellDoubleClicked(int row, int column);
+  void onCusBoxIndexChanged(int index);
 
 private:
   void setIcons();
@@ -49,6 +52,7 @@ private:
   SevDevice *m_sev;
   QTreeWidget *m_dataTree;
   QLineEdit *m_partNameLineEdit;
+  QList<QList<ICurve*>> m_curveList;
 };
 
 #endif // DIALOG_H

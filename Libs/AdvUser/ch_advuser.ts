@@ -179,7 +179,7 @@
         <location filename="advuserfirmwaresegmentflash.cpp" line="209"/>
         <location filename="advuserfirmwaresegmentflash.cpp" line="235"/>
         <source>Warning!</source>
-        <translation>警告</translation>
+        <translation>警告！</translation>
     </message>
     <message>
         <location filename="advuserfirmwaresegmentflash.cpp" line="152"/>
@@ -345,49 +345,54 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="advusermask.cpp" line="99"/>
+        <source>axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
         <location filename="advusermask.cpp" line="135"/>
         <source>Mask</source>
         <translation>屏蔽报警</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="205"/>
+        <location filename="advusermask.cpp" line="229"/>
         <source>Copy to Axis%1</source>
         <translation>复制到轴%1</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="217"/>
+        <location filename="advusermask.cpp" line="241"/>
         <source>Copy to all Axis</source>
         <translation>复制到所有轴</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="230"/>
+        <location filename="advusermask.cpp" line="254"/>
         <source>Clear alarm</source>
-        <translation>清除警报</translation>
+        <translation>清除屏蔽</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="241"/>
+        <location filename="advusermask.cpp" line="265"/>
         <source>Refresh</source>
         <translation>刷新</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="367"/>
-        <location filename="advusermask.cpp" line="387"/>
-        <location filename="advusermask.cpp" line="420"/>
-        <location filename="advusermask.cpp" line="456"/>
-        <location filename="advusermask.cpp" line="477"/>
+        <location filename="advusermask.cpp" line="405"/>
+        <location filename="advusermask.cpp" line="425"/>
+        <location filename="advusermask.cpp" line="459"/>
+        <location filename="advusermask.cpp" line="496"/>
+        <location filename="advusermask.cpp" line="517"/>
         <source>Error</source>
         <translation>异常</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="367"/>
+        <location filename="advusermask.cpp" line="405"/>
         <source>Write warning message error</source>
         <translation>写入报警信息错误</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="387"/>
-        <location filename="advusermask.cpp" line="420"/>
-        <location filename="advusermask.cpp" line="456"/>
-        <location filename="advusermask.cpp" line="477"/>
+        <location filename="advusermask.cpp" line="425"/>
+        <location filename="advusermask.cpp" line="459"/>
+        <location filename="advusermask.cpp" line="496"/>
+        <location filename="advusermask.cpp" line="517"/>
         <source>Not Connected!</source>
         <translation>未连接！</translation>
     </message>

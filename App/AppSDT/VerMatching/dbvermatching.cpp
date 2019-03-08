@@ -17,7 +17,7 @@ DbVerMatching::~DbVerMatching()
 bool DbVerMatching::open()
 {
   //打开数据库
-    db = QSqlDatabase::addDatabase("QSQLITE", "connectVerDB");
+    db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbPath = GTUtils::databasePath() + "Version/";
     db.setDatabaseName(dbPath + "testdatabase.db");
     db.setUserName("root");
@@ -52,6 +52,7 @@ void DbVerMatching::fillVerLinkLists(QStringList &list)
     QSqlTableModel* model = new QSqlTableModel(this);
     model->setTable(tableName);
     model->select();
+    qDebug()<<"row count"<<model->rowCount();
     for (int i = 0; i < model->rowCount(); i++) {
         QString str = "";
         QSqlRecord record = model->record(i);

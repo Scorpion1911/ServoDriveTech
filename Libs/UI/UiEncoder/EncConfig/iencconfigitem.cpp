@@ -9,7 +9,17 @@ IEncConfigItem::IEncConfigItem(QObject *parent) : QObject(parent),
   m_lostOper(0x0020),
   m_alarmOper(0x1fff),
   m_crcErrOper(0x7F00),
-  m_attributeUi(NULL)
+  m_attributeUi(NULL),
+  m_comboType(0),
+  m_absLineNum(32768),
+  m_adGain(0),
+  m_sinConf(0),
+  m_isLineNumEditable(true),
+  m_pulseZCount(131071),
+  m_shiftNum(0),
+  m_pulseABModel(0),
+  m_auxCfg(0),
+  m_needTimer(false)
 {
   m_warnings<<tr("0 when power shut down ,the battery capacity is low ")
             <<tr("1 battery capacity is low")
@@ -63,6 +73,11 @@ bool IEncConfigItem::execute()
 {
   qDebug()<<"m_encConfigData"<<m_encConfigData;
   return true;
+}
+
+void IEncConfigItem::setAbsPos(quint32 value)
+{
+    Q_UNUSED(value);
 }
 
 IEncConfigItem::EncType IEncConfigItem::encType() const
@@ -133,6 +148,96 @@ quint16 IEncConfigItem::crcErrOper() const
 
 void IEncConfigItem::setCrcErrOper(const quint16 crcErrOper)
 {
-  m_crcErrOper = crcErrOper;
+    m_crcErrOper = crcErrOper;
+}
+
+quint32 IEncConfigItem::absLineNum() const
+{
+    return m_absLineNum;
+}
+
+void IEncConfigItem::setAbsLineNum(const quint32 absLineNum)
+{
+    m_absLineNum = absLineNum;
+}
+
+quint16 IEncConfigItem::adGain() const
+{
+    return m_adGain;
+}
+
+void IEncConfigItem::setAdGain(const quint16 adGain)
+{
+    m_adGain = adGain;
+}
+
+quint16 IEncConfigItem::sinCfg() const
+{
+    return m_sinConf;
+}
+
+void IEncConfigItem::setSinCfg(const quint16 sinCfg)
+{
+    m_sinConf = sinCfg;
+}
+
+quint16 IEncConfigItem::comboType() const
+{
+    return m_comboType;
+}
+
+void IEncConfigItem::setComboType(const quint16 type)
+{
+    m_comboType = type;
+}
+
+quint32 IEncConfigItem::pulseZCount()
+{
+    return m_pulseZCount;
+}
+
+void IEncConfigItem::setPulseZCount(quint32 value)
+{
+    m_pulseZCount = value;
+}
+
+quint16 IEncConfigItem::shiftNum()
+{
+    return m_shiftNum;
+}
+
+void IEncConfigItem::setShiftNum(quint16 value)
+{
+    m_shiftNum = value;
+}
+
+quint16 IEncConfigItem::pulseABModel()
+{
+    return m_pulseABModel;
+}
+
+void IEncConfigItem::setPulseABModel(quint16 value)
+{
+    m_pulseABModel = value;
+}
+
+quint16 IEncConfigItem::aufCfg()
+{
+    return m_auxCfg;
+}
+
+void IEncConfigItem::setAufCfg(quint16 value)
+{
+    m_auxCfg = value;
+}
+
+bool IEncConfigItem::isNeedTimer()
+{
+    return m_needTimer;
+}
+
+bool IEncConfigItem::isLineNumEditable() const
+{
+    return m_isLineNumEditable;
 }
 

@@ -1,4 +1,4 @@
-#include "dbmanager.h"
+﻿#include "dbmanager.h"
 #include <QDebug>
 #include <QSqlTableModel>
 #include <QSqlRecord>
@@ -116,12 +116,14 @@ void DBManager::writeSummary() {
         QString strTwo = record.value(typeList.at(1)).toString();
         QString list = strOne + "-" + strTwo;
 //        qDebug()<<list;
+        qDebug()<<"str1"<<strOne;
         getLink(strTwo, 1, list);
     }
     delete model;
 }
 
 void DBManager::getLink(QString str, int count, QString list) {
+    qDebug()<<"str2"<<str;
     if (count < typeList.count() - 1) {
         QString tableName = "Relation" + typeList.at(count) + typeList.at(count + 1);
         QSqlTableModel* model = new QSqlTableModel(this);

@@ -228,7 +228,77 @@ bool PluginsManager::installUsrPlugin()
 
 bool PluginsManager::installCustomPlugin()
 {
-  return true;
+    QString cusBasePath = plotPluginsPath()+"custom/";
+    QStringList nameList;
+    qDebug()<<"cusPath"<<cusBasePath;
+    GTUtils::getAllFolderNames(cusBasePath, nameList);
+    bool ret = true;
+    qDebug()<<"nameList count"<<nameList.count();
+    for (int i = 0; i < nameList.count(); i++) {
+        QList<ICurve*> curveList;
+        qDebug()<<"name"<<nameList.at(i);
+        QString cusPath = cusBasePath + nameList.at(i) + "/";
+        QStringList cusPluginsList = pluginsFromReadTxt(cusPath + PLUGINLIST_FILE_NAME);
+
+        if (cusPluginsList.isEmpty()) {
+            m_customCurves.append(curveList);
+            continue;
+        }
+
+
+        for (int j = 0; j < cusPluginsList.size(); j++)
+        {
+            QString cusPlugin;
+            QString pluginName;
+            bool ok = true;
+            pluginName = cusPluginsList.at(j);
+            cusPlugin = cusPath + pluginName + ".dll";
+            ok = installPlugin("usr", cusPlugin);
+            qDebug()<<"installPlugin OK = "<<ok;
+            if(ok)
+            {
+                //expert 获取服务引用
+                QString filter = QString("(name=%1)").arg(pluginName);
+                QList<ctkServiceReference> references = m_context->getServiceReferences<ICurve>(filter);
+                qDebug()<<"references size = "<<references.size();
+                if (!references.isEmpty())
+                {
+                    ctkServiceReference reference = references.at(0);
+                    if (reference)
+                    {
+                        // 获取指定 ctkServiceReference 引用的服务对象
+                        ICurve* service = m_context->getService<ICurve>(reference);
+                        if (service != Q_NULLPTR)
+                        {
+                            // 调用服务
+  //                        service->prepare();
+                            curveList.append(service);
+  //                        service->setPluginName(pluginName);
+                            qDebug()<<"cus plugin : display name = "<<service->displayName();
+                            qDebug()<<"cus plugin : full name = "<<service->fullName();
+                        }
+                        else
+                        {
+                            QMessageBox::information(0,tr("error"),tr("get service error:m_context->getService"));
+                            ret = false;
+                        }
+                    }
+                }
+                else
+                {
+                    QMessageBox::information(0,tr("error"),tr("error:m_context->getServiceReferences is Empty"));
+                    ret = false;
+                }
+            }
+            else
+            {
+                QMessageBox::information(0,tr("error"),tr("error:installPlugin = %1").arg(cusPlugin));
+                ret = false;
+            }
+        }
+        m_customCurves.append(curveList);
+    }
+    return ret;
 }
 
 ICurve *PluginsManager::createICurveFromContainer(const QString &name)
@@ -247,8 +317,16 @@ ICurve *PluginsManager::createICurveFromContainer(const QString &name)
       return c;
     }
   }
+  for (int i = 0; i < m_customCurves.count(); i++) {
+      for (int j = 0; j < m_customCurves.at(i).count(); j++) {
+          if(name == m_customCurves.at(i).at(j)->pluginName())
+          {
+            c = m_customCurves.at(i).at(j)->clone();
+            return c;
+          }
+      }
+  }
   return c;
-  //还有用户定制的没有考虑
 }
 
 void PluginsManager::setTransLanguage()

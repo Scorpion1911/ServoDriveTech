@@ -6,6 +6,7 @@
 #include "imotion.h"
 #include "motionvelocity.h"
 #include "motionposition.h"
+#include "motionptsl.h"
 #include "uimotionposition.h"
 
 #include <QMessageBox>
@@ -84,6 +85,7 @@ TabMotion::TabMotion(const QString &name, SevDevice *sev, QWidget *parent) :
 
   ui->tbtn_plot_ctlsrc_glink2->setCheckable(true);
   ui->tbtn_plot_ctlsrc_pc->setCheckable(true);
+  ui->tbtn_plot_ctlsrc_io->setCheckable(true);
   ui->tbtn_plot_servoGoMotion->setCheckable(true);
   ui->tbtn_plot_servoBtn->setCheckable(true);
   QStringList axisList;
@@ -119,6 +121,12 @@ TabMotion::TabMotion(const QString &name, SevDevice *sev, QWidget *parent) :
     m_motionList.append(pMotion);
   }
 
+//  if (ver >= 136) {
+//      MotionPTSL *ptMotion = new MotionPTSL(ui->listWidget_plot_tab2_axis, m_sev, tr("PTSL"));
+//      connect(ptMotion, SIGNAL(progressValueChanged(quint16, int)), this, SLOT(onProgressValueChanged(quint16,int)));
+//      m_motionList.append(ptMotion);
+//  }
+
   for(int i=0;i<m_motionList.size();i++)
   {
     ui->listWidget_plot_motion_type_inx->addItem(QString("%1 %2").arg(i).arg(m_motionList.at(i)->name()));
@@ -139,6 +147,7 @@ TabMotion::TabMotion(const QString &name, SevDevice *sev, QWidget *parent) :
   connect(ui->listWidget_plot_tab2_axis,SIGNAL(currentRowChanged(int)),this,SLOT(onMotionAxisRowChanged(int)));
   connect(ui->tbtn_plot_ctlsrc_pc,SIGNAL(clicked(bool)),this,SLOT(onBtnCtlSrcPcClicked()));
   connect(ui->tbtn_plot_ctlsrc_glink2,SIGNAL(clicked(bool)),this,SLOT(onBtnCtlSrcGLink2Clicked()));
+  connect(ui->tbtn_plot_ctlsrc_io, SIGNAL(clicked(bool)), this, SLOT(onBtnCtlSrcIOClicked()));
   connect(ui->listWidget_plot_motion_type_inx,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(onListWidgetMotionTypeInxClicked(QListWidgetItem*)));
   connect(ui->tbtn_plot_servoGoMotion,SIGNAL(clicked(bool)),this,SLOT(onBtnMotionGoClicked(bool)));
   connect(ui->tbtn_plot_servoBtn, SIGNAL(clicked(bool)), this, SLOT(onBtnServoOnClicked(bool)));
@@ -226,10 +235,17 @@ void TabMotion::setUiCurrentCtlSrc(int src)
   case GT::SEV_CTL_SRC_PC:
     ui->tbtn_plot_ctlsrc_pc->setChecked(true);
     ui->tbtn_plot_ctlsrc_glink2->setChecked(false);
+    ui->tbtn_plot_ctlsrc_io->setChecked(false);
     break;
   case GT::SEV_CTL_SRC_GLINK2:
     ui->tbtn_plot_ctlsrc_pc->setChecked(false);
     ui->tbtn_plot_ctlsrc_glink2->setChecked(true);
+    ui->tbtn_plot_ctlsrc_io->setChecked(false);
+    break;
+  case GT::SEV_CTL_SRC_IO:
+    ui->tbtn_plot_ctlsrc_pc->setChecked(false);
+    ui->tbtn_plot_ctlsrc_glink2->setChecked(false);
+    ui->tbtn_plot_ctlsrc_io->setChecked(true);
     break;
   default:
     break;
@@ -269,7 +285,7 @@ void TabMotion::onBtnCtlSrcPcClicked()
       m_sev->setControlSrc(i,GT::SEV_CTL_SRC_PC);
     }
   }
-  setUiCurrentCtlSrc(GT::SEV_CTL_SRC_GLINK2);
+  setUiCurrentCtlSrc(GT::SEV_CTL_SRC_PC);
 }
 
 void TabMotion::onBtnCtlSrcGLink2Clicked()
@@ -282,6 +298,18 @@ void TabMotion::onBtnCtlSrcGLink2Clicked()
     }
   }
   setUiCurrentCtlSrc(GT::SEV_CTL_SRC_GLINK2);
+}
+
+void TabMotion::onBtnCtlSrcIOClicked()
+{
+    for(int i = 0;i<ui->listWidget_plot_tab2_axis->count();i++)
+    {
+      if(ui->listWidget_plot_tab2_axis->item(i)->isSelected())
+      {
+        m_sev->setControlSrc(i,GT::SEV_CTL_SRC_IO);
+      }
+    }
+    setUiCurrentCtlSrc(GT::SEV_CTL_SRC_IO);
 }
 
 void TabMotion::onListWidgetMotionTypeInxClicked(QListWidgetItem *item)
@@ -309,6 +337,12 @@ void TabMotion::onListWidgetMotionTypeInxClicked(QListWidgetItem *item)
     ui->tbtn_plot_servoBtn->setEnabled(true);
     break;
   }
+  case IMotion::MOTION_TYPE_PTSL:
+  {
+      ui->tbtn_plot_servoGoMotion->setEnabled(true);
+      ui->tbtn_plot_servoBtn->setEnabled(true);
+      break;
+  }
   default:
     break;
   }
@@ -327,6 +361,7 @@ void TabMotion::onListWidgetMotionTypeInxClicked(QListWidgetItem *item)
 
 void TabMotion::onBtnServoOnClicked(bool checked)
 {
+    qDebug()<<"checked"<<checked;
     if (!m_sev->isConnecting()) {
         ui->tbtn_plot_servoBtn->setChecked(false);
         return;
@@ -411,7 +446,7 @@ void TabMotion::onBtnMotionGoClicked(bool checked)
             m_axisMotionDataList.at(row)->m_curMotion->stop(row);
           }
         }
-        if (ui->listWidget_plot_motion_type_inx->currentRow() == 2) {
+        if (ui->listWidget_plot_motion_type_inx->currentRow() >= 2) {
             onMotionAllDone();
         }
         //m_barWidget->setVisible(false);

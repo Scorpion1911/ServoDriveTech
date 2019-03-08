@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="graphio126.cpp" line="73"/>
-        <location filename="graphio126.cpp" line="77"/>
+        <location filename="graphio126.cpp" line="78"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -20,34 +20,34 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio126.cpp" line="77"/>
+        <location filename="graphio126.cpp" line="78"/>
         <source>Are you sure to loose the brake?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio126.cpp" line="126"/>
-        <location filename="graphio126.cpp" line="130"/>
-        <location filename="graphio126.cpp" line="182"/>
-        <location filename="graphio126.cpp" line="186"/>
-        <location filename="graphio126.cpp" line="191"/>
+        <location filename="graphio126.cpp" line="128"/>
+        <location filename="graphio126.cpp" line="132"/>
+        <location filename="graphio126.cpp" line="184"/>
+        <location filename="graphio126.cpp" line="188"/>
+        <location filename="graphio126.cpp" line="193"/>
         <source>State: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio126.cpp" line="126"/>
-        <location filename="graphio126.cpp" line="182"/>
+        <location filename="graphio126.cpp" line="128"/>
+        <location filename="graphio126.cpp" line="184"/>
         <source>Unlocked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio126.cpp" line="130"/>
-        <location filename="graphio126.cpp" line="186"/>
-        <location filename="graphio126.cpp" line="191"/>
+        <location filename="graphio126.cpp" line="132"/>
+        <location filename="graphio126.cpp" line="188"/>
+        <location filename="graphio126.cpp" line="193"/>
         <source>Locked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio126.cpp" line="166"/>
+        <location filename="graphio126.cpp" line="168"/>
         <source>Motor Brake Polarity
 
 Axis%1</source>
@@ -63,7 +63,7 @@ Axis%1</source>
     </message>
     <message>
         <location filename="graphio129.cpp" line="73"/>
-        <location filename="graphio129.cpp" line="77"/>
+        <location filename="graphio129.cpp" line="78"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -73,34 +73,34 @@ Axis%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio129.cpp" line="77"/>
+        <location filename="graphio129.cpp" line="78"/>
         <source>Are you sure to loose the brake?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio129.cpp" line="83"/>
-        <location filename="graphio129.cpp" line="87"/>
-        <location filename="graphio129.cpp" line="118"/>
-        <location filename="graphio129.cpp" line="122"/>
-        <location filename="graphio129.cpp" line="127"/>
+        <location filename="graphio129.cpp" line="85"/>
+        <location filename="graphio129.cpp" line="89"/>
+        <location filename="graphio129.cpp" line="120"/>
+        <location filename="graphio129.cpp" line="124"/>
+        <location filename="graphio129.cpp" line="129"/>
         <source>State: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio129.cpp" line="83"/>
-        <location filename="graphio129.cpp" line="118"/>
+        <location filename="graphio129.cpp" line="85"/>
+        <location filename="graphio129.cpp" line="120"/>
         <source>Unlocked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio129.cpp" line="87"/>
-        <location filename="graphio129.cpp" line="122"/>
-        <location filename="graphio129.cpp" line="127"/>
+        <location filename="graphio129.cpp" line="89"/>
+        <location filename="graphio129.cpp" line="124"/>
+        <location filename="graphio129.cpp" line="129"/>
         <source>Locked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio129.cpp" line="111"/>
+        <location filename="graphio129.cpp" line="113"/>
         <source>Motor Brake Polarity
 
 Axis%1</source>
@@ -131,8 +131,8 @@ Axis%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio133.cpp" line="84"/>
-        <location filename="graphio133.cpp" line="88"/>
+        <location filename="graphio133.cpp" line="85"/>
+        <location filename="graphio133.cpp" line="89"/>
         <location filename="graphio133.cpp" line="120"/>
         <location filename="graphio133.cpp" line="124"/>
         <location filename="graphio133.cpp" line="129"/>
@@ -140,13 +140,13 @@ Axis%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio133.cpp" line="84"/>
+        <location filename="graphio133.cpp" line="85"/>
         <location filename="graphio133.cpp" line="120"/>
         <source>Unlocked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphio133.cpp" line="88"/>
+        <location filename="graphio133.cpp" line="89"/>
         <location filename="graphio133.cpp" line="124"/>
         <location filename="graphio133.cpp" line="129"/>
         <source>Locked</source>

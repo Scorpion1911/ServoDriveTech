@@ -48,7 +48,8 @@ SOURCES += \
     FolderCompressor/FolderCompressor.cpp \
     AutoTurnning/autoturnning.cpp \
     PixmapWidget/pixmapwidget.cpp \
-    SearchItemFromTree/searchitemfromtree.cpp
+    SearchItemFromTree/searchitemfromtree.cpp \
+    MathToolbox/mathtoolbox.cpp
 
 HEADERS +=\
     QtTreeManager/qttreemanager.h \
@@ -64,7 +65,8 @@ HEADERS +=\
     AutoTurnning/autoturnning.h \
     PixmapWidget/pixmapwidget_p.h \
     PixmapWidget/pixmapwidget.h \
-    SearchItemFromTree/searchitemfromtree.h
+    SearchItemFromTree/searchitemfromtree.h \
+    MathToolbox/mathtoolbox.h
 
 unix {
     target.path = /usr/lib

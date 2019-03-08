@@ -17,6 +17,8 @@ using namespace std;
 #include "ST_GTSD_Cmd.h"
 #include "FirmwareDl.h"
 
+#include <QDebug>
+
 CFirmwareDL* g_firmwareDl = NULL;
 extern CAbsCom* g_AbsCom;
 
@@ -298,7 +300,6 @@ int16 CFirmwareDL::EraseData(int16 com_type, void(*tpfUpdataProgressPt)(void*, i
 	{
 		return iRet;
 	}
-
 	iRet = SetRemoteUpdataStartbit(com_type, stationId);
 	if(iRet!=0)
 	{
@@ -492,7 +493,7 @@ int32 CFirmwareDL::CheckFFNumber(short* buffer,int lenth)
 int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv, int16& progress, int16 stationId)
 {
     void* ptr = ptrv;
-	int iRet; 
+    int iRet;
 	iRet = ProtectOff(com_type, stationId);//关闭写保护
 	if (iRet != 0)
 	{
@@ -500,7 +501,7 @@ int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*
 	}
 
   iRet = EraseData(com_type, tpfUpdataProgressPt,ptr,progress, stationId); //清除fpga flash
-	if (iRet != 0)
+  if (iRet != 0)
 	{
 //		ProtectOn(com_type, stationId);
 		return iRet;

@@ -229,29 +229,6 @@
        </item>
        <item>
         <property name="text">
-         <string>Brake</string>
-        </property>
-        <property name="text">
-         <string>NULL</string>
-        </property>
-        <property name="text">
-         <string>UiBrake</string>
-        </property>
-        <property name="text">
-         <string>PrmFuncBrake</string>
-        </property>
-        <property name="text">
-         <string>6</string>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="text">
-         <string>GraphBrake129</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
          <string>Status</string>
         </property>
         <property name="text">
@@ -264,7 +241,7 @@
          <string>PrmFuncDeviceStatus</string>
         </property>
         <property name="text">
-         <string>7</string>
+         <string>6</string>
         </property>
         <property name="text">
          <string>0</string>
@@ -287,7 +264,7 @@
          <string>PrmRAMAxis</string>
         </property>
         <property name="text">
-         <string>8</string>
+         <string>7</string>
         </property>
         <property name="text">
          <string>1</string>
@@ -310,7 +287,7 @@
          <string>PrmFlashAxis</string>
         </property>
         <property name="text">
-         <string>9</string>
+         <string>8</string>
         </property>
         <property name="text">
          <string>1</string>

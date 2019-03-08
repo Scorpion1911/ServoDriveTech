@@ -133,5 +133,6 @@ RC_ICONS = AppIco.ico
 
 TRANSLATIONS    += ch_main.ts en_main.ts
 
+QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
 
 QML_IMPORT_TRACE=1

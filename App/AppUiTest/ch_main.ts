@@ -49,12 +49,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="194"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="193"/>
         <source>Building fails %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="197"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="196"/>
         <source>Your software is too old ,not support the current device
 Please update from
 
@@ -63,52 +63,52 @@ http://www.googoltech.com.cn
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="201"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="200"/>
         <source>Building Finished!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="239"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="238"/>
         <source>
 Error:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="240"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="239"/>
         <source>
 Solution:
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="251"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="250"/>
         <source>  %1 read powerboard eeprom error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="255"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="254"/>
         <source>  %1 read controlboard eeprom error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="257"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="256"/>
         <source>  %1 read dsp version error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="259"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="258"/>
         <source>  %1 read fpga version error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="263"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="262"/>
         <source> manual to select the software toolbar:
 more-&gt;option-&gt;autolaod-&gt;unchecked clicked apply
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="264"/>
+        <location filename="../../Common/src/Kernel/devcomrwriter.cpp" line="263"/>
         <source>and then toolbar:new ....select your correct version</source>
         <translation type="unfinished"></translation>
     </message>

@@ -100,3 +100,12 @@ quint16 IGraphEncoder::readErrLost(const QString &key)
   err=d->m_dev->genCmdRead(key,d->m_uiWidget->uiIndexs().axisInx,isOk);
   return err;
 }
+
+quint32 IGraphEncoder::readAbsPos(const QString &key)
+{
+    Q_D(IGraphEncoder);
+    bool isOk = true;
+    quint32 pos = 0;
+    pos = d->m_dev->genCmdRead(key, d->m_uiWidget->uiIndexs().axisInx, isOk);
+    return pos;
+}

@@ -56,6 +56,7 @@ void UiEncoder::accept(QWidget *w)
   ui->qmlHboxLayout->addWidget(w);
   d->m_graphEncoder=dynamic_cast<IGraphEncoder *>(w);
   d->m_graphEncoder->visit(this);
+  d->m_copyAll = false;
 }
 void UiEncoder::setUiActive(bool actived)
 {
@@ -72,12 +73,48 @@ void UiEncoder::setUiActive(bool actived)
 //    GTUtils::delayms(100);
     d->m_graphEncoder->startUpdateTimer(actived);
     qDebug()<<"TEST_OUT UiEncoder :d->m_graphEncoder->startUpdateTimer(actived)"<<actived;
+  } else if (d->m_device->isOffline()){
+      if (actived) {
+          bool ok = readOfflinePrm();
+          if (ok) {
+            emit encActive();
+          }
+      }
   }
 }
 
 void UiEncoder::setContextAction()
 {
-  createActionSwitchView();
+    createActionSwitchView();
+}
+
+bool UiEncoder::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_D(UiEncoder);
+    bool wOk=true;
+    wOk=IUiWidget::writePageFlashToOtherAxis(srcAxisInx, desAxisInx, tree);
+    qint32 a;
+    qint32 b;
+    if (!wOk) {
+        return false;
+    }
+    wOk = d->m_device->readGearPrm(srcAxisInx, a, b);
+    if (!wOk) {
+        return false;
+    }
+    wOk = d->m_device->writeGearPrm(desAxisInx, a, b);
+
+    qint32 c;
+    qint32 dd;
+    if (!wOk) {
+        return false;
+    }
+    wOk = d->m_device->readPulseGearPrm(srcAxisInx, c, dd);
+    if (!wOk) {
+        return false;
+    }
+    wOk = d->m_device->writeGearPrm(desAxisInx, c, dd);
+    return wOk;
 }
 
 void UiEncoder::onDspReset()

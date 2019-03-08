@@ -20,6 +20,8 @@ public:
 
   bool readPageFLASH()Q_DECL_OVERRIDE{return true;}
   bool writePageFLASH()Q_DECL_OVERRIDE{return true;}
+  bool readOfflinePrm()Q_DECL_OVERRIDE{return true;}
+  bool writeOfflinePrm()Q_DECL_OVERRIDE{return true;}
 
   void accept(QWidget*w) Q_DECL_OVERRIDE;
 

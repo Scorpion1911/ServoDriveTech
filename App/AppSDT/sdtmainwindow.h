@@ -86,6 +86,8 @@ private:
   bool MessageBoxAsk(const QString &msg);
   void startListen();
 
+  void copySingleAxis(int devIndex, int srcAxisIndex, int pageIndex, int desAxisIndex);
+
 signals:
   void initProgressInfo(int barValue,QString msg);
   void sendDevConfigToServer(QByteArray block);
@@ -119,10 +121,13 @@ private slots:
   void onOptFaceCssChanged(const QString &css);
   void onOptUserChanged(bool isAdmin);
   void onOptPathChanged(const QStringList &list);
+  void onOptOffmodeChanged(bool offMode);
 
   void onProgressInfo(int barValue, const QString &msg);
 
   void onNavTreeWidgetItemClicked(QTreeWidgetItem * item, int column);
+  void onCopySingleAxisReceived(int devIndex, int srcAxisIndex, int pageIndex, int desAxisIndex);
+  void onCopyAllAxisReceived(int devIndex, int srcAxisIndex, int pageIndex);
 
   void onStatusBarPageChanged(int pIndex);
 
@@ -136,7 +141,7 @@ private slots:
   void onIpaDone();
 
   void onSaveMsgReceived(int value, const QString &msg, bool isStart);
-
+  void setMonitorStatus(bool en);
 
 private:
 
@@ -151,8 +156,8 @@ private:
   QAction *m_actnConfig;
   QAction *m_actnSave;
   QToolButton *m_tbtnMore;
-  QAction *m_actnOffMode;
-  QAction *m_actnOnMode;
+//  QAction *m_actnOffMode;
+//  QAction *m_actnOnMode;
   QToolButton *m_tbtnHelp;
   QAction *m_actnAboutHardware;
   QAction *m_actnAboutSoftware;
@@ -160,7 +165,7 @@ private:
   QAction *m_actnReset;
   QAction *m_actnUpdateFlash;
   QAction *m_actnOption;
-  QAction *m_actnProduce;
+  //QAction *m_actnProduce;
   QAction *m_actnAdvUser;
   SdtStatusBar *m_statusBar;
   QProgressBar *mp_progressBar;
@@ -182,6 +187,7 @@ private:
 
   PlotUnit *m_plot;
   bool m_connecting;
+  bool m_isOffline;
   StatusMonitor *m_statusMonitor;
 
   QString m_downloadPath;

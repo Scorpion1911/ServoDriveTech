@@ -636,9 +636,13 @@ void PlotUnitGraph129::onBtnOpenCurveClicked(bool checked)
         d->m_exsitedCurveManager->insertTable(ui->verticalLayout_5, 1);
         connect(ui->tbtn_plot_mea_horizontal,SIGNAL(clicked(bool)),d->m_exsitedCurveManager,SLOT(onBtnMeaHClicked(bool)));
         connect(ui->tbtn_plot_mea_vertical,SIGNAL(clicked(bool)),d->m_exsitedCurveManager,SLOT(onBtnMeaVClicked(bool)));
+        d->m_exsitedCurveManager->onBtnMeaHClicked(ui->tbtn_plot_mea_horizontal->isChecked());
+        d->m_exsitedCurveManager->onBtnMeaVClicked(ui->tbtn_plot_mea_vertical->isChecked());
         connect(ui->tbtn_plot_fit,SIGNAL(clicked(bool)),d->m_exsitedCurveManager,SLOT(onBtnFitClicked()));
         connect(d->m_exsitedCurveManager, SIGNAL(sendItemEnetered(QTableWidgetItem*)), this, SLOT(onCurveTableItemEnteredMoreDetail(QTableWidgetItem*)));
         connect(d->m_exsitedCurveManager, SIGNAL(sendNewPos(QPointF)), this, SLOT(onPlotPosHoverChanged(QPointF)));
+        connect(d->m_exsitedCurveManager, SIGNAL(sendPlotMeaHpos(qreal,qreal,qreal)), this, SLOT(onPlotMeaHposChanged(qreal,qreal,qreal)));
+        connect(d->m_exsitedCurveManager, SIGNAL(sendPlotMeaVpos(qreal,qreal,qreal)), this, SLOT(onPlotMeaVposChanged(qreal,qreal,qreal)));
         connect(ui->tbtn_plot_curveAll, SIGNAL(clicked()), d->m_exsitedCurveManager, SLOT(onBtnCurveShowAllClicked()));
         disconnect(ui->tbtn_plot_curveAll,SIGNAL(clicked(bool)),this,SLOT(onBtnCurveShowAllClicked()));
         //qDebug()<<"2";
@@ -660,6 +664,8 @@ void PlotUnitGraph129::onBtnOpenCurveClicked(bool checked)
         disconnect(ui->tbtn_plot_fit,SIGNAL(clicked(bool)),d->m_exsitedCurveManager,SLOT(onBtnFitClicked()));
         disconnect(d->m_exsitedCurveManager, SIGNAL(sendItemEnetered(QTableWidgetItem*)), this, SLOT(onCurveTableItemEnteredMoreDetail(QTableWidgetItem*)));
         disconnect(d->m_exsitedCurveManager, SIGNAL(sendNewPos(QPointF)), this, SLOT(onPlotPosHoverChanged(QPointF)));
+        disconnect(d->m_exsitedCurveManager, SIGNAL(sendPlotMeaHpos(qreal,qreal,qreal)), this, SLOT(onPlotMeaHposChanged(qreal,qreal,qreal)));
+        disconnect(d->m_exsitedCurveManager, SIGNAL(sendPlotMeaVpos(qreal,qreal,qreal)), this, SLOT(onPlotMeaVposChanged(qreal,qreal,qreal)));
         disconnect(ui->tbtn_plot_curveAll, SIGNAL(clicked()), d->m_exsitedCurveManager, SLOT(onBtnCurveShowAllClicked()));
         connect(ui->tbtn_plot_curveAll,SIGNAL(clicked(bool)),this,SLOT(onBtnCurveShowAllClicked()));
         d->m_exsitedCurveManager->removePlot(ui->verticalLayout_2);
@@ -832,12 +838,29 @@ void PlotUnitGraph129::onBtnSaveCurveClicked()
     if (info.suffix().compare("txt") == 0) {
         if (fdata.open(QFile::WriteOnly | QFile::Truncate | QIODevice::Text)) {
             QTextStream out(&fdata);
+            out <<qSetFieldWidth(30) << left <<"time(s)";
+            QString nameStr;
             for (int i = 0; i < d->m_curveManager->curveList().size(); i++) {
-                emit sendSaveMsg((i + 1) * 100 / d->m_curveManager->curveList().size(), tr("Saving Curve %1").arg(i + 1), true);
-                d->m_curveManager->curveList().at(i)->saveCurve(out);
+                emit sendSaveMsg((i + 1) * 20 / d->m_curveManager->curveList().size(), tr("Saving Curve Information"), true);
+                nameStr = d->m_curveManager->curveList().at(i)->name();
+                out<<nameStr;
+                d->m_curveManager->curveList().at(i)->savePrepare();
             }
-            emit sendSaveMsg(0, tr("Saving Finish!"), false);
+            out<<qSetFieldWidth(0) << left<<endl;
+            quint64 length = d->m_curveManager->curveList().at(0)->sData()->keys.size();
+            for (int i = 0; i < length; i++)
+            {
+                out<<qSetFieldWidth(30) << left<<d->m_curveManager->curveList().at(0)->sData()->keys.at(i);
+                for (int j = 0; j < d->m_curveManager->curveList().count(); j++) {
+                    out<<QString::number(d->m_curveManager->curveList().at(j)->sData()->values.at(i), 'f', 2);
+                }
+                out<<qSetFieldWidth(0) << left<<endl;
+                if (i % 100 == 0) {
+                    emit sendSaveMsg(20 + (i + 1) * 80 / length, tr("Saving Curve"), true);
+                }
+            }
             fdata.close();
+            emit sendSaveMsg(0, tr("Saving Finish!"), false);
         }
     } else if (info.suffix().compare("src") == 0) {
         if (fdata.open(QFile::WriteOnly | QFile::Truncate)) {
@@ -955,6 +978,7 @@ void PlotUnitGraph129::onBtnCurveAddClicked()
   dia->expertTreeWidgetInit(treeExpert);
   dia->axisTableInit(dev->axisNum());
   dia->usrCurveTableInit(d->m_pluginManager->usrCurves());
+  dia->cusCurveTableInit(d->m_pluginManager->customCurves());
 
   connect(dia,SIGNAL(expertTreeItemDoubleClicked(QTableWidget*,QTreeWidgetItem*)),this,SLOT(onExpertTreeWidgetDoubleClicked(QTableWidget*,QTreeWidgetItem*)));
   connect(dia,SIGNAL(addUsrCurveRequest(ICurve*)),this,SLOT(onAddUsrCurveRequested(ICurve*)));
@@ -1304,8 +1328,7 @@ void PlotUnitGraph129::onPlotDataIn(PlotData data)
 
 }
 
-void PlotUnitGraph129::onPlotSelectionRectFinish()
-{
+void PlotUnitGraph129::onPlotSelectionRectFinish() {
   Q_D(PlotUnitGraph129);
   if((d->m_isShowDetail == false)&&(d->m_isShowAll == false))
   {
@@ -1321,13 +1344,18 @@ void PlotUnitGraph129::onPlotSelectionRectFinish()
         ICurve *c = item->data(ROLE_TABLE_CURVE_ICURVE_PTR).value<ICurve *>();
         c->savePrepare();
         QCPGraph *graph = item->data(ROLE_TABLE_CURVE_GRAPH_PTR).value<QCPGraph *>();
-        graph->data().clear();
-        graph->addData(c->sData()->keys,c->sData()->values);
-        graph->data()->removeBefore(left);
+        ui->plot->removeGraph(graph);
+        ui->plot->addGraph();
+        ui->plot->graph(ui->plot->graphCount() - 1)->setPen(QPen(c->color()));
+        ui->plot->graph(ui->plot->graphCount() - 1)->setVisible(c->isDraw());
+        ui->plot->graph(ui->plot->graphCount() - 1)->addData(c->sData()->keys, c->sData()->values);
+        ui->plot->graph(ui->plot->graphCount() - 1)->data()->removeBefore(left);
+        QVariant value;
+        value.setValue(ui->plot->graph(ui->plot->graphCount() - 1));
+        item->setData(ROLE_TABLE_CURVE_GRAPH_PTR, value);
       }
       ui->plot->replot();
     }
-
     d->m_isShowDetail = true;
   }
 }
@@ -1974,10 +2002,16 @@ void PlotUnitGraph129::showAllData()
   {
     QTableWidgetItem * item = ui->tableWidget_plot_curve->item(row,COL_TABLE_CURVE_NAME);
     ICurve *c = item->data(ROLE_TABLE_CURVE_ICURVE_PTR).value<ICurve *>();
-    QCPGraph *graph = item->data(ROLE_TABLE_CURVE_GRAPH_PTR).value<QCPGraph *>();
     c->savePrepare();
-    graph->data().clear();
-    graph->addData(c->sData()->keys,c->sData()->values);
+    QCPGraph *graph = item->data(ROLE_TABLE_CURVE_GRAPH_PTR).value<QCPGraph *>();
+    ui->plot->removeGraph(graph);
+    ui->plot->addGraph();
+    ui->plot->graph(ui->plot->graphCount() -1 )->setPen(QPen(c->color()));
+    ui->plot->graph(ui->plot->graphCount() -1 )->setVisible(c->isDraw());
+    ui->plot->graph(ui->plot->graphCount() -1 )->addData(c->sData()->keys, c->sData()->values);
+    QVariant value;
+    value.setValue(ui->plot->graph(ui->plot->graphCount() -1 ));
+    item->setData(ROLE_TABLE_CURVE_GRAPH_PTR, value);
   }
   ui->plot->replot();
 }

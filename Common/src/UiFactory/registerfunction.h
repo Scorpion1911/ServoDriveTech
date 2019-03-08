@@ -5,6 +5,8 @@
 #include "UiEncoder/uiencoder.h"
 #include "UiFLASH/uiflash.h"
 #include "UiIO/uiio.h"
+#include "UiIOAnalog/uiioanalog.h"
+#include "UiHome/uihome.h"
 #include "UiMotor/uimotor.h"
 #include "UiPlot/uiplot.h"
 #include "UiPosition/uiposition.h"
@@ -12,17 +14,20 @@
 #include "UiRAM/uiram.h"
 #include "UiStatus/uistatus.h"
 #include "UiVelocity/uivelocity.h"
+#include "UiIOConf/uiioconf.h"
 #include "UiFactory/uifactory.h"
 
 #include "UiBrake/graphbrake129.h"
 #include "UiCurrent/graphcurrent129.h"
 #include "UiEncoder/graphencoder126.h"
 #include "UiEncoder/graphencoder130.h"
+#include "UiEncoder/graphencoder136.h"
 #include "UiMotor/graphmotor129.h"
 #include "UiMotor/graphmotor130.h"
 #include "UiPosition/graphposition129.h"
 #include "UiPower/graphpower129.h"
 #include "UiStatus/graphstatus129.h"
+#include "UiStatus/graphstatus136.h"
 #include "UiVelocity/graphvelocity129.h"
 #include "UiVelocity/graphvelocity133.h"
 
@@ -33,6 +38,11 @@
 #include "UiIO/graphio126.h"
 #include "UiIO/graphio129.h"
 #include "UiIO/graphio133.h"
+
+#include "UiIOConf/graphioconf136.h"
+#include "UiIOConf/graphioconf138.h"
+#include "UiHome/graphhome136.h"
+#include "UiIOAnalog/graphioanalog136.h"
 
 namespace RegisterFunction {
 void registerUiClass(){
@@ -48,15 +58,20 @@ void registerUiClass(){
   UiFactory::registerClass<UiRAM>();
   UiFactory::registerClass<UiStatus>();
   UiFactory::registerClass<UiVelocity>();
+  UiFactory::registerClass<UiIOConf>();
+  UiFactory::registerClass<UiIOAnalog>();
+  UiFactory::registerClass<UiHome>();
 
   UiFactory::registerClass<GraphBrake129>();
   UiFactory::registerClass<GraphCurrent129>();
   UiFactory::registerClass<GraphEncoder126>();
   UiFactory::registerClass<GraphEncoder130>();
+  UiFactory::registerClass<GraphEncoder136>();
   UiFactory::registerClass<GraphMotor129>();
   UiFactory::registerClass<GraphPosition129>();
   UiFactory::registerClass<GraphPower129>();
   UiFactory::registerClass<GraphStatus129>();
+  UiFactory::registerClass<GraphStatus136>();
   UiFactory::registerClass<GraphVelocity129>();
   UiFactory::registerClass<GraphVelocity133>();
 
@@ -68,6 +83,11 @@ void registerUiClass(){
   UiFactory::registerClass<GraphIO126>();
   UiFactory::registerClass<GraphIO129>();
   UiFactory::registerClass<GraphIO133>();
+
+  UiFactory::registerClass<GraphIOConf136>();
+  UiFactory::registerClass<GraphIOConf138>();
+  UiFactory::registerClass<GraphIOAnalog136>();
+  UiFactory::registerClass<GraphHome136>();
 }
 
 }

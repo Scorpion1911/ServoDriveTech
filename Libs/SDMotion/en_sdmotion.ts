@@ -10,6 +10,60 @@
     </message>
 </context>
 <context>
+    <name>UiMotionPTSL</name>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="45"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="234"/>
+        <source>Deceleration time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="82"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="293"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="104"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="221"/>
+        <source>Max Velocity:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="117"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="195"/>
+        <source>Acceleration time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="130"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="208"/>
+        <source>Constant time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="156"/>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="266"/>
+        <source>Times:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="253"/>
+        <source>Interval:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MotionPTSL/uimotionptsl.ui" line="363"/>
+        <source>REC</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UiMotionPosition</name>
     <message>
         <location filename="MotionPosition/uimotionposition.ui" line="14"/>

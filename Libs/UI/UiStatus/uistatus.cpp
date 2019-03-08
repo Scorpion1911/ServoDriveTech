@@ -41,6 +41,7 @@ void UiStatus::accept(QWidget *w)
 
   d->m_graphStatus=dynamic_cast<IGraphStatus *>(w);
   d->m_graphStatus->visit(this);
+  d->m_copyAll = false;
 }
 void UiStatus::setUiActive(bool actived)
 {

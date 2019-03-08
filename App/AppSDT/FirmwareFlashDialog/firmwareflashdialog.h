@@ -1,4 +1,4 @@
-#ifndef FIRMWAREFLASHDIALOG_H
+﻿#ifndef FIRMWAREFLASHDIALOG_H
 #define FIRMWAREFLASHDIALOG_H
 
 #include <QDialog>
@@ -17,6 +17,8 @@ public:
     explicit FirmwareFlashDialog(QList<SevDevice*> &devList, QWidget *parent = 0);
     ~FirmwareFlashDialog();
 
+signals:
+    void startDownload(bool en);
 private:
     void uiInit();
     void createConnections();

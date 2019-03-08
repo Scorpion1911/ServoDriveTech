@@ -2,6 +2,7 @@
 #include "ui_uiposition.h"
 #include "iuiwidget_p.h"
 #include "igraphposition.h"
+#include "sevdevice.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -49,6 +50,7 @@ void UiPosition::accept(QWidget *w)
 //  d->m_graphPosition->setScene(d->m_scene);
 
   d->m_graphPositionView->visit(this);
+  d->m_copyAll = false;
 }
 
 void UiPosition::setUiActive(bool actived)
@@ -56,7 +58,13 @@ void UiPosition::setUiActive(bool actived)
   if(actived)
   {
     Q_D(UiPosition);
-    if(readGenPageRAM())
+      bool ok;
+      if (d->m_device->isOffline()) {
+          ok = readOfflinePrm();
+      } else {
+          ok = readGenPageRAM();
+      }
+    if(ok)
       d->m_graphPositionView->syncTreeDataToUiFace();
   }
 }
@@ -64,7 +72,13 @@ void UiPosition::setUiActive(bool actived)
 void UiPosition::onActionReadFLASH()
 {
   Q_D(UiPosition);
-  if(readPageFLASH())
+    bool ok;
+    if (d->m_device->isOffline()) {
+        ok = readOfflinePrm();
+    } else {
+        ok = readPageFLASH();
+    }
+  if(ok)
     d->m_graphPositionView->syncTreeDataToUiFace();
 }
 

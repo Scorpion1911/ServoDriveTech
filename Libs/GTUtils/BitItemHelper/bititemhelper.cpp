@@ -87,6 +87,56 @@ bool BitItemHelper::isTargetItem(QTreeWidgetItem *item, const QString &str, int 
     return false;
 }
 
+QString BitItemHelper::decToBin16(const QString &decStr)
+{
+    QString binStr = "0000000000000000";
+    bool ok;
+    int value = decStr.toInt(&ok);
+    if (!ok) {
+        return "";
+    }
+    int count = binStr.length() - 1;
+    while (value != 0) {
+        int mode = value % 2;
+        value = value / 2;
+        binStr.replace(count--, 1, QString::number(mode));
+    }
+    return binStr;
+}
+
+QString BitItemHelper::decToBin32(const QString &decStr)
+{
+    QString binStr = "00000000000000000000000000000000";
+    bool ok;
+    int value = decStr.toInt(&ok);
+    if (!ok) {
+        return "";
+    }
+    int count = binStr.length() - 1;
+    while (value != 0) {
+        int mode = value % 2;
+        value = value / 2;
+        binStr.replace(count--, 1, QString::number(mode));
+    }
+    return binStr;
+}
+
+QString BitItemHelper::binToDec(const QString &binStr)
+{
+    int decValue = 0;
+    int len = binStr.length();
+    for (int i = 0; i < len; i++) {
+        int mode = binStr.at(len - 1 - i).digitValue();
+        if (mode != 0 && mode != 1) {
+            return "";
+        } else if (mode == 1) {
+            decValue = decValue + pow(2, i);
+        }
+    }
+    QString decStr = QString::number(decValue);
+    return decStr;
+}
+
 quint16 BitItemHelper::calculate16Bits(QTreeWidgetItem *item)
 {
     quint16 result = 0;
