@@ -43,6 +43,7 @@ void UiBrake::accept(QWidget *w)
   ui->qmlHboxLayout->addWidget(w);
   d->m_graphBrake=dynamic_cast<IGraphBrake *>(w);
   d->m_graphBrake->visit(this);
+  d->m_copyAll = false;
 }
 
 void UiBrake::setUiActive(bool actived)
@@ -50,20 +51,44 @@ void UiBrake::setUiActive(bool actived)
   if(actived)
   {
     Q_D(UiBrake);
-    if(readGenPageRAM())
-      d->m_graphBrake->syncTreeDataToUiFace();
+    bool ok;
+    if (d->m_device->isOffline()) {
+        ok = readOfflinePrm();
+    } else {
+        ok = readGenPageRAM();
+    }
+    if (ok) {
+        d->m_graphBrake->syncTreeDataToUiFace();
+    }
   }
 }
 bool UiBrake::writePageFLASH()
 {
   Q_D(UiBrake);
-  bool wOk=true;
-  wOk=IUiWidget::writePageFLASH();
+  bool wOk = true;
+  wOk = IUiWidget::writePageFLASH();
+//  if (d->m_device->isOffline()) {
+//      wOk = IUiWidget::writeOfflinePrm();
+//  } else {
+//      wOk=IUiWidget::writePageFLASH();
+//  }
   if(wOk)
   {
     d->m_graphBrake->syncTreeDataToUiFace();
   }
   return true;
+}
+
+bool UiBrake::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_D(UiBrake);
+    bool wOk=true;
+    wOk=IUiWidget::writePageFlashToOtherAxis(srcAxisInx, desAxisInx, tree);
+    if(wOk)
+    {
+      d->m_graphBrake->syncTreeDataToUiFace();
+    }
+    return true;
 }
 
 bool UiBrake::hasConfigFunc()
@@ -79,14 +104,20 @@ bool UiBrake::hasSaveFunc()
 void UiBrake::onActionReadFLASH()
 {
   Q_D(UiBrake);
-  if(readGenPageRAM())
+  bool ok;
+  if (d->m_device->isOffline()) {
+      ok = readOfflinePrm();
+  } else {
+      ok = readPageFLASH();
+  }
+  if(ok)
     d->m_graphBrake->syncTreeDataToUiFace();
 }
 
 void UiBrake::onActionReadRAM()
 {
   Q_D(UiBrake);
-  if(readPageFLASH())
+  if(readGenPageRAM())
     d->m_graphBrake->syncTreeDataToUiFace();
 }
 

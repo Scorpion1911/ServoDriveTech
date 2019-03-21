@@ -163,7 +163,6 @@ QTreeWidgetItem* GTUtils::findItemInItem(const QString &text, QTreeWidgetItem* t
     }
     return result;
   }
-
 }
 
 int GTUtils::byteNumbers(const QString &str)
@@ -198,6 +197,19 @@ QVariant GTUtils::data(const QString &path, const QString &group, const QString 
   vd=settings.value(key,defaultValue);
   settings.endGroup();
   return vd;
+}
+
+void GTUtils::getAllFolderNames(const QString &path, QStringList &nameList)
+{
+    QDir dir(path);
+    dir.setFilter(QDir::Dirs);
+    for (int i = 0; i < dir.entryInfoList().count(); i++) {
+        QFileInfo info = dir.entryInfoList().at(i);
+        if (info.fileName() == "." || info.fileName() == "..") {
+            continue;
+        }
+        nameList.append(info.fileName());
+    }
 }
 
 

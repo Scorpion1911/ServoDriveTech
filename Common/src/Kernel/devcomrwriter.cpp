@@ -174,7 +174,6 @@ DeviceConfig* DevComRWriter::buildConfigFromCom(void (*processCallback)(void *pb
   }
   else
   {
-    qDebug()<<"ssssssssssss";
     pid= idHelper.readPwrId(pok);
     qDebug()<<"pid"<<pid;
     cid= idHelper.readCtrId(cok);

@@ -297,7 +297,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>dx</string>
+                <string>dX</string>
                </property>
               </widget>
              </item>
@@ -310,7 +310,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>dy</string>
+                <string>dY</string>
                </property>
               </widget>
              </item>

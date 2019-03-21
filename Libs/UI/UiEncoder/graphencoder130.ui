@@ -258,10 +258,7 @@
          <height>16777215</height>
         </size>
        </property>
-       <layout class="QVBoxLayout" name="vlayout_encConfigUi">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QLabel" name="label_2">
           <property name="text">
@@ -282,7 +279,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>191</width>
+             <width>182</width>
              <height>175</height>
             </rect>
            </property>
@@ -295,7 +292,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>191</width>
+             <width>182</width>
              <height>175</height>
             </rect>
            </property>
@@ -335,7 +332,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>191</width>
+             <width>182</width>
              <height>175</height>
             </rect>
            </property>
@@ -348,7 +345,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>191</width>
+             <width>182</width>
              <height>175</height>
             </rect>
            </property>
@@ -399,7 +396,7 @@
              <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
             <property name="maximum">
-             <number>429496729</number>
+             <number>999999999</number>
             </property>
             <property name="value">
              <number>131072</number>
@@ -527,7 +524,7 @@ border-top-color:gray;
            </font>
           </property>
           <property name="text">
-           <string>1024</string>
+           <string>0</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -564,7 +561,7 @@ border-top-color:gray;
            </font>
           </property>
           <property name="text">
-           <string>1024</string>
+           <string>0</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -601,7 +598,7 @@ border-top-color:gray;
            </font>
           </property>
           <property name="text">
-           <string>1024</string>
+           <string>0</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

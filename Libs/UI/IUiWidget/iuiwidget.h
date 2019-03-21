@@ -35,14 +35,20 @@ public:
   void setUiIndexs(const UiIndexs &indexs);
   UiIndexs uiIndexs() const;
   virtual bool readPageFLASH();//根据地址读
+  virtual bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree);
   virtual bool writePageFLASH();//响应界面save 功能
   virtual bool readGenPageRAM();//通用指令读
   virtual bool writeGenPageRAM();//通用指令写
+  virtual bool readOfflinePrm();
+  virtual bool writeOfflinePrm();
   virtual void setUiActive(bool actived);
   virtual void accept(QWidget*w);
 
   virtual bool hasConfigFunc();
   virtual bool hasSaveFunc();
+  virtual QTreeWidget* getDataTree();
+
+  virtual bool isCopyAll();
 
   SevDevice* device();
 
@@ -52,6 +58,8 @@ protected:
   virtual void setDefaultUi()=0;
   virtual void setCurrentUiIndex(quint8 index);//设置当前两页中显示的页
   virtual void setContextAction();
+  virtual void updateTree(QTreeWidget *srcTree, QTreeWidget *desTree);
+  virtual void updateTreeItem(QTreeWidgetItem *srcTreeItem, QTreeWidgetItem *desTreeItem);
 
   void createActionSwitchView();
   bool parametersNeedChecked();
@@ -59,6 +67,7 @@ protected:
 signals:
   void sglMainErrorInfo(int axis,QString msg);
   void uiActiveChanged(bool active);//send to ui graph to update data or do other things
+  void sendBarInfo(int barValue, const QString &msg);
 
   //to device
   void sglReadPageFlash(int axis ,QTreeWidget *pTree);
@@ -70,6 +79,7 @@ protected slots:
   virtual void onActionReadRAM();
   virtual void onActionReadFLASH();
   virtual void onDspReset();
+  virtual void onOfflineChanged(bool offMode);
 protected:
   IUiWidget(IUiWidgetPrivate&dd, QWidget *parent=0);
   IUiWidgetPrivate *d_ptr;

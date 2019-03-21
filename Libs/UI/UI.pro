@@ -13,4 +13,7 @@ SUBDIRS += \
     UiFLASH \
     UiBrake \
     UiPlot \
-    UiIO
+    UiIO\
+    UiIOConf \
+    UiHome \
+    UiIOAnalog

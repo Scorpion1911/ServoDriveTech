@@ -119,10 +119,13 @@ void DeviceInfoDialog::readCurrentDeviceInfo(SevDevice *dev, QTreeWidgetItem *pa
   }
 
   fpgaVer=idHelper.readFpgaId(ok);
+  qDebug()<<"fpga Ver ok"<<ok;
+  qDebug()<<"fpgaVer"<<fpgaVer;
   if(ok)
     sFpgaVer=QString::asprintf("%#04X",fpgaVer);
 
   ok=idHelper.readFpgaDate(year,day);
+  qDebug()<<"fpga date ok"<<ok;
   if(ok)
     sYearDay=QString("%1-%2").arg(QString::asprintf("%04X",year)).arg(QString::asprintf("%04X",day));
 

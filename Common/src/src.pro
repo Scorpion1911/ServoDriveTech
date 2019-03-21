@@ -44,7 +44,10 @@ CONFIG(debug, debug|release){
           -lSDKerneld\
           -lOptiond\
           -lPlotUnitGraphd\
-          -lIPlotUnitd
+          -lIPlotUnitd\
+          -lUiIOConfd\
+          -lUiIOAnalogd\
+          -lUiHomed
     TARGET = CommonSrcAppd
 } else{
     COMMONSRC_OUT_PATH=$${PWD}/../../build/release/bin
@@ -70,7 +73,10 @@ CONFIG(debug, debug|release){
           -lSDKernel\
           -lOption\
           -lPlotUnitGraph\
-          -lIPlotUnit
+          -lIPlotUnit\
+          -lUiIOConf\
+          -lUiIOAnalog\
+          -lUiHome
     TARGET = CommonSrcApp
 }
 DESTDIR =$${COMMONSRC_OUT_PATH}

@@ -83,6 +83,7 @@ void AdvUserMask::uiInit()
     Q_D(AdvUserMask);
     setModify(false);
     ui->tree_advMask->clear();
+    d->m_changedItemList.clear();
     QList<QTreeWidgetItem*> topItemList;
     for (int i = 0; i < d->m_devList.count(); i++) {
         SevDevice* dev = d->m_devList.at(i);
@@ -95,7 +96,7 @@ void AdvUserMask::uiInit()
         item->setText(GT::COL_BOARDTREE_ADDRESS, "-1");
         for (int j = 0; j < dev->axisNum(); j++) {
             QStringList axisStrList;
-            axisStrList<<"axis" + QString::number(j + 1);
+            axisStrList<<tr("axis") + QString::number(j + 1);
             QTreeWidgetItem *axisItem = new QTreeWidgetItem(axisStrList);
             axisItem->setText(GT::COL_BOARDTREE_ADDRESS, "-1");
             QTreeWidgetItem *targetItem = GTUtils::findItem(ITEM_NAME_0, dev->axisTreeSource(j, "FLASH"), GT::COL_FLASH_RAM_TREE_NAME);
@@ -143,25 +144,49 @@ void AdvUserMask::setSevList(const QList<SevDevice *> &list)
 bool AdvUserMask::advUserActive()
 {
     Q_D(AdvUserMask);
-    bool ok;
+    bool ok = false;
     qDebug()<<"count"<<d->m_changedItemList.count();
     for (int i = 0; i < d->m_changedItemList.count(); i++) {
         qDebug()<<"name"<<d->m_changedItemList.at(i)->text(0);
         int devIndex = findDevIndex(d->m_changedItemList.at(i));
         int axisIndex = findAxisIndex(d->m_changedItemList.at(i));
-        ok = d->m_devList.at(devIndex)->writeAdvFlash(axisIndex, d->m_changedItemList.at(i));
+        if (d->m_devList.at(devIndex)->isOffline()) {
+            quint16 ofst = d->m_changedItemList.at(i)->text(GT::COL_FLASH_RAM_TREE_ADDR).toUShort();
+            qDebug()<<"ofst"<<ofst;
+            double value = d->m_changedItemList.at(i)->text(GT::COL_FLASH_RAM_TREE_VALUE).toDouble();
+            qDebug()<<"value"<<value;
+            if (d->m_changedItemList.at(i)->text(GT::COL_FLASH_RAM_TREE_ADDR).compare("-1") != 0) {
+                ok = d->m_devList.at(devIndex)->writeOffLinePrmByAddr(axisIndex, ofst, value);
+            }
+        } else {
+            ok = d->m_devList.at(devIndex)->writeAdvFlash(axisIndex, d->m_changedItemList.at(i));
+        }
         if (!ok) {
-            respondErrorExecute();
+            //respondErrorExecute();
+            d->m_changedItemList.clear();
             return false;
         }
         qDebug()<<"devIndex"<<devIndex;
-        ok = d->m_devList.at(devIndex)->readAdvFlash(axisIndex, d->m_changedItemList.at(i));
+        if (d->m_devList.at(devIndex)->isOffline()) {
+            ok = false;
+            quint16 ofst = d->m_changedItemList.at(i)->text(GT::COL_FLASH_RAM_TREE_ADDR).toUShort();
+            qDebug()<<"ofst"<<ofst;
+            double value = d->m_changedItemList.at(i)->text(GT::COL_FLASH_RAM_TREE_VALUE).toDouble();
+            qDebug()<<"value"<<value;
+            if (d->m_changedItemList.at(i)->text(GT::COL_FLASH_RAM_TREE_ADDR).compare("-1") != 0) {
+                ok = d->m_devList.at(devIndex)->readOffLinePrmByAddr(axisIndex, ofst, value);
+            }
+        } else {
+            ok = d->m_devList.at(devIndex)->readAdvFlash(axisIndex, d->m_changedItemList.at(i));
+        }
         if (!ok) {
-            respondErrorExecute();
+            //respondErrorExecute();
+            d->m_changedItemList.clear();
             return false;
         }
         qDebug()<<"axisIndex"<<axisIndex;
     }
+    d->m_changedItemList.clear();
     return true;
 }
 
@@ -289,10 +314,15 @@ void AdvUserMask::setItemColor(QTreeWidgetItem *item)
 
 bool AdvUserMask::isAxisItem(QTreeWidgetItem *item)
 {
-    if (item != NULL) {
-        QString str = item->text(GT::COL_FLASH_RAM_TREE_NAME);
-        if (str.left(4).compare("axis") == 0) {
-            return true;
+    if (item != NULL && item->parent() != NULL) {
+//        QString str = item->text(GT::COL_FLASH_RAM_TREE_NAME);
+//        if (str.left(4).compare("axis") == 0) {
+//            return true;
+//        }
+        for (int i = 0; i < ui->tree_advMask->topLevelItemCount(); i++) {
+            if (item->parent() == ui->tree_advMask->topLevelItem(i)) {
+                return true;
+            }
         }
     }
     return false;
@@ -302,9 +332,14 @@ bool AdvUserMask::isDevItem(QTreeWidgetItem *item)
 {
     Q_D(AdvUserMask);
     if (item != NULL) {
-        QString str = item->text(GT::COL_FLASH_RAM_TREE_NAME);
-        for (int i = 0; i < d->m_devList.count(); i++) {
-            if (str.compare(d->m_devList.at(i)->deviceConfig()->m_modeName) == 0) {
+//        QString str = item->text(GT::COL_FLASH_RAM_TREE_NAME);
+//        for (int i = 0; i < d->m_devList.count(); i++) {
+//            if (str.compare(d->m_devList.at(i)->deviceConfig()->m_modeName) == 0) {
+//                return true;
+//            }
+//        }
+        for (int i = 0; i < ui->tree_advMask->topLevelItemCount(); i++) {
+            if (item == ui->tree_advMask->topLevelItem(i)) {
                 return true;
             }
         }
@@ -342,10 +377,14 @@ void AdvUserMask::clearLists()
 
 void AdvUserMask::setZero(QTreeWidgetItem* item)
 {
+    Q_D(AdvUserMask);
     if (item != NULL) {
         item->setText(GT::COL_FLASH_RAM_TREE_VALUE, "0");
         for (int i = 0; i < item->childCount(); i++) {
             setZero(item->child(i));
+        }
+        if (!d->m_changedItemList.contains(item)) {
+            d->m_changedItemList.append(item);
         }
     }
 }
@@ -372,7 +411,7 @@ void AdvUserMask::onClearAlarmTriggered()
     QAction *act = static_cast<QAction *>(sender());
     QList<QVariant> varList = act->data().toList();
     int devIndex = varList.at(0).toInt();
-    if (d->m_devList.at(devIndex)->isConnecting()) {
+    if (d->m_devList.at(devIndex)->isConnecting() || d->m_devList.at(devIndex)->isOffline()) {
         int axisIndex = varList.at(1).toInt();
         //int copyIndex = varList.at(2).toInt();
         QString itemName = varList.at(3).toString();
@@ -393,7 +432,7 @@ void AdvUserMask::onCopySingleAxisTriggered()
     QAction *act = static_cast<QAction *>(sender());
     QList<QVariant> varList = act->data().toList();
     int devIndex = varList.at(0).toInt();
-    if (d->m_devList.at(devIndex)->isConnecting()) {
+    if (d->m_devList.at(devIndex)->isConnecting() || d->m_devList.at(devIndex)->isOffline()) {
         int axisIndex = varList.at(1).toInt();
         int copyIndex = varList.at(2).toInt();
         QString itemName = varList.at(3).toString();
@@ -401,7 +440,8 @@ void AdvUserMask::onCopySingleAxisTriggered()
         QTreeWidgetItem* targetItem;
         originItem = GTUtils::findItemInItem(itemName, ui->tree_advMask->topLevelItem(devIndex)->child(axisIndex), GT::COL_FLASH_RAM_TREE_NAME);
         if (isAxisItem(originItem)) {
-            targetItem = GTUtils::findItemInItem("axis" + QString::number(copyIndex + 1), ui->tree_advMask->topLevelItem(devIndex), GT::COL_FLASH_RAM_TREE_NAME);
+            //targetItem = GTUtils::findItemInItem("axis" + QString::number(copyIndex + 1), ui->tree_advMask->topLevelItem(devIndex), GT::COL_FLASH_RAM_TREE_NAME);
+            targetItem = ui->tree_advMask->topLevelItem(devIndex)->child(copyIndex);
         } else {
             targetItem = GTUtils::findItemInItem(itemName, ui->tree_advMask->topLevelItem(devIndex)->child(copyIndex), GT::COL_FLASH_RAM_TREE_NAME);
         }
@@ -426,7 +466,7 @@ void AdvUserMask::onCopyAllAxisTriggered()
     QAction *act = static_cast<QAction *>(sender());
     QList<QVariant> varList = act->data().toList();
     int devIndex = varList.at(0).toInt();
-    if (d->m_devList.at(devIndex)->isConnecting()) {
+    if (d->m_devList.at(devIndex)->isConnecting() || d->m_devList.at(devIndex)->isOffline()) {
         int axisIndex = varList.at(1).toInt();
         //int copyIndex = varList.at(2).toInt();
         QString itemName = varList.at(3).toString();
@@ -435,7 +475,8 @@ void AdvUserMask::onCopyAllAxisTriggered()
         for (int i = 0; i < ui->tree_advMask->topLevelItem(devIndex)->childCount(); i++) {
             if (i != axisIndex) {
                 if (isAxisItem(originItem)) {
-                    targetItem = GTUtils::findItemInItem("axis" + QString::number(i + 1), ui->tree_advMask->topLevelItem(devIndex), GT::COL_FLASH_RAM_TREE_NAME);
+                    //targetItem = GTUtils::findItemInItem("axis" + QString::number(i + 1), ui->tree_advMask->topLevelItem(devIndex), GT::COL_FLASH_RAM_TREE_NAME);
+                    targetItem = ui->tree_advMask->topLevelItem(devIndex)->child(i);
                 } else {
                     targetItem = GTUtils::findItemInItem(itemName, ui->tree_advMask->topLevelItem(devIndex)->child(i), GT::COL_FLASH_RAM_TREE_NAME);
                 }
@@ -462,7 +503,7 @@ void AdvUserMask::onRefreshTriggered()
     QAction *act = static_cast<QAction *>(sender());
     QList<QVariant> varList = act->data().toList();
     int devIndex = varList.at(0).toInt();
-    if (d->m_devList.at(devIndex)->isConnecting()) {
+    if (d->m_devList.at(devIndex)->isConnecting() || d->m_devList.at(devIndex)->isOffline()) {
         int axisIndex = varList.at(1).toInt();
         //int copyIndex = varList.at(2).toInt();
         QString itemName = varList.at(3).toString();
@@ -493,9 +534,9 @@ QTreeWidgetItem *AdvUserMask::findItemInTarget(QTreeWidgetItem *targetItem, cons
 int AdvUserMask::findAxisIndex(QTreeWidgetItem *item)
 {
     if (item != NULL) {
-        QString itemText = item->text(GT::COL_FLASH_RAM_TREE_NAME);
-        if (itemText.left(4).compare("axis") == 0) {
-            return itemText.right(1).toInt() - 1;
+        //QString itemText = item->text(GT::COL_FLASH_RAM_TREE_NAME);
+        if (isAxisItem(item)) {
+            return item->parent()->indexOfChild(item);
         } else {
             return findAxisIndex(item->parent());
         }
@@ -507,9 +548,14 @@ int AdvUserMask::findDevIndex(QTreeWidgetItem *item)
 {
     Q_D(AdvUserMask);
     if (item != NULL) {
-        QString itemText = item->text(GT::COL_FLASH_RAM_TREE_NAME);
-        for (int i = 0; i < d->m_devList.count(); i++) {
-            if (itemText.compare(d->m_devList.at(i)->deviceConfig()->m_modeName) == 0) {
+//        QString itemText = item->text(GT::COL_FLASH_RAM_TREE_NAME);
+//        for (int i = 0; i < d->m_devList.count(); i++) {
+//            if (itemText.compare(d->m_devList.at(i)->deviceConfig()->m_modeName) == 0) {
+//                return i;
+//            }
+//        }
+        for (int i = 0; i < ui->tree_advMask->topLevelItemCount(); i++) {
+            if (item == ui->tree_advMask->topLevelItem(i)) {
                 return i;
             }
         }

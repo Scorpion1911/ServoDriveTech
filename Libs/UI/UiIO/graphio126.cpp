@@ -71,11 +71,13 @@ void GraphIO126::onCheckBoxStateChanged(int axisIndex)
     }
     if (d->m_dev->axisServoIsOn(axisIndex)) {
         QMessageBox::warning(0, tr("Warning"), tr("Axis%1 is on Servo!").arg(axisIndex));
+        d->m_boxList.at(axisIndex)->setChecked(!checked);
         return;
     }
     if (checked) {
         QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Are you sure to loose the brake?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
         if (!(rb == QMessageBox::Yes)) {
+            d->m_boxList.at(axisIndex)->setChecked(!checked);
             return;
         }
     }

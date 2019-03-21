@@ -2,6 +2,7 @@
 #include "ui_uivelocity.h"
 #include "iuiwidget_p.h"
 #include "igraphvelocity.h"
+#include "sevdevice.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -48,6 +49,7 @@ void UiVelocity::accept(QWidget *w)
 
   d->m_graphVelocityView=dynamic_cast<IGraphVelocity *>(w);
   d->m_graphVelocityView->visit(this);
+  d->m_copyAll = false;
 }
 
 void UiVelocity::setUiActive(bool actived)
@@ -55,7 +57,13 @@ void UiVelocity::setUiActive(bool actived)
   if(actived)
   {
     Q_D(UiVelocity);
-    if(readGenPageRAM())
+      bool ok;
+      if (d->m_device->isOffline()) {
+          ok = readOfflinePrm();
+      } else {
+          ok = readGenPageRAM();
+      }
+    if (ok)
       d->m_graphVelocityView->syncTreeDataToUiFace();
   }
 }
@@ -63,7 +71,13 @@ void UiVelocity::setUiActive(bool actived)
 void UiVelocity::onActionReadFLASH()
 {
   Q_D(UiVelocity);
-  if(readPageFLASH())
+    bool ok;
+    if (d->m_device->isOffline()) {
+        ok = readOfflinePrm();
+    } else {
+        ok = readPageFLASH();
+    }
+  if(ok)
     d->m_graphVelocityView->syncTreeDataToUiFace();
 }
 

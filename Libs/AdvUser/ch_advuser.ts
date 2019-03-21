@@ -92,30 +92,30 @@
         <translation type="vanished">RPD文件版本：</translation>
     </message>
     <message>
-        <location filename="advusercompress.cpp" line="77"/>
-        <location filename="advusercompress.cpp" line="93"/>
-        <location filename="advusercompress.cpp" line="101"/>
-        <location filename="advusercompress.cpp" line="159"/>
+        <location filename="advusercompress.cpp" line="79"/>
+        <location filename="advusercompress.cpp" line="95"/>
+        <location filename="advusercompress.cpp" line="103"/>
+        <location filename="advusercompress.cpp" line="161"/>
         <source>Compress</source>
         <translation>打包</translation>
     </message>
     <message>
-        <location filename="advusercompress.cpp" line="93"/>
+        <location filename="advusercompress.cpp" line="95"/>
         <source>Please enter version information</source>
         <translation>请输入文件版本信息</translation>
     </message>
     <message>
-        <location filename="advusercompress.cpp" line="101"/>
+        <location filename="advusercompress.cpp" line="103"/>
         <source>Version do not match. Are you sure to continue?</source>
         <translation>文件版本不匹配，确定要继续吗？</translation>
     </message>
     <message>
-        <location filename="advusercompress.cpp" line="159"/>
+        <location filename="advusercompress.cpp" line="161"/>
         <source>Compressing fails!</source>
         <translation>打包失败！</translation>
     </message>
     <message>
-        <location filename="advusercompress.cpp" line="202"/>
+        <location filename="advusercompress.cpp" line="204"/>
         <source>Open Directory</source>
         <translation>打开路径</translation>
     </message>
@@ -167,54 +167,54 @@
         <translation>固件烧写</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="88"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="89"/>
         <source>[%1] </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="150"/>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="155"/>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="165"/>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="182"/>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="207"/>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="233"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="152"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="157"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="167"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="184"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="209"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="235"/>
         <source>Warning!</source>
-        <translation>警告</translation>
+        <translation>警告！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="150"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="152"/>
         <source>No device connected!</source>
         <translation>设备未连接！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="155"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="157"/>
         <source>Device:%1 does not connect!</source>
         <translation>设备%1未连接！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="165"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="167"/>
         <source>Axis of the current device is serving!</source>
         <translation>该设备已经上伺服，不能烧写！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="179"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="181"/>
         <source>Please select one HEX type file!</source>
         <translation>请选择hex文件！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="179"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="181"/>
         <source>HEX File(*.hex)</source>
         <translation>Hex文件(*.hex)</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="182"/>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="207"/>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="233"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="184"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="209"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="235"/>
         <source>NO file selected!</source>
         <translation>未选择文件！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="191"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="193"/>
         <source>Selected HEX type file:
 %1
 </source>
@@ -223,17 +223,17 @@
 </translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="204"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="206"/>
         <source>Please select one RPD type file!</source>
         <translation>请选择RPD文件！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="204"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="206"/>
         <source>RPD File(*.rpd)</source>
         <translation>RPD文件(*.rpd)</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="216"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="218"/>
         <source>Selected RPD type file:
 %1
 </source>
@@ -242,17 +242,17 @@
 </translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="229"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="231"/>
         <source>Please select three XML type files!</source>
         <translation>请选择Xml文件！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="229"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="231"/>
         <source>XML File(*.xml)</source>
         <translation>Xml文件(*.xml)</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="275"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="277"/>
         <source>Selected XML type files:
 (%1)%2
 </source>
@@ -261,63 +261,63 @@
 </translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="278"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="280"/>
         <source>(%1)%2
 </source>
         <translation>(%1)%2</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="292"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="294"/>
         <source>Start download dsp!</source>
         <translation>开始烧写DSP！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="308"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="310"/>
         <source>Downloading dsp:%1</source>
         <translation>正在烧写DSP：%1</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="310"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="312"/>
         <source>Download dsp:%1 fail!</source>
         <translation>烧写DSP%1失败！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="316"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="318"/>
         <source>Download dsp successful!</source>
         <translation>烧写DSP成功！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="318"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="320"/>
         <source>Download dsp fail!</source>
         <translation>烧写DSP失败！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="329"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="331"/>
         <source>Start download fpga!</source>
         <translation>开始烧写FPGA固件！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="354"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="357"/>
         <source>Download fpga successful!</source>
         <translation>烧写FPGA固件成功！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="356"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="359"/>
         <source>Download fpga fail!</source>
         <translation>烧写FPGA失败！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="367"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="370"/>
         <source>Start download flash!</source>
         <translation>开始烧写Xml文件！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="377"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="380"/>
         <source>Download flash successful!</source>
         <translation>烧写Xml文件成功！</translation>
     </message>
     <message>
-        <location filename="advuserfirmwaresegmentflash.cpp" line="379"/>
+        <location filename="advuserfirmwaresegmentflash.cpp" line="382"/>
         <source>Download flash fail!</source>
         <translation>烧写Xml文件失败！</translation>
     </message>
@@ -340,54 +340,59 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="91"/>
+        <location filename="advusermask.cpp" line="92"/>
         <source>[%1] </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="134"/>
+        <location filename="advusermask.cpp" line="99"/>
+        <source>axis</source>
+        <translation>轴</translation>
+    </message>
+    <message>
+        <location filename="advusermask.cpp" line="135"/>
         <source>Mask</source>
         <translation>屏蔽报警</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="204"/>
+        <location filename="advusermask.cpp" line="229"/>
         <source>Copy to Axis%1</source>
         <translation>复制到轴%1</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="216"/>
+        <location filename="advusermask.cpp" line="241"/>
         <source>Copy to all Axis</source>
         <translation>复制到所有轴</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="229"/>
+        <location filename="advusermask.cpp" line="254"/>
         <source>Clear alarm</source>
-        <translation>清除警报</translation>
+        <translation>清除屏蔽</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="240"/>
+        <location filename="advusermask.cpp" line="265"/>
         <source>Refresh</source>
         <translation>刷新</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="366"/>
-        <location filename="advusermask.cpp" line="386"/>
-        <location filename="advusermask.cpp" line="419"/>
-        <location filename="advusermask.cpp" line="455"/>
-        <location filename="advusermask.cpp" line="476"/>
+        <location filename="advusermask.cpp" line="405"/>
+        <location filename="advusermask.cpp" line="425"/>
+        <location filename="advusermask.cpp" line="459"/>
+        <location filename="advusermask.cpp" line="496"/>
+        <location filename="advusermask.cpp" line="517"/>
         <source>Error</source>
         <translation>异常</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="366"/>
+        <location filename="advusermask.cpp" line="405"/>
         <source>Write warning message error</source>
         <translation>写入报警信息错误</translation>
     </message>
     <message>
-        <location filename="advusermask.cpp" line="386"/>
-        <location filename="advusermask.cpp" line="419"/>
-        <location filename="advusermask.cpp" line="455"/>
-        <location filename="advusermask.cpp" line="476"/>
+        <location filename="advusermask.cpp" line="425"/>
+        <location filename="advusermask.cpp" line="459"/>
+        <location filename="advusermask.cpp" line="496"/>
+        <location filename="advusermask.cpp" line="517"/>
         <source>Not Connected!</source>
         <translation>未连接！</translation>
     </message>

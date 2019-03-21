@@ -35,6 +35,7 @@ SOURCES += \
     optautoload.cpp \
     qmlstylehelper.cpp \
     stylewidget.cpp \
+    optmode.cpp \
     optpath.cpp
 
 HEADERS +=\
@@ -49,7 +50,8 @@ HEADERS +=\
     qmlstylehelper.h \
     stylewidget.h \
     Option \
-    optpath.h
+    optpath.h \
+    optmode.h
 
 unix {
     target.path = /usr/lib
@@ -61,6 +63,7 @@ FORMS += \
     optface.ui \
     optplot.ui \
     optautoload.ui \
-    optpath.ui
+    optpath.ui \
+    optmode.ui
 
 TRANSLATIONS    += ch_option.ts en_option.ts

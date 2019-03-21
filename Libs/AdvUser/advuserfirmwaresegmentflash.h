@@ -1,4 +1,4 @@
-#ifndef ADVUSERFIRMWARESEGMENTFLASH_H
+﻿#ifndef ADVUSERFIRMWARESEGMENTFLASH_H
 #define ADVUSERFIRMWARESEGMENTFLASH_H
 
 #include <QWidget>
@@ -21,6 +21,8 @@ public:
     QString nickName()Q_DECL_OVERRIDE;
     void uiInit() Q_DECL_OVERRIDE;
     void setSevList(const QList<SevDevice *> &list);
+signals:
+    void startDownload(bool en);
 
 protected:
     bool advUserActive()Q_DECL_OVERRIDE;

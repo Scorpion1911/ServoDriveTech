@@ -7,6 +7,7 @@
 
 #include <QTableWidgetItem>
 #include <QTableWidget>
+#include <QDebug>
 
 InfoDialog::InfoDialog(QWidget *parent) :
     QDialog(parent),
@@ -41,7 +42,6 @@ void InfoDialog::uiInit(const QList<SevDevice*> &devList)
             pwrId = "0";
         }
         ui->table_Info->setItem(i, COL_P, new QTableWidgetItem(pwrId));
-
         quint32 cid = idHelper->readCtrId(ok);
         QString ctrId;
         if (ok) {
@@ -50,16 +50,19 @@ void InfoDialog::uiInit(const QList<SevDevice*> &devList)
             ctrId = "0";
         }
         ui->table_Info->setItem(i, COL_C, new QTableWidgetItem(ctrId));
-
-        QString vid = idHelper->readVersion(ok);
+        QString vid;
         QString verId;
-        if (ok) {
-            verId = vid.remove(0, 1);
+        if (m_devList.at(i)->isConnecting()) {
+            vid = idHelper->readVersion(ok);
+            if (ok) {
+                verId = vid.remove(0, 1);
+            } else {
+                verId = "0";
+            }
         } else {
             verId = "0";
         }
         ui->table_Info->setItem(i, COL_V, new QTableWidgetItem(verId));
-
         quint32 fid = idHelper->readFpgaId(ok);
         QString fpgId;
         if (ok) {

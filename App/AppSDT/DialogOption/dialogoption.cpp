@@ -83,6 +83,7 @@ void DialogOption::on_btn_ok_clicked()
   int i=0;
   foreach (IOpt *opt, optc->optItems())
   {
+      qDebug()<<"name "<<opt->name();
     ok=opt->execute();
     if(!ok)
       errIndex=i;

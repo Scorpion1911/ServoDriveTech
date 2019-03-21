@@ -69,7 +69,7 @@
 #define RAM_NAME "RAM"
 
 #define ICON_SDT_LOGO_NAME            "sdtlogo.png"
-#define SDT_VERSION                   "2.0.0"
+#define SDT_VERSION                   "2.0.7"
 
 using namespace GT;
 
@@ -78,6 +78,7 @@ SDTMainWindow::SDTMainWindow(QWidget *parent) :
   ui(new Ui::SDTMainWindow),
   m_currentUiStatus(UI_STA_FUNCNF),
   m_connecting(false),
+  m_isOffline(false),
   m_statusMonitor(new StatusMonitor(this))
 {
   ui->setupUi(this);
@@ -206,25 +207,25 @@ void SDTMainWindow::createActions()
 //  m_tbtnMore->setPopupMode(QToolButton::MenuButtonPopup);
 //  m_tbtnMore->setPopupMode(QToolButton::InstantPopup);
 
-  m_actnOnMode=new QAction(m_tbtnMore);
-  m_actnOnMode->setText(tr("online"));
-  m_actnOnMode->setCheckable(true);
+//  m_actnOnMode=new QAction(m_tbtnMore);
+//  m_actnOnMode->setText(tr("online"));
+//  m_actnOnMode->setCheckable(true);
 
-  m_actnOffMode=new QAction(m_tbtnMore);
-  m_actnOffMode->setText(tr("offline"));
-  m_actnOffMode->setCheckable(true);
+//  m_actnOffMode=new QAction(m_tbtnMore);
+//  m_actnOffMode->setText(tr("offline"));
+//  m_actnOffMode->setCheckable(true);
 
-  QActionGroup *modeGroup=new QActionGroup(m_tbtnMore);
-  m_actnOnMode->setChecked(true);
-  modeGroup->addAction(m_actnOffMode);
-  modeGroup->addAction(m_actnOnMode);
+//  QActionGroup *modeGroup=new QActionGroup(m_tbtnMore);
+//  m_actnOnMode->setChecked(true);
+//  modeGroup->addAction(m_actnOffMode);
+//  modeGroup->addAction(m_actnOnMode);
 
   m_actnUpdateFlash=new QAction(tr("update"),m_tbtnMore);
   m_actnReset=new QAction(tr("rstdsp"),m_tbtnMore);
 
   m_actnOption=new QAction(tr("option"),m_tbtnMore);
   m_produceClicked = false;
-  m_actnProduce=new QAction(tr("produce"),m_tbtnMore);
+  //m_actnProduce=new QAction(tr("produce"),m_tbtnMore);
 
   m_actnAdvUser = new QAction(tr("Advanced User"), m_tbtnMore);
 
@@ -238,17 +239,17 @@ void SDTMainWindow::createActions()
 //  m_tbtnMore->addAction(act5);
   QMenu *menu=new QMenu(m_tbtnMore);//menu action 不能共存
   QMenu *menuUpdateFlash=new QMenu(tr("UpdateFirmware"),menu);
-  QMenu *menuSoftMode=new QMenu(tr("softmode"),menu);
+  //QMenu *menuSoftMode=new QMenu(tr("softmode"),menu);
 
   menu->addMenu(menuUpdateFlash);
   menuUpdateFlash->addAction(m_actnUpdateFlash);
   menuUpdateFlash->addAction(m_actnReset);
   menu->addAction(m_actnOption);
-  menu->addAction(m_actnProduce);
+  //menu->addAction(m_actnProduce);
   menu->addAction(m_actnAdvUser);
-  menu->addMenu(menuSoftMode);
-  menuSoftMode->addAction(m_actnOnMode);
-  menuSoftMode->addAction(m_actnOffMode);
+//  menu->addMenu(menuSoftMode);
+//  menuSoftMode->addAction(m_actnOnMode);
+//  menuSoftMode->addAction(m_actnOffMode);
   m_tbtnMore->setMenu(menu);
 
   //按顺序增加
@@ -295,7 +296,7 @@ void SDTMainWindow::createConnections()
   connect(m_actnNewConfig,SIGNAL(triggered(bool)),this,SLOT(onActnNewConfigClicked()));
   connect(m_actnSave,SIGNAL(triggered(bool)),this,SLOT(onActnSaveClicked()));
   connect(m_actnConfig,SIGNAL(triggered(bool)),this,SLOT(onActnConfigClicked()));
-  connect(m_actnProduce, SIGNAL(triggered()), this, SLOT(onActnProduceClicked()));
+  //connect(m_actnProduce, SIGNAL(triggered()), this, SLOT(onActnProduceClicked()));
   connect(m_actnAdvUser, SIGNAL(triggered()), this, SLOT(onActnAdvUserClicked()));
   connect(m_actnCompare,SIGNAL(triggered(bool)),this,SLOT(onActnCompareClicked()));
   connect(m_actnUpdateFlash, SIGNAL(triggered()), this, SLOT(onActnUpdateFirmwareClicked()));
@@ -323,6 +324,12 @@ void SDTMainWindow::createConnections()
   if (optpath != NULL) {
       connect(optpath, SIGNAL(pathesChanged(QStringList)), this, SLOT(onOptPathChanged(QStringList)));
   }
+
+  OptMode *optmode = dynamic_cast<OptMode *>(OptContainer::instance()->optItem("optmode"));
+  if (optmode != NULL) {
+      connect(optmode, SIGNAL(softwareModeChanged(bool)), this, SLOT(onOptOffmodeChanged(bool)));
+  }
+
   m_downloadPath = optpath->file2ServoPath();
   QDir downDir(m_downloadPath);
   if (!downDir.exists()) {
@@ -334,7 +341,8 @@ void SDTMainWindow::createConnections()
       m_uploadPath = ".";
   }
   connect(ui->treeWidget,SIGNAL(itemClicked(QTreeWidgetItem*,int)),this,SLOT(onNavTreeWidgetItemClicked(QTreeWidgetItem*,int)));
-
+  connect(ui->treeWidget, SIGNAL(copySingleAxis(int,int,int,int)), this, SLOT(onCopySingleAxisReceived(int,int,int,int)));
+  connect(ui->treeWidget, SIGNAL(copyAllAxis(int,int,int)), this, SLOT(onCopyAllAxisReceived(int,int,int)));
   connect(m_statusBar,SIGNAL(statusPageChanged(int)),this,SLOT(onStatusBarPageChanged(int)));
 }
 void SDTMainWindow::clearStackedWidget()
@@ -439,13 +447,19 @@ void SDTMainWindow::navigationTreeInit()
   navTreeNameSwitchHash.insert("Status",tr("Status"));
   navTreeNameSwitchHash.insert("RAM",tr("RAM"));
   navTreeNameSwitchHash.insert("FLASH",tr("FLASH"));
+  navTreeNameSwitchHash.insert("IOConfig",tr("IOConfig"));
+  navTreeNameSwitchHash.insert("IOAnalog",tr("IOAnalog"));
+  navTreeNameSwitchHash.insert("Home",tr("Home"));
   navTreeNameSwitchHash.insert("IO",tr("IO"));
+
+  QList<int> axisNumList;
 
   for(int  k=0;k<m_sdAssemblyList.count();k++)
   {
     int axisNum;
     sd=m_sdAssemblyList.at(k);
     axisNum=sd->sevDevice()->axisNum();
+    axisNumList.append(axisNum);
     deviceItem=new QTreeWidgetItem(ui->treeWidget);
     QString prefix;
     prefix=hasNickName?tr("[%1] ").arg(sd->sevDevice()->aliasName()):"";
@@ -466,6 +480,7 @@ void SDTMainWindow::navigationTreeInit()
         axisItem->child(j)->setText(COL_TARGET_CONFIG_PRM,QString::number(i));
         axisItem->child(j)->setText(COL_TARGET_CONFIG_INDEX,QString::number(pageIndex));
         axisItem->child(j)->setText(COL_TARGET_CONFIG_ISPLOT,"-1");
+        axisItem->child(j)->setText(COL_TARGET_CONFIG_NICKNAME, keyName);
         pageIndex++;
       }
       deviceItem->addChild(axisItem);
@@ -477,8 +492,10 @@ void SDTMainWindow::navigationTreeInit()
     for(int i=0;i<globalCount;i++)
     {
       item=globalItem->child(i)->clone();
+      QString keyName = item->text(COL_TARGET_CONFIG_NAME);
       item->setText(COL_TARGET_CONFIG_INDEX,QString::number(pageIndex));
       item->setText(COL_TARGET_CONFIG_ISPLOT,"-1");
+      item->setText(COL_TARGET_CONFIG_NAME,navTreeNameSwitchHash.value(keyName));
       deviceItem->addChild(item);
       pageIndex++;
     }
@@ -494,7 +511,7 @@ void SDTMainWindow::navigationTreeInit()
 //  ui->treeWidget->addTopLevelItem(plotItem);
 
   QStringList headList;
-  headList<<"name"<<"prm"<<"classname"<<"filename"<<"ui index"<<"file src select"<<"is plot ui";
+  headList<<"name"<<"prm"<<"classname"<<"filename"<<"ui index"<<"file src select"<<"is plot ui"<<"nickName";
   ui->treeWidget->setHeaderLabels(headList);
   ui->treeWidget->setColumnCount(headList.count());
 
@@ -522,9 +539,12 @@ void SDTMainWindow::navigationTreeInit()
   ui->treeWidget->setColumnHidden(4,true);
   ui->treeWidget->setColumnHidden(5,true);
   ui->treeWidget->setColumnHidden(6,true);
+  ui->treeWidget->setColumnHidden(7, true);
 #endif
 
   m_statusBar->updateDeviceNavTreeWhenChanged(ui->treeWidget);
+
+  ui->treeWidget->setAxisNumList(axisNumList);
 
   OptUser *optuser = dynamic_cast<OptUser *>(OptContainer::instance()->optItem("optuser"));
   if (optuser != NULL) {
@@ -694,6 +714,7 @@ void SDTMainWindow::onActnAdvUserClicked()
             AdvUserFirmwareSegmentFlash *advFirmFlash = dynamic_cast<AdvUserFirmwareSegmentFlash*>(adv);
             advFirmFlash->setSevList(sevList());
             advFirmFlash->uiInit();
+            connect(advFirmFlash, SIGNAL(startDownload(bool)), this, SLOT(setMonitorStatus(bool)));
         } else {
             adv->uiInit();
         }
@@ -711,7 +732,9 @@ void SDTMainWindow::onActnCompareClicked()
 void SDTMainWindow::onActnUpdateFirmwareClicked()
 {
     FirmwareFlashDialog flashDialog(sevList(), 0);
+    connect(&flashDialog, SIGNAL(startDownload(bool)), this, SLOT(setMonitorStatus(bool)));
     flashDialog.exec();
+    disconnect(&flashDialog, SIGNAL(startDownload(bool)), this, SLOT(setMonitorStatus(bool)));
 }
 
 void SDTMainWindow::onActnResetDspClicked()
@@ -788,6 +811,37 @@ void SDTMainWindow::startListen() {
     connect(m_server, SIGNAL(getCloseMsg()), this, SLOT(onCloseMsgReceived()));
 }
 
+void SDTMainWindow::copySingleAxis(int devIndex, int srcAxisIndex, int pageIndex, int desAxisIndex)
+{
+    if (pageIndex != -1) {
+        QTreeWidgetItem *item = ui->treeWidget->topLevelItem(devIndex)->child(srcAxisIndex)->child(pageIndex);
+        int pageNum = ui->treeWidget->topLevelItem(devIndex)->child(srcAxisIndex)->childCount();
+        int index = item->text(COL_TARGET_CONFIG_INDEX).toInt();
+        QWidget *sw = ui->mainStackedWidget->widget(index);
+        QWidget *dw = ui->mainStackedWidget->widget(index + (desAxisIndex - srcAxisIndex) * pageNum);
+        IUiWidget *uiSW = dynamic_cast<IUiWidget *>(sw);
+        IUiWidget *uiDW = dynamic_cast<IUiWidget *>(dw);
+        connect(uiSW, SIGNAL(sendBarInfo(int,QString)), this, SLOT(onProgressInfo(int,QString)));
+        uiSW->writePageFlashToOtherAxis(srcAxisIndex, desAxisIndex, uiDW->getDataTree());
+        disconnect(uiSW, SIGNAL(sendBarInfo(int,QString)), this, SLOT(onProgressInfo(int,QString)));
+    } else {
+        int pageNum = ui->treeWidget->topLevelItem(devIndex)->child(srcAxisIndex)->childCount();
+        for (int i = 0; i < pageNum; i++) {
+            QTreeWidgetItem *item = ui->treeWidget->topLevelItem(devIndex)->child(srcAxisIndex)->child(i);
+            int index = item->text(COL_TARGET_CONFIG_INDEX).toInt();
+            QWidget *sw = ui->mainStackedWidget->widget(index);
+            IUiWidget *uiSW = dynamic_cast<IUiWidget *>(sw);//向下转型时使用dynamic_cast
+            if (uiSW->isCopyAll()) {
+                QWidget *dw = ui->mainStackedWidget->widget(index + (desAxisIndex - srcAxisIndex) * pageNum);
+                IUiWidget *uiDW = dynamic_cast<IUiWidget *>(dw);
+                connect(uiSW, SIGNAL(sendBarInfo(int,QString)), this, SLOT(onProgressInfo(int,QString)));
+                uiSW->writePageFlashToOtherAxis(srcAxisIndex, desAxisIndex, uiDW->getDataTree());
+                disconnect(uiSW, SIGNAL(sendBarInfo(int,QString)), this, SLOT(onProgressInfo(int,QString)));
+            }
+        }
+    }
+}
+
 void SDTMainWindow::onStartMsgReceived() {
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
@@ -862,6 +916,15 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
         ComDriver::ICom *com=sd->sevDevice()->socketCom();
         idHelper.setCom(com);
 
+        bool dspVerOk = true;
+        QString dspVer = idHelper.readVersion(dspVerOk);
+
+        if (dspVer.compare("V0") == 0) {
+            QMessageBox::warning(0, tr("Warning"), tr("No Respond from DSP!"));
+            isContinue=false;
+            break;
+        }
+
         //-------如果不是自动匹配，要进行V版本配对检查------
         if(isAutoLoad()==false)
         {
@@ -925,6 +988,9 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
       if(isContinue)
       {
         m_connecting=true;
+        m_isOffline = false;
+        OptMode *optmode = dynamic_cast<OptMode *>(OptContainer::instance()->optItem("optmode"));
+        optmode->setOfflineMode(false);
         m_statusBar->statusProgressBar()->setValue(100);
         activeCurrentUi();
         m_statusMonitor->startMonitor(1000);
@@ -1027,23 +1093,29 @@ void SDTMainWindow::onActnSaveClicked()
 {
   qDebug()<<"act add write flash test clicked";
   QWidget *cw=ui->mainStackedWidget->currentWidget();
-  IUiWidget *ui=dynamic_cast<IUiWidget *>(cw);//向下转型时使用dynamic_cast
-  qDebug()<<ui->objectName();
-  ui->writePageFLASH();
+  IUiWidget *uiW=dynamic_cast<IUiWidget *>(cw);//向下转型时使用dynamic_cast
+  qDebug()<<uiW->objectName();
+  bool ok = uiW->writePageFLASH();
+  if (ok && m_connecting) {
+      m_statusBar->setMsg(tr("Save success! Please reset DSP!"), SdtStatusBar::MSG_TYPE_WARNING);
+      GTUtils::delayms(2000);
+      m_statusBar->setMsg("");
+      //QMessageBox::information(0, tr("Tips"), tr("Save success! Please reset DSP!"));
+  }
 }
 
 void SDTMainWindow::onActnConfigClicked()
 {
   qDebug()<<"act add write flash test clicked";
   QWidget *cw=ui->mainStackedWidget->currentWidget();
-  IUiWidget *ui=dynamic_cast<IUiWidget *>(cw);//向下转型时使用dynamic_cast
-  qDebug()<<ui->objectName();
-  ui->writeGenPageRAM();
+  IUiWidget *uiW=dynamic_cast<IUiWidget *>(cw);//向下转型时使用dynamic_cast
+  qDebug()<<uiW->objectName();
+  uiW->writeGenPageRAM();
 }
 
 void SDTMainWindow::onActnDownloadClicked()
 {
-    if (!m_connecting) {
+    if (!m_connecting && !m_isOffline) {
         QMessageBox::information(0, tr("Warning"), tr("Please open com first!"));
         return;
     }
@@ -1072,17 +1144,23 @@ void SDTMainWindow::onActnDownloadClicked()
     ServoFile *servoFile = new ServoFile(0);
     connect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
     bool downOk = false;
-    downOk = servoFile->downLoadFile(processCallBack, (void *)(mp_progressBar), downloadFileName, devList.at(downloadIndex));
+    if (!m_isOffline) {
+        downOk = servoFile->downLoadFile(processCallBack, (void *)(mp_progressBar), downloadFileName, devList.at(downloadIndex));
+    } else {
+        downOk = servoFile->downLoadOfflineFile(downloadFileName, devList.at(downloadIndex));
+        activeCurrentUi();
+    }
     disconnect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
     delete servoFile;
     m_statusBar->statusProgressBar()->setVisible(false);
     if(downOk)
     {
-      m_statusBar->setMsg(tr("Download xml file OK !"));
+      m_statusBar->setMsg(tr("Download xml file OK! Please reset DSP!"));
+      QMessageBox::information(0, tr("Information"), tr("Download xml file OK! Please reset DSP!"));
     }
     else
     {
-      m_statusBar->setMsg(tr("Error: Download xml file fails !"));
+      m_statusBar->setMsg(tr("Error: Download xml file fails !"), SdtStatusBar::MSG_TYPE_ERROR);
     }
     GTUtils::delayms(2000);
     m_statusBar->setMsg("");
@@ -1090,7 +1168,7 @@ void SDTMainWindow::onActnDownloadClicked()
 
 void SDTMainWindow::onActnUploadClicked()
 {
-    if (!m_connecting) {
+    if (!m_connecting && !m_isOffline) {
         QMessageBox::information(0, tr("Warning"), tr("Please open com first!"));
         return;
     }
@@ -1101,7 +1179,11 @@ void SDTMainWindow::onActnUploadClicked()
     if (devList.count() == 1) {
         uploadIndex = 0;
         QDate curDate = QDate::currentDate();
-        QString defaultName = devList.at(0)->modelName() + "_" + devList.at(0)->versionName() + "_" + QString::number(curDate.year()) + QString::number(curDate.month()) + QString::number(curDate.day());
+        QString yearStr = QString("%1").arg(curDate.year(), 4, 10, QLatin1Char('0'));
+        QString monthStr = QString("%1").arg(curDate.month(), 2, 10, QLatin1Char('0'));
+        QString dayStr = QString("%1").arg(curDate.day(), 2, 10, QLatin1Char('0'));
+        QString str = yearStr + monthStr + dayStr;
+        QString defaultName = devList.at(0)->modelName() + "_" + devList.at(0)->versionName() + "_" + str;
         uploadFileName = QFileDialog::getSaveFileName(this, tr("Open XML File"), m_uploadPath + "/" + defaultName + ".xml", tr("XML Files(*.xml)"));
     } else {
         UploadDialog uploadDialog;
@@ -1110,12 +1192,10 @@ void SDTMainWindow::onActnUploadClicked()
         qDebug()<<"uploadfilename"<<uploadFileName;
         qDebug()<<"uploadindex"<<uploadIndex;
     }
-    qDebug()<<"1";
     //fileName = QFileDialog::getOpenFileName(this, tr("Open XML File"), m_downloadPath, tr("XML Files(*.xml)"));
     if (uploadFileName.isNull() || uploadIndex == -1) {
         return;
     }
-    qDebug()<<"2";
     QFileInfo fileInfo;
     fileInfo.setFile(uploadFileName);
     m_uploadPath = fileInfo.filePath() + "/";
@@ -1123,11 +1203,13 @@ void SDTMainWindow::onActnUploadClicked()
     m_statusBar->statusProgressBar()->setValue(0);
     ServoFile *servoFile = new ServoFile(0);
     connect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
-    qDebug()<<"3";
     bool upOK = false;
-    upOK = servoFile->upLoadFile(processCallBack, (void *)(mp_progressBar), uploadFileName, devList.at(uploadIndex));
+    if (!m_isOffline) {
+        upOK = servoFile->upLoadFile(processCallBack, (void *)(mp_progressBar), uploadFileName, devList.at(uploadIndex));
+    } else {
+        upOK = servoFile->upLoadOfflineFile(uploadFileName, devList.at(uploadIndex));
+    }
     disconnect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
-    qDebug()<<"4";
     delete servoFile;
     m_statusBar->statusProgressBar()->setVisible(false);
     if(upOK)
@@ -1136,7 +1218,7 @@ void SDTMainWindow::onActnUploadClicked()
     }
     else
     {
-      m_statusBar->setMsg(tr("Error: Upload xml file fails !"));
+      m_statusBar->setMsg(tr("Error: Upload xml file fails !"), SdtStatusBar::MSG_TYPE_ERROR);
     }
     GTUtils::delayms(2000);
     m_statusBar->setMsg("");
@@ -1192,6 +1274,23 @@ void SDTMainWindow::onOptPathChanged(const QStringList &list)
     m_downloadPath = list.at(1);
 }
 
+void SDTMainWindow::onOptOffmodeChanged(bool offMode)
+{
+    m_isOffline = offMode;
+    m_actnConfig->setEnabled(!offMode);
+    m_actnConnect->setEnabled(!offMode);
+    m_actnDisNet->setEnabled(!offMode);
+    for (int i = 0; i < m_sdAssemblyList.count(); i++) {
+        m_sdAssemblyList.at(i)->sevDevice()->setOfflineStatus(offMode);
+        if(offMode) {
+            SevDevice* dev = m_sdAssemblyList.at(i)->sevDevice();
+            dev->disableConnection();
+        }
+    }
+    disactiveAllUi();
+    activeCurrentUi();
+}
+
 void SDTMainWindow::onProgressInfo(int barValue, const QString &msg)
 {
   //qDebug()<<"value"<<barValue<<"msg"<<msg;
@@ -1220,14 +1319,51 @@ void SDTMainWindow::onNavTreeWidgetItemClicked(QTreeWidgetItem *item, int column
       ui->mainStackedWidget->setCurrentIndex(index);
       qDebug()<<"index"<<index <<"ui->mainStackedWidget->count()"<<ui->mainStackedWidget->count();
       GTUtils::delayms(10);
-
       disactiveAllUi();
       activeCurrentUi();
       changeConfigSaveBtnStatus();
-
       setNavCurrentSelectedInfo();
     }
   }
+}
+
+void SDTMainWindow::onCopySingleAxisReceived(int devIndex, int srcAxisIndex, int pageIndex, int desAxisIndex)
+{
+    if (!m_sdAssemblyList.at(devIndex)->sevDevice()->isConnecting() && !m_sdAssemblyList.at(devIndex)->sevDevice()->isOffline()) {
+        QMessageBox::warning(0, tr("Warning"), tr("Please connect the device!"));
+        return;
+    }
+    mp_progressBar->setVisible(true);
+    copySingleAxis(devIndex, srcAxisIndex, pageIndex, desAxisIndex);
+    if (m_sdAssemblyList.at(devIndex)->sevDevice()->isConnecting()) {
+        QMessageBox::information(0, tr("Info"), tr("Copy finish! Please restart the device!"));
+    } else if (m_sdAssemblyList.at(devIndex)->sevDevice()->isOffline()) {
+        QMessageBox::information(0, tr("Info"), tr("Copy finish!"));
+    }
+    mp_progressBar->setVisible(false);
+    m_statusBar->setMsg("");
+}
+
+void SDTMainWindow::onCopyAllAxisReceived(int devIndex, int srcAxisIndex, int pageIndex)
+{
+    if (!m_sdAssemblyList.at(devIndex)->sevDevice()->isConnecting() && !m_sdAssemblyList.at(devIndex)->sevDevice()->isOffline()) {
+        QMessageBox::warning(0, tr("Warning"), tr("Please connect the device!"));
+        return;
+    }
+    int axisNum = m_sdAssemblyList.at(devIndex)->sevDevice()->axisNum();
+    mp_progressBar->setVisible(true);
+    for (int i = 0; i < axisNum; i++) {
+        if (i != srcAxisIndex) {
+            copySingleAxis(devIndex, srcAxisIndex, pageIndex, i);
+        }
+    }
+    if (m_sdAssemblyList.at(devIndex)->sevDevice()->isConnecting()) {
+        QMessageBox::information(0, tr("Info"), tr("Copy finish! Please restart the device!"));
+    } else if (m_sdAssemblyList.at(devIndex)->sevDevice()->isOffline()) {
+        QMessageBox::information(0, tr("Info"), tr("Copy finish!"));
+    }
+    mp_progressBar->setVisible(false);
+    m_statusBar->setMsg("");
 }
 //!
 //! \brief SDTMainWindow::onStatusBarPageChanged
@@ -1331,6 +1467,16 @@ void SDTMainWindow::onSaveMsgReceived(int value, const QString &msg, bool isStar
         setUiAllEnable(true);
     }
 }
+
+void SDTMainWindow::setMonitorStatus(bool en)
+{
+    if (en) {
+        m_statusMonitor->startMonitor();
+    } else {
+        m_statusMonitor->stopMonitor();
+    }
+}
+
 SdAssembly *SDTMainWindow::createSdAssembly(DeviceConfig *cfg)
 {
   bool initOK=true;
@@ -1492,11 +1638,8 @@ void SDTMainWindow::createSdAssemblyListByDevConfig(const QList<DeviceConfig *> 
 
   for(int i=0;i<configList.size();i++)
   {
-      qDebug()<<"i"<<i;
     DeviceConfig *cfg=configList.at(i);
-    qDebug()<<"s";
     currentSdAssembly=createSdAssembly(cfg);
-    qDebug()<<"ss";
     if(currentSdAssembly!=NULL)
     {
       m_sdAssemblyList.append(currentSdAssembly);
@@ -1532,6 +1675,11 @@ void SDTMainWindow::updateSDTMainUiByConfigList(const QList<DeviceConfig *> &con
 {
   ui->mainStackedWidget->hide();
   createSdAssemblyListByDevConfig(configList);
+  OptMode *optmode = dynamic_cast<OptMode *>(OptContainer::instance()->optItem("optmode"));
+  bool offMode = optmode->isOffline();
+  for (int i = 0; i < sevList().count(); i++) {
+      sevList().at(i)->setOfflineStatus(offMode);
+  }
   removeAllStackedWidget();
   clearNavigationTree();
   navigationTreeInit();
@@ -1543,7 +1691,9 @@ void SDTMainWindow::updateSDTMainUiByConfigList(const QList<DeviceConfig *> &con
   updateStatusMonitorDevice(sevList());
   m_gUiControl->setSevDeviceList(sevList());
   ui->mainStackedWidget->show();
-
+  if (offMode) {
+      activeCurrentUi();
+  }
 }
 
 void SDTMainWindow::updateStatusMonitorDevice(const QList<SevDevice *> &list)

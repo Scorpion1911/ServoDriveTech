@@ -67,3 +67,5 @@ FORMS    += eprommanager.ui
 RC_ICONS = Factory.ico
 
 TRANSLATIONS    += ch_eeprom.ts en_eeprom.ts
+
+QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"

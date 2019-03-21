@@ -29,6 +29,7 @@ void IGraph::visit(IUiWidget *uiWidget)
   setCommonConnections();
   setEditTextStatusDefaultAll();
   setCustomVisitActive(uiWidget);
+  setParaScale();
 }
 void IGraph::syncTreeDataToUiFace()
 {
@@ -103,6 +104,11 @@ void IGraph::setCommonConnections()
   connect(d->m_dev,SIGNAL(itemRangeValid(QTreeWidgetItem*,int)),this,SLOT(onItemBoxEditTextError(QTreeWidgetItem*,int)));
   OptFace *face=dynamic_cast<OptFace *>(OptContainer::instance()->optItem("optface"));
   connect(face,SIGNAL(faceCssChanged(QString)),this,SLOT(onFaceCssChanged(QString)));
+}
+
+void IGraph::setParaScale()
+{
+
 }
 
 void IGraph::onItemBoxEditTextError(QTreeWidgetItem *item, int status)

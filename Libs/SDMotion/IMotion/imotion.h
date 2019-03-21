@@ -17,7 +17,8 @@ public:
   typedef enum{
     MOTION_TYPE_NONE = 0,
     MOTION_TYPE_VEL = 1,
-    MOTION_TYPE_POS = 2
+    MOTION_TYPE_POS = 2,
+    MOTION_TYPE_PTSL = 3
   }MotionType;
   virtual ~IMotion();
   virtual void movePrepare(quint16 axisInx) = 0;

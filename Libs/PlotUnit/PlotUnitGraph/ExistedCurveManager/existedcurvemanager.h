@@ -27,6 +27,8 @@ private:
 signals:
     void sendItemEnetered(QTableWidgetItem* item);
     void sendNewPos(const QPointF &point);
+    void sendPlotMeaHpos(qreal x1, qreal x2, qreal dx);
+    void sendPlotMeaVpos(qreal y1, qreal y2, qreal dy);
 public slots:
     void onBtnMeaHClicked(bool checked);
     void onBtnMeaVClicked(bool checked);

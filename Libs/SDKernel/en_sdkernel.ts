@@ -13,12 +13,12 @@
 <context>
     <name>ImaxPrmAssociationHelper</name>
     <message>
-        <location filename="imaxprmassociationhelper.cpp" line="156"/>
+        <location filename="imaxprmassociationhelper.cpp" line="190"/>
         <source>warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="imaxprmassociationhelper.cpp" line="156"/>
+        <location filename="imaxprmassociationhelper.cpp" line="190"/>
         <source>Imax is too small !</source>
         <translation type="unfinished"></translation>
     </message>
@@ -26,95 +26,87 @@
 <context>
     <name>PowerTreeManage</name>
     <message>
-        <location filename="PowerTreeManage/powertreemanage.cpp" line="241"/>
-        <location filename="PowerTreeManage/powertreemanage.cpp" line="251"/>
+        <location filename="PowerTreeManage/powertreemanage.cpp" line="242"/>
+        <location filename="PowerTreeManage/powertreemanage.cpp" line="256"/>
+        <location filename="PowerTreeManage/powertreemanage.cpp" line="262"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PowerTreeManage/powertreemanage.cpp" line="241"/>
-        <location filename="PowerTreeManage/powertreemanage.cpp" line="251"/>
+        <location filename="PowerTreeManage/powertreemanage.cpp" line="242"/>
+        <location filename="PowerTreeManage/powertreemanage.cpp" line="256"/>
+        <location filename="PowerTreeManage/powertreemanage.cpp" line="262"/>
         <source>cannot find Sampling type item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="PowerTreeManage/powertreemanage.cpp" line="246"/>
-        <source>warnning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="PowerTreeManage/powertreemanage.cpp" line="246"/>
-        <source>hall sampling</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SevDevice</name>
     <message>
-        <location filename="sevdevice.cpp" line="194"/>
+        <location filename="sevdevice.cpp" line="208"/>
         <source>SevDevice init</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="390"/>
-        <location filename="sevdevice.cpp" line="893"/>
+        <location filename="sevdevice.cpp" line="429"/>
+        <location filename="sevdevice.cpp" line="1041"/>
         <source>Write Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="390"/>
+        <location filename="sevdevice.cpp" line="429"/>
         <source>Write Config Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="644"/>
+        <location filename="sevdevice.cpp" line="794"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="644"/>
+        <location filename="sevdevice.cpp" line="794"/>
         <source>Axis%1 brake is off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="816"/>
+        <location filename="sevdevice.cpp" line="966"/>
         <source>reset dsp =%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="824"/>
+        <location filename="sevdevice.cpp" line="974"/>
         <source>dsp =%1 Reset Flag_Finish checking......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="893"/>
+        <location filename="sevdevice.cpp" line="1041"/>
         <source>Write Flash Parameter Error:%1 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="922"/>
-        <location filename="sevdevice.cpp" line="1179"/>
+        <location filename="sevdevice.cpp" line="1070"/>
+        <location filename="sevdevice.cpp" line="1451"/>
         <source>CheckPrm Error
 :%1 %2 is out of range %3 -- %4
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="927"/>
-        <location filename="sevdevice.cpp" line="948"/>
-        <location filename="sevdevice.cpp" line="1184"/>
+        <location filename="sevdevice.cpp" line="1075"/>
+        <location filename="sevdevice.cpp" line="1096"/>
+        <location filename="sevdevice.cpp" line="1456"/>
         <source>Prm Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="948"/>
+        <location filename="sevdevice.cpp" line="1096"/>
         <source>PowerBoard CheckPrm Error
 :%1 is out of range
 paramater save fail!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="1126"/>
+        <location filename="sevdevice.cpp" line="1398"/>
         <source>Checking axis%1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -122,22 +114,22 @@ paramater save fail!</source>
 <context>
     <name>SevDevicePrivate</name>
     <message>
-        <location filename="sevdevice.cpp" line="141"/>
+        <location filename="sevdevice.cpp" line="155"/>
         <source>init Config</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="146"/>
+        <location filename="sevdevice.cpp" line="160"/>
         <source>findTargetTree</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="151"/>
+        <location filename="sevdevice.cpp" line="165"/>
         <source>New SevDspMap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevdevice.cpp" line="156"/>
+        <location filename="sevdevice.cpp" line="170"/>
         <source>New SevPwrBoard</source>
         <translation type="unfinished"></translation>
     </message>
@@ -153,32 +145,37 @@ paramater save fail!</source>
 <context>
     <name>SevSearchPhaseHelper</name>
     <message>
-        <location filename="sevsearchphasehelper.cpp" line="40"/>
+        <location filename="sevsearchphasehelper.cpp" line="41"/>
         <source>Servo is on now ! refuse to search phase !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevsearchphasehelper.cpp" line="60"/>
+        <location filename="sevsearchphasehelper.cpp" line="48"/>
+        <source>Brake is off now ! refuse to search phase !</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sevsearchphasehelper.cpp" line="68"/>
         <source>can not get the pc control source !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevsearchphasehelper.cpp" line="76"/>
+        <location filename="sevsearchphasehelper.cpp" line="84"/>
         <source>can not set mode initial phase !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevsearchphasehelper.cpp" line="118"/>
+        <location filename="sevsearchphasehelper.cpp" line="126"/>
         <source>can not set axis on !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevsearchphasehelper.cpp" line="122"/>
+        <location filename="sevsearchphasehelper.cpp" line="130"/>
         <source>servo is on checking......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sevsearchphasehelper.cpp" line="132"/>
+        <location filename="sevsearchphasehelper.cpp" line="140"/>
         <source>ipa finish flag is ture checking......</source>
         <translation type="unfinished"></translation>
     </message>

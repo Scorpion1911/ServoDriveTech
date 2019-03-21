@@ -1,4 +1,4 @@
-#ifndef COMPARISONDIALOG_H
+﻿#ifndef COMPARISONDIALOG_H
 #define COMPARISONDIALOG_H
 
 #include <QDialog>
@@ -20,7 +20,8 @@ public:
     explicit ComparisonDialog(QWidget *parent = 0);
     ~ComparisonDialog();
 protected:
-    void keyPressEvent(QKeyEvent *event);
+    //void keyPressEvent(QKeyEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
 private:
     void initPath();
     bool loadTree(const QString &path, QTreeWidget *treeWidget);

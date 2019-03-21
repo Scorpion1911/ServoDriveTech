@@ -63,6 +63,7 @@ LinkSocket::~LinkSocket()
 bool LinkSocket::connect(void (*processCallBack)(void *argv,short* value),void *uiProcessBar)
 {
   ComDriver::errcode_t err=m_com->open(processCallBack,uiProcessBar);
+  qDebug()<<"err code"<<err;
   if(err==0)
     m_isConnected=true;
   else
@@ -198,7 +199,9 @@ bool LinkSocket::writePrmItemFlash(int axis,QTreeWidgetItem *item)
   {
     uint16_t wv;
     int16_t rv;
-    wv=item->text(COL_PAGE_TREE_VALUE).toUShort();
+    double value=0;
+    value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+    wv=(uint16_t)value;
     quint8 tryCount=0;
     do{
       err=m_com->writeFLASH16(axisInx,addr,0,(int16_t)wv);
@@ -230,7 +233,10 @@ bool LinkSocket::writePrmItemFlash(int axis,QTreeWidgetItem *item)
   {
     uint32_t wv;
     int32_t rv;
-    wv=item->text(COL_PAGE_TREE_VALUE).toULong();
+    double value=0;
+    value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+    wv=(uint32_t)value;
+    //wv=item->text(COL_PAGE_TREE_VALUE).toULong();
 
     quint8 tryCount=0;
     do{
@@ -245,8 +251,10 @@ bool LinkSocket::writePrmItemFlash(int axis,QTreeWidgetItem *item)
   {
     int32_t wv;
     int32_t rv;
-    wv=item->text(COL_PAGE_TREE_VALUE).toLong();
-
+    //wv=item->text(COL_PAGE_TREE_VALUE).toLong();
+    double value=0;
+    value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+    wv=(int32_t)value;
     quint8 tryCount=0;
     do{
       err=m_com->writeFLASH32(axisInx,addr,0,wv);
@@ -260,7 +268,10 @@ bool LinkSocket::writePrmItemFlash(int axis,QTreeWidgetItem *item)
   {
     uint64_t wv;
     int64_t rv;
-    wv=item->text(COL_PAGE_TREE_VALUE).toULongLong();
+    double value=0;
+    value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+    wv=(uint64_t)value;
+    //wv=item->text(COL_PAGE_TREE_VALUE).toULongLong();
 
     quint8 tryCount=0;
     do{
@@ -275,7 +286,10 @@ bool LinkSocket::writePrmItemFlash(int axis,QTreeWidgetItem *item)
   {
     int64_t wv;
     int64_t rv;
-    wv=item->text(COL_PAGE_TREE_VALUE).toLongLong();
+    double value=0;
+    value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+    wv=(int64_t)value;
+    //wv=item->text(COL_PAGE_TREE_VALUE).toLongLong();
 
     quint8 tryCount=0;
     do{
@@ -290,7 +304,10 @@ bool LinkSocket::writePrmItemFlash(int axis,QTreeWidgetItem *item)
   {
     uint16_t wv;
     int16_t rv;
-    wv=item->text(COL_PAGE_TREE_VALUE).toUShort();
+    double value=0;
+    value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+    wv=(uint16_t)value;
+    //wv=item->text(COL_PAGE_TREE_VALUE).toUShort();
 
     quint8 tryCount=0;
     do{
@@ -372,8 +389,13 @@ bool LinkSocket::writePageItemFlash(int axis,QTreeWidgetItem *item)
     uint16_t wv;
     int16_t rv;
     double value=0;
+    QString str = item->text(COL_PAGE_TREE_NAME);
+    if (str.compare("gSevDrv.sev_obj.cur.mot.Irat_1") == 0) {
 //    wv=item->text(COL_PAGE_TREE_VALUE).toUShort();//这个不能用，因为如果是text是浮点数，转化后为0 如10.00.toUShort =0
-    value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+        value = ceil(item->text(COL_PAGE_TREE_VALUE).toDouble());
+    } else {
+        value=item->text(COL_PAGE_TREE_VALUE).toDouble()+0.5;
+    }
     wv=(uint16_t)value;
     quint8 tryCount=0;
     do{

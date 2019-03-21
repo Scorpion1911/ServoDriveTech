@@ -674,6 +674,9 @@ void DFTDialog::onComboBoxActivated(int index)
 {
     double min, max;
     double tempMin, tempMax;
+    if (dd->m_curveList.at(index)->sData()->keys.size() == 1) {
+        return;
+    }
     min = dd->m_curveList.at(index)->sData()->keys.first();
     tempMin = min;
     do {

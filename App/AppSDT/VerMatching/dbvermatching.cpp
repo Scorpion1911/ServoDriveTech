@@ -52,6 +52,7 @@ void DbVerMatching::fillVerLinkLists(QStringList &list)
     QSqlTableModel* model = new QSqlTableModel(this);
     model->setTable(tableName);
     model->select();
+    qDebug()<<"row count"<<model->rowCount();
     for (int i = 0; i < model->rowCount(); i++) {
         QString str = "";
         QSqlRecord record = model->record(i);

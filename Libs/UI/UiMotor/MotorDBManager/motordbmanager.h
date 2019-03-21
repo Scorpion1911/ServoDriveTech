@@ -20,6 +20,8 @@ public:
     void changeMotor(const QStringList &list);
     int getMotorSeq();
     int getCompanySeq();
+    bool open();
+    bool close();
 
 signals:
 
@@ -29,6 +31,9 @@ private:
     void setCompanySeq(const QString &seq);
 private:
     QSqlDatabase m_motorDB;
+    QString m_dbPath;
+    QString m_usrName;
+    QString m_psw;
 };
 
 #endif // MOTORDBMANAGER_H

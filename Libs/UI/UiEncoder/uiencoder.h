@@ -25,6 +25,7 @@ public:
 
 protected:
   void setContextAction() Q_DECL_OVERRIDE;
+  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)Q_DECL_OVERRIDE;
 
 protected slots:
   void onDspReset() Q_DECL_OVERRIDE;

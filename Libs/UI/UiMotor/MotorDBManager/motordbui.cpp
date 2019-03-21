@@ -13,13 +13,14 @@
 #define PARA_VALUE_INDEX 1
 #define PARA_UNIT_INDEX 2
 
-#define USER_INDEX 7
+#define USER_INDEX 5
 
 MotorDBUi::MotorDBUi(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MotorDBUi)
 {
     ui->setupUi(this);
+    qDebug()<<"motor db ui setup";
     initMap();
     initUi();
     createConnections();
@@ -66,6 +67,7 @@ void MotorDBUi::initUi()
 {
     QString dbPath = GTUtils::databasePath() + "Motor/";
     m_dbManager = new MotorDBManager(dbPath, "", "");
+    m_dbManager->open();
     m_companyIdList = m_dbManager->getCompanyIdList();
 
     m_editedItem = NULL;
@@ -90,6 +92,7 @@ void MotorDBUi::initUi()
     ui->table_motor_para->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->widget_newMotor->setVisible(false);
     ui->table_motor_para->installEventFilter(this);
+    m_dbManager->close();
     //DoubleSpinBoxDelegate delegate;
     //ui->table_motor_para->setItemDelegateForColumn(PARA_VALUE_INDEX, &delegate);
 }
@@ -178,11 +181,13 @@ void MotorDBUi::onCompanyRowChanged(int index)
     m_motorIdList.clear();
     disconnect(ui->listWidget_motor_motor, SIGNAL(currentRowChanged(int)), this, SLOT(onMotorRowChanged(int)));
     ui->listWidget_motor_motor->clear();
+    m_dbManager->open();
     m_motorIdList = m_dbManager->getMotorIdList(companyId);
     for (int i = 0; i < m_motorIdList.count(); i++) {
         QString motorName = m_dbManager->getMotorName(m_motorIdList.at(i));
         ui->listWidget_motor_motor->addItem(motorName);
     }
+    m_dbManager->close();
     connect(ui->listWidget_motor_motor, SIGNAL(currentRowChanged(int)), this, SLOT(onMotorRowChanged(int)));
     ui->listWidget_motor_motor->setCurrentRow(0);
     onMotorRowChanged(0);
@@ -193,6 +198,7 @@ void MotorDBUi::onMotorRowChanged(int index)
     onItemEditingFinished();
     int motorId = m_motorIdList.at(index);
     m_motorParaList.clear();
+    m_dbManager->open();
     for (int i = 0; i < m_map.keys().count(); i++) {
         //qDebug()<<"i"<<i;
         double value = m_dbManager->getMotorPara(motorId, m_paraNameList.at(i));
@@ -205,6 +211,7 @@ void MotorDBUi::onMotorRowChanged(int index)
         }
         ui->table_motor_para->setItem(i, PARA_VALUE_INDEX, valueItem);
     }
+    m_dbManager->close();
 }
 
 void MotorDBUi::onActionNewBtnClicked()
@@ -231,7 +238,9 @@ void MotorDBUi::onActionRemoveBtnClicked()
         return;
     }
     int motorId = m_motorIdList.at(ui->listWidget_motor_motor->currentRow());
+    m_dbManager->open();
     m_dbManager->removeMotor(motorId);
+    m_dbManager->close();
     onCompanyRowChanged(ui->listWidget_motor_company->currentRow());
     //ui->listWidget_motor_motor->removeItemWidget(ui->listWidget_motor_motor->currentItem());
 }
@@ -252,7 +261,9 @@ void MotorDBUi::onActionSaveBtnClicked()
 //        QString motorPara = ui->table_motor_para->item(i, PARA_VALUE_INDEX)->text();
 //        motorInfoList<<motorPara;
 //    }
+    m_dbManager->open();
     m_dbManager->changeMotor(motorInfoList);
+    m_dbManager->close();
     onMotorRowChanged(ui->listWidget_motor_motor->currentRow());
 }
 
@@ -288,6 +299,7 @@ void MotorDBUi::onActionOkBtnClicked()
     }    
 
     QStringList motorInfoList;
+    m_dbManager->open();
     int motorSeq = m_dbManager->getMotorSeq() + 1;
     motorInfoList<<QString::number(motorSeq);
     motorInfoList<<motorName;
@@ -303,6 +315,7 @@ void MotorDBUi::onActionOkBtnClicked()
 //        motorInfoList<<motorPara;
 //    }
     m_dbManager->addMotor(motorInfoList);
+    m_dbManager->close();
 
     //onCompanyRowChanged(ui->listWidget_motor_company->currentRow());
     if (ui->listWidget_motor_company->currentRow() == USER_INDEX - 1) {

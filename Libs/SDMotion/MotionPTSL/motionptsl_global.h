@@ -1,0 +1,12 @@
+#ifndef MOTIONPTSL_GLOBAL_H
+#define MOTIONPTSL_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(MOTIONPTSL_LIBRARY)
+#  define MOTIONPTSLSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define MOTIONPTSLSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // MOTIONPTSL_GLOBAL_H

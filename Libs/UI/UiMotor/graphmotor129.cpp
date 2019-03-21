@@ -26,6 +26,14 @@ GraphMotor129::GraphMotor129(QWidget *parent) :
   ui(new Ui::GraphMotor129)
 {
   ui->setupUi(this);
+  connect(ui->tbtn_motorDB, SIGNAL(clicked()), this, SLOT(onMotorInstallationBtnClicked()));
+  QWidget *w = ui->stackedWidget->widget(1);
+  ui->stackedWidget->removeWidget(w);
+  delete w;
+  MotorDBUi *dbUi = new MotorDBUi;
+  ui->stackedWidget->insertWidget(1, dbUi);
+  connect(dbUi, SIGNAL(returnClicked()), this, SLOT(onReturnBtnClicked()));
+  connect(dbUi, SIGNAL(onMotorInstall(QStringList)), this, SLOT(onInstallMotorReceived(QStringList)));
 
 }
 
@@ -45,14 +53,7 @@ void GraphMotor129::setCustomVisitActive(IUiWidget *uiWidget)
   Q_D(GraphMotor129);
   Q_UNUSED(uiWidget);
   this->ui->dspinBox_maxVoltage->setEnabled(false);
-    connect(ui->tbtn_motorDB, SIGNAL(clicked()), this, SLOT(onMotorInstallationBtnClicked()));
-    QWidget *w = ui->stackedWidget->widget(1);
-    ui->stackedWidget->removeWidget(w);
-    delete w;
-    MotorDBUi *dbUi = new MotorDBUi;
-    ui->stackedWidget->insertWidget(1, dbUi);
-    connect(dbUi, SIGNAL(returnClicked()), this, SLOT(onReturnBtnClicked()));
-    connect(dbUi, SIGNAL(onMotorInstall(QStringList)), this, SLOT(onInstallMotorReceived(QStringList)));
+
 }
 void GraphMotor129::setUiVersionName()
 {
@@ -115,7 +116,7 @@ void GraphMotor129::onReturnBtnClicked()
 void GraphMotor129::onInstallMotorReceived(const QStringList &paraList)
 {
     Q_D(GraphMotor129);
-    if (!d->m_dev->isConnecting()) {
+    if (!d->m_dev->isConnecting() && !d->m_dev->isOffline()) {
         QMessageBox::information(0, tr("Warning"), tr("Please connect the device!"));
         return;
     }

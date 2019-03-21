@@ -2,6 +2,24 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>AlarmHistoryDia136</name>
+    <message>
+        <location filename="alarmhistorydia136.ui" line="14"/>
+        <source>AlarmHistory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="alarmhistorydia136.ui" line="42"/>
+        <source>AlarmCode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="alarmhistorydia136.ui" line="47"/>
+        <source>AlarmInfo</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GraphStatus129</name>
     <message>
         <location filename="graphstatus129.ui" line="14"/>
@@ -54,6 +72,68 @@
     </message>
     <message>
         <location filename="graphstatus129.cpp" line="37"/>
+        <source>ClearAlarm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GraphStatus136</name>
+    <message>
+        <location filename="graphstatus136.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="29"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="54"/>
+        <source>PushButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="84"/>
+        <location filename="graphstatus136.ui" line="104"/>
+        <location filename="graphstatus136.ui" line="124"/>
+        <location filename="graphstatus136.ui" line="144"/>
+        <location filename="graphstatus136.ui" line="174"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="94"/>
+        <source>SevStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="114"/>
+        <source>BusVoltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="134"/>
+        <source>CmdMode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="154"/>
+        <source>CurMode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="164"/>
+        <source>UsrMode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.ui" line="201"/>
+        <source>AlarmHistory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphstatus136.cpp" line="38"/>
         <source>ClearAlarm</source>
         <translation type="unfinished"></translation>
     </message>

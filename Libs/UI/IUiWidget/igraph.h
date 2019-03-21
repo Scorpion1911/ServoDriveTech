@@ -18,6 +18,7 @@ public:
   virtual ~IGraph();
   virtual void visit(IUiWidget*uiWidget);
   virtual void syncTreeDataToUiFace();
+  virtual void setParaScale();
 
 protected:
 

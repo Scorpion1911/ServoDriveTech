@@ -15,6 +15,8 @@ public:
     explicit ServoFile(QObject *parent = 0);
     bool downLoadFile(void (*processCallback)(void *pbar,short *value), void *processbar, const QString &xmlPath, SevDevice *dev);
     bool upLoadFile(void (*processCallback)(void *pbar,short *value), void *processbar, const QString &xmlPath, SevDevice *dev);
+    bool downLoadOfflineFile(const QString &xmlPath, SevDevice *dev);
+    bool upLoadOfflineFile(const QString &xmlPath, SevDevice *dev);
 
 signals:
     void sendProgressbarMsg(int, QString);

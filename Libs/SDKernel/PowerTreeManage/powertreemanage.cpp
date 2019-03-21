@@ -10,6 +10,7 @@
 #include "sdtglobaldef.h"
 #define INX_CURRENT_SAMPLING_TYPE_NAME  "axis.cur.sampling"
 #define INX_CURRENT_SAMPLING_RES_VALUE  "axis.cur.sampling.shunt.res.value"
+#define INX_HALL_SAMPLING_CUR_VALUE     "axis.sampling.hall.cur.value"
 typedef enum{
   PWR_ROW_INX_XML,
   PWR_ROW_INX_BASIC
@@ -243,7 +244,17 @@ SamplingDataList PowerTreeManage::samplingDataList(bool *isOK)
       }
       else if(type==0)//霍尔采样
       {
-        QMessageBox::information(0,tr("warnning"),tr("hall sampling"));
+        //QMessageBox::information(0,tr("warnning"),tr("hall sampling"));
+          QTreeWidgetItem *dataItem = findUniqueItemByName(typeItem, QString(INX_HALL_SAMPLING_CUR_VALUE));
+          if(dataItem!=NULL)
+          {
+            value=dataItem->text(GT::COL_BOARDTREE_VALUE).toDouble();
+  //          qDebug()<<"type="<<type<<" value="<<value<<" "<<dataItem->text(PWR_COL_INX_UNIQUENAME);
+          }
+          else
+          {
+            QMessageBox::information(0,tr("error"),tr("cannot find Sampling type item"));
+          }
       }
     }
     else

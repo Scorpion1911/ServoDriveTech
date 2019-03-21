@@ -44,6 +44,7 @@ CONFIG(debug, debug|release){
            $${PLOT_OUT_PATH}/IPlotUnitd.lib\
            $${PLOT_OUT_PATH}/MotionVelocityd.lib\
            $${PLOT_OUT_PATH}/MotionPositiond.lib\
+           $${PLOT_OUT_PATH}/MotionPTSLd.lib\
            $${PLOT_OUT_PATH}/ServoDriverAlgorithmDlld.lib
 
     TARGET = PlotUnitGraphd
@@ -57,6 +58,7 @@ CONFIG(debug, debug|release){
            $${PLOT_OUT_PATH}/IPlotUnit.lib\
            $${PLOT_OUT_PATH}/MotionVelocity.lib\
            $${PLOT_OUT_PATH}/MotionPosition.lib\
+           $${PLOT_OUT_PATH}/MotionPTSL.lib\
            $${PLOT_OUT_PATH}/ServoDriverAlgorithmDll.lib
 
     TARGET = PlotUnitGraph

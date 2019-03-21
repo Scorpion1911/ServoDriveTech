@@ -52,11 +52,12 @@ UiRAM::UiRAM(QWidget *parent):IUiWidget(*(new UiRAMPrivate),parent),ui(new Ui::U
   d->m_editedItem = NULL;
   d->m_isEditing = false;
   d->m_nodeColor = Qt::blue;
+  d->m_copyAll = false;
 }
 
 UiRAM::~UiRAM()
 {
-  delete ui;
+    delete ui;
 }
 
 bool UiRAM::hasConfigFunc()
@@ -96,17 +97,17 @@ void UiRAM::addTreeWidget(QTreeWidget *tree)
     hintLabel->setText(tr("Keyword:"));
     QSpacerItem *harizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
     d->m_partNameLineEdit = new QLineEdit(this);
-    d->m_partNameLineEdit->setPlaceholderText("such as:pro;pi");
+    //d->m_partNameLineEdit->setPlaceholderText(tr("such as:pro;pi"));
     QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
     QPushButton *executeSearchItemBtn = new QPushButton(this);
     executeSearchItemBtn->setText(tr("Execute Search Item"));
     QPushButton *cancelSearchItemBtn = new QPushButton(this);
     cancelSearchItemBtn->setText(tr("Cancel Search Item"));
-    hBoxLayout->addItem(harizontalSpacer);
     hBoxLayout->addWidget(hintLabel);
     hBoxLayout->addWidget(d->m_partNameLineEdit);
     hBoxLayout->addWidget(executeSearchItemBtn);
     hBoxLayout->addWidget(cancelSearchItemBtn);
+    hBoxLayout->addItem(harizontalSpacer);
     d->m_vboxLayout->addLayout(hBoxLayout);
     connect(executeSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onExecuteSearchItemBtnClicked()));
     connect(cancelSearchItemBtn, SIGNAL(clicked(bool)), this, SLOT(onCancelSearchItemBtnClicked()));
@@ -117,6 +118,7 @@ void UiRAM::addTreeWidget(QTreeWidget *tree)
     tree->resizeColumnToContents(0);
 
     d->m_dataTree->installEventFilter(this);
+    d->m_partNameLineEdit->installEventFilter(this);
     setItemColor(d->m_dataTree->invisibleRootItem());
     connect(d->m_dataTree, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(onTreeItemClickedEdit(QTreeWidgetItem*,int)));
     connect(d->m_dataTree, SIGNAL(itemSelectionChanged()), this, SLOT(onActionEditFinished()));
@@ -142,7 +144,7 @@ bool UiRAM::eventFilter(QObject *obj, QEvent *event)
                             d->m_editedItem->setText(GT::COL_FLASH_RAM_TREE_VALUE, d->m_originText);
                         }
                         if (d->m_device->isConnecting()) {
-                            writeItem(d->m_editedItem);
+                            writeItem(uiIndexs().axisInx, d->m_editedItem);
                             d->m_editedItem->setTextColor(d->m_editedCol, Qt::black);
                         } else {
                             QMessageBox::information(this, tr("Warning"), tr("Please connect the device!"));
@@ -155,7 +157,7 @@ bool UiRAM::eventFilter(QObject *obj, QEvent *event)
                         for (int i = 0; i < d->m_dataTree->selectedItems().length(); i++) {
                             QTreeWidgetItem *item = d->m_dataTree->selectedItems().at(i);
                             if (d->m_device->isConnecting()) {
-                                writeItem(item);
+                                writeItem(uiIndexs().axisInx, item);
                                 item->setTextColor(GT::COL_FLASH_RAM_TREE_VALUE, Qt::black);
                             } else {
                                 QMessageBox::information(this, tr("Warning"), tr("Please connect the device!"));
@@ -164,6 +166,12 @@ bool UiRAM::eventFilter(QObject *obj, QEvent *event)
                     }
                 }
             return true;
+            }
+        } else if (obj == d->m_partNameLineEdit) {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
+                onExecuteSearchItemBtnClicked();
+                return true;
             }
         }
     }
@@ -200,7 +208,7 @@ void UiRAM::updateItemData(QTreeWidgetItem *item)
 {
     //Q_D(UiRAM);
     if (item->text(GT::COL_FLASH_RAM_TREE_ADDR).compare("-1") != 0) {
-       readItem(item);
+       readItem(uiIndexs().axisInx, item);
     }
     for (int i = 0; i < item->childCount(); i++) {
         if (item->child(i)->isExpanded() || item->child(i)->childCount() == 0) {
@@ -209,7 +217,7 @@ void UiRAM::updateItemData(QTreeWidgetItem *item)
     }
 }
 
-void UiRAM::writeItem(QTreeWidgetItem *item)
+void UiRAM::writeItem(int axisInx, QTreeWidgetItem *item)
 {
     Q_D(UiRAM);
     QStringList list = item->text(GT::COL_FLASH_RAM_TREE_NAME).split(".");
@@ -227,18 +235,18 @@ void UiRAM::writeItem(QTreeWidgetItem *item)
             quint16 value = BitItemHelper::calculate16Bits(item);
             allItem->setText(GT::COL_FLASH_RAM_TREE_VALUE, QString::number(value));
         }
-        d->m_device->writeAdvRam(uiIndexs().axisInx, allItem);
-        d->m_device->readAdvRam(uiIndexs().axisInx, allItem);
+        d->m_device->writeAdvRam(axisInx, allItem);
+        d->m_device->readAdvRam(axisInx, allItem);
     } else {
-        d->m_device->writeAdvRam(uiIndexs().axisInx, item);
-        d->m_device->readAdvRam(uiIndexs().axisInx, item);
+        d->m_device->writeAdvRam(axisInx, item);
+        d->m_device->readAdvRam(axisInx, item);
     }
 }
 
-void UiRAM::readItem(QTreeWidgetItem *item)
+void UiRAM::readItem(int axisInx, QTreeWidgetItem *item)
 {
     Q_D(UiRAM);
-    d->m_device->readAdvRam(uiIndexs().axisInx, item);
+    d->m_device->readAdvRam(axisInx, item);
     QStringList list = item->text(GT::COL_FLASH_RAM_TREE_NAME).split(".");
     int listIndex = list.length() - 1;
     if (BitItemHelper::isTargetItem(item, STR_MARK_ALL, listIndex)) {

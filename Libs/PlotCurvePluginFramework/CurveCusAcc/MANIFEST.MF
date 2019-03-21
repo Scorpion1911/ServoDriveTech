@@ -1,0 +1,8 @@
+﻿Plugin-SymbolicName: CurveCusAcc
+Plugin-ActivationPolicy: eager
+Plugin-Category: Demos
+Plugin-ContactAddress: https://github.com/Waleon
+Plugin-Description: A plugin for plot curve acceleration
+Plugin-Name: CurveCusAcc
+Plugin-Vendor: Jiang, Xingjian
+Plugin-Version: 1.0.0

@@ -15,7 +15,20 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <item>
-    <layout class="QVBoxLayout" name="searchVBoxLayout"/>
+    <layout class="QVBoxLayout" name="searchVBoxLayout">
+     <property name="leftMargin">
+      <number>9</number>
+     </property>
+     <property name="topMargin">
+      <number>9</number>
+     </property>
+     <property name="rightMargin">
+      <number>9</number>
+     </property>
+     <property name="bottomMargin">
+      <number>9</number>
+     </property>
+    </layout>
    </item>
    <item>
     <widget class="QSplitter" name="splitter_compWhole">

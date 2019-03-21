@@ -25,6 +25,9 @@ public:
     static quint32 calculate32Bits(QTreeWidgetItem *item);
     static quint64 calculate64Bits(QTreeWidgetItem *item);
     static bool isTargetItem(QTreeWidgetItem *item, const QString &str, int index);
+    static QString decToBin16(const QString &decStr);
+    static QString decToBin32(const QString &decStr);
+    static QString binToDec(const QString &binStr);
 signals:
 
 public slots:

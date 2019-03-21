@@ -1,4 +1,4 @@
-#ifndef DBMANAGER_H
+﻿#ifndef DBMANAGER_H
 #define DBMANAGER_H
 
 #include <QtSql/QSqlDatabase>
@@ -10,6 +10,7 @@ class DBMANAGERSHARED_EXPORT DBManager : public QObject
     Q_OBJECT
 public:
     DBManager(QString dbPath, QString userName, QString psw);
+    ~DBManager();
     bool checkRole(QString role, QString psw);
     QList<QSqlTableModel*> getRoleModels(QString role);
     bool checkValid(QStringList strList);

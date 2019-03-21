@@ -23,6 +23,9 @@ public:
 
   bool readPageFLASH()Q_DECL_OVERRIDE{return true;}
   bool writePageFLASH()Q_DECL_OVERRIDE{return true;}
+  bool readOfflinePrm()Q_DECL_OVERRIDE{return true;}
+  bool writeOfflinePrm()Q_DECL_OVERRIDE{return true;}
+  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree) Q_DECL_OVERRIDE;
   bool hasConfigFunc()Q_DECL_OVERRIDE;
   bool hasSaveFunc()Q_DECL_OVERRIDE;
 
@@ -35,14 +38,16 @@ protected:
   void setContextAction();
   void addTreeWidget(QTreeWidget *tree);
   bool eventFilter(QObject *obj, QEvent *event);
+  void updateTree(QTreeWidget *srcTree, QTreeWidget *desTree);
+  void updateTreeItem(QTreeWidgetItem *srcTreeItem, QTreeWidgetItem *desTreeItem);
 private:
   QStackedWidget *getUiStackedWidget(void)Q_DECL_OVERRIDE;
   QVBoxLayout *getVBoxLayout(void)Q_DECL_OVERRIDE;
   void setDefaultUi()Q_DECL_OVERRIDE;
   void setItemColor(QTreeWidgetItem *item);
   void updateItemData(QTreeWidgetItem *item);
-  void writeItem(QTreeWidgetItem *item);
-  void readItem(QTreeWidgetItem *item);
+  void writeItem(int axisInx, QTreeWidgetItem *item);
+  void readItem(int axisInx, QTreeWidgetItem *item);
   bool isEditedDataValid(QTreeWidgetItem *item);
 
 private:

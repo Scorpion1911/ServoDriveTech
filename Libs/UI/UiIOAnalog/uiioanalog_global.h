@@ -1,0 +1,13 @@
+﻿#ifndef UIIOANALOG_GLOBAL
+#define UIIOANALOG_GLOBAL
+
+#include <QtCore/qglobal.h>
+
+#if defined(UIIOANALOG_LIBRARY)
+#  define UIIOANALOGSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define UIIOANALOGSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // UIIOANALOG_GLOBAL
+

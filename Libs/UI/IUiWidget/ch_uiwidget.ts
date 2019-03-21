@@ -41,6 +41,34 @@
     </message>
 </context>
 <context>
+    <name>IGraphIOAnalog</name>
+    <message>
+        <location filename="igraphioanalog.cpp" line="55"/>
+        <source>Signal</source>
+        <translation>输入信号</translation>
+    </message>
+    <message>
+        <location filename="igraphioanalog.cpp" line="72"/>
+        <source>Analog Offset (V)</source>
+        <translation>模拟量偏置(V)</translation>
+    </message>
+    <message>
+        <location filename="igraphioanalog.cpp" line="103"/>
+        <source>Voltage Scaling</source>
+        <translation>电压转化</translation>
+    </message>
+    <message>
+        <location filename="igraphioanalog.cpp" line="138"/>
+        <source>Voltage Command (V)</source>
+        <translation>当前电压(V)</translation>
+    </message>
+    <message>
+        <location filename="igraphioanalog.cpp" line="166"/>
+        <source>Output Voltage</source>
+        <translation>输出电压</translation>
+    </message>
+</context>
+<context>
     <name>IGraphPosition</name>
     <message>
         <location filename="igraphposition.cpp" line="110"/>
@@ -327,23 +355,39 @@ Solution:
 <context>
     <name>IUiWidget</name>
     <message>
-        <location filename="iuiwidget.cpp" line="66"/>
-        <location filename="iuiwidget.cpp" line="250"/>
+        <location filename="iuiwidget.cpp" line="67"/>
+        <location filename="iuiwidget.cpp" line="361"/>
         <source>switch to list view</source>
         <translation>列表视图</translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="84"/>
+        <location filename="iuiwidget.cpp" line="85"/>
         <source>RAM value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="89"/>
+        <location filename="iuiwidget.cpp" line="90"/>
         <source>FLASH value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="244"/>
+        <location filename="iuiwidget.cpp" line="211"/>
+        <location filename="iuiwidget.cpp" line="223"/>
+        <source>Reading data Axis%1</source>
+        <translation>正在读取轴%1数据</translation>
+    </message>
+    <message>
+        <location filename="iuiwidget.cpp" line="231"/>
+        <source>Checking data Axis%1</source>
+        <translation>正在校验轴%1数据</translation>
+    </message>
+    <message>
+        <location filename="iuiwidget.cpp" line="237"/>
+        <source>Writing data Axis%1</source>
+        <translation>正在写入轴%1数据</translation>
+    </message>
+    <message>
+        <location filename="iuiwidget.cpp" line="355"/>
         <source>switch to graph view</source>
         <translation>图形视图</translation>
     </message>

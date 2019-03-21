@@ -32,7 +32,57 @@
       </property>
       <item>
        <property name="text">
-        <string>SD1</string>
+        <string>SD10</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SD15_11</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SD15_06</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SD15_15</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>HD1x</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>HD11_3A</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>SD2x</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>SD21</string>
        </property>
        <property name="text">
         <string>1</string>
@@ -54,6 +104,14 @@
       <item>
        <property name="text">
         <string>SD43</string>
+       </property>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SD45</string>
        </property>
        <property name="text">
         <string>2</string>

@@ -14,10 +14,18 @@ DragDropMainWindow::DragDropMainWindow(QWidget *parent) :
   ui(new Ui::DragDropMainWindow)
 {
   ui->setupUi(this);
-  setAcceptDrops(false);
+//  setAcceptDrops(false);
 
-  Tree *tree=new Tree;
-  tree->show();
+//  Tree *tree=new Tree;
+//  tree->show();
+  QString str1 = "44.000";
+  int value1 = str1.toDouble();
+
+  QString str2 = "44";
+  quint16 value2 = str2.toUShort();
+
+  qDebug()<<"value1"<<value1;
+  qDebug()<<"value2"<<value2;
 }
 
 DragDropMainWindow::~DragDropMainWindow()

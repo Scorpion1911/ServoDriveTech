@@ -162,7 +162,6 @@ void SdtStatusBar::setAlarmErrorStatus(quint32 devInx, qint16 axis, bool hasErr)
 
 void SdtStatusBar::onActnToolClicked()
 {
-  qDebug()<<"bbbbbbbbb";
   m_errDialog->show();
 }
 

@@ -35,10 +35,13 @@ public:
 
   bool adjustSocket(void (*processCallBack)(void *argv, short *value), void *uiProcessBar);
   ComDriver::ICom *socketCom() const;
+  quint8 comType() const;
 
   bool enableConnection(void (*processCallBack)(void *argv, short *value), void *uiProcessBar);
   void disableConnection();
   bool isConnecting() const;
+  bool isOffline() const;
+  void setOfflineStatus(bool mode);
 
   bool containsCmd(const QString &cmdKey);
 
@@ -52,6 +55,15 @@ public:
   bool writeGenItemRAM(quint16 axisInx,QTreeWidgetItem *item);
   bool readGenPageRAM(quint16 axisInx,QTreeWidget *pageTree);
   bool writeGenPageRAM(quint16 axisInx,QTreeWidget *pageTree);
+  
+  bool readOffLinePagePrm(quint16 axisInx, QTreeWidget *pageTree);
+  bool writeOffLinePagePrm(quint16 axisInx, QTreeWidget *pageTree);
+  
+  bool readOfflineAdvItem(quint16 axisInx,QTreeWidgetItem *item);
+  bool writeOfflineAdvItem(quint16 axisInx,QTreeWidgetItem *item);
+
+  bool readOffLinePrmByAddr(quint16 axisInx, quint16 offset, double &value);
+  bool writeOffLinePrmByAddr(quint16 axisInx, quint16 offset, double &value);
 
   bool writePageItemFlash(quint16 axisInx,QTreeWidgetItem *item);
   bool readPageItemFlash(quint16 axisInx,QTreeWidgetItem *item);
@@ -89,6 +101,7 @@ public:
   QTreeWidget *axisTreeSource(int axis,int page) const;
   QTreeWidget *axisTreeSource(int axis,const QString&name) const;
   QTreeWidget *globalTreeSource(int page) const;
+  QTreeWidget *offlineTree();
 
   void setVersionAttributeActive();
 
@@ -145,6 +158,12 @@ public:
 
   bool writeGearPrm(quint16 axisInx,qint32 a,qint32 b);
   bool readGearPrm(quint16 axisInx,qint32 &a,qint32 &b);
+
+  bool writePulseGearPrm(quint16 axisInx,qint32 c,qint32 d2);
+  bool readPulseGearPrm(quint16 axisInx,qint32 &c,qint32 &d2);
+
+  bool readAlarmHistoryIndex(quint16 axisInx, qint16 &index);
+  bool readAlarmHistoryList(quint16 axisInx, QList<qint32> &alarmList);
 
 
 signals:

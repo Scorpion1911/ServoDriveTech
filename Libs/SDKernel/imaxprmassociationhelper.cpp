@@ -57,6 +57,13 @@ ImaxPrmAssociationHelper::~ImaxPrmAssociationHelper()
 double ImaxPrmAssociationHelper::readImaxValueFromDevice(quint16 axisInx, QString type, quint16 imaxOffset)
 {
   double imaxValue = 1;
+  if (m_sev->isOffline()) {
+      bool ok = m_sev->readOffLinePrmByAddr(axisInx, imaxOffset, imaxValue);
+      if (ok) {
+          return imaxValue;
+      }
+      return 1;
+  }
   if(type == "Uint16")
   {
     ComDriver::int16_t imax = 100;
@@ -92,6 +99,11 @@ double ImaxPrmAssociationHelper::readImaxValueFromDevice(quint16 axisInx, QStrin
 
 bool ImaxPrmAssociationHelper::writeIxDataToFlash(quint16 axisInx, QString type, quint16 offst,quint64 value)
 {
+    if (m_sev->isOffline()) {
+        double v = value;
+        bool ok = m_sev->writeOffLinePrmByAddr(axisInx, offst, v);
+        return ok;
+    }
   if(type == "Uint16")
   {
     quint16 v = value;
@@ -134,6 +146,7 @@ bool ImaxPrmAssociationHelper::active(quint16 axisInx)
   QTreeWidgetItem *gainItem = axisItem->child(ROW_AXIS_GAIN_INFO);
 
   bool ret = true;
+  bool small = false;
   for(int i=0;i<gainItem->childCount();i++)
   {
     QTreeWidgetItem *itemIx = gainItem->child(i);
@@ -143,17 +156,23 @@ bool ImaxPrmAssociationHelper::active(quint16 axisInx)
     quint16 imaxOffset = imaxItem->child(ROW_WRITE_FLASH_OFFSET)->text(COL_IMAX_MOTOR_PRM).toUShort();
     QString type = imaxItem->child(ROW_WRITE_FLASH_TYPE)->text(COL_IMAX_MOTOR_PRM);
     double imaxValue = readImaxValueFromDevice(axisInx, type, imaxOffset);
-
-    double shunt = itemSamplingType->text(COL_IMAX_MOTOR_PRM).toDouble();
-    double factor = itemSamplingType->child(0)->text(COL_IMAX_MOTOR_PRM).toDouble();
-    gain = shunt * factor / data.m_value;
+    if (data.m_type == 1) { // shunt
+        double shunt = itemSamplingType->text(COL_IMAX_MOTOR_PRM).toDouble();
+        double factor = itemSamplingType->child(0)->text(COL_IMAX_MOTOR_PRM).toDouble();
+        gain = shunt * factor / data.m_value;
+    } else if (data.m_type == 0) { // hall
+        double hall = itemSamplingType->text(COL_IMAX_MOTOR_PRM).toDouble();
+        double factor = itemSamplingType->child(0)->text(COL_IMAX_MOTOR_PRM).toDouble();
+        gain = hall * factor * data.m_value;
+    }
 
 
     double k = gain /imaxValue;
     if(k>32767)
     {
       k = 32767;
-      QMessageBox::information(0,tr("warning"),tr("Imax is too small !"));
+      small = true;
+      //QMessageBox::information(0,tr("warning"),tr("Imax is too small !"));
     }
 
     qDebug()<<"Ix : "<<itemIx->text(0)<<"gain = "<<gain<<"res value = "<<data.m_value<<"res type = "<<data.m_type<<"Imax = "<<imaxValue<<"k = "<<k;
@@ -166,6 +185,9 @@ bool ImaxPrmAssociationHelper::active(quint16 axisInx)
       if(false==writeIxDataToFlash(axisInx,flashType,flashOffset,(quint64)k))
          ret = false;
     }
+  }
+  if (small) {
+      QMessageBox::information(0,tr("warning"),tr("Imax is too small !"));
   }
   return ret;
 

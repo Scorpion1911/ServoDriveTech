@@ -413,6 +413,8 @@ void TabModeCtl::onModeCtlPanelModeChanged(quint16 axis, int mode)
         ui->doubleSpinBox_mode_autMaxVel->setStyleSheet("color:black");
     }
     break;
+    case GT::MODE_HOME:break;
+    case GT::MODE_MID:break;
     }
   }
 }
@@ -516,6 +518,8 @@ void TabModeCtl::onModeCtlPanelCheckChanged(quint16 axis, int mode)
         ui->doubleSpinBox_mode_autMaxVel->setStyleSheet("color:black");
     }
     break;
+    case GT::MODE_HOME:break;
+    case GT::MODE_MID:break;
     }
   }
 }

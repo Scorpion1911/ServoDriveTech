@@ -46,6 +46,7 @@ void UiIO::accept(QWidget *w)
   d->m_graphIO = dynamic_cast<IGraphIO *>(w);
   d->m_graphIO->visit(this);
   d->m_graphIO->initUi();
+  d->m_copyAll = false;
 }
 
 QStackedWidget *UiIO::getUiStackedWidget(void)

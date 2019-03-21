@@ -1,4 +1,4 @@
-#include "dbmanager.h"
+﻿#include "dbmanager.h"
 #include <QDebug>
 #include <QSqlTableModel>
 #include <QSqlRecord>
@@ -24,6 +24,11 @@ DBManager::DBManager(QString dbPath, QString userName, QString psw)
     QTextStream in(&file);
     QString line = in.readLine();
     typeList = line.split("-");
+}
+
+DBManager::~DBManager()
+{
+    db.close();
 }
 
 bool DBManager::checkRole(QString role, const QString psw) {
@@ -85,10 +90,14 @@ bool DBManager::checkCoupleValid(QString strOne, QString strTwo, int i, int j) {
         i = j;
         j = k;
     }
+    qDebug()<<"str1"<<strOne;
+    qDebug()<<"str2"<<strTwo;
     QString tableName = "Relation" + typeList.at(i) + typeList.at(j);
     QSqlTableModel* model = new QSqlTableModel(this);
     model->setTable(tableName);
     model->select();
+    qDebug()<<"name"<<tableName;
+    qDebug()<<"rowCount"<<model->rowCount();
     for (int k = 0; k < model->rowCount(); k++) {
         QSqlRecord record = model->record(k);
         QString firstStr = record.value(typeList.at(i)).toString();

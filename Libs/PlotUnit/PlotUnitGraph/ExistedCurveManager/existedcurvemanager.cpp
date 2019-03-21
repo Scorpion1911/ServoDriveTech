@@ -61,6 +61,8 @@ void ExistedCurveManager::addCurvesToTable()
     connect(dd->m_tableHistory,SIGNAL(itemClicked(QTableWidgetItem*)), this, SLOT(onCurveTableItemClicked(QTableWidgetItem*)));
     connect(dd->m_tableHistory,SIGNAL(itemDoubleClicked(QTableWidgetItem*)),this,SLOT(onCurveTableItemDoubleClicked(QTableWidgetItem*)));
     connect(dd->m_plotHistory,SIGNAL(currentPosChanged(QPointF)),this,SIGNAL(sendNewPos(QPointF)));
+    connect(dd->m_plotHistory,SIGNAL(horizMeaDataChanged(qreal,qreal,qreal)),this,SIGNAL(sendPlotMeaHpos(qreal,qreal,qreal)));
+    connect(dd->m_plotHistory,SIGNAL(vertiMeaDataChanged(qreal,qreal,qreal)),this,SIGNAL(sendPlotMeaVpos(qreal,qreal,qreal)));
 }
 
 QList<ICurve *> ExistedCurveManager::curveList()

@@ -635,9 +635,6 @@ SelfBuilder::RtnSelf SelfBuilder::changeDocuments(void (*processCallback)(void *
     pFileNameList[2] = p;
 
     short count = 0;
-    qDebug()<<"1"<<pFileNameList[0];
-    qDebug()<<"2"<<pFileNameList[1];
-    qDebug()<<"3"<<pFileNameList[2];
     errcode_t ret = dd->m_com->readXML(axis, pFileNameList, pFileTypeList, num, processCallback, processbar, count);
     qDebug()<<"ret"<<ret;
     for (int i = 0; i < num; i++)
@@ -766,8 +763,8 @@ bool SelfBuilder::copyDirectoryFiles(const QString &fromDir, const QString &toDi
 {
     QDir sourceDir(fromDir);
     QDir targetDir(toDir);
-    if(!targetDir.exists()){
-        if(!createSysPath(toDir)) {
+    if (!targetDir.exists()) {
+        if (!createSysPath(toDir)) {
             return false;
         }
     }
@@ -775,20 +772,20 @@ bool SelfBuilder::copyDirectoryFiles(const QString &fromDir, const QString &toDi
     QFileInfoList fileInfoList = sourceDir.entryInfoList();
     for (int i = 0; i < fileInfoList.count(); i++){
         QFileInfo fileInfo = fileInfoList.at(i);
-        if(fileInfo.fileName() == "." || fileInfo.fileName() == "..")
+        if (fileInfo.fileName() == "." || fileInfo.fileName() == "..")
             continue;
-        if(fileInfo.isDir()){
-            if(!copyDirectoryFiles(fileInfo.filePath(),
+        if (fileInfo.isDir()) {
+            if (!copyDirectoryFiles(fileInfo.filePath(),
                 targetDir.filePath(fileInfo.fileName()),
                 coverFileIfExist)) {
                 return false;
             }
         }
         else{
-            if(coverFileIfExist && targetDir.exists(fileInfo.fileName())) {
+            if (coverFileIfExist && targetDir.exists(fileInfo.fileName())) {
                 targetDir.remove(fileInfo.fileName());
             }
-            if(!QFile::copy(fileInfo.filePath(), targetDir.filePath(fileInfo.fileName()))) {
+            if (!QFile::copy(fileInfo.filePath(), targetDir.filePath(fileInfo.fileName()))) {
                 return false;
             }
         }

@@ -10,9 +10,10 @@ class EncConfigManage : public QObject
 public:
   explicit EncConfigManage(QObject *parent = 0);
   ~EncConfigManage();
-  void addEncItem(IEncConfigItem *encItem);
-  IEncConfigItem *encItem(quint8 index);
-  QStringList itemNames();
+    void creatItemLists(int num);
+  void addEncItem(int index, IEncConfigItem *encItem);
+  IEncConfigItem *encItem(int typeInx, quint8 index);
+  QList<QStringList> itemNames();
   void clearAllEncItem();
 
   QWidget *curAttributeWidget() const;
@@ -22,7 +23,7 @@ signals:
 
 public slots:
 private:
-  QList<IEncConfigItem*> m_encItemList;
+  QList<QList<IEncConfigItem*>> m_encItemList;
   QWidget *mp_curAttributeWidget;
 };
 

@@ -54,10 +54,10 @@
        <string>SD1x</string>
       </property>
       <property name="text">
-       <string>SD1</string>
+       <string>SD10</string>
       </property>
       <property name="text">
-       <string>SD1</string>
+       <string>SD10</string>
       </property>
       <property name="text">
        <string>1</string>
@@ -149,6 +149,91 @@
       </property>
       <property name="text">
        <string>6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21000648</string>
+      </property>
+      <property name="text">
+       <string>SD4x</string>
+      </property>
+      <property name="text">
+       <string>SD45</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21000670</string>
+      </property>
+      <property name="text">
+       <string>HD1x</string>
+      </property>
+      <property name="text">
+       <string>HD11_3A</string>
+      </property>
+      <property name="text">
+       <string>HD11_3A</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21000322</string>
+      </property>
+      <property name="text">
+       <string>SD1x</string>
+      </property>
+      <property name="text">
+       <string>SD15_11</string>
+      </property>
+      <property name="text">
+       <string>SD15_11</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21000473</string>
+      </property>
+      <property name="text">
+       <string>SD1x</string>
+      </property>
+      <property name="text">
+       <string>SD15_06</string>
+      </property>
+      <property name="text">
+       <string>SD15_06</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21000387</string>
+      </property>
+      <property name="text">
+       <string>SD1x</string>
+      </property>
+      <property name="text">
+       <string>SD15_15</string>
+      </property>
+      <property name="text">
+       <string>SD15_15</string>
+      </property>
+      <property name="text">
+       <string>1</string>
       </property>
      </item>
     </widget>

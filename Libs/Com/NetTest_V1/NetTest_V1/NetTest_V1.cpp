@@ -12,8 +12,10 @@ void updateProgress(void *arg, int16 *value);
 #define TEST_FPGA 0
 #define TEST_NEW_COMUNICATION_CRC 0
 #define TEST_WRITEREAD_EPROM 0
+#define TEST_EPROM_128 1
 #define TEST_READ_VERSION 0
-#define TEST_XML 1
+#define TEST_READ_DSP_VERSION 0
+#define TEST_XML 0
 #define FPGA_RPD_FILE (L"C:/Users/googol/Desktop/GTSD42_VA_V0_0922.rpd")
 
 #define TEST_GENERALCMD 0
@@ -183,18 +185,47 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("ret2 = %d\n", ret2);
 #endif
 
+#if TEST_EPROM_128
+	Uint8 value[1];
+	Uint8 result[1];
+	Uint16 num = 1;
+	int16 axis = 0;
+	value[0] = 3;
+	result[0] = 0;
+	com_type type = GTSD_COM_TYPE_RNNET;
+	for (int i = 126; i < 130; i++) {
+		int16 ret1 = GTSD_CMD_WriteEEPROM(axis, i, value, num, type, 0xf0);
+		int16 ret2 = GTSD_CMD_ReadEEPROM(axis, i, result, num, type, 0xf0);
+		cout << " i = " << i << " ret1 = " << ret1 << " value = " << &value[0] << " ret2 = " << ret2 << " result = " << &result[0] << "\n";
+	}
+#endif
+
 	//	result = (COM_ERROR)GTSD_CMD_ProcessorGeneralFunc(4, &func, comType, 0xf0);
 	//	result = (COM_ERROR)GTSD_CMD_ProcessorGeneralFunc(5, &func, comType, 0xf0);
 
 #if TEST_READ_VERSION
 	Uint16 v;
-	GTSD_CMD_ReadFirmwareVersion(0, v, comType, 0xf0);
+	int16 err = GTSD_CMD_ReadFirmwareVersion(0, v, comType, 0xf0);
+	cout << "err = " << err << endl;
+	cout << "v = " << v << endl;
 	VERSION fpagVersion;
-	qDebug() << "read version";
-	if (0 == GTSD_CMD_ReadFpgaVersion(0, &fpagVersion, comType, 0xf0))
+	//qDebug() << "read version";
+	int16 err2 = GTSD_CMD_ReadFpgaVersion(0, &fpagVersion, comType, 0xf0);
+	if (0 != err2)
 	{
-		qDebug() << fpagVersion.usAddInfA << fpagVersion.usAddInfB << fpagVersion.usDeviceMesg << fpagVersion.usMonthDay << fpagVersion.usVersion << fpagVersion.usYear;
+		cout << "err2 = " << err2 << endl;
+		//qDebug() << fpagVersion.usAddInfA << fpagVersion.usAddInfB << fpagVersion.usDeviceMesg << fpagVersion.usMonthDay << fpagVersion.usVersion << fpagVersion.usYear;
 	}
+	else {
+		cout << "monthDay = " << fpagVersion.usMonthDay << "year = " << fpagVersion.usYear << endl;
+	}
+#endif
+
+#if TEST_READ_DSP_VERSION
+	Uint16 v = 0;
+	int16 err = GTSD_CMD_ReadProcessorVersion(0, v, comType);
+	cout << "err = " << err << endl;
+	cout << "v = " << v << endl;
 #endif
 
 #if TEST_GENERALCMD

@@ -19,7 +19,7 @@
         <translation>版本检测</translation>
     </message>
     <message>
-        <location filename="optautoload.cpp" line="125"/>
+        <location filename="optautoload.cpp" line="126"/>
         <source>Autoload</source>
         <translation>自动匹配</translation>
     </message>
@@ -60,6 +60,34 @@
         <location filename="optface.cpp" line="377"/>
         <source>Face</source>
         <translation>界面风格</translation>
+    </message>
+</context>
+<context>
+    <name>OptMode</name>
+    <message>
+        <location filename="optmode.ui" line="14"/>
+        <source>Form</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="optmode.ui" line="20"/>
+        <source>Software Mode</source>
+        <translation>软件运行状态</translation>
+    </message>
+    <message>
+        <location filename="optmode.ui" line="29"/>
+        <source>Online Mode</source>
+        <translation>在线模式</translation>
+    </message>
+    <message>
+        <location filename="optmode.ui" line="42"/>
+        <source>Offline Mode</source>
+        <translation>离线模式</translation>
+    </message>
+    <message>
+        <location filename="optmode.cpp" line="50"/>
+        <source>Mode</source>
+        <translation>运行模式</translation>
     </message>
 </context>
 <context>

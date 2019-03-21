@@ -320,22 +320,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="279"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="282"/>
         <source>user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="307"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="310"/>
         <source>expert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="332"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="335"/>
         <source>custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="107"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="75"/>
+        <source>Keyword:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="81"/>
+        <source>Execute Search Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="83"/>
+        <source>Cancel Search Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="138"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -343,31 +358,31 @@
 <context>
     <name>ExistedCurveManager</name>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="105"/>
         <source>checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="105"/>
         <source>name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="103"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="105"/>
         <source>axis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="133"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="198"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="280"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="135"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="200"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="282"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="139"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="192"/>
-        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="286"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="141"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="194"/>
+        <location filename="ExistedCurveManager/existedcurvemanager.cpp" line="288"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
@@ -375,7 +390,7 @@
 <context>
     <name>MotionProgressBar</name>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="39"/>
+        <location filename="TabMotion/tabmotion.cpp" line="40"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -459,12 +474,14 @@
     </message>
     <message>
         <location filename="plotunitgraph129.ui" line="300"/>
-        <source>dx</source>
+        <source>dX</source>
+        <oldsource>dx</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="plotunitgraph129.ui" line="313"/>
-        <source>dy</source>
+        <source>dY</source>
+        <oldsource>dy</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -609,8 +626,8 @@
     </message>
     <message>
         <location filename="plotunitgraph129.cpp" line="187"/>
-        <location filename="plotunitgraph129.cpp" line="1117"/>
-        <location filename="plotunitgraph129.cpp" line="1412"/>
+        <location filename="plotunitgraph129.cpp" line="1138"/>
+        <location filename="plotunitgraph129.cpp" line="1437"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -662,76 +679,81 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="784"/>
-        <location filename="plotunitgraph129.cpp" line="1209"/>
-        <location filename="plotunitgraph129.cpp" line="1651"/>
+        <location filename="plotunitgraph129.cpp" line="790"/>
+        <location filename="plotunitgraph129.cpp" line="1230"/>
+        <location filename="plotunitgraph129.cpp" line="1676"/>
         <source>on</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="790"/>
-        <location filename="plotunitgraph129.cpp" line="1203"/>
-        <location filename="plotunitgraph129.cpp" line="1657"/>
+        <location filename="plotunitgraph129.cpp" line="796"/>
+        <location filename="plotunitgraph129.cpp" line="1224"/>
+        <location filename="plotunitgraph129.cpp" line="1682"/>
         <source>off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="807"/>
+        <location filename="plotunitgraph129.cpp" line="813"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="814"/>
+        <location filename="plotunitgraph129.cpp" line="820"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="826"/>
+        <location filename="plotunitgraph129.cpp" line="832"/>
         <source>Curve File(*.src);;Text File(*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="826"/>
+        <location filename="plotunitgraph129.cpp" line="832"/>
         <source>Save Curve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="836"/>
-        <location filename="plotunitgraph129.cpp" line="848"/>
+        <location filename="plotunitgraph129.cpp" line="844"/>
+        <source>Saving Curve Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="plotunitgraph129.cpp" line="855"/>
+        <location filename="plotunitgraph129.cpp" line="869"/>
         <source>Saving Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="839"/>
-        <location filename="plotunitgraph129.cpp" line="851"/>
+        <location filename="plotunitgraph129.cpp" line="861"/>
+        <location filename="plotunitgraph129.cpp" line="872"/>
         <source>Saving Finish!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="948"/>
-        <location filename="plotunitgraph129.cpp" line="977"/>
-        <location filename="plotunitgraph129.cpp" line="1047"/>
+        <location filename="plotunitgraph129.cpp" line="969"/>
+        <location filename="plotunitgraph129.cpp" line="998"/>
+        <location filename="plotunitgraph129.cpp" line="1068"/>
         <source>warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="948"/>
+        <location filename="plotunitgraph129.cpp" line="969"/>
         <source>plugin load error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="977"/>
+        <location filename="plotunitgraph129.cpp" line="998"/>
         <source>%1 is BIT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1047"/>
+        <location filename="plotunitgraph129.cpp" line="1068"/>
         <source>The numbers of selected curves is too much</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1117"/>
-        <location filename="plotunitgraph129.cpp" line="1412"/>
+        <location filename="plotunitgraph129.cpp" line="1138"/>
+        <location filename="plotunitgraph129.cpp" line="1437"/>
         <source>The curve = %1 is not in the device</source>
         <translation type="unfinished"></translation>
     </message>
@@ -794,6 +816,20 @@
     <message>
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="357"/>
         <source>Reading Curve Finish!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <source>Warning!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <source>No corresponding Item was found!
+Please input again!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -963,12 +999,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="684"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="686"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabModeCtl/tabmodectl.ui" line="706"/>
+        <location filename="TabModeCtl/tabmodectl.ui" line="708"/>
         <source>Servo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -980,7 +1016,7 @@
     </message>
     <message>
         <location filename="TabModeCtl/tabmodectl.cpp" line="148"/>
-        <location filename="TabModeCtl/tabmodectl.cpp" line="535"/>
+        <location filename="TabModeCtl/tabmodectl.cpp" line="539"/>
         <source>SEV ON</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1008,38 +1044,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="154"/>
-        <location filename="TabMotion/tabmotion.ui" line="187"/>
+        <location filename="TabMotion/tabmotion.ui" line="82"/>
+        <source>IO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabMotion/tabmotion.ui" line="162"/>
+        <location filename="TabMotion/tabmotion.ui" line="195"/>
         <source>Servo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="202"/>
+        <location filename="TabMotion/tabmotion.ui" line="210"/>
         <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.ui" line="248"/>
+        <location filename="TabMotion/tabmotion.ui" line="256"/>
         <source>GO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="92"/>
+        <location filename="TabMotion/tabmotion.cpp" line="94"/>
         <source>Axis_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="102"/>
+        <location filename="TabMotion/tabmotion.cpp" line="104"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="108"/>
+        <location filename="TabMotion/tabmotion.cpp" line="110"/>
         <source>Velocity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="TabMotion/tabmotion.cpp" line="116"/>
+        <location filename="TabMotion/tabmotion.cpp" line="118"/>
         <source>Position</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1119,6 +1160,16 @@
     <message>
         <location filename="TabModeCtl/modectlpanel.cpp" line="42"/>
         <source>13AUT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/modectlpanel.cpp" line="43"/>
+        <source>14HOME</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="TabModeCtl/modectlpanel.cpp" line="44"/>
+        <source>15MID</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

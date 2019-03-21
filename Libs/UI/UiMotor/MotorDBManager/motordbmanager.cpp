@@ -7,14 +7,9 @@
 
 MotorDBManager::MotorDBManager(const QString &dbPath, const QString &userName, const QString &psw, QObject *parent) : QObject(parent)
 {
-    m_motorDB = QSqlDatabase::addDatabase("QSQLITE");
-    m_motorDB.setDatabaseName(dbPath + "MotorInfomation.sqlite");
-    m_motorDB.setUserName(userName);
-    m_motorDB.setPassword(psw);
-    if (!m_motorDB.open()) {
-        qDebug()<<"Fail!";
-        return;
-    }
+    m_dbPath = dbPath;
+    m_usrName = userName;
+    m_psw = psw;
 }
 
 MotorDBManager::~MotorDBManager()
@@ -159,6 +154,25 @@ int MotorDBManager::getCompanySeq()
     QSqlRecord record = model.record(0);
     int result = record.value("seq").toInt();
     return result;
+}
+
+bool MotorDBManager::open()
+{
+    m_motorDB = QSqlDatabase::addDatabase("QSQLITE");
+    m_motorDB.setDatabaseName(m_dbPath + "MotorInfomation.sqlite");
+    m_motorDB.setUserName(m_usrName);
+    m_motorDB.setPassword(m_psw);
+    if (!m_motorDB.open()) {
+        qDebug()<<"Fail!";
+        return false;
+    }
+    return true;
+}
+
+bool MotorDBManager::close()
+{
+    m_motorDB.close();
+    return true;
 }
 
 void MotorDBManager::setMotorSeq(const QString &seq)

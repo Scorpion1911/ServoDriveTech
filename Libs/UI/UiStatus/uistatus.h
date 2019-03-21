@@ -36,6 +36,9 @@ private:
   void setDefaultUi()Q_DECL_OVERRIDE;
   bool readPageFLASH()Q_DECL_OVERRIDE{return true;}
   bool writePageFLASH()Q_DECL_OVERRIDE{return true;}
+  bool readOfflinePrm()Q_DECL_OVERRIDE{return true;}
+  bool writeOfflinePrm()Q_DECL_OVERRIDE{return true;}
+  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)Q_DECL_OVERRIDE{return true;}
 
 private:
   Ui::UiStatus *ui;

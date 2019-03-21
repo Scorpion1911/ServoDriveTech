@@ -4,5 +4,6 @@ CONFIG   += ordered
 SUBDIRS += \
     IMotion \
     MotionVelocity \
-    MotionPosition
+    MotionPosition \
+    MotionPTSL
 TRANSLATIONS    += ch_sdmotion.ts en_sdmotion.ts
