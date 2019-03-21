@@ -68,6 +68,7 @@ void CurveUsrVffd::calculate()
   {
     result = (dd.m_varInputs.at(0).datas.at(i)/16777216.0)*nos;
     dd.m_cData.values.append(result);
+    //dd.m_cData.values.append(result);
 //    qDebug()<<QString("vcmd %1 cal: in = %2,out = %3").arg(dd.m_axisInx).arg(dd.m_varInputs.at(0).datas.at(i)).arg(result);
   }
 

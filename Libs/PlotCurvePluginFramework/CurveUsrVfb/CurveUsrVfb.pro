@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 include (../ctkplugins.pri)
+
+
 QT       -= gui
 QT+=widgets
 

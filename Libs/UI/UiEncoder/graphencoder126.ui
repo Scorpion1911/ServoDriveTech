@@ -282,8 +282,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>98</width>
-             <height>28</height>
+             <width>191</width>
+             <height>251</height>
             </rect>
            </property>
            <attribute name="label">
@@ -335,8 +335,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>98</width>
-             <height>28</height>
+             <width>191</width>
+             <height>251</height>
             </rect>
            </property>
            <attribute name="label">
@@ -348,8 +348,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>98</width>
-             <height>28</height>
+             <width>191</width>
+             <height>251</height>
             </rect>
            </property>
            <attribute name="label">
@@ -400,9 +400,6 @@
             </property>
             <property name="maximum">
              <number>999999999</number>
-            </property>
-            <property name="value">
-             <number>131072</number>
             </property>
            </widget>
           </item>

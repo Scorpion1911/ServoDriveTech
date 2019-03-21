@@ -57,7 +57,6 @@ void CurveCusAccd::calculate()
       dd.m_cData.values.clear();
       QVector<double> velValues;
       QVector<double> accValues;
-      QVector<double> accdValues;
       for(int i = 0;i<dd.m_varInputs.at(0).datas.size();i++)
       {
         result = (dd.m_varInputs.at(0).datas.at(i)/16777216.0)*nos;
@@ -65,10 +64,8 @@ void CurveCusAccd::calculate()
     //    qDebug()<<QString("vcmd %1 cal: in = %2,out = %3").arg(dd.m_axisInx).arg(dd.m_varInputs.at(0).datas.at(i)).arg(result);
       }
 
-      MathToolbox::differential(velValues, accValues, dd.m_samplInterval / 60, 1);
-      MathToolbox::differential(accValues, accdValues, dd.m_samplInterval / 60, 2);
-
-      MathToolbox::smoothingFilter(accdValues, dd.m_cData.values, FILTER_WIDTH);
+      MathToolbox::differential(velValues, accValues, dd.m_samplInterval / 60, 0, 2);
+      MathToolbox::differential(accValues, dd.m_cData.values, dd.m_samplInterval / 60, 1, 2);
 }
 
 QString CurveCusAccd::name()

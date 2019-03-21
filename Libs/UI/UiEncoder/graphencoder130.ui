@@ -398,9 +398,6 @@
             <property name="maximum">
              <number>999999999</number>
             </property>
-            <property name="value">
-             <number>131072</number>
-            </property>
            </widget>
           </item>
           <item>
@@ -427,26 +424,20 @@
             </property>
            </widget>
           </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_gear_a">
+            <property name="text">
+             <string>den a</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="1">
            <widget class="QSpinBox" name="spinBox_gear_b">
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
             <property name="maximum">
-             <number>167772160</number>
-            </property>
-            <property name="value">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_gear_a">
-            <property name="text">
-             <string>den a</string>
+             <number>999999999</number>
             </property>
            </widget>
           </item>
@@ -455,14 +446,8 @@
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
             <property name="maximum">
-             <number>167772160</number>
-            </property>
-            <property name="value">
-             <number>1</number>
+             <number>999999999</number>
             </property>
            </widget>
           </item>

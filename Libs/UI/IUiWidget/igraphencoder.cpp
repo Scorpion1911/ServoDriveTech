@@ -3,8 +3,12 @@
 #include "sdtglobaldef.h"
 #include "iuiwidget.h"
 #include "sevdevice.h"
+#include "optface.h"
 
 #include <QTimer>
+#include <QKeyEvent>
+#include <QDoubleSpinBox>
+#include <QDebug>
 
 #define TIMER_INTERVAL 500
 

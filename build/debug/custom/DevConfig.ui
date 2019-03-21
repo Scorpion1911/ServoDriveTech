@@ -61,24 +61,24 @@
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>SD6x</string>
+                                    <string>SD1x</string>
                                 </property>
                                 <property name="text">
-                                    <string>6</string>
+                                    <string>1</string>
                                 </property>
                                 <item>
                                     <property name="text">
-                                        <string>SD61_PLUS</string>
+                                        <string>SD15_06</string>
                                     </property>
                                     <property name="text">
-                                        <string>6</string>
+                                        <string>1</string>
                                     </property>
                                     <property name="text">
-                                        <string>21000541</string>
+                                        <string>21000473</string>
                                     </property>
                                     <item>
                                         <property name="text">
-                                            <string>V130</string>
+                                            <string>V136</string>
                                         </property>
                                         <property name="text">
                                             <string>NULL</string>

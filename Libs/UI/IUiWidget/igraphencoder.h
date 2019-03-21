@@ -35,6 +35,8 @@ protected:
 
 protected slots:
   virtual void onUpdateTimeOut() = 0 ;
+public slots:
+  virtual void onBtnEncConfigSaveClicked() = 0 ;
 
 signals:
 

@@ -6,7 +6,7 @@
 
 #define VAR_KEYNAME_POS_FFD_SPDR    "gSevDrv.sev_obj.pos.ffd.spdr"
 #define CON_KEYNAME_MOT_NOS         "gSevDrv.sev_obj.cur.mot.Nos_1"
-#define FILTER_WIDTH                31
+#define FILTER_WIDTH                15
 
 CurveCusAcc::CurveCusAcc()
 {
@@ -64,7 +64,8 @@ void CurveCusAcc::calculate()
     //    qDebug()<<QString("vcmd %1 cal: in = %2,out = %3").arg(dd.m_axisInx).arg(dd.m_varInputs.at(0).datas.at(i)).arg(result);
       }
 
-      MathToolbox::differential(velValues, dd.m_cData.values, dd.m_samplInterval / 60, 1);
+      MathToolbox::differential(velValues, accValues, dd.m_samplInterval / 60, 0, 2);
+      MathToolbox::smoothingFilter(accValues, dd.m_cData.values, FILTER_WIDTH);
       //MathToolbox::differential(velValues, accValues, dd.m_samplInterval / 60, 1);
       //MathToolbox::smoothingFilter(accValues, dd.m_cData.values, FILTER_WIDTH);
 }

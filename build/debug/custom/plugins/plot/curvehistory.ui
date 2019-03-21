@@ -31,7 +31,7 @@
                             <string>Curve</string>
                         </property>
                         <property name="text">
-                            <string>CurveUsrVfb</string>
+                            <string>CurveUsrIu</string>
                         </property>
                         <item>
                             <property name="text">
@@ -54,7 +54,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>6</string>
+                                <string>1</string>
                             </property>
                         </item>
                         <item>
@@ -62,7 +62,7 @@
                                 <string>Name</string>
                             </property>
                             <property name="text">
-                                <string>Vfb</string>
+                                <string>Iu</string>
                             </property>
                         </item>
                         <item>
@@ -70,7 +70,7 @@
                                 <string>Note</string>
                             </property>
                             <property name="text">
-                                <string>反馈速度</string>
+                                <string>U相电流</string>
                             </property>
                         </item>
                         <item>
@@ -82,7 +82,7 @@
                                     <string>ColorR</string>
                                 </property>
                                 <property name="text">
-                                    <string>0</string>
+                                    <string>255</string>
                                 </property>
                             </item>
                             <item>
@@ -90,7 +90,7 @@
                                     <string>ColorR</string>
                                 </property>
                                 <property name="text">
-                                    <string>170</string>
+                                    <string>0</string>
                                 </property>
                             </item>
                             <item>
@@ -107,7 +107,7 @@
                                 <string>IsDraw</string>
                             </property>
                             <property name="text">
-                                <string>0</string>
+                                <string>1</string>
                             </property>
                         </item>
                         <item>
@@ -119,26 +119,34 @@
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>rpm</string>
+                                    <string>mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>1000.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>10mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>100.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>100mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>10.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>A</string>
                                 </property>
                                 <property name="text">
                                     <string>1.00000</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>rps</string>
-                                </property>
-                                <property name="text">
-                                    <string>0.01670</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>rad.s</string>
-                                </property>
-                                <property name="text">
-                                    <string>0.10470</string>
                                 </property>
                             </item>
                         </item>
@@ -151,7 +159,7 @@
                                     <string>const</string>
                                 </property>
                                 <property name="text">
-                                    <string>gSevDrv.sev_obj.cur.mot.Nos_1</string>
+                                    <string>gSevDrv.sev_obj.cur.mot.Imax_1</string>
                                 </property>
                                 <item>
                                     <property name="text">
@@ -166,7 +174,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>412</string>
+                                        <string>478</string>
                                     </property>
                                 </item>
                                 <item>
@@ -188,7 +196,7 @@
                                     <string>Var</string>
                                 </property>
                                 <property name="text">
-                                    <string>gSevDrv.sev_obj.vel.ctl.spd_fb</string>
+                                    <string>gSevDrv.sev_obj.cur.adc.ia</string>
                                 </property>
                                 <item>
                                     <property name="text">
@@ -203,7 +211,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>1860</string>
+                                        <string>584</string>
                                     </property>
                                 </item>
                                 <item>
@@ -211,7 +219,7 @@
                                         <string>Bytes</string>
                                     </property>
                                     <property name="text">
-                                        <string>4</string>
+                                        <string>2</string>
                                     </property>
                                 </item>
                             </item>
@@ -222,7 +230,7 @@
                             <string>Curve</string>
                         </property>
                         <property name="text">
-                            <string>CurveUsrVffd</string>
+                            <string>CurveUsrIv</string>
                         </property>
                         <item>
                             <property name="text">
@@ -245,7 +253,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>6</string>
+                                <string>1</string>
                             </property>
                         </item>
                         <item>
@@ -253,7 +261,7 @@
                                 <string>Name</string>
                             </property>
                             <property name="text">
-                                <string>Vffd</string>
+                                <string>Iv</string>
                             </property>
                         </item>
                         <item>
@@ -261,7 +269,7 @@
                                 <string>Note</string>
                             </property>
                             <property name="text">
-                                <string>位置速度指令</string>
+                                <string>V相电流</string>
                             </property>
                         </item>
                         <item>
@@ -274,14 +282,6 @@
                                 </property>
                                 <property name="text">
                                     <string>0</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>ColorR</string>
-                                </property>
-                                <property name="text">
-                                    <string>170</string>
                                 </property>
                             </item>
                             <item>
@@ -292,13 +292,21 @@
                                     <string>255</string>
                                 </property>
                             </item>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>0</string>
+                                </property>
+                            </item>
                         </item>
                         <item>
                             <property name="text">
                                 <string>IsDraw</string>
                             </property>
                             <property name="text">
-                                <string>0</string>
+                                <string>1</string>
                             </property>
                         </item>
                         <item>
@@ -310,26 +318,34 @@
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>rpm</string>
+                                    <string>mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>1000.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>10mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>100.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>100mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>10.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>A</string>
                                 </property>
                                 <property name="text">
                                     <string>1.00000</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>rps</string>
-                                </property>
-                                <property name="text">
-                                    <string>0.01670</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>rad/s</string>
-                                </property>
-                                <property name="text">
-                                    <string>0.10470</string>
                                 </property>
                             </item>
                         </item>
@@ -342,7 +358,7 @@
                                     <string>const</string>
                                 </property>
                                 <property name="text">
-                                    <string>gSevDrv.sev_obj.cur.mot.Nos_1</string>
+                                    <string>gSevDrv.sev_obj.cur.mot.Imax_1</string>
                                 </property>
                                 <item>
                                     <property name="text">
@@ -357,7 +373,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>412</string>
+                                        <string>478</string>
                                     </property>
                                 </item>
                                 <item>
@@ -379,7 +395,7 @@
                                     <string>Var</string>
                                 </property>
                                 <property name="text">
-                                    <string>gSevDrv.sev_obj.pos.ffd.spdr</string>
+                                    <string>gSevDrv.sev_obj.cur.adc.ib</string>
                                 </property>
                                 <item>
                                     <property name="text">
@@ -394,7 +410,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>7160</string>
+                                        <string>586</string>
                                     </property>
                                 </item>
                                 <item>
@@ -402,7 +418,7 @@
                                         <string>Bytes</string>
                                     </property>
                                     <property name="text">
-                                        <string>4</string>
+                                        <string>2</string>
                                     </property>
                                 </item>
                             </item>
@@ -413,7 +429,7 @@
                             <string>Curve</string>
                         </property>
                         <property name="text">
-                            <string>CurveCusAcc</string>
+                            <string>CurveUsrIw</string>
                         </property>
                         <item>
                             <property name="text">
@@ -436,7 +452,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>6</string>
+                                <string>1</string>
                             </property>
                         </item>
                         <item>
@@ -444,7 +460,7 @@
                                 <string>Name</string>
                             </property>
                             <property name="text">
-                                <string>Acc</string>
+                                <string>Iw</string>
                             </property>
                         </item>
                         <item>
@@ -452,7 +468,7 @@
                                 <string>Note</string>
                             </property>
                             <property name="text">
-                                <string>Acceleration</string>
+                                <string>W相电流</string>
                             </property>
                         </item>
                         <item>
@@ -501,7 +517,31 @@
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>r/m^2</string>
+                                    <string>mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>1000.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>10mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>100.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>100mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>10.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>A</string>
                                 </property>
                                 <property name="text">
                                     <string>1.00000</string>
@@ -517,7 +557,7 @@
                                     <string>const</string>
                                 </property>
                                 <property name="text">
-                                    <string>gSevDrv.sev_obj.cur.mot.Nos_1</string>
+                                    <string>gSevDrv.sev_obj.cur.mot.Imax_1</string>
                                 </property>
                                 <item>
                                     <property name="text">
@@ -532,7 +572,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>412</string>
+                                        <string>478</string>
                                     </property>
                                 </item>
                                 <item>
@@ -554,7 +594,7 @@
                                     <string>Var</string>
                                 </property>
                                 <property name="text">
-                                    <string>gSevDrv.sev_obj.pos.ffd.spdr</string>
+                                    <string>gSevDrv.sev_obj.cur.adc.ic</string>
                                 </property>
                                 <item>
                                     <property name="text">
@@ -569,7 +609,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>7160</string>
+                                        <string>588</string>
                                     </property>
                                 </item>
                                 <item>
@@ -577,7 +617,7 @@
                                         <string>Bytes</string>
                                     </property>
                                     <property name="text">
-                                        <string>4</string>
+                                        <string>2</string>
                                     </property>
                                 </item>
                             </item>

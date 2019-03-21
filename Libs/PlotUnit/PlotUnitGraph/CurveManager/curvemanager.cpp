@@ -269,7 +269,6 @@ void CurveManager::updateSamplPrms()
     for(int i=0;i<curves.size();i++)
     {
       int d=curves.at(i)->dspInx();
-      qDebug()<<"ddddddddddddddddddd "<<d;
       if(dsps.isEmpty())
       {
         dsps.append(d);

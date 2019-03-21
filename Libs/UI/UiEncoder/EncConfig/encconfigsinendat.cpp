@@ -49,7 +49,7 @@ void EncConfigSinEndat::createAttributeUi()
 
     QLabel* absPosLabel = new QLabel(tr("Abs Position"));
     m_absPos = new QSpinBox;
-    m_absPos->setMinimum(1);
+    m_absPos->setMinimum(0);
     m_absPos->setMaximum(999999999);
     m_absPos->setButtonSymbols(QAbstractSpinBox::NoButtons);
     m_absPos->setReadOnly(true);

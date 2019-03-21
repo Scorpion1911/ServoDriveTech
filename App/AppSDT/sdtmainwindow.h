@@ -142,6 +142,7 @@ private slots:
 
   void onSaveMsgReceived(int value, const QString &msg, bool isStart);
   void setMonitorStatus(bool en);
+  void setDisConnectBtn(bool en);
 
 private:
 

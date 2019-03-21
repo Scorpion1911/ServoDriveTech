@@ -6,6 +6,7 @@
 
 #include <QQuickWidget>
 #include <QQmlContext>
+#include <QMessageBox>
 #include <QDebug>
 
 
@@ -127,6 +128,11 @@ void UiMotor::setDefaultUi()
 
 void UiMotor::onInstallMotor()
 {
-    writePageFLASH();
+    bool ok = writePageFLASH();
+    if (ok) {
+        QMessageBox::information(0, tr("Info"), tr("Motor Install successfully!"));
+    } else {
+        QMessageBox::warning(0, tr("Info"), tr("Motor Install fails!"));
+    }
 }
 

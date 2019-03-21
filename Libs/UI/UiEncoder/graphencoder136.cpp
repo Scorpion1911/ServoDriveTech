@@ -66,6 +66,7 @@ GraphEncoder136::GraphEncoder136(QWidget *parent) :
   ui->btn_encConfig->setCheckable(true);
   ui->spinBox_encLine->setVisible(true );
   ui->comboBox_encBitNum->setVisible(false);
+  ui->btn_encSaveConfig->setVisible(false);
   QStringList comList;
   comList<<"11"<<"13"<<"17"<<"20"<<"21"<<"22"<<"23"<<"24";
   ui->comboBox_encBitNum->addItems(comList);

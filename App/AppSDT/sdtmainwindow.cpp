@@ -568,6 +568,7 @@ void SDTMainWindow::globalUiPageInit()
   connect(this,SIGNAL(appClosed()),m_gUiControl,SIGNAL(appClosed()),Qt::QueuedConnection);
   connect(this,SIGNAL(beforeSevDeviceChanged()),m_gUiControl,SIGNAL(beforeSevDeviceChanged()));
   connect(m_gUiControl, SIGNAL(sendSaveMsgToMain(int,QString,bool)), this, SLOT(onSaveMsgReceived(int,QString,bool)));
+  connect(m_gUiControl, SIGNAL(sendSamplingStatus(bool)), this, SLOT(setDisConnectBtn(bool)));
   m_gUiControl->createUis();
 }
 void SDTMainWindow::stackedWidgetInit()
@@ -710,7 +711,7 @@ void SDTMainWindow::onActnAdvUserClicked()
             AdvUserMask *advMask = dynamic_cast<AdvUserMask*>(adv);
             advMask->setSevList(sevList());
             advMask->uiInit();
-        }else if (adv->name().compare("advuserfirmwaresegmentflash") == 0) {
+        } else if (adv->name().compare("advuserfirmwaresegmentflash") == 0) {
             AdvUserFirmwareSegmentFlash *advFirmFlash = dynamic_cast<AdvUserFirmwareSegmentFlash*>(adv);
             advFirmFlash->setSevList(sevList());
             advFirmFlash->uiInit();
@@ -1025,8 +1026,8 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
 void SDTMainWindow::onActnDisConnectClicked(bool checked)
 {
   m_connecting=false;
-  setUiStatusConnect(m_connecting);
   m_statusMonitor->stopMonitor();
+  setUiStatusConnect(m_connecting);
   disactiveAllUi();
   setConnect(false);
 
@@ -1475,6 +1476,11 @@ void SDTMainWindow::setMonitorStatus(bool en)
     } else {
         m_statusMonitor->stopMonitor();
     }
+}
+
+void SDTMainWindow::setDisConnectBtn(bool en)
+{
+    m_actnDisNet->setEnabled(!en);
 }
 
 SdAssembly *SDTMainWindow::createSdAssembly(DeviceConfig *cfg)

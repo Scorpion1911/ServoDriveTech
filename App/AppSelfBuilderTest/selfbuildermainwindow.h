@@ -5,6 +5,7 @@
 #include "gtutils_global.h"
 
 class QTreeWidget;
+class QTreeWidgetItem;
 
 namespace ComDriver {
   class ICom;
@@ -28,6 +29,8 @@ private slots:
 private:
     Ui::SelfBuilderMainWindow *ui;
     QTreeWidget* m_tree;
+private:
+    void changeAddr(QTreeWidgetItem *item);
 };
 
 #endif // SELFBUILDERMAINWINDOW_H

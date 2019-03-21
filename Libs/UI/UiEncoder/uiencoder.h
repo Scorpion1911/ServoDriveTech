@@ -22,6 +22,7 @@ public:
 
   void accept(QWidget*w) Q_DECL_OVERRIDE;
   void setUiActive(bool actived)Q_DECL_OVERRIDE;
+  bool writePageFLASH() Q_DECL_OVERRIDE;
 
 protected:
   void setContextAction() Q_DECL_OVERRIDE;
