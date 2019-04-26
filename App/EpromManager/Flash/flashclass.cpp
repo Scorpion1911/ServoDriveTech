@@ -1,4 +1,4 @@
-#include "flashclass.h"
+﻿#include "flashclass.h"
 #include "jsonreader.h"
 #include "ServoDriverComDll.h"
 #include "treemanager.h"
@@ -55,7 +55,7 @@ void FlashClass::flash(int netId, QString hexPath, QString xmlPath, int dspNum, 
     } else {
         axisCount = treePrm->topLevelItemCount();
     }
-    if (axisCount != 2 * m_dspNum) {
+    if (axisCount != 2 * m_dspNum && axisCount != m_dspNum) {
         emit sendWarnMsg(tr("Xml File Error! Please reselect file!"));
         return;
     }
@@ -71,8 +71,8 @@ void FlashClass::flash(int netId, QString hexPath, QString xmlPath, int dspNum, 
     if(0 == GTSD_CMD_Hex2Ldr(outPath.toStdWString(), ldrPath.toStdWString(), netId, netRnStation))//转化文件成功
     {
 
-        bool ubootOk = uBoot(ldrPath, net, proBar);
-        if (ubootOk)
+        qint16 ret = uBoot(ldrPath, net, proBar);
+        if (ret == 0)
         {
             bool ok;
             QString desPath = "./Decompress";
@@ -125,7 +125,7 @@ void FlashClass::flash(int netId, QString hexPath, QString xmlPath, int dspNum, 
         }
         else
         {
-            emit sendWarnMsg(tr("Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems."));
+            emit sendWarnMsg(tr("ret = %1, Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems.").arg(ret));
         }
         emit changeBarCount(0);
     } else {
@@ -133,25 +133,25 @@ void FlashClass::flash(int netId, QString hexPath, QString xmlPath, int dspNum, 
     }
 }
 
-bool FlashClass::uBoot(QString ldrPath, JsonReader net, QObject *proBar) {
-    bool ubootOk = true;
+qint16 FlashClass::uBoot(QString ldrPath, JsonReader net, QObject *proBar) {
     for(int i = 0; i < m_dspNum; i++)
     {
         m_step=i;
-        if(0 != GTSD_CMD_ProcessorUartBootHandler(i*2,ldrPath.toStdWString(),\
-                                              net.baudRate(), net.ubootCmd(),\
-                                              net.ubootInputKey().toStdString(),\
-                                              updateProgessBarWhenRestoreClicked,\
-                                              proBar,m_netId,m_netRnStation))
+        int16 ret = GTSD_CMD_ProcessorUartBootHandler(i*2,ldrPath.toStdWString(),\
+                                                      net.baudRate(), net.ubootCmd(),\
+                                                      net.ubootInputKey().toStdString(),\
+                                                      updateProgessBarWhenRestoreClicked,\
+                                                      proBar,m_netId,m_netRnStation);
+        if(0 != ret)
         {
             sendWarnMsg(tr("Warning: Reasons of exceptions maybe  1.Boot Switch 2.FPGA FirmWare 3.Boot File"));
-            ubootOk = false;
+            return ret;
             break;
         } else {
             sendWarnMsg(tr("Uboot complete successfully!"));
         }
     }
-    return ubootOk;
+    return 0;
 }
 
 bool FlashClass::downloadHex(QObject *proBar, const QString &hexPath) {

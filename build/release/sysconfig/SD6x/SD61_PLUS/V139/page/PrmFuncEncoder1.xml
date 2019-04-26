@@ -554,6 +554,93 @@
        <string>1</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_Low</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+      <property name="text">
+       <string>Uint16</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>65535</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>61465</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_High</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>Uint16</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>65535</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>61464</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>FPGA.prm.PULSE_SCALING.NUMERATOR_Low</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+      <property name="text">
+       <string>Uint16</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+      <property name="text">
+       <string>65535</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>61467</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
     </widget>
    </item>
   </layout>

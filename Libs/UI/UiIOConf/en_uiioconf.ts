@@ -27,20 +27,20 @@
         <location filename="graphioconf136.cpp" line="79"/>
         <location filename="graphioconf136.cpp" line="80"/>
         <location filename="graphioconf136.cpp" line="81"/>
-        <location filename="graphioconf136.cpp" line="112"/>
-        <location filename="graphioconf136.cpp" line="123"/>
-        <location filename="graphioconf136.cpp" line="124"/>
-        <location filename="graphioconf136.cpp" line="125"/>
-        <location filename="graphioconf136.cpp" line="126"/>
-        <location filename="graphioconf136.cpp" line="127"/>
-        <location filename="graphioconf136.cpp" line="128"/>
-        <location filename="graphioconf136.cpp" line="129"/>
+        <location filename="graphioconf136.cpp" line="119"/>
+        <location filename="graphioconf136.cpp" line="130"/>
+        <location filename="graphioconf136.cpp" line="131"/>
+        <location filename="graphioconf136.cpp" line="132"/>
+        <location filename="graphioconf136.cpp" line="133"/>
+        <location filename="graphioconf136.cpp" line="134"/>
+        <location filename="graphioconf136.cpp" line="135"/>
+        <location filename="graphioconf136.cpp" line="136"/>
         <source>General IO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="83"/>
-        <location filename="graphioconf136.cpp" line="90"/>
+        <location filename="graphioconf136.cpp" line="93"/>
         <source>0 Empty</source>
         <translation type="unfinished"></translation>
     </message>
@@ -75,173 +75,208 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="graphioconf136.cpp" line="90"/>
+        <source>7 Positive Limit Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="graphioconf136.cpp" line="91"/>
-        <source>1 Is Alarm</source>
+        <source>8 Negative Limit Switch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="92"/>
-        <source>2 Is Moving</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphioconf136.cpp" line="93"/>
-        <source>3 Is Stop Accurate</source>
+        <source>9 Home Switch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="94"/>
-        <source>4 Is Velocity Achieved</source>
+        <source>1 Is Alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="95"/>
-        <source>5 Is Return Successful</source>
+        <source>2 Is Moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="96"/>
+        <source>3 Is Stop Accurate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="97"/>
-        <source>CN8-1</source>
+        <source>4 Is Velocity Achieved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="98"/>
-        <source>CN8-2</source>
+        <source>5 Is Return Successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="99"/>
-        <source>CN8-15</source>
+        <source>6 Is Servo Ready</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="100"/>
-        <source>CN8-3</source>
+        <source>7 Is Homing Finished</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="101"/>
-        <source>CN8-16</source>
+        <source>8 Is Phase Searched</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="102"/>
-        <source>CN8-4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphioconf136.cpp" line="103"/>
-        <source>CN8-17</source>
+        <source>9 Is Current out  of Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="104"/>
-        <source>CN8-5</source>
+        <source>CN8-1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="105"/>
-        <source>CN8-18</source>
+        <source>CN8-2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="106"/>
-        <source>CN8-6</source>
+        <source>CN8-15</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="107"/>
-        <source>CN8-19</source>
+        <source>CN8-3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="108"/>
-        <source>CN7-17</source>
+        <source>CN8-16</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="109"/>
-        <source>CN7-7</source>
+        <source>CN8-4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="110"/>
-        <source>CN7-16</source>
+        <source>CN8-17</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="111"/>
-        <source>CN7-25</source>
+        <source>CN8-5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="112"/>
+        <source>CN8-18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="113"/>
+        <source>CN8-6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="114"/>
-        <source>CN8-20</source>
+        <source>CN8-19</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="115"/>
-        <source>CN8-8</source>
+        <source>CN7-17</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="116"/>
-        <source>CN8-21</source>
+        <source>CN7-7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="117"/>
-        <source>CN8-9</source>
+        <source>CN7-16</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="118"/>
-        <source>CN8-22</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphioconf136.cpp" line="119"/>
-        <source>CN8-10</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphioconf136.cpp" line="120"/>
-        <source>CN8-23</source>
+        <source>CN7-25</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="121"/>
-        <source>CN7-26</source>
+        <source>CN8-20</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf136.cpp" line="122"/>
+        <source>CN8-8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="123"/>
+        <source>CN8-21</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="124"/>
+        <source>CN8-9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="125"/>
+        <source>CN8-22</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="126"/>
+        <source>CN8-10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="127"/>
+        <source>CN8-23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="128"/>
+        <source>CN7-26</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="129"/>
         <source>CN7-8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="303"/>
+        <location filename="graphioconf136.cpp" line="316"/>
         <source>Input_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="318"/>
+        <location filename="graphioconf136.cpp" line="331"/>
         <source>Output_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="362"/>
-        <location filename="graphioconf136.cpp" line="374"/>
+        <location filename="graphioconf136.cpp" line="375"/>
+        <location filename="graphioconf136.cpp" line="387"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="362"/>
+        <location filename="graphioconf136.cpp" line="375"/>
         <source>Cannot set a same function for different inputs!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="374"/>
+        <location filename="graphioconf136.cpp" line="387"/>
         <source>Cannot set a same function for different outputs!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -265,7 +300,7 @@
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="83"/>
-        <location filename="graphioconf138.cpp" line="90"/>
+        <location filename="graphioconf138.cpp" line="93"/>
         <source>0 Empty</source>
         <translation type="unfinished"></translation>
     </message>
@@ -300,161 +335,196 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="graphioconf138.cpp" line="90"/>
+        <source>7 Positive Limit Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="graphioconf138.cpp" line="91"/>
-        <source>1 Is Alarm</source>
+        <source>8 Negative Limit Switch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="92"/>
-        <source>2 Is Moving</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphioconf138.cpp" line="93"/>
-        <source>3 Is Stop Accurate</source>
+        <source>9 Home Switch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="94"/>
-        <source>4 Is Velocity Achieved</source>
+        <source>1 Is Alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="95"/>
-        <source>5 Is Return Successful</source>
+        <source>2 Is Moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf138.cpp" line="96"/>
+        <source>3 Is Stop Accurate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="97"/>
-        <source>C_3</source>
+        <source>4 Is Velocity Achieved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="98"/>
-        <source>C_20</source>
+        <source>5 Is Return Successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="99"/>
-        <source>C_31</source>
+        <source>6 Is Servo Ready</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="100"/>
-        <source>C_14</source>
+        <source>7 Is Homing Finished</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="101"/>
-        <source>C_32_F</source>
+        <source>8 Is Phase Searched</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="102"/>
-        <source>C_15_F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="graphioconf138.cpp" line="103"/>
-        <source>M_5</source>
+        <source>9 Is Current out  of Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="104"/>
-        <source>M_15</source>
+        <source>C_3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="105"/>
-        <source>M_6</source>
+        <source>C_20</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="106"/>
-        <source>M_16</source>
+        <source>C_31</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="107"/>
-        <source>M_7_F</source>
+        <source>C_14</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="108"/>
+        <source>C_32_F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="graphioconf138.cpp" line="109"/>
+        <source>C_15_F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="graphioconf138.cpp" line="110"/>
+        <source>M_5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="graphioconf138.cpp" line="111"/>
+        <source>M_15</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="graphioconf138.cpp" line="112"/>
-        <location filename="graphioconf138.cpp" line="121"/>
-        <location filename="graphioconf138.cpp" line="122"/>
-        <location filename="graphioconf138.cpp" line="123"/>
-        <location filename="graphioconf138.cpp" line="124"/>
-        <location filename="graphioconf138.cpp" line="125"/>
-        <location filename="graphioconf138.cpp" line="126"/>
-        <location filename="graphioconf138.cpp" line="127"/>
-        <location filename="graphioconf138.cpp" line="128"/>
-        <location filename="graphioconf138.cpp" line="129"/>
-        <source>General IO</source>
+        <source>M_6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf138.cpp" line="113"/>
+        <source>M_16</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="114"/>
-        <source>C_2</source>
+        <source>M_7_F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="graphioconf138.cpp" line="115"/>
+        <location filename="graphioconf138.cpp" line="116"/>
+        <location filename="graphioconf138.cpp" line="117"/>
+        <location filename="graphioconf138.cpp" line="118"/>
+        <location filename="graphioconf138.cpp" line="119"/>
+        <location filename="graphioconf138.cpp" line="128"/>
+        <location filename="graphioconf138.cpp" line="129"/>
+        <location filename="graphioconf138.cpp" line="130"/>
+        <location filename="graphioconf138.cpp" line="131"/>
+        <location filename="graphioconf138.cpp" line="132"/>
+        <location filename="graphioconf138.cpp" line="133"/>
+        <location filename="graphioconf138.cpp" line="134"/>
+        <location filename="graphioconf138.cpp" line="135"/>
+        <location filename="graphioconf138.cpp" line="136"/>
+        <source>General IO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf138.cpp" line="121"/>
+        <source>C_2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphioconf138.cpp" line="122"/>
         <source>C_33</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="116"/>
+        <location filename="graphioconf138.cpp" line="123"/>
         <source>C_16_F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="117"/>
+        <location filename="graphioconf138.cpp" line="124"/>
         <source>M_17</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="118"/>
+        <location filename="graphioconf138.cpp" line="125"/>
         <source>M_8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="119"/>
+        <location filename="graphioconf138.cpp" line="126"/>
         <source>M_18_F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="120"/>
+        <location filename="graphioconf138.cpp" line="127"/>
         <source>M_10_20</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="309"/>
+        <location filename="graphioconf138.cpp" line="316"/>
         <source>Input_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="324"/>
+        <location filename="graphioconf138.cpp" line="331"/>
         <source>Output_%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="368"/>
-        <location filename="graphioconf138.cpp" line="380"/>
+        <location filename="graphioconf138.cpp" line="375"/>
+        <location filename="graphioconf138.cpp" line="387"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="368"/>
+        <location filename="graphioconf138.cpp" line="375"/>
         <source>Cannot set a same function for different inputs!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphioconf138.cpp" line="380"/>
+        <location filename="graphioconf138.cpp" line="387"/>
         <source>Cannot set a same function for different outputs!</source>
         <translation type="unfinished"></translation>
     </message>

@@ -195,6 +195,10 @@ void GraphEncoder136::createSupportEncoderItem()
   encItem->createAttributeUi();
   d->m_encConfigManage->addEncItem(1, encItem);
 
+  encItem=new EncConfigHeChuanItem;
+  encItem->createAttributeUi();
+  d->m_encConfigManage->addEncItem(1, encItem);
+
   encItem = new EncConfigSinZ;
   connect(encItem, SIGNAL(lineNumChanged(int)), this, SLOT(receiveLineNum(int)));
   encItem->createAttributeUi();
@@ -328,10 +332,10 @@ void GraphEncoder136::onRadioBtnClicked()
 void GraphEncoder136::onBtnSearchPhaseClicked()
 {
   Q_D(GraphEncoder136);
-    ui->btn_encSearch->setEnabled(false);
 
   if(!d->m_dev->isConnecting())
     return ;
+  ui->btn_encSearch->setEnabled(false);
   qDebug()<<"search phase";
   if(d->m_dev->searchPhaseStart(d->m_uiWidget->uiIndexs().axisInx,ui->hSlider_encSearchPercent->value()))
     ui->btn_encSavePhase->setEnabled(true);
@@ -370,6 +374,10 @@ void GraphEncoder136::onEncConfigListWidgetRowChanged(int curRow)
   if(curRow<d->m_encConfigManage->itemNames().at(boxIndex).count() && curRow >= 0)
   {
     d->m_curEncConfigItem=d->m_encConfigManage->encItem(ui->enc_comboBox->currentIndex(), curRow);
+    if (d->m_curEncConfigItem == NULL) {
+        qDebug()<<"null";
+    }
+    qDebug()<<"name 1"<<d->m_curEncConfigItem->objectName();
     updateEncConfigUiByCurrentConfigItem();
   }
   qDebug()<<"current row="<<curRow;
@@ -427,32 +435,44 @@ void GraphEncoder136::onLineNumChanged(int num)
     if (max == 0) {
         max = 1;
     }
-    ui->spinBox_resolution->setMaximum(max);
+    if (max > 65535) {
+        max = 65535;
+    }
+    ui->spinBox_inResolution->setMaximum(max);
+    ui->spinBox_outResolution->setMaximum(max);
 }
 
 void GraphEncoder136::onBtnEncConfigSaveClicked()
 {
   Q_D(GraphEncoder136);
+    if (d->m_curEncConfigItem == NULL) {
+        return;
+    }
   //quint8 inx=ui->listWidget_encItems->currentRow();
 
   //d->m_curEncConfigItem=d->m_encConfigManage->encItem(ui->enc_comboBox->currentIndex(), inx);
   if(d->m_curEncConfigItem!=NULL)
   {
+      qDebug()<<"not NULL";
     if(ui->rbtn_encBit->isChecked())
     {
       quint32 lineNum=ui->comboBox_encBitNum->currentText().toUInt();
       d->m_curEncConfigItem->setLineNumber(qPow(2,lineNum));
-
     }
     else
       d->m_curEncConfigItem->setLineNumber(ui->spinBox_encLine->value());
     qDebug()<<"lineNumer"<<d->m_curEncConfigItem->lineNumber();
 
-    int revolusion = ui->spinBox_resolution->value();
-    double shiftNum = log2(d->m_curEncConfigItem->lineNumber() / 16 / revolusion);
-    d->m_curEncConfigItem->setShiftNum((quint16)shiftNum);
+    int outRevolusion = ui->spinBox_outResolution->value();
 
-    d->m_curEncConfigItem->setPulseZCount(revolusion - 1);
+//    quint16 shiftNum = findExpIndex(d->m_curEncConfigItem->lineNumber() / 16);
+//    d->m_curEncConfigItem->setShiftNum(shiftNum);
+
+//    d->m_curEncConfigItem->setDen((d->m_curEncConfigItem->lineNumber() / 16) >> shiftNum);
+    d->m_curEncConfigItem->setDen(d->m_curEncConfigItem->lineNumber() / 16);
+    d->m_curEncConfigItem->setNum(outRevolusion);
+
+    d->m_curEncConfigItem->setPulseZCount(outRevolusion - 1);
 
     int index = ui->comboBox_outputType->currentIndex();
     bool outputReverse = ui->checkBox_outputReverse->isChecked();
@@ -471,12 +491,11 @@ void GraphEncoder136::onBtnEncConfigSaveClicked()
     }
     quint16 cfgValue = (reverse << 8) + (index << 12);
     d->m_curEncConfigItem->setAufCfg(cfgValue);
-
     d->m_curEncConfigItem->execute();
     d->m_iDataBinding->multiBind(static_cast<QObject*>(d->m_curEncConfigItem),d->m_treeWidget);
     d->m_iDataBinding->syncMultiUiDataToTree();
   }
-  d->m_uiWidget->writePageFLASH();
+  //d->m_uiWidget->writePageFLASH();
 
   //写电子齿轮参数
   qint32 a = ui->spinBox_gear_a->value();
@@ -491,7 +510,7 @@ void GraphEncoder136::onBtnEncConfigSaveClicked()
 
   d->m_dev->writeGearPrm(d->m_uiWidget->uiIndexs().axisInx,a/f,b/f);
 
-  qint32 c = ui->spinBox_resolution->value();
+  qint32 c = ui->spinBox_inResolution->value();
   qint32 dd = POW2_24;
   f = gdc(c, dd);
   d->m_dev->writePulseGearPrm(d->m_uiWidget->uiIndexs().axisInx,c/f,dd/f);
@@ -606,11 +625,18 @@ void GraphEncoder136::updateEncConfigUiByCurrentConfigItem()
 
     //更新线数
     ui->spinBox_encLine->setValue(d->m_curEncConfigItem->lineNumber());
-    //qDebug()<<"name 2"<<d->m_curEncConfigItem->objectName();
+    qDebug()<<"name 2"<<d->m_curEncConfigItem->objectName();
 
     //resolution
-    int resolution = d->m_curEncConfigItem->lineNumber() / 16 / pow(2, d->m_curEncConfigItem->shiftNum());
-    ui->spinBox_resolution->setValue(resolution);
+    int outResolution = d->m_curEncConfigItem->getNum();
+    ui->spinBox_outResolution->setValue(outResolution);
+
+    qint32 c = 1;
+    qint32 dd = 1;
+    d->m_dev->readPulseGearPrm(d->m_uiWidget->uiIndexs().axisInx, c, dd);
+    qint64 inValue = (qint64)POW2_24 * c / dd;
+    ui->spinBox_inResolution->setValue(inValue);
+
     quint16 aufCfg = d->m_curEncConfigItem->aufCfg();
     if (((aufCfg & INPUT_PULSE_REVERSE_MASK) >> 8) == 1) {
         ui->checkBox_pulseInputReverse->setChecked(true);

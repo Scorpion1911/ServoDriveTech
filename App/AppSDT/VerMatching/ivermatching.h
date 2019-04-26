@@ -9,7 +9,7 @@ public:
   ~VerInfo(){}
   quint32 c;
   quint32 v;
-  quint32 f;
+  QString f;
   quint32 p;
 };
 class IVerMatching : public QObject

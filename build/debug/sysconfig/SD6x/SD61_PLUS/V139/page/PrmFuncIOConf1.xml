@@ -237,6 +237,93 @@
      </item>
      <item>
       <property name="text">
+       <string>gSevDrv.sev_obj.pos.apio.prm.pos_lim_sw_ioi_mask</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>Uint16</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>65535</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>46680</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>gSevDrv.sev_obj.pos.apio.prm.neg_lim_sw_ioi_mask</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>Uint16</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>65535</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>46681</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>gSevDrv.sev_obj.pos.apio.prm.home_sw_ioi_mask</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>Uint16</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="text">
+       <string>65535</string>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="text">
+       <string>46682</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
        <string>gSevDrv.sev_obj.pos.apio.prm.alarm_ioo_mask</string>
       </property>
       <property name="text">
@@ -382,6 +469,7 @@
      </item>
      <item>
       <property name="text">
+<<<<<<< HEAD
        <string>gSevDrv.sev_obj.pos.apio.prm.pos_lim_sw_ioi_mask</string>
       </property>
       <property name="text">
@@ -469,6 +557,8 @@
      </item>
      <item>
       <property name="text">
+=======
+>>>>>>> upstream/jiang
        <string>gSevDrv.sev_obj.pos.apio.prm.servo_ready_ioo_mask</string>
       </property>
       <property name="text">
@@ -559,7 +649,11 @@
        <string>gSevDrv.sev_obj.pos.apio.prm.curr_retra_ioo_mask</string>
       </property>
       <property name="text">
+<<<<<<< HEAD
        <string/>
+=======
+       <string>0</string>
+>>>>>>> upstream/jiang
       </property>
       <property name="text">
        <string>Uint16</string>

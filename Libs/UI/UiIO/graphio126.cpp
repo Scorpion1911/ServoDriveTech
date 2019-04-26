@@ -45,7 +45,7 @@ void GraphIO126::syncTreeDataToUiFace()
 
 void GraphIO126::setCustomVisitActive(IUiWidget *uiWidget)
 {
-
+    Q_UNUSED(uiWidget);
 }
 
 void GraphIO126::setUiVersionName()

@@ -419,6 +419,9 @@
                <property name="buttonSymbols">
                 <enum>QAbstractSpinBox::NoButtons</enum>
                </property>
+               <property name="minimum">
+                <number>1</number>
+               </property>
                <property name="maximum">
                 <number>999999999</number>
                </property>
@@ -515,20 +518,40 @@
               <string>Output pulse</string>
              </property>
              <layout class="QGridLayout" name="gridLayout_6" columnstretch="0,1">
-              <item row="1" column="1">
-               <widget class="QComboBox" name="comboBox_outputType"/>
-              </item>
-              <item row="1" column="0">
+              <item row="0" column="0">
                <widget class="QLabel" name="label_4">
                 <property name="text">
                  <string>Output Type</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_outputType"/>
+              </item>
+              <item row="1" column="0">
                <widget class="QCheckBox" name="checkBox_outputReverse">
                 <property name="text">
                  <string>Reverse</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Output Resolution:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QSpinBox" name="spinBox_outResolution">
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>999999999</number>
                 </property>
                </widget>
               </item>
@@ -540,47 +563,46 @@
              <property name="title">
               <string>Input pulse</string>
              </property>
-             <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,0">
-              <item row="2" column="0" colspan="2">
-               <widget class="QCheckBox" name="checkBox_pulseInputReverse">
-                <property name="text">
-                 <string>Reverse</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="comboBox_pulseCmd"/>
-              </item>
-              <item row="1" column="0">
+             <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,1">
+              <item row="0" column="0">
                <widget class="QLabel" name="label_10">
                 <property name="text">
                  <string>Pulse cmd</string>
                 </property>
                </widget>
               </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_pulseCmd"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="checkBox_pulseInputReverse">
+                <property name="text">
+                 <string>Reverse</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Input Resolution:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QSpinBox" name="spinBox_inResolution">
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>999999999</number>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,0">
-             <item>
-              <widget class="QLabel" name="label_3">
-               <property name="text">
-                <string>Resolution:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="spinBox_resolution">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::NoButtons</enum>
-               </property>
-               <property name="maximum">
-                <number>999999999</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
            </item>
            <item>
             <spacer name="verticalSpacer_3">

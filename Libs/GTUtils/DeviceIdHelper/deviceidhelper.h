@@ -21,7 +21,7 @@ public:
   void setCom(ComDriver::ICom *com);
   quint32 readPwrId(bool &isOk);
   quint32 readCtrId(bool &isOk);
-  quint32 readFpgaId(bool &isOk);
+  QString readFpgaId(bool &isOk);
   bool readFpgaDate(quint16 &year, quint16 &day);
   QString readVersion(bool &isOk);
 
@@ -38,7 +38,7 @@ private:
   ComDriver::ICom *m_com;
   quint32 m_pwrId;
   quint32 m_ctrId;
-  quint32 m_fpgaId;
+  QString m_fpgaId;
   QString m_typeName;
   QString m_modeName;
   quint8 m_axisNum;

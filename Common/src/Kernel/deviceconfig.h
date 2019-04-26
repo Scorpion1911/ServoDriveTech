@@ -20,7 +20,7 @@ public:
 
   quint32 m_pwrId;   //id->SD?? 通过一个id映射表获得名字
   quint32 m_ctrId;   //id->SD?? 通过一个id映射表获得名字
-  quint32 m_fpgaId;
+  QString m_fpgaId;
 
   quint8 m_rnStationId;
   bool isEqual(const DeviceConfig &devConfig);

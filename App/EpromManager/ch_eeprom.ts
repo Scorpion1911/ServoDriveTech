@@ -226,80 +226,80 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="189"/>
-        <location filename="eprommanager.cpp" line="225"/>
-        <location filename="eprommanager.cpp" line="379"/>
+        <location filename="eprommanager.cpp" line="193"/>
+        <location filename="eprommanager.cpp" line="229"/>
+        <location filename="eprommanager.cpp" line="383"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="189"/>
-        <location filename="eprommanager.cpp" line="225"/>
+        <location filename="eprommanager.cpp" line="193"/>
+        <location filename="eprommanager.cpp" line="229"/>
         <source>Please enter a PCBA code!</source>
         <translation>请输入PCBA码！</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="192"/>
-        <location filename="eprommanager.cpp" line="228"/>
-        <location filename="eprommanager.cpp" line="491"/>
+        <location filename="eprommanager.cpp" line="196"/>
+        <location filename="eprommanager.cpp" line="232"/>
+        <location filename="eprommanager.cpp" line="497"/>
         <source>Question</source>
         <translation>写入</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="192"/>
-        <location filename="eprommanager.cpp" line="228"/>
+        <location filename="eprommanager.cpp" line="196"/>
+        <location filename="eprommanager.cpp" line="232"/>
         <source>Are you sure to write
 </source>
         <translation>确定要写入</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="283"/>
+        <location filename="eprommanager.cpp" line="287"/>
         <source>Type Name: </source>
         <translation>类型：</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="285"/>
+        <location filename="eprommanager.cpp" line="289"/>
         <source>Series Num: </source>
         <translation>系列号：</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="287"/>
+        <location filename="eprommanager.cpp" line="291"/>
         <source>Series Name: </source>
         <translation>系列名：</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="379"/>
+        <location filename="eprommanager.cpp" line="383"/>
         <source>Connection Failed!</source>
         <translation>连接失败！</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="454"/>
-        <location filename="eprommanager.cpp" line="476"/>
+        <location filename="eprommanager.cpp" line="460"/>
+        <location filename="eprommanager.cpp" line="482"/>
         <source>Open</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="454"/>
+        <location filename="eprommanager.cpp" line="460"/>
         <source>Sdt Files( *.sdt)</source>
         <translation>Sdt文件(*.sdt)</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="476"/>
+        <location filename="eprommanager.cpp" line="482"/>
         <source>Xml Files( *.xml)</source>
         <translation>Xml文件(*.xml)</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="491"/>
+        <location filename="eprommanager.cpp" line="497"/>
         <source>Do you want to uboot?</source>
         <translation>确定要uboot吗？</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="505"/>
+        <location filename="eprommanager.cpp" line="511"/>
         <source>Information</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="505"/>
+        <location filename="eprommanager.cpp" line="511"/>
         <source>Please connect the device!</source>
         <translation>请先连接设备！</translation>
     </message>
@@ -358,8 +358,9 @@
     </message>
     <message>
         <location filename="Flash/flashclass.cpp" line="128"/>
-        <source>Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems.</source>
-        <translation>Uboot .out文件失败！设备未处于uboot模式或者硬件存在问题。</translation>
+        <source>ret = %1, Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems.</source>
+        <oldsource>Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems.</oldsource>
+        <translation>Uboot .out文件失败！设备未处于uboot模式或者硬件存在问题，错误代码%1。</translation>
     </message>
     <message>
         <location filename="Flash/flashclass.cpp" line="132"/>

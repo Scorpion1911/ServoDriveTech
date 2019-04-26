@@ -47,6 +47,14 @@ void UiPlot::accept(QWidget *w)
   d->m_copyAll = false;
 }
 
+bool UiPlot::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_UNUSED(srcAxisInx);
+    Q_UNUSED(desAxisInx);
+    Q_UNUSED(tree);
+    return true;
+}
+
 QStackedWidget *UiPlot::getUiStackedWidget(void)
 {
   return ui->stackedWidget;

@@ -444,7 +444,7 @@ void PlotUnitGraph129::onBtnFloatInClicked(bool checked)
 
 void PlotUnitGraph129::onOptFaceCssChanged(const QString &css)
 {
-  Q_D(PlotUnitGraph129);
+  //Q_D(PlotUnitGraph129);
 
   setPlotIcons(css);
 
@@ -834,7 +834,7 @@ void PlotUnitGraph129::onBtnSaveCurveClicked()
     Q_D(PlotUnitGraph129);
     QString iniPath = GTUtils::data(GTUtils::customPath() + "option/opt.ini", "path", "curvepath", ".").toString();
     iniPath = iniPath + "/curveData_" + QDate::currentDate().toString("yyyyMMdd") + "_" + QTime::currentTime().toString("hhmmss");
-    QString filePath = QFileDialog::getSaveFileName(0, tr("Save Curve"), iniPath , tr("Curve File(*.src);;Text File(*.txt);;Tabulation File(*.csv)"));
+    QString filePath = QFileDialog::getSaveFileName(0, tr("Save Curve"), iniPath , tr("Curve File(*.src);;Text File(*.txt);;CSV File(*.csv)"));
     if (filePath.compare("") == 0) {
         return;
     }
@@ -867,40 +867,35 @@ void PlotUnitGraph129::onBtnSaveCurveClicked()
             fdata.close();
             emit sendSaveMsg(0, tr("Saving Finish!"), false);
         }
-    }else if (info.suffix().compare("csv") == 0) {
+    } else if (info.suffix().compare("csv") == 0) {
         if (fdata.open(QFile::WriteOnly | QFile::Truncate | QIODevice::Text)) {
             QTextStream out(&fdata);
-            //out <<qSetFieldWidth(30) << left <<"time(s)";
-            out <<"time(s),";
+            out<<"time(s),";
             QString nameStr;
             for (int i = 0; i < d->m_curveManager->curveList().size(); i++) {
-                emit sendSaveMsg((i + 1) * 20 / d->m_curveManager->curveList().size(), tr("Saving Curve Information"), true);
+                emit sendSaveMsg((i + 1) *20 / d->m_curveManager->curveList().size(), tr("Saving Curve Information"), true);
                 nameStr = d->m_curveManager->curveList().at(i)->name() + ",";
                 out<<nameStr;
                 d->m_curveManager->curveList().at(i)->savePrepare();
             }
-            //out<<qSetFieldWidth(0) << left<<endl;
             out<<endl;
-            quint64 length = d->m_curveManager->curveList().at(0)->sData()->keys.size();
-            quint64 Subsection = static_cast<quint64>(length/100);
-            for (int i = 0; i < length; i++)
-            {
-                //out<<qSetFieldWidth(30) << left<<d->m_curveManager->curveList().at(0)->sData()->keys.at(i);
+            quint64 length=d->m_curveManager->curveList().at(0)->sData()->keys.size();
+            quint64 Subsection=static_cast<quint64>(length/100);
+            for (int i = 0; i < length; i++) {
                 out<<d->m_curveManager->curveList().at(0)->sData()->keys.at(i);
                 out<<",";
                 for (int j = 0; j < d->m_curveManager->curveList().count(); j++) {
                     out<<QString::number(d->m_curveManager->curveList().at(j)->sData()->values.at(i), 'f', 2) + ",";
                 }
-                //out<<qSetFieldWidth(0) << left<<endl;
                 out<<endl;
                 if (i % Subsection == 0) {
                     emit sendSaveMsg(20 + (i + 1) * 80 / length, tr("Saving Curve"), true);
                 }
             }
             fdata.close();
-            emit sendSaveMsg(0, tr("Saving Finish!"), false);
+            emit sendSaveMsg(0, tr("Saving Finish!"),false);
         }
-    }else if (info.suffix().compare("src") == 0) {
+    } else if (info.suffix().compare("src") == 0) {
         if (fdata.open(QFile::WriteOnly | QFile::Truncate)) {
             QDataStream out(&fdata);
             out.setVersion(QDataStream::Qt_5_5);
@@ -939,7 +934,7 @@ void PlotUnitGraph129::onBtnFFTClicked(bool checked)
             for (int i = 0; i < d->m_exsitedCurveManager->curveList().count(); i++) {
                 //QTableWidgetItem *item = ui->tableWidget_plot_curve->item(i, COL_TABLE_CURVE_SHOW);
                 ICurve *curve = d->m_exsitedCurveManager->curveList().at(i);
-                curve->savePrepare();
+                //curve->savePrepare();
                 curveList.append(curve);
                 if (i == 0) {
                     d->m_dftDialog->setTimeRange(curve->sData()->keys.first(), curve->sData()->keys.last());
@@ -1219,7 +1214,7 @@ void PlotUnitGraph129::onBtnCurveClearClicked()
 
 void PlotUnitGraph129::onBtnCurveShowAllClicked()
 {
-  Q_D(PlotUnitGraph129);
+  //Q_D(PlotUnitGraph129);
 //  for(int i=0;i<d->m_pluginManager->usrCurves().size();i++)
 //  {
 //    qDebug()<<d->m_pluginManager->usrCurves().at(i)->name()<<d->m_pluginManager->usrCurves().at(i)->fullName();

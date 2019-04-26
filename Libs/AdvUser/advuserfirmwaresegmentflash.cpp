@@ -18,7 +18,8 @@
 #include <QTreeWidgetItem>
 #include <QDir>
 
-
+static bool m_erasing;
+static bool m_downloading;
 
 
 class AdvUserFirmwareSegmentFlashPrivate : public IAdvUserPrivate
@@ -144,6 +145,26 @@ void AdvUserFirmwareSegmentFlash::updateProgressBar(void *arg, qint16 *value)
     qApp->processEvents();
 }
 
+void AdvUserFirmwareSegmentFlash::updateProgressValueFPGA(void *arg, qint16 *value)
+{
+    bool isErase;
+    quint16 bitHigh = (quint16)(1<<15);
+    isErase = (*value) &bitHigh;
+    qint16 v = (*value)&(~bitHigh);
+    AdvUserFirmwareSegmentFlash *dialog = static_cast<AdvUserFirmwareSegmentFlash *>(arg);
+    QProgressBar *bar = dialog->ui->progressBar;
+    QPlainTextEdit *label = dialog->ui->plainTextEdit;
+    bar->setValue(v % 100);
+    if (isErase && m_erasing) {
+        m_erasing = false;
+        label->appendPlainText(tr("FPGA Erasing ......"));
+    } else if (!isErase && !m_erasing && m_downloading){
+        m_downloading = false;
+        label->appendPlainText(tr("FPGA DownLoad ......"));
+    }
+    qApp->processEvents();
+}
+
 bool AdvUserFirmwareSegmentFlash::firmwareFlashCheck()
 {
     Q_D(AdvUserFirmwareSegmentFlash);
@@ -203,7 +224,7 @@ void AdvUserFirmwareSegmentFlash::onActionDSPToolBtnClicked()
 void AdvUserFirmwareSegmentFlash::onActionFPGAToolBtnClicked()
 {
     Q_D(AdvUserFirmwareSegmentFlash);
-    QString rpdFilePath = QFileDialog::getOpenFileName(this, tr("Please select one RPD type file!"), d->m_openFilePath, tr("RPD File(*.rpd)"));
+    QString rpdFilePath = QFileDialog::getOpenFileName(this, tr("Please select one RPD or Bin type file!"), d->m_openFilePath, tr("RPD File(*.rpd);;Bin File(*.bin)"));
     bool ok = true;
     if(rpdFilePath.compare("")==0){
         QMessageBox::warning(this, tr("Warning!"), tr("NO file selected!"), QMessageBox::Ok);
@@ -306,10 +327,10 @@ void AdvUserFirmwareSegmentFlash::onActionDSPFlashBtnClicked()
         }
         delete tree;
         emit startDownload(false);
-        for(int i = 0; i < dspNum; i++){
+        for (int i = 0; i < dspNum; i++) {
             qint16 ret = d->m_crtDev->socketCom()->downLoadDSPFLASH(i, d->m_hexFilePath.toStdWString(), updateProgressBar, (void *)ui->progressBar);
             ui->plainTextEdit->appendPlainText(tr("Downloading dsp:%1").arg(i+1));
-            if(ret != 0){
+            if (ret != 0) {
                 ui->plainTextEdit->appendPlainText(tr("Download dsp:%1 fail!").arg(i+1));
                 ok = false;
             }
@@ -352,7 +373,12 @@ void AdvUserFirmwareSegmentFlash::onActionFPGAFlashBtnClicked()
         for(int i = 0; i < fpgaNum; i++){
             qDebug()<<"path"<<d->m_rpdFilePath;
             qDebug()<<"1"<<i * fpgaAxisNum;
-            qint16 ret = d->m_crtDev->socketCom()->downLoadFPGAFLASH(i * fpgaAxisNum, d->m_rpdFilePath.toStdWString(), updateProgressBar, (void *)ui->progressBar);
+            m_erasing = true;
+            m_downloading = true;
+            qint16 ret = d->m_crtDev->socketCom()->downLoadFPGAFLASH(i * fpgaAxisNum, d->m_rpdFilePath.toStdWString(), updateProgressValueFPGA, (void *)(this));
+            qDebug()<<"fpga ret"<<ret;
+            m_erasing = false;
+            m_downloading = false;
             if(ret != 0){
                 ok = false;
             }
@@ -380,7 +406,9 @@ void AdvUserFirmwareSegmentFlash::onActionFLASHFlashBtnClicked()
         quint8 axis = 0;
         short value = ui->progressBar->value();
         QList<int> fileTypeList;
-        fileTypeList<<0<<0<<0;
+        for (int i = 0; i < d->m_xmlFilePaths.length(); i++) {
+            fileTypeList.append(0);
+        }
         ok = d->m_crtDev->writeXml(axis, d->m_xmlFilePaths, fileTypeList, d->m_xmlFilePaths.length(), updateProgressBar, (void *)ui->progressBar, value);        
     }
     emit startDownload(true);

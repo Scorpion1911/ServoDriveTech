@@ -45,7 +45,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>RPD</string>
+      <string>FPGA Firmware (Rpd or Bin)</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -54,7 +54,7 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Version (Format Example: 20180406):</string>
+         <string>Version (Format Example: F86032018040600000000):</string>
         </property>
        </widget>
       </item>
@@ -84,7 +84,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>Hex</string>
+      <string>DSP Firmware</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="spacing">

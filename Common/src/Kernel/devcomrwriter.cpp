@@ -165,8 +165,8 @@ DeviceConfig* DevComRWriter::buildConfigFromCom(void (*processCallback)(void *pb
   bool cok=true;
   bool vok=true;
   bool fok=true;
-  quint32 pid,cid,fid;
-  QString version;
+  quint32 pid,cid;
+  QString version,fid;
 
   if(com->iComType()==ComDriver::ICOM_TYPE_PCDEBUG)//PcDebug就不支持读写I2c
   {

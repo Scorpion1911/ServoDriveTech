@@ -23,7 +23,7 @@ public:
   bool writePageFLASH() Q_DECL_OVERRIDE{return true;}
   bool readOfflinePrm()Q_DECL_OVERRIDE{return true;}
   bool writeOfflinePrm()Q_DECL_OVERRIDE{return true;}
-  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)Q_DECL_OVERRIDE{return true;}
+  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)Q_DECL_OVERRIDE;
   QHBoxLayout *hBoxLayout();
   bool hasConfigFunc() {return false;}
   bool hasSaveFunc() {return false;}

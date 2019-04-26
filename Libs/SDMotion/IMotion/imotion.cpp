@@ -13,12 +13,12 @@ IMotion::~IMotion()
 
 void IMotion::setCmdSrc(quint16 axisInx)
 {
-
+    Q_UNUSED(axisInx);
 }
 
 void IMotion::resetCmdSrc(quint16 axisInx)
 {
-
+    Q_UNUSED(axisInx);
 }
 
 QWidget *IMotion::ui()
@@ -92,6 +92,7 @@ MotionNone::MotionNone(QListWidget *axisListWidget,SevDevice *sev, const QString
   IMotion(*(new MotionNonePrivate),parent)
 {
   Q_D(MotionNone);
+    Q_UNUSED(sev);
   setName(name);
   setMotionType(MOTION_TYPE_NONE);
   QLabel *label = new QLabel(tr("please select motion"));

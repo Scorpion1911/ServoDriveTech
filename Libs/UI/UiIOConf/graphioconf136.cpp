@@ -14,10 +14,10 @@
 #define INPUT_NUM 15
 #define OUTPUT_NUM 9
 
-#define INPUT_FUNC_INDEX 6
-#define OUTPUT_FUNC_INDEX 11
-#define INPUT_REVERSE_INDEX 12
-#define OUTPUT_REVERSE_INDEX 13
+#define INPUT_FUNC_INDEX 9
+#define OUTPUT_FUNC_INDEX 18
+#define INPUT_REVERSE_INDEX 19
+#define OUTPUT_REVERSE_INDEX 20
 
 #define CMD_READ_INPUT_EN "gSevDrv.sev_obj.pos.apio.io_in_reg"
 #define CMD_READ_OUTPUT_EN "gSevDrv.sev_obj.pos.apio.io_out_reg"
@@ -86,13 +86,20 @@ GraphIOConf136::GraphIOConf136(QWidget *parent) :
                   <<tr("3 Clear Alarm")
                  <<tr("4 Mode Switch")
                 <<tr("5 Accurate Stop")
-               <<tr("6 Return Orientation");
+               <<tr("6 Return Orientation")
+              <<tr("7 Positive Limit Switch")
+             <<tr("8 Negative Limit Switch")
+            <<tr("9 Home Switch");
     d->m_outputFuncList<<tr("0 Empty")
                      <<tr("1 Is Alarm")
                     <<tr("2 Is Moving")
                    <<tr("3 Is Stop Accurate")
                   <<tr("4 Is Velocity Achieved")
-                 <<tr("5 Is Return Successful");
+                 <<tr("5 Is Return Successful")
+                <<tr("6 Is Servo Ready")
+               <<tr("7 Is Homing Finished")
+              <<tr("8 Is Phase Searched")
+             <<tr("9 Is Current out  of Range");
 
     d->m_inputPinList<<tr("CN8-1")
                 <<tr("CN8-2")
@@ -200,6 +207,9 @@ void GraphIOConf136::syncTreeDataToUiFace()
             }
             int index = (int)log2(value);
             qDebug()<<"index"<<index;
+            if (index >= INPUT_NUM) {
+                continue;
+            }
             d->m_inputList.at(index)->setFuncIndex(i + 1);
         } else if (i < OUTPUT_FUNC_INDEX) {
             if (value == 0) {
@@ -207,6 +217,9 @@ void GraphIOConf136::syncTreeDataToUiFace()
             }
             int index = (int)log2(value);
             qDebug()<<"index"<<index;
+            if (index >= OUTPUT_NUM) {
+                continue;
+            }
             d->m_outputList.at(index)->setFuncIndex(i - INPUT_FUNC_INDEX + 1);
         } else if (i < INPUT_REVERSE_INDEX) {
             QString binStr = BitItemHelper::decToBin16(str);

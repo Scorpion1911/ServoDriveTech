@@ -1,8 +1,10 @@
 ﻿#include "rnnet.h"
 #include "rnnet_p.h"
 #include "ServoDriverComDll.h"
+#include "MotionControlComDll.h"
 #include "comglobal.h"
-#include <QDebug>
+#include <windows.h>
+#include <wchar.h>
 
 COM_USE_NAMESPACE
 
@@ -37,7 +39,6 @@ errcode_t RnNet::setServoEnable(uint8_t axis, bool on)
       ret=GTSD_CMD_SetServoOn(axis,d->m_comType,d->m_rnStation);
     else
       ret=GTSD_CMD_SetServoOff(axis,d->m_comType, d->m_rnStation);
-    qDebug()<<"ret"<<ret;
     return ret;
 }
 
@@ -159,14 +160,16 @@ errcode_t RnNet::readFPGAVersion(uint8_t fpgaInx, uint16_t &version)
     return ret;
 }
 
-errcode_t RnNet::readFPGAYearDay(uint8_t fpgaInx, uint16_t &year, uint16_t &day)
+errcode_t RnNet::readFPGAYearDay(uint8_t fpgaInx,uint16_t &year,uint16_t &day, uint16_t &devInfo, uint16_t &noteA, uint16_t &noteB)
 {
     Q_D(RnNet);
-
     VERSION v;
-    int16_t ret=GTSD_CMD_ReadFpgaVersion(fpgaInx,&v,d->m_comType,d->m_rnStation);
+    int16_t ret=GTSD_CMD_ReadFpgaVersion(fpgaInx,&v,d->m_comType);
     year=v.usYear;
     day=v.usMonthDay;
+    devInfo = v.usDeviceMesg;
+    noteA = v.usAddInfA;
+    noteB = v.usAddInfB;
     return ret;
 }
 
@@ -222,16 +225,22 @@ errcode_t RnNet::downLoadDSPFLASH(uint8_t dspInx, const wstring &fileName, void 
 errcode_t RnNet::downLoadFPGAFLASH(uint8_t fpgaInx, const wstring &fileName, void (*processCallBack)(void *, short *), void *parameters)
 {
     Q_D(RnNet);
-
+    UN_USED(fpgaInx);
     wstring file=fileName;
-    int16_t ret=GTSD_CMD_FirmwareFlashHandler(fpgaInx,file,processCallBack,parameters,d->m_comType,d->m_rnStation);
+    const wchar_t* wp = file.c_str();
+    char* m_char = NULL;
+    int len = WideCharToMultiByte(CP_ACP, 0, wp, wcslen(wp), NULL, 0, NULL, NULL);
+    m_char = new char[len + 1];
+    WideCharToMultiByte(CP_ACP, 0, wp, wcslen(wp), m_char, len, NULL, NULL);
+    m_char[len] ='\0';
+    int16_t ret = RN_FpgaUpate(m_char, processCallBack, parameters, d->m_rnStation);
+    //int16_t ret=GTSD_CMD_FirmwareFlashHandler(fpgaInx,file,processCallBack,parameters,d->m_comType,d->m_rnStation);
     return ret;
 }
 
 errcode_t RnNet::readEEPROM(uint16_t ofst, uint8_t *value, uint16_t num, uint8_t cs)
 {
     Q_D(RnNet);
-    qDebug()<<"rnStation"<<d->m_rnStation;
     int16_t ret=-1;
     EEPROMSelect select=EEPROMSelect(cs);
     switch (select)
@@ -732,10 +741,9 @@ std::vector<int16_t> RnNet::broadcast()
 //  return vtr;
 
   Q_D(RnNet);
-  std::vector<qint16> v;
+  std::vector<int16_t> v;
   v.clear();
-  qint16 ret=GTSD_CMD_GetStationIdList(v, d->m_comType);
-//  qDebug()<<"GTSD_CMD_GetStationIdList ret="<<ret;
+  int16_t ret=GTSD_CMD_GetStationIdList(v, d->m_comType);
   if(ret!=0)
     v.clear();
   return v;

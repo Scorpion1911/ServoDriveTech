@@ -263,12 +263,12 @@
         <translation>当前轴：%1</translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="206"/>
+        <location filename="igraphstatus.cpp" line="207"/>
         <source>col=%1 row=%2 rsv=%3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="217"/>
+        <location filename="igraphstatus.cpp" line="218"/>
         <source>Cause:
 %1
 Solution:
@@ -279,7 +279,7 @@ Solution:
 %2</translation>
     </message>
     <message>
-        <location filename="igraphstatus.cpp" line="234"/>
+        <location filename="igraphstatus.cpp" line="235"/>
         <source>reserve</source>
         <translation>保留</translation>
     </message>
@@ -355,39 +355,39 @@ Solution:
 <context>
     <name>IUiWidget</name>
     <message>
-        <location filename="iuiwidget.cpp" line="67"/>
-        <location filename="iuiwidget.cpp" line="361"/>
+        <location filename="iuiwidget.cpp" line="68"/>
+        <location filename="iuiwidget.cpp" line="362"/>
         <source>switch to list view</source>
         <translation>列表视图</translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="85"/>
+        <location filename="iuiwidget.cpp" line="86"/>
         <source>RAM value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="90"/>
+        <location filename="iuiwidget.cpp" line="91"/>
         <source>FLASH value</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="211"/>
-        <location filename="iuiwidget.cpp" line="223"/>
+        <location filename="iuiwidget.cpp" line="212"/>
+        <location filename="iuiwidget.cpp" line="224"/>
         <source>Reading data Axis%1</source>
         <translation>正在读取轴%1数据</translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="231"/>
+        <location filename="iuiwidget.cpp" line="232"/>
         <source>Checking data Axis%1</source>
         <translation>正在校验轴%1数据</translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="237"/>
+        <location filename="iuiwidget.cpp" line="238"/>
         <source>Writing data Axis%1</source>
         <translation>正在写入轴%1数据</translation>
     </message>
     <message>
-        <location filename="iuiwidget.cpp" line="355"/>
+        <location filename="iuiwidget.cpp" line="356"/>
         <source>switch to graph view</source>
         <translation>图形视图</translation>
     </message>

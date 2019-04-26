@@ -113,3 +113,22 @@ quint32 IGraphEncoder::readAbsPos(const QString &key)
     pos = d->m_dev->genCmdRead(key, d->m_uiWidget->uiIndexs().axisInx, isOk);
     return pos;
 }
+
+quint16 IGraphEncoder::findExpIndex(quint32 value)
+{
+    double a = log2(value);
+    quint16 n = (quint16)a;
+    qDebug()<<"n = "<<n;
+    int result = 0;
+    if (pow(2, n) == value) {
+        result = n - 1;
+    } else {
+        result = n;
+    }
+    result = result - 14;
+    qDebug()<<"result"<<result;
+    if (result < 0) {
+        result = 0;
+    }
+    return result;
+}

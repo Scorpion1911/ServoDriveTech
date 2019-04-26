@@ -72,7 +72,7 @@ bool DbVerMatching::hasComponent(const VerInfo &verinfo)
     QStringList verList;
     verList.append(QString::number(verinfo.c));
     verList.append(QString::number(verinfo.v));
-    verList.append(QString::number(verinfo.f));
+    verList.append(verinfo.f);
     verList.append(QString::number(verinfo.p));
     QSqlTableModel* model = new QSqlTableModel(this);
     for (int i = 0; i < m_typeList.count(); i++) {

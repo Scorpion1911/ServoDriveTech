@@ -82,6 +82,14 @@ QVBoxLayout *UiStatus::getVBoxLayout(void)
 }
 void UiStatus::setDefaultUi()
 {
-  setCurrentUiIndex(0);
+    setCurrentUiIndex(0);
+}
+
+bool UiStatus::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_UNUSED(srcAxisInx);
+    Q_UNUSED(desAxisInx);
+    Q_UNUSED(tree);
+    return true;
 }
 

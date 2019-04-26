@@ -115,7 +115,7 @@
       <item row="2" column="0">
        <widget class="QCheckBox" name="checkBox_firmRpd">
         <property name="text">
-         <string>Rpd</string>
+         <string>Rpd or Bin</string>
         </property>
        </widget>
       </item>

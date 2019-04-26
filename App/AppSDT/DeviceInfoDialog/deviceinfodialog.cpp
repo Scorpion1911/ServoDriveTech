@@ -99,11 +99,10 @@ void DeviceInfoDialog::readCurrentDeviceInfo(SevDevice *dev, QTreeWidgetItem *pa
 {
   DeviceIdHelper idHelper(dev->socketCom());
   quint32 dspMinVer=0xFFFFFFFF;
-  quint32 fpgaVer=0xFFFFFFFF;
+  QString fpgaVer = "???";
   quint16 year=0xFFFF;
   quint16 day=0xFFFF;
   QString sdspInfo="V???";
-  QString sFpgaVer="???";
   QString sYearDay="???";
 
   bool ok=true;
@@ -118,11 +117,9 @@ void DeviceInfoDialog::readCurrentDeviceInfo(SevDevice *dev, QTreeWidgetItem *pa
     sdspInfo.append(QString("-??"));
   }
 
-  fpgaVer=idHelper.readFpgaId(ok);
+  fpgaVer = idHelper.readFpgaId(ok);
   qDebug()<<"fpga Ver ok"<<ok;
   qDebug()<<"fpgaVer"<<fpgaVer;
-  if(ok)
-    sFpgaVer=QString::asprintf("%#04X",fpgaVer);
 
   ok=idHelper.readFpgaDate(year,day);
   qDebug()<<"fpga date ok"<<ok;
@@ -140,7 +137,7 @@ void DeviceInfoDialog::readCurrentDeviceInfo(SevDevice *dev, QTreeWidgetItem *pa
 
   QTreeWidgetItem *firmwareVerItem=new QTreeWidgetItem(deviceItem);
   firmwareVerItem->setText(0,tr("FirmwareVersion"));
-  firmwareVerItem->setText(1,sFpgaVer);
+  firmwareVerItem->setText(1,fpgaVer);
 
   QTreeWidgetItem *firmwareDateItem=new QTreeWidgetItem(deviceItem);
   firmwareDateItem->setText(0,tr("FirmwareDate"));

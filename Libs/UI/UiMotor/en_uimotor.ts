@@ -445,5 +445,21 @@
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="uimotor.cpp" line="133"/>
+        <location filename="uimotor.cpp" line="135"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="uimotor.cpp" line="133"/>
+        <source>Motor Install successfully!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="uimotor.cpp" line="135"/>
+        <source>Motor Install fails!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

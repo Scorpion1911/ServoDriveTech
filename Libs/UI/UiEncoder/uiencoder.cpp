@@ -86,7 +86,11 @@ void UiEncoder::setUiActive(bool actived)
 bool UiEncoder::writePageFLASH()
 {
     Q_D(UiEncoder);
-//    d->m_graphEncoder->onBtnEncConfigSaveClicked();
+    if (!d->m_device->isConnecting() && !d->m_device->isOffline()) {
+        return true;
+    }
+    d->m_graphEncoder->onBtnEncConfigSaveClicked();
+    IUiWidget::writePageFLASH();
     return true;
 }
 

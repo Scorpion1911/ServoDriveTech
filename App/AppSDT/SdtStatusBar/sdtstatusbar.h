@@ -35,6 +35,7 @@ public:
 signals:
   void statusErr(quint32 devInx,qint16 axis,bool hasErr);//由主窗口传入信息给状态栏
   void statusPageChanged(int pIndex);//信息连接接力，接m_errDialog传出来的信息
+  void clearAllAlarm();
 //public slots:
 //  void onStatusErr(quint32 devInx,qint16 axis,bool hasErr);
 private slots:

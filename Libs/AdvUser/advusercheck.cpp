@@ -88,7 +88,7 @@ bool AdvUserCheck::readAdv()
 
 bool AdvUserCheck::writeAdv()
 {
-    Q_D(AdvUserCheck);
+    //Q_D(AdvUserCheck);
 //    saveDataToFile("advCheck", "isCheck", d->m_isChecked);
     return true;
 }

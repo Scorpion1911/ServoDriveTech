@@ -104,6 +104,28 @@ void EncConfigBinding136::syncMultiUiDataToTree()
   value = encItem->aufCfg() * gain;
   item->setText(GT::COL_PAGE_TREE_VALUE,QString::number(value,'f',3));
 
+  //17 18 den
+  itemLow = m_tree->topLevelItem(17);
+  gainLow = itemLow->text(GT::COL_PAGE_TREE_SCALE).toDouble();
+
+  itemHigh = m_tree->topLevelItem(18);
+  gainHigh = itemHigh->text(GT::COL_PAGE_TREE_SCALE).toDouble();
+
+  quint32 denValue = encItem->getDen();
+
+  valueLow = (denValue & 0xFFFF) * gainLow;
+  valueHigh = ((denValue >> 16) & 0xFFFF) * gainHigh;
+
+  itemLow->setText(GT::COL_PAGE_TREE_VALUE,QString::number(valueLow,'f',3));
+  itemHigh->setText(GT::COL_PAGE_TREE_VALUE,QString::number(valueHigh,'f',3));
+
+  //19 num
+  item = m_tree->topLevelItem(19);
+  gain = item->text(GT::COL_PAGE_TREE_SCALE).toDouble();
+  value = encItem->getNum() * gain;
+  item->setText(GT::COL_PAGE_TREE_VALUE, QString::number(value,'f',3));
+
+
   qDebug()<<"syncMultiUiDataToTree";
 
 }
@@ -194,6 +216,25 @@ void EncConfigBinding136::syncMultiTreeToUiData()
   gain=item->text(GT::COL_PAGE_TREE_SCALE).toDouble();
   value=item->text(GT::COL_PAGE_TREE_VALUE).toDouble()/gain;
   encItem->setAufCfg((quint16)value);
+
+  //17 18 den
+  itemLow = m_tree->topLevelItem(17);
+  gainLow = itemLow->text(GT::COL_PAGE_TREE_SCALE).toDouble();
+  valueLow = itemLow->text(GT::COL_PAGE_TREE_VALUE).toDouble() / gainLow;
+
+  itemHigh = m_tree->topLevelItem(18);
+  gainHigh = itemHigh->text(GT::COL_PAGE_TREE_SCALE).toDouble();
+  valueHigh = itemHigh->text(GT::COL_PAGE_TREE_VALUE).toDouble() / gainHigh;
+
+  value = (quint16)valueLow + ((quint16)valueHigh << 16);
+
+  encItem->setDen((quint32)value);
+
+  //19 num
+  item = m_tree->topLevelItem(19);
+  gain=item->text(GT::COL_PAGE_TREE_SCALE).toDouble();
+  value=item->text(GT::COL_PAGE_TREE_VALUE).toDouble()/gain;
+  encItem->setNum((quint16)value);
 }
 
 void EncConfigBinding136::syncUiDataToTreeItem()

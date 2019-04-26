@@ -94,7 +94,7 @@ public:
   void resetDevId(quint32 id);
   quint32 pwrId() const ;
   quint32 ctrId() const;
-  quint32 fpgaId() const ;
+  QString fpgaId() const ;
   quint8 axisNum() const;
   DeviceConfig *deviceConfig() const;
   QTreeWidgetItem* targetTree() const;
@@ -164,6 +164,9 @@ public:
 
   bool readAlarmHistoryIndex(quint16 axisInx, qint16 &index);
   bool readAlarmHistoryList(quint16 axisInx, QList<qint32> &alarmList);
+
+  bool readFLASH16ByAddr(quint16 axisInx, quint16 addr, quint16 &value);
+  bool writeFLASH16ByAddr(quint16 axisInx, quint16 addr, quint16 value);
 
 
 signals:

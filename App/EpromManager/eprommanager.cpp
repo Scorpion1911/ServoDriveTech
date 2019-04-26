@@ -7,6 +7,7 @@
 #include <QCloseEvent>
 #include <QDataStream>
 #include <QTranslator>
+#include <QTimer>
 #include "flashclass.h"
 #include "tcpconnect.h"
 #include "gtutils.h"
@@ -89,6 +90,9 @@ EpromManager::EpromManager(QWidget *parent) :
     connect(ui->hexButton, SIGNAL(clicked()), this, SLOT(selectHex()));
     connect(ui->xmlButton, SIGNAL(clicked()), this, SLOT(selectXml()));
     connect(ui->flashButton, SIGNAL(clicked()), this, SLOT(onActionFlashClicked()));
+
+    m_timer = new QTimer;
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(onTimerOut()));
 }
 
 EpromManager::~EpromManager()
@@ -393,6 +397,7 @@ void EpromManager::onActionConnectClicked() {
             connect(m_controlBoard, SIGNAL(changeBarCount(int)), this, SLOT(setBarCount(int)));
             connect(m_controlBoard, SIGNAL(sendScrollItem(QTreeWidgetItem*)), this, SLOT(scrollTree_2(QTreeWidgetItem*)));
             onOkClicked();
+            m_timer->start(1000);
         }
         ui->progressBar->hide();
 }
@@ -400,6 +405,7 @@ void EpromManager::onActionConnectClicked() {
 void EpromManager::onActionDisConnectClicked() {
     if (m_isOpenCom) {
         GTSD_CMD_Close(getComType());
+        m_timer->stop();
         ui->connectIcon->setIcon(QIcon(GTUtils::iconPath() + ICON_STATUS_DISCONNECT));
         m_isOpenCom = false;
         ui->connectButton->setEnabled(true);
@@ -590,6 +596,15 @@ void EpromManager::onProNumTextChanged_2(const QString &text)
     if (item != NULL) {
         item->setText(TREE_VALUE, text);
         item->setTextColor(TREE_VALUE, Qt::red);
+    }
+}
+
+void EpromManager::onTimerOut()
+{
+    int16 pValue;
+    int16 err = GTSD_CMD_Get16bitFPGAByAddr(0, 0, &pValue, getComType(), 0xf0);
+    if (err != 0) {
+        onActionDisConnectClicked();
     }
 }
 

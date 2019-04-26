@@ -50,7 +50,7 @@ void GraphMotor129::syncTreeDataToUiFace()
 
 void GraphMotor129::setCustomVisitActive(IUiWidget *uiWidget)
 {
-  Q_D(GraphMotor129);
+  //Q_D(GraphMotor129);
   Q_UNUSED(uiWidget);
   this->ui->dspinBox_maxVoltage->setEnabled(false);
 

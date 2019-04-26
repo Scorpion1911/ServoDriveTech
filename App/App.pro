@@ -30,3 +30,4 @@ SUBDIRS += \
     consoleTest \
     #AppFirmwareSegmentFlashTest \
     ParaFileConversion
+    ConvertXml

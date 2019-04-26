@@ -168,7 +168,7 @@ void MotionPosition::resetCmdSrc(quint16 axisInx)
 
 void MotionPosition::onMotionFinish(quint16 axisInx)
 {
-
+    Q_UNUSED(axisInx);
 }
 
 void MotionPosition::onTimerOut()

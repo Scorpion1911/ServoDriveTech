@@ -739,7 +739,8 @@ quint16 GraphPosition133::readNos(const QString &key)
   Q_D(GraphPosition133);
   bool isOk=true;
   quint16 nos=0;
-  nos=d->m_dev->genCmdRead(key,d->m_uiWidget->uiIndexs().axisInx,isOk);
+  nos = d->m_dev->genCmdReadNos(d->m_uiWidget->uiIndexs().axisInx,isOk);
+  //nos=d->m_dev->genCmdRead(key,d->m_uiWidget->uiIndexs().axisInx,isOk);
   return nos;
 }
 

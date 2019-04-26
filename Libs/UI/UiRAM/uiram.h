@@ -23,7 +23,7 @@ public:
   bool writePageFLASH()Q_DECL_OVERRIDE{return true;}
   bool readOfflinePrm()Q_DECL_OVERRIDE{return true;}
   bool writeOfflinePrm()Q_DECL_OVERRIDE{return true;}
-  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)Q_DECL_OVERRIDE{return true;}
+  bool writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)Q_DECL_OVERRIDE;
   bool hasConfigFunc()Q_DECL_OVERRIDE;
   bool hasSaveFunc()Q_DECL_OVERRIDE;
 
@@ -36,8 +36,8 @@ protected:
   void setContextAction() Q_DECL_OVERRIDE;
   void addTreeWidget(QTreeWidget *tree);
   bool eventFilter(QObject *obj, QEvent *event);
-  void updateTree(QTreeWidget *srcTree, QTreeWidget *desTree)Q_DECL_OVERRIDE{return;}
-  void updateTreeItem(QTreeWidgetItem *srcTreeItem, QTreeWidgetItem *desTreeItem)Q_DECL_OVERRIDE{return;}
+  void updateTree(QTreeWidget *srcTree, QTreeWidget *desTree)Q_DECL_OVERRIDE;
+  void updateTreeItem(QTreeWidgetItem *srcTreeItem, QTreeWidgetItem *desTreeItem)Q_DECL_OVERRIDE;
 private:
   QStackedWidget *getUiStackedWidget(void) Q_DECL_OVERRIDE;
   QVBoxLayout *getVBoxLayout(void)Q_DECL_OVERRIDE;

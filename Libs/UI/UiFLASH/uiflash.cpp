@@ -63,6 +63,7 @@ UiFLASH::~UiFLASH()
 bool UiFLASH::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
 {
     Q_D(UiFLASH);
+    Q_UNUSED(srcAxisInx);
     if (!d->m_device->isConnecting() && !d->m_device->isOffline()) {
         return false;
     }
@@ -406,7 +407,7 @@ void UiFLASH::onItemExpanded(QTreeWidgetItem *item)
 
 bool UiFLASH::isEditedDataValid(QTreeWidgetItem *item)
 {
-    Q_D(UiFLASH);
+    //Q_D(UiFLASH);
     QString itemType = item->text(GT::COL_FLASH_RAM_TREE_TYPE);
     bool ok;
     QStringList list = item->parent()->text(GT::COL_FLASH_RAM_TREE_NAME).split(".");

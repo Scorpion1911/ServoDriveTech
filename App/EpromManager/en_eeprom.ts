@@ -226,80 +226,80 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="189"/>
-        <location filename="eprommanager.cpp" line="225"/>
-        <location filename="eprommanager.cpp" line="379"/>
+        <location filename="eprommanager.cpp" line="193"/>
+        <location filename="eprommanager.cpp" line="229"/>
+        <location filename="eprommanager.cpp" line="383"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="189"/>
-        <location filename="eprommanager.cpp" line="225"/>
+        <location filename="eprommanager.cpp" line="193"/>
+        <location filename="eprommanager.cpp" line="229"/>
         <source>Please enter a PCBA code!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="192"/>
-        <location filename="eprommanager.cpp" line="228"/>
-        <location filename="eprommanager.cpp" line="491"/>
+        <location filename="eprommanager.cpp" line="196"/>
+        <location filename="eprommanager.cpp" line="232"/>
+        <location filename="eprommanager.cpp" line="497"/>
         <source>Question</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="192"/>
-        <location filename="eprommanager.cpp" line="228"/>
+        <location filename="eprommanager.cpp" line="196"/>
+        <location filename="eprommanager.cpp" line="232"/>
         <source>Are you sure to write
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="283"/>
+        <location filename="eprommanager.cpp" line="287"/>
         <source>Type Name: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="285"/>
+        <location filename="eprommanager.cpp" line="289"/>
         <source>Series Num: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="287"/>
+        <location filename="eprommanager.cpp" line="291"/>
         <source>Series Name: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="379"/>
+        <location filename="eprommanager.cpp" line="383"/>
         <source>Connection Failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="454"/>
-        <location filename="eprommanager.cpp" line="476"/>
+        <location filename="eprommanager.cpp" line="460"/>
+        <location filename="eprommanager.cpp" line="482"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="454"/>
+        <location filename="eprommanager.cpp" line="460"/>
         <source>Sdt Files( *.sdt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="476"/>
+        <location filename="eprommanager.cpp" line="482"/>
         <source>Xml Files( *.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="491"/>
+        <location filename="eprommanager.cpp" line="497"/>
         <source>Do you want to uboot?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="505"/>
+        <location filename="eprommanager.cpp" line="511"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="eprommanager.cpp" line="505"/>
+        <location filename="eprommanager.cpp" line="511"/>
         <source>Please connect the device!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -358,7 +358,8 @@
     </message>
     <message>
         <location filename="Flash/flashclass.cpp" line="128"/>
-        <source>Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems.</source>
+        <source>ret = %1, Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems.</source>
+        <oldsource>Uboot .out file error! Maybe you are not in the uboot or hardwares have some problems.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

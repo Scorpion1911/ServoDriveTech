@@ -48,7 +48,7 @@ public:
   //---------DSP操作相关---------------------------
   errcode_t readDSPVersion(uint8_t dspInx,uint16_t &version)override;
   errcode_t readFPGAVersion(uint8_t fpgaInx,uint16_t &version)override;
-  errcode_t readFPGAYearDay(uint8_t fpgaInx,uint16_t &year,uint16_t &day)override;
+  errcode_t readFPGAYearDay(uint8_t fpgaInx, uint16_t &year, uint16_t &day, uint16_t &devInfo, uint16_t &noteA, uint16_t &noteB)override;
 
   errcode_t hex2LdrFormat(const wstring &hexFile,const wstring &ldrFile)override;
   errcode_t uartBootHandler(uint8_t dspInx,const wstring &filePath,int32_t baudRate, int16_t cmd, const string& inputKey, ProcessCallBackHandler, void* prm)override;

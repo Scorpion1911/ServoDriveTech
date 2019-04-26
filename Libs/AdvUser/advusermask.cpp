@@ -330,7 +330,7 @@ bool AdvUserMask::isAxisItem(QTreeWidgetItem *item)
 
 bool AdvUserMask::isDevItem(QTreeWidgetItem *item)
 {
-    Q_D(AdvUserMask);
+    //Q_D(AdvUserMask);
     if (item != NULL) {
 //        QString str = item->text(GT::COL_FLASH_RAM_TREE_NAME);
 //        for (int i = 0; i < d->m_devList.count(); i++) {
@@ -546,7 +546,7 @@ int AdvUserMask::findAxisIndex(QTreeWidgetItem *item)
 
 int AdvUserMask::findDevIndex(QTreeWidgetItem *item)
 {
-    Q_D(AdvUserMask);
+    //Q_D(AdvUserMask);
     if (item != NULL) {
 //        QString itemText = item->text(GT::COL_FLASH_RAM_TREE_NAME);
 //        for (int i = 0; i < d->m_devList.count(); i++) {
@@ -566,7 +566,8 @@ int AdvUserMask::findDevIndex(QTreeWidgetItem *item)
 
 void AdvUserMask::onItemExpanded(QTreeWidgetItem *item)
 {
-    Q_D(AdvUserMask);
+    //Q_D(AdvUserMask);
+    Q_UNUSED(item);
     ui->tree_advMask->resizeColumnToContents(GT::COL_FLASH_RAM_TREE_NAME);
 //    int devIndex = findDevIndex(item);
 //    if (devIndex != -1 && d->m_devList.at(devIndex)->isConnecting()) {
@@ -597,7 +598,14 @@ void AdvUserMask::readItem(QTreeWidgetItem *item)
     if (devIndex == -1 || axisIndex == -1) {
         return;
     }
-    d->m_devList.at(devIndex)->readAdvFlash(axisIndex, item);
+    if (d->m_devList.at(devIndex)->isOffline()) {
+        quint16 ofst = item->text(GT::COL_FLASH_RAM_TREE_ADDR).toUInt();
+        double value = 0;
+        d->m_devList.at(devIndex)->readOffLinePrmByAddr(axisIndex, ofst, value);
+        item->setText(GT::COL_FLASH_RAM_TREE_VALUE, QString::number(value));
+    } else {
+        d->m_devList.at(devIndex)->readAdvFlash(axisIndex, item);
+    }
     if (isAxisItem(item)) {
         if (item->text(GT::COL_FLASH_RAM_TREE_TYPE).compare("Uint64") == 0 || item->text(GT::COL_FLASH_RAM_TREE_TYPE).compare("int64") == 0) {
             quint64 value = item->text(GT::COL_FLASH_RAM_TREE_VALUE).toULongLong();

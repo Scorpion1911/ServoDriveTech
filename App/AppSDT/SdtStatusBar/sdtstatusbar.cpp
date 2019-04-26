@@ -18,6 +18,7 @@ SdtStatusBar::SdtStatusBar(QTreeWidget *navTree, QWidget *parent) :
   ui->setupUi(this);
   m_errDialog=new StatusErrDialog(navTree,this);
   connect(m_errDialog,SIGNAL(statusPageChanged(int)),this,SIGNAL(statusPageChanged(int)));
+  connect(m_errDialog, SIGNAL(clearAllAlarm()), this, SIGNAL(clearAllAlarm()));
 
 //  QPalette pa;
 //  pa.setColor(QPalette::WindowText,Qt::red);

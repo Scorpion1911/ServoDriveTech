@@ -77,6 +77,7 @@ void DFTDialog::setTimeRange(double min, double max)
 
 void DFTDialog::onFFTTimeChanged(qreal x1, qreal x2, qreal dx)
 {
+    Q_UNUSED(dx);
     ui->doubleSpinBox_fft_start->setValue(x1);
     ui->doubleSpinBox_fft_terminal->setValue(x2);
 }
