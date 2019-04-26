@@ -1,4 +1,4 @@
-﻿#include "maskwheelcombobox.h"
+#include "maskwheelcombobox.h"
 
 MaskWheelComboBox::MaskWheelComboBox(QWidget *parent):
     QComboBox(parent)
