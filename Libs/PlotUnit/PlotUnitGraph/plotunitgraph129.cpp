@@ -365,6 +365,7 @@ void PlotUnitGraph129::onAppClosed()
   //关闭画图
   //保存当前曲线列表信息
   Q_D(PlotUnitGraph129);
+    qDebug()<<"1";
   onBtnStartSampleClicked(false);
   d->m_timer->stop();
   ui->tbtn_plot_startSampling->setChecked(false);
@@ -384,6 +385,7 @@ void PlotUnitGraph129::onSocketConnectionChanged(bool isConnected)
     if(ui->tbtn_plot_startSampling->isChecked())
     {
       ui->tbtn_plot_startSampling->setChecked(false);
+      qDebug()<<"2";
       onBtnStartSampleClicked(false);
     }
 
@@ -501,11 +503,12 @@ void PlotUnitGraph129::onBtnLoadAllCurveClicked()
 void PlotUnitGraph129::onBtnStartSampleClicked(bool checked)
 {
   Q_D(PlotUnitGraph129);
-  if(currentSevDevice()->isConnecting() == false)
-  {
-    ui->tbtn_plot_startSampling->setChecked(false);
-    return;
-  }
+
+    if(currentSevDevice()->isConnecting() == false)
+    {
+      ui->tbtn_plot_startSampling->setChecked(false);
+      return;
+    }
 
   setUiStatusSampling(checked);
   d->m_isShowAll = false;
@@ -516,6 +519,7 @@ void PlotUnitGraph129::onBtnStartSampleClicked(bool checked)
   if(checked)
   {
     //清标签
+      emit sendSamplingStart(true);
     if(ui->tbtn_plot_mea_horizontal->isChecked())
     {
       onBtnMeaHClicked(false);
@@ -573,6 +577,7 @@ void PlotUnitGraph129::onBtnStartSampleClicked(bool checked)
   {
     if(d->m_threadSample == NULL)
       return ;
+    emit sendSamplingStart(false);
     disconnect(d->m_threadSample,SIGNAL(sampleDataIn(SampleData)),d->m_threadCalcultate,SIGNAL(sampleDataIn(SampleData)));
     disconnect(d->m_threadCalcultate,SIGNAL(plotDataIn(PlotData)),this,SLOT(onPlotDataIn(PlotData)));
     d->m_threadSample->deleteLater();
@@ -852,7 +857,7 @@ void PlotUnitGraph129::onBtnSaveCurveClicked()
             {
                 out<<qSetFieldWidth(30) << left<<d->m_curveManager->curveList().at(0)->sData()->keys.at(i);
                 for (int j = 0; j < d->m_curveManager->curveList().count(); j++) {
-                    out<<QString::number(d->m_curveManager->curveList().at(j)->sData()->values.at(i), 'f', 2);
+                    out<<QString::number(d->m_curveManager->curveList().at(j)->sData()->values.at(i), 'f', 8);
                 }
                 out<<qSetFieldWidth(0) << left<<endl;
                 if (i % 100 == 0) {
@@ -1406,6 +1411,7 @@ void PlotUnitGraph129::onMotionStop()
 {
   if(ui->tbtn_plot_startSampling->isChecked())
   {
+      qDebug()<<"3";
     onBtnStartSampleClicked(false);
     ui->tbtn_plot_startSampling->setChecked(false);
   }
@@ -1418,6 +1424,7 @@ void PlotUnitGraph129::onDspReset()
   if(ui->tbtn_plot_startSampling->isChecked())
   {
     ui->tbtn_plot_startSampling->setChecked(false);
+    qDebug()<<"4";
     onBtnStartSampleClicked(false);
   }
   d->m_timer->stop();

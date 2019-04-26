@@ -40,7 +40,11 @@ UiHome::~UiHome()
 
 void UiHome::accept(QWidget *w)
 {
-
+    Q_D(UiHome);
+    ui->qmlHboxLayout->addWidget(w);
+    d->m_graphHome = dynamic_cast<IGraphHome *>(w);
+    d->m_graphHome->visit(this);
+    d->m_copyAll = false;
 }
 
 void UiHome::setUiActive(bool actived)
@@ -70,7 +74,7 @@ bool UiHome::hasSaveFunc()
 
 void UiHome::setContextAction()
 {
-
+    createActionSwitchView();
 }
 
 QStackedWidget *UiHome::getUiStackedWidget()

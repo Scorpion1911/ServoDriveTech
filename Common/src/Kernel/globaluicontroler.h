@@ -20,6 +20,7 @@ signals:
   void appClosed();
   void beforeSevDeviceChanged();
   void sendSaveMsgToMain(int value, const QString &msg, bool isStart);
+  void sendSamplingStatus(bool en);
 
 public slots:
 private:

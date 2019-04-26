@@ -31,6 +31,7 @@ void GlobalUiControler::createUis()
   connect(this,SIGNAL(sevDeviceListChanged(QList<SevDevice*>)),iplot,SLOT(onSevDeviceListChanged(QList<SevDevice*>)));
   connect(this,SIGNAL(appClosed()),iplot,SLOT(onAppClosed()));
   connect(iplot, SIGNAL(sendSaveMsg(int, QString, bool)), this, SIGNAL(sendSaveMsgToMain(int,QString,bool)));
+  connect(iplot, SIGNAL(sendSamplingStart(bool)), this, SIGNAL(sendSamplingStatus(bool)));
   m_uiLists.append(uiPlot);
 }
 

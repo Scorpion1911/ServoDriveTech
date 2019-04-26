@@ -45,7 +45,7 @@ SelfBuilderMainWindow::~SelfBuilderMainWindow()
 
 void SelfBuilderMainWindow::onOpenClicked()
 {
-    QString path = QFileDialog::getOpenFileName(this, tr("Open File"), ".", tr("Files(*.ui)"));
+    QString path = QFileDialog::getOpenFileName(this, tr("Open File"), ".", tr("Files(*.xml)"));
     if (path.length() == 0) {
         QMessageBox::information(NULL, tr("Path"), tr("You did not select any files."));
     } else {
@@ -57,31 +57,53 @@ void SelfBuilderMainWindow::onOpenClicked()
 
 void SelfBuilderMainWindow::onAssignClicked()
 {
-    QTreeWidgetItemIterator it(m_tree);
-    int addr = 0;
-    while (*it) {
-        if ((*it)->text(6).compare("-1") != 0) {
-            (*it)->setText(6, QString("0x%1").arg(addr, 4, 16, QLatin1Char('0')));
-            QString type = (*it)->text(5);
-            if (type.compare("Uint8") == 0 || type.compare("int8") == 0 || type.compare("Case") == 0) {
-                addr = addr + 1;
-            } else if (type.compare("Uint16") == 0 || type.compare("int16") == 0) {
-                addr = addr + 2;
-            } else if (type.compare("Uint32") == 0 || type.compare("int32") == 0) {
-                addr = addr + 4;
-            }
+//    QTreeWidgetItemIterator it(m_tree);
+//    int addr = 0;
+//    while (*it) {
+//        if ((*it)->text(6).compare("-1") != 0) {
+//            (*it)->setText(6, QString("0x%1").arg(addr, 4, 16, QLatin1Char('0')));
+//            QString type = (*it)->text(5);
+//            if (type.compare("Uint8") == 0 || type.compare("int8") == 0 || type.compare("Case") == 0) {
+//                addr = addr + 1;
+//            } else if (type.compare("Uint16") == 0 || type.compare("int16") == 0) {
+//                addr = addr + 2;
+//            } else if (type.compare("Uint32") == 0 || type.compare("int32") == 0) {
+//                addr = addr + 4;
+//            }
+//        }
+//        ++it;
+//    }
+    for (int i = 0; i < 5; i++) {
+        QTreeWidgetItem *item = m_tree->topLevelItem(0)->clone();
+        if (i % 2 == 0) {
+            changeAddr(item);
         }
-        ++it;
+        m_tree->addTopLevelItem(item);
     }
 }
 
 void SelfBuilderMainWindow::onSaveClicked()
 {
-    QString path = QFileDialog::getSaveFileName(this, tr("Save File"), ".", tr("Files(*.ui)"));
+    QString path = QFileDialog::getSaveFileName(this, tr("Save File"), ".", tr("Files(*.xml)"));
     if (path.length() == 0) {
         QMessageBox::information(NULL, tr("Path"), tr("You did not select any files."));
     } else {
         QMessageBox::information(NULL, tr("Path"), tr("You selected ") + path);
         QtTreeManager::writeTreeWidgetToXmlFile(path, m_tree);
+    }
+}
+
+void SelfBuilderMainWindow::changeAddr(QTreeWidgetItem *item)
+{
+    if (item != NULL) {
+        QString addr = item->text(3);
+        if (addr.compare("-1") != 0 && addr.compare("") != 0) {
+            int add = addr.toInt();
+            add = add + 32768;
+            item->setText(3, QString::number(add));
+        }
+        for (int i = 0; i < item->childCount(); i++) {
+            changeAddr(item->child(i));
+        }
     }
 }

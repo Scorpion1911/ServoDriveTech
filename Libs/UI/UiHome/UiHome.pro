@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 include (../UI.pri)
+INCLUDEPATH+=$${PWD}/HomeConfig
+
 
 QT       += widgets
 QT       -= gui
@@ -21,11 +23,19 @@ CONFIG(debug, debug|release){
 
 SOURCES +=\
         uihome.cpp \
-    graphhome136.cpp
+    graphhome136.cpp \
+    homeconfigbinding139.cpp \
+    HomeConfig/ihomeconfigitem.cpp \
+    HomeConfig/homeconfigmanager.cpp \
+    HomeConfig/homeitem0.cpp
 
 HEADERS  += uihome.h \
     uihome_global.h \
-    graphhome136.h
+    graphhome136.h \
+    homeconfigbinding139.h \
+    HomeConfig/ihomeconfigitem.h \
+    HomeConfig/homeconfigmanager.h \
+    HomeConfig/homeitem0.h
 
 FORMS    += uihome.ui \
     graphhome136.ui

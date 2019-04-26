@@ -83,6 +83,13 @@ void UiEncoder::setUiActive(bool actived)
   }
 }
 
+bool UiEncoder::writePageFLASH()
+{
+    Q_D(UiEncoder);
+//    d->m_graphEncoder->onBtnEncConfigSaveClicked();
+    return true;
+}
+
 void UiEncoder::setContextAction()
 {
     createActionSwitchView();

@@ -34,10 +34,11 @@ protected:
 
 protected slots:
   void onUpdateTimeOut() Q_DECL_OVERRIDE;
+public slots:
+  void onBtnEncConfigSaveClicked();//保存编码器配置
 
 private slots:
-  void onBtnEncConfigClicked(bool checked);//打开编码器配置界面
-  void onBtnEncConfigSaveClicked();//保存编码器配置
+  void onBtnEncConfigClicked(bool checked);//打开编码器配置界面 
   void onRadioBtnClicked();
   void onBtnSearchPhaseClicked();
   void onBtnSavePhaseClicked();

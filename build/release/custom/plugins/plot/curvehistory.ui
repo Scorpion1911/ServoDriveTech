@@ -54,7 +54,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>1</string>
+                                <string>6</string>
                             </property>
                         </item>
                         <item>
@@ -197,7 +197,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>1</string>
+                                <string>6</string>
                             </property>
                         </item>
                         <item>
@@ -346,7 +346,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>1980</string>
+                                        <string>2012</string>
                                     </property>
                                 </item>
                                 <item>
@@ -388,7 +388,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>1</string>
+                                <string>6</string>
                             </property>
                         </item>
                         <item>
@@ -579,7 +579,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>1</string>
+                                <string>6</string>
                             </property>
                         </item>
                         <item>
@@ -736,7 +736,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>1394</string>
+                                        <string>1426</string>
                                     </property>
                                 </item>
                                 <item>
@@ -778,7 +778,7 @@
                                 <string>AxisCount</string>
                             </property>
                             <property name="text">
-                                <string>1</string>
+                                <string>6</string>
                             </property>
                         </item>
                         <item>
@@ -935,7 +935,7 @@
                                         <string>OffsetAddr</string>
                                     </property>
                                     <property name="text">
-                                        <string>1390</string>
+                                        <string>1422</string>
                                     </property>
                                 </item>
                                 <item>
