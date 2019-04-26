@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "BaseReturn_def.h"
 #include "XmlCodeUpdate.h"
 
@@ -43,7 +43,7 @@ short CXmlCodeUpdate::EraseXmlFlash( void(*tpfUpdataProgressPt)(void*, int16*), 
 			return rtn;
 		}
 
-		progress = 30 + (int16)(60 * (erase_cnt / size));
+        progress = 30 + (int16)(70 * (erase_cnt / size));
 		if (tpfUpdataProgressPt) tpfUpdataProgressPt(ptrv, &progress);
 
 		erase_cnt += SECTOR_SIZE;
@@ -122,7 +122,7 @@ short CXmlCodeUpdate::WriteFlashData(Uint32 flash_addr, void *Sendbuf, uint32 by
 
 		if (tpfUpdataProgressPt)
 		{
-			progress = 10 + (int16)(70*byte_cnt/byte_num);
+            progress = 10 + (int16)(90*byte_cnt/byte_num);
 			tpfUpdataProgressPt(ptrv, &progress);
 		}
 	}
@@ -159,7 +159,7 @@ short CXmlCodeUpdate::ReadFlashData(Uint32 flash_addr, void *Sendbuf, uint32 byt
 
 		if (tpfUpdataProgressPt)
 		{
-			progress = 10 + (int16)(70 * byte_cnt / byte_num);
+            progress = 10 + (int16)(90 * byte_cnt / byte_num);
 			tpfUpdataProgressPt(ptrv, &progress);
 		}
 	}
@@ -405,6 +405,10 @@ short CXmlCodeUpdate::WriteFile(char* pFileNameList[], int pFileTypeList[], int 
 	short rtn = RTN_SUCCESS;
 
 	rtn = CXmlCode::WriteFile(pFileNameList, pFileTypeList, file_num, tpfUpdataProgressPt, ptrv, progress);
+	if (rtn)
+		return rtn;
+
+	rtn = SetRemoteUpdataEnableBit();
 	if (rtn)
 		return rtn;
 

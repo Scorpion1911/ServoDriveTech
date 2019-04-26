@@ -174,7 +174,7 @@ void ConfigDialog::onBtnApplyClicked()
     //根据modeName typeName找到powerId
     device->m_pwrId=modelItem->text(COL_ID).toUInt();
     device->m_ctrId=versionItem->text(COL_ID).toUInt();
-    device->m_fpgaId=comItem->text(COL_ID).toUInt();
+    device->m_fpgaId=comItem->text(COL_ID);
     m_devListPtr->append(device);
   }
   accept();

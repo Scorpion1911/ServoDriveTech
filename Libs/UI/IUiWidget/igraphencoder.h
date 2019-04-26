@@ -32,6 +32,7 @@ protected:
   virtual quint32 readAbsPos(const QString &key);
   virtual quint32 getLineNumber(){return 0;}
   virtual void createSupportEncoderItem(){}
+  quint16 findExpIndex(quint32 value);
 
 protected slots:
   virtual void onUpdateTimeOut() = 0 ;

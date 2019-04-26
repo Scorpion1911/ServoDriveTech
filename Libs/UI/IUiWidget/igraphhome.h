@@ -19,6 +19,7 @@ public:
 signals:
 
 public slots:
+    virtual void onBtnHomeConfigSaveClicked() = 0;
 protected:
     virtual void setUiVersionName() Q_DECL_OVERRIDE = 0;
     virtual void setCustomVisitActive(IUiWidget*uiWidget) Q_DECL_OVERRIDE = 0;

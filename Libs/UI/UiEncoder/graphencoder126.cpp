@@ -356,6 +356,9 @@ void GraphEncoder126::onBtnEncConfigSaveClicked()
   quint8 inx=ui->listWidget_encAbsolute->currentRow();
 
   d->m_curEncConfigItem=d->m_encConfigManage->encItem(1, inx);
+  if (d->m_curEncConfigItem == NULL) {
+      return;
+  }
   if(d->m_curEncConfigItem!=NULL)
   {
     if(ui->rbtn_encBit->isChecked())
@@ -373,7 +376,7 @@ void GraphEncoder126::onBtnEncConfigSaveClicked()
     d->m_iDataBinding->multiBind(static_cast<QObject*>(d->m_curEncConfigItem),d->m_treeWidget);
     d->m_iDataBinding->syncMultiUiDataToTree();
   }
-  d->m_uiWidget->writePageFLASH();
+  //d->m_uiWidget->writePageFLASH();
     if (d->m_dev->isConnecting() || d->m_dev->isOffline()) {
         ui->label_encMsg->setVisible(true);
     }

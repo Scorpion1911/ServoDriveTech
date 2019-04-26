@@ -594,7 +594,7 @@ void UiMainWindow::onActNewSelectClicked()
   config->m_comType=1;
   config->m_axisNum=4;
   config->m_devId=0;
-  config->m_fpgaId=0;
+  config->m_fpgaId="0";
   config->m_typeName="SD4x";
   config->m_modeName="SD42";
   config->m_rnStationId=0xf0;
@@ -609,7 +609,7 @@ void UiMainWindow::onActNewSelectClicked()
   config->m_comType=1;
   config->m_axisNum=6;
   config->m_devId=0;
-  config->m_fpgaId=0;
+  config->m_fpgaId="0";
   config->m_typeName="SD6x";
   config->m_modeName="SD61";
   config->m_rnStationId=0xf1;

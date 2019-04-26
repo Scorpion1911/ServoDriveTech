@@ -8,6 +8,7 @@
 class QLabel;
 class QTcpSocket;
 class TcpConnect;
+class QTimer;
 
 namespace Ui {
 class EpromManager;
@@ -60,7 +61,8 @@ private:
     QString m_typeName;
     QString m_modeName;
     TcpConnect *m_tcpClient;
-    bool m_tcpSuccess;    
+    bool m_tcpSuccess;
+    QTimer* m_timer;
 
 private slots:
     void onWriteClicked();
@@ -86,6 +88,7 @@ private slots:
     void onScanTextChanged_2(QString text);
     void onProNumTextChanged(const QString &text);
     void onProNumTextChanged_2(const QString &text);
+    void onTimerOut();
 
 //    void onComButtonClicked();
     

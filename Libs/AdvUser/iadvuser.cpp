@@ -1,4 +1,4 @@
-#include "iadvuser.h"
+﻿#include "iadvuser.h"
 #include "iadvuser_p.h"
 #include "gtutils.h"
 #include "sevdevice.h"

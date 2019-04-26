@@ -22,7 +22,7 @@ DeviceIdHelper::DeviceIdHelper(QObject *parent):QObject(parent),
   m_com(NULL),
   m_pwrId(21000509),
   m_ctrId(0),
-  m_fpgaId(0),
+  m_fpgaId("0"),
   m_axisNum(4),
   m_typeName("SD4x"),
   m_modeName("SD42"),
@@ -34,7 +34,7 @@ DeviceIdHelper::DeviceIdHelper(QObject *parent):QObject(parent),
 DeviceIdHelper::DeviceIdHelper(ComDriver::ICom *com, QObject *parent) : QObject(parent),m_com(com),
   m_pwrId(21000509),
   m_ctrId(0),
-  m_fpgaId(0),
+  m_fpgaId("0"),
   m_axisNum(4),
   m_typeName("SD4x"),
   m_modeName("SD42"),
@@ -169,33 +169,38 @@ quint32 DeviceIdHelper::readCtrId(bool &isOk)
 
   return m_ctrId;
 }
-quint32 DeviceIdHelper::readFpgaId(bool &isOk)
+QString DeviceIdHelper::readFpgaId(bool &isOk)
 {
   //需要从硬件读取
     isOk = true;
   uint8_t fpgaInx = 0;
   uint16_t year;
   uint16_t day;
+  uint16_t devInfo;
+  uint16_t noteA;
+  uint16_t noteB;
   errcode_t err=0;
-  err=m_com->readFPGAYearDay(fpgaInx, year, day);
+  err=m_com->readFPGAYearDay(fpgaInx, year, day, devInfo, noteA, noteB);
   qDebug()<<"year"<<year;
   qDebug()<<"day"<<day;
   if(err!=0)
   {
     isOk=false;
     qDebug()<<"err"<<err;
-    m_fpgaId=0;
+    m_fpgaId = "0";
     return m_fpgaId;
   }
-  QString str;
+  QString devStr;
   QString yearStr;
   QString dayStr;
+  QString noteAStr;
+  QString noteBStr;
+  devStr = QString("%1").arg(devInfo, 4, 16, QLatin1Char('0'));
   yearStr = QString("%1").arg(year, 4, 16, QLatin1Char('0'));
   dayStr = QString("%1").arg(day, 4, 16, QLatin1Char('0'));
-  qDebug()<<"year Str"<<yearStr;
-  qDebug()<<"day Str"<<dayStr;
-  str = yearStr + dayStr;
-  m_fpgaId = str.toInt();
+  noteAStr = QString("%1").arg(noteA, 4, 16, QLatin1Char('0'));
+  noteBStr = QString("%1").arg(noteB, 4, 16, QLatin1Char('0'));
+  m_fpgaId = "F" + devStr + yearStr + dayStr + noteAStr + noteBStr;
   return m_fpgaId;
 }
 
@@ -204,7 +209,10 @@ bool DeviceIdHelper::readFpgaDate(quint16 &year, quint16 &day)
   //需要从硬件读取
   uint8_t fpgaInx = 0;
   errcode_t err=0;
-  err=m_com->readFPGAYearDay(fpgaInx,year,day);
+  uint16_t devInfo = 0;
+  uint16_t noteA = 0;
+  uint16_t noteB = 0;
+  err=m_com->readFPGAYearDay(fpgaInx,year,day, devInfo, noteA, noteB);
   return err==0;
 }
 

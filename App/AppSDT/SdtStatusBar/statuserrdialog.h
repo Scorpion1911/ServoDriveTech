@@ -13,7 +13,7 @@ class StatusErrDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit StatusErrDialog(QTreeWidget *navTree,QWidget *parent = 0);
+  explicit StatusErrDialog(QTreeWidget *navTree, QWidget *parent = 0);
   ~StatusErrDialog();
 
   void updateDevice(QTreeWidget *navTree);
@@ -21,6 +21,7 @@ public:
 
 signals:
   void statusPageChanged(int pIndex);
+  void clearAllAlarm();
 
 private slots:
   void onTreeWidgetItemClicked(QTreeWidgetItem *item,int column);

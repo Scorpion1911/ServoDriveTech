@@ -14,10 +14,10 @@
 #define INPUT_NUM 11
 #define OUTPUT_NUM 7
 
-#define INPUT_FUNC_INDEX 6
-#define OUTPUT_FUNC_INDEX 11
-#define INPUT_REVERSE_INDEX 12
-#define OUTPUT_REVERSE_INDEX 13
+#define INPUT_FUNC_INDEX 9
+#define OUTPUT_FUNC_INDEX 18
+#define INPUT_REVERSE_INDEX 19
+#define OUTPUT_REVERSE_INDEX 20
 
 #define CMD_READ_INPUT_EN "gSevDrv.sev_obj.pos.apio.io_in_reg"
 #define CMD_READ_OUTPUT_EN "gSevDrv.sev_obj.pos.apio.io_out_reg"
@@ -86,13 +86,20 @@ GraphIOConf138::GraphIOConf138(QWidget *parent) :
                   <<tr("3 Clear Alarm")
                  <<tr("4 Mode Switch")
                 <<tr("5 Accurate Stop")
-               <<tr("6 Return Orientation");
+               <<tr("6 Return Orientation")
+              <<tr("7 Positive Limit Switch")
+             <<tr("8 Negative Limit Switch")
+            <<tr("9 Home Switch");
     d->m_outputFuncList<<tr("0 Empty")
                      <<tr("1 Is Alarm")
                     <<tr("2 Is Moving")
                    <<tr("3 Is Stop Accurate")
                   <<tr("4 Is Velocity Achieved")
-                 <<tr("5 Is Return Successful");
+                 <<tr("5 Is Return Successful")
+                <<tr("6 Is Servo Ready")
+               <<tr("7 Is Homing Finished")
+              <<tr("8 Is Phase Searched")
+             <<tr("9 Is Current out  of Range");
 
     d->m_inputPinList<<tr("C_3")
                 <<tr("C_20")

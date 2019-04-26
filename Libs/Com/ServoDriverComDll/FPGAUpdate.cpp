@@ -7,7 +7,7 @@ CFPGAUpdate::CFPGAUpdate()
 {
 	m_pCom = NULL;
 	m_des_id = 0;
-    m_byte_write = 0;
+	m_byte_write = 0;
 }
 
 CFPGAUpdate::~CFPGAUpdate()
@@ -97,6 +97,84 @@ int16 CFPGAUpdate::CheckRemoteUpdataState(int32 delaytimes)
 		{
 			return RTN_UPDATE_FPGA_OP_ERR;
 		}
+	}
+	return iRet;
+}
+//设置使能位
+int16 CFPGAUpdate::SetRemoteUpdataEnableBit()
+{
+	int16 data = 2; //bit1置1
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (m_pCom == NULL) return RTN_NULL_POINT;
+	CComBase* pCom = *m_pCom;
+	if (pCom == NULL) return RTN_OBJECT_UNCREATED;
+
+	if (pCom->GetComProtocolType() == COM_PROTOCO_NET)
+	{
+		com_addr = REMOTE_FPGA_CTL;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (pCom->GetComProtocolType() == COM_PROTOCO_RINGNET)
+	{
+		com_addr = RN_REMOTE_FPGA_CTL;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
+
+	int16 Data = data;
+	int16 comNum = 1;
+	int16 rtn = pCom->ComWrFpgaHandle(comAddr, &Data, comNum, m_des_id, NULL);
+	return rtn;
+
+}
+int16 CFPGAUpdate::GetFPGAInfo(int16& FPGAType, uint32& flash_ofst_addr)
+{
+	//读FPGA类型
+	int16 iRet;
+	int16 com_addr;
+	int16 base_addr;
+	int16 data;
+	int16 comAddr;
+	int16 comNum = 1;
+	if (m_pCom == NULL) return RTN_NULL_POINT;
+	CComBase* pCom = *m_pCom;
+	if (pCom == NULL) return RTN_OBJECT_UNCREATED;
+
+	if (pCom->GetComProtocolType() == COM_PROTOCO_NET)
+	{
+		FPGAType = FPGA_ALTERA;
+		flash_ofst_addr = 0;
+		return RTN_SUCCESS;
+	}
+	else if (pCom->GetComProtocolType() == COM_PROTOCO_RINGNET)
+	{
+		comAddr = FPGA_RN_COMM_FUNC_CODE;
+		iRet = pCom->ComRdFpgaHandle(comAddr, &data, comNum, m_des_id, NULL);////查询完成标志
+		if (iRet != 0)
+		{
+			return iRet;
+		}
+		FPGAType = data >> 8;
+	}
+	if (FPGAType == FPGA_XILINX)
+	{
+		com_addr = RN_REMOTE_FPGA_FILE_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+		iRet = pCom->ComRdFpgaHandle(comAddr, &data, comNum, m_des_id, NULL);////查询完成标志
+		if (iRet != 0)
+		{
+			return iRet;
+		}
+		flash_ofst_addr = data << 8;
+	}
+	else
+	{
+		flash_ofst_addr = 0;
 	}
 	return iRet;
 }
@@ -305,7 +383,7 @@ int16 CFPGAUpdate::EraseData(void(*tpfUpdataProgressPt)(void*, int16*), void* pt
 		return iRet;
 	}
 
-	int32 num = 1000000;
+	int32 num = 100;// 0000;
 	//!progress高16位置1，用来给界面提示当前正处于擦除状态
 	int16 highSet;
 	highSet = (int16)(1 << 15);
@@ -314,6 +392,7 @@ int16 CFPGAUpdate::EraseData(void(*tpfUpdataProgressPt)(void*, int16*), void* pt
 		iRet = CheckRemoteUpdataState(100);
 		if (iRet == 0)
 			break;
+		Sleep(1);
 		if (i % 10 == 0)
 		{
 			progress++;
@@ -378,7 +457,7 @@ int16 CFPGAUpdate::GetFPGAByteNum(char* pFileName, uint32& byte_num)
 	return RTN_IMPOSSIBLE_ERR;
 }
 
-int16 CFPGAUpdate::EraseFPGAData(uint32 byte_num, void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv, int16& progress)
+int16 CFPGAUpdate::EraseFPGAData(uint32 byte_num, uint32 offset_addr, void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv, int16& progress)
 {
 	void* ptr = ptrv;
 	progress = 10;
@@ -386,10 +465,10 @@ int16 CFPGAUpdate::EraseFPGAData(uint32 byte_num, void(*tpfUpdataProgressPt)(voi
 	int sector_num = (byte_num + SECTOR_SIZE - 1) / SECTOR_SIZE;
 	for (int i = 0; i < sector_num;i++)
 	{
-		short rtn = EraseSectorData(SECTOR_SIZE*i, tpfUpdataProgressPt, ptrv, progress);
+		short rtn = EraseSectorData(offset_addr + SECTOR_SIZE*i, tpfUpdataProgressPt, ptrv, progress);
 		if (rtn)
 		{
-			rtn = EraseSectorData(SECTOR_SIZE*i, tpfUpdataProgressPt, ptrv, progress);
+			rtn = EraseSectorData(offset_addr + SECTOR_SIZE*i, tpfUpdataProgressPt, ptrv, progress);
 			if (rtn)
 			{
 				return rtn;
@@ -443,7 +522,7 @@ int16 CFPGAUpdate::EraseSectorData(uint32 byte_address, void(*tpfUpdataProgressP
 		return iRet;
 	}
 
-	int32 num = 1000000;
+	int32 num = 100;// 0000;
 	//!progress高16位置1，用来给界面提示当前正处于擦除状态
 	int16 highSet;
 	highSet = (int16)(1 << 15);
@@ -452,6 +531,7 @@ int16 CFPGAUpdate::EraseSectorData(uint32 byte_address, void(*tpfUpdataProgressP
 		iRet = CheckRemoteUpdataState(100);
 		if (iRet == 0)
 			break;
+		Sleep(1);
 		if (i % 10 == 0)
 		{
 			progress++;
@@ -671,8 +751,38 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 {
 	void* ptr = ptrv;
 	int iRet;
-	iRet = ProtectOff();//关闭写保护
+	int16 FPGAType;
+	iRet = GetFPGAInfo(FPGAType,m_addr_ofst);
+ 	if (iRet != 0)
+	{
+		return iRet;
+	}
+	//获取文件扩展名
+	string sFileName(pFileName);
+	string ext;
+	ext = sFileName.substr(sFileName.find_last_of('.'));
+	if (ext == ".rpd" || ext == ".RPD")
+    {
+		if (FPGAType != FPGA_ALTERA)
+			return RTN_FILE_FORMAT_ERR;
+	}	
+	else if (ext == ".bin" || ext == ".BIN")
+	{
+		if (FPGAType != FPGA_XILINX)
+			return RTN_FILE_FORMAT_ERR;
+	}
+	else
+	{
+		return RTN_FILE_FORMAT_ERR;
+	}
+		
+	iRet = SetRemoteUpdataEnableBit();//使能升级
 	if (iRet != 0)
+	{
+		return iRet;
+	}
+	iRet = ProtectOff();//关闭写保护
+  	if (iRet != 0)
 	{
 		return iRet;
 	}
@@ -710,20 +820,6 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 // 		return RTN_SUCCESS;
 // 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	//////////////////////////////////////////////////////////////////////////
 //	int32 byte_num = 0;
 	iRet = GetFPGAByteNum(pFileName, m_byte_write);
@@ -731,7 +827,7 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 	{
 		return iRet;
 	}
-	iRet = EraseFPGAData(m_byte_write, tpfUpdataProgressPt, ptr, progress);
+	iRet = EraseFPGAData(m_byte_write, m_addr_ofst, tpfUpdataProgressPt, ptr, progress);
 	if (iRet)
 	{
 		return iRet;
@@ -808,7 +904,7 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 	if (tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptr, &progress);
 
 	int16 buffer[BUF_LEN] = { 0 };
-	Uint32 flash_addr = 0;
+	Uint32 flash_addr = m_addr_ofst;
 	Uint32 index = 0;
 	Uint32 times = m_byte_write / (2 * BUF_LEN) + 1;//需要读取的次数
 	Uint32 times_bk = times;
@@ -876,7 +972,7 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 	}
 
 	times = times_bk;
-	flash_addr = 0;
+	flash_addr = m_addr_ofst;
 	index = 0;
 	while (times != 0)
 	{

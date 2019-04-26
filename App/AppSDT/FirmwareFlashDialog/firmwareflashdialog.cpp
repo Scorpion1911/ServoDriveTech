@@ -7,7 +7,9 @@
 #include "dbmanager.h"
 #include "deviceidhelper.h"
 #include "optpath.h"
+#include "optautoload.h"
 #include "optcontainer.h"
+#include "servofile.h"
 
 #include <QFile>
 #include <QFileDialog>
@@ -24,11 +26,19 @@
 #define DSP_NAME "dsp"
 #define FILENAME_XML_FUNCEXTENSION "PrmFirmwareUpdate.xml"
 
+#define XMLFILE_ROW_INDEX 0
+#define XMLFILE_CHILD_VERSION_ROW_INDEX 0
+#define XMLFILE_NODE_NAME "XmlFileInformation"
+
+static bool m_erasing;
+static bool m_downloading;
+
 FirmwareFlashDialog::FirmwareFlashDialog(QList<SevDevice *> &devList, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::FirmwareFlashDialog)
 {
     ui->setupUi(this);
+    setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint);
     m_devList = devList;
     uiInit();
     m_filePath = ".";
@@ -37,6 +47,7 @@ FirmwareFlashDialog::FirmwareFlashDialog(QList<SevDevice *> &devList, QWidget *p
         m_filePath = optpath->flashFilePath();
     }
     m_desPath = m_filePath + "/DecompressdFiles";
+    m_barCount = 0;
 //    QDir dir(m_desPath);
 //    if (dir.exists()) {
 //        deleteDir(m_desPath);
@@ -68,12 +79,33 @@ void FirmwareFlashDialog::createConnections()
     connect(ui->toolBtn_firm, SIGNAL(clicked()), this, SLOT(onActnToolbtnClicked()));
     connect(ui->btn_firmFlash, SIGNAL(clicked()), this, SLOT(onActnFlashBtnClicked()));
     connect(ui->comboBox_firm, SIGNAL(currentIndexChanged(int)), this, SLOT(onActnComboBoxIndexChanged(int)));
+    connect(this, SIGNAL(sendProcessMsg(int)), this, SLOT(receiveProcessMsg(int)));
 }
 
 void FirmwareFlashDialog::processCallBack(void *argv, short *value)
 {
     QProgressBar *pBar = static_cast<QProgressBar *>(argv);
     pBar->setValue(*value);
+    qApp->processEvents();
+}
+
+void FirmwareFlashDialog::updateProgressValueFPGA(void *arg, qint16 *value)
+{
+    bool isErase;
+    quint16 bitHigh = (quint16)(1<<15);
+    isErase = (*value) &bitHigh;
+    qint16 v = (*value)&(~bitHigh);
+    FirmwareFlashDialog *dialog = static_cast<FirmwareFlashDialog *>(arg);
+    QProgressBar *bar = dialog->ui->progressBar_firm;
+    QPlainTextEdit *label = dialog->ui->infoDisplay_firm;
+    bar->setValue(v % 100);
+    if (isErase && m_erasing) {
+        m_erasing = false;
+        label->appendPlainText(tr("FPGA Erasing ......"));
+    } else if (!isErase && !m_erasing && m_downloading){
+        m_downloading = false;
+        label->appendPlainText(tr("FPGA DownLoad ......"));
+    }
     qApp->processEvents();
 }
 
@@ -196,7 +228,6 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
     }
     ui->progressBar_firm->setValue(0);
     ui->progressBar_firm->setVisible(true);
-    ui->infoDisplay_firm->appendPlainText(tr("1.Checking version!"));
 
     SevDevice *dev = m_devList.at(ui->comboBox_firm->currentIndex());
     DeviceIdHelper *idHelper = new DeviceIdHelper(dev->socketCom(), 0);
@@ -215,46 +246,71 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
         ui->progressBar_firm->setVisible(false);
         return;
     }
-    quint32 pwrId = idHelper->readPwrId(ok);
-    if (!ok) {
-        ui->infoDisplay_firm->appendPlainText(tr("Reading powerboard Id fails!"));
-        QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Reading powerboard Id fails! Are you sure to continue?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-        if (!(rb == QMessageBox::Yes)) {
-            delete idHelper;
-            ui->progressBar_firm->setVisible(false);
-            return;
+    OptAutoLoad *optAuto=dynamic_cast<OptAutoLoad *>(OptContainer::instance()->optItem("optautoload"));
+    bool needMatch = optAuto->versionMatch();
+
+    ui->infoDisplay_firm->appendPlainText(tr("1.Checking version!"));
+    if (needMatch) {
+        quint32 pwrId = idHelper->readPwrId(ok);
+        if (!ok) {
+            ui->infoDisplay_firm->appendPlainText(tr("Reading powerboard Id fails!"));
+            QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Reading powerboard Id fails! Are you sure to continue?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+            if (!(rb == QMessageBox::Yes)) {
+                delete idHelper;
+                ui->progressBar_firm->setVisible(false);
+                return;
+            }
+        }
+        QString pwrStr = QString::number(pwrId);
+
+        ok = true;
+        quint32 ctrId = idHelper->readCtrId(ok);
+        if (!ok) {
+            ui->infoDisplay_firm->appendPlainText(tr("Reading controlboard Id fails!"));
+            QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Reading controlboard Id fails! Are you sure to continue?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+            if (!(rb == QMessageBox::Yes)) {
+                delete idHelper;
+                ui->progressBar_firm->setVisible(false);
+                return;
+            }
+        }
+        QString ctrStr = QString::number(ctrId);
+        delete idHelper;
+
+        ok = true;
+        DBManager *dbManager = new DBManager(GTUtils::databasePath() + "Version/", "root", "");
+        QStringList verList;
+        verList<<ctrStr<<m_dspVersion<<m_fpgVersion<<pwrStr;
+        ok = dbManager->checkValid(verList);
+        delete dbManager;
+        if (!ok) {
+            QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Version do not match. Are you sure to continue?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+            if (!(rb == QMessageBox::Yes)) {
+                ui->progressBar_firm->setVisible(false);
+                return;
+            }
         }
     }
-    QString pwrStr = QString::number(pwrId);
-
-    ok = true;
-    quint32 ctrId = idHelper->readCtrId(ok);
-    if (!ok) {
-        ui->infoDisplay_firm->appendPlainText(tr("Reading controlboard Id fails!"));
-        QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Reading controlboard Id fails! Are you sure to continue?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-        if (!(rb == QMessageBox::Yes)) {
-            delete idHelper;
-            ui->progressBar_firm->setVisible(false);
-            return;
-        }
-    }
-    QString ctrStr = QString::number(ctrId);
-    delete idHelper;
-
-    ok = true;
-    DBManager *dbManager = new DBManager(GTUtils::databasePath() + "Version/", "root", "");
-    QStringList verList;
-    verList<<ctrStr<<m_dspVersion<<m_fpgVersion<<pwrStr;
-    ok = dbManager->checkValid(verList);
-    delete dbManager;
-    if (!ok) {
-        QMessageBox::StandardButton rb = QMessageBox::question(0, tr("Warning"), tr("Version do not match. Are you sure to continue?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-        if (!(rb == QMessageBox::Yes)) {
-            ui->progressBar_firm->setVisible(false);
-            return;
-        }
+    quint16 dspVersion;
+    qint16 err = dev->socketCom()->readDSPVersion(0, dspVersion);
+    if (err != 0) {
+        ui->infoDisplay_firm->appendPlainText(tr("Read dsp version error!"));
+        return;
     }
     emit startDownload(false);
+    QString realDspVersion = QString::number(dspVersion);
+    ok = true;
+    if (m_dspVersion.compare(realDspVersion) != 0) {
+        qDebug()<<"up"<<m_dspVersion;
+        qDebug()<<"real"<<realDspVersion;
+        ok = getParaFiles();
+    }
+    if (!ok) {
+        //ui->infoDisplay_firm->appendPlainText(tr("Parameter restoring fails!"));
+        //deleteDir(m_desPath);
+        ui->progressBar_firm->setVisible(false);
+        return;
+    }
     ok = true;
     if (ui->checkBox_firmHex->isChecked()) {
         ok = downloadHexFile();
@@ -265,44 +321,52 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
         ui->progressBar_firm->setVisible(false);
         return;
     }
-    if (ui->checkBox_firmXml->isChecked()) {
-        ok = downloadXmlFiles();
-    }
-    if (!ok) {
-        ui->infoDisplay_firm->appendPlainText(tr("Downloading xml files fail!"));
-        //deleteDir(m_desPath);
-        ui->progressBar_firm->setVisible(false);
-        return;
-    }
+    ok = true;
     if (ui->checkBox_firmRpd->isChecked()) {
         ok = downloadRpdFile();
     }
-    emit startDownload(true);
     if (!ok) {
         ui->infoDisplay_firm->appendPlainText(tr("Downloading rpd file fails!"));
         //deleteDir(m_desPath);
         ui->progressBar_firm->setVisible(false);
         return;
     }
+    ok = true;
+    if (ui->checkBox_firmXml->isChecked()) {
+        ok = downloadXmlFiles();
+    }
+    emit startDownload(true);
+    if (!ok) {
+        ui->infoDisplay_firm->appendPlainText(tr("Downloading xml files fail!"));
+        //deleteDir(m_desPath);
+        ui->progressBar_firm->setVisible(false);
+        return;
+    }
+
     ui->infoDisplay_firm->appendPlainText(tr("Downloading succeeds!"));
     //deleteDir(m_desPath);
     ui->progressBar_firm->setVisible(false);
 }
 
+void FirmwareFlashDialog::receiveProcessMsg(int value, QString msg)
+{
+    Q_UNUSED(msg);
+    qApp->processEvents();
+    ui->progressBar_firm->setValue(value);
+    //ui->infoDisplay_firm->appendPlainText(msg);
+}
+
 void FirmwareFlashDialog::onActnComboBoxIndexChanged(int index)
 {
-    quint16 year = 0;
-    quint16 day = 0;
     DeviceIdHelper *idHelper = new DeviceIdHelper(m_devList.at(index)->socketCom(), 0);
-    bool ok = idHelper->readFpgaDate(year, day);
+    bool ok;
+    QString fpgaId = idHelper->readFpgaId(ok);
     delete idHelper;
     if (!ok) {
         qDebug()<<"read err";
         return;
     }
-    QString fpgDate = QString("%1%2").arg(QString::asprintf("%04X", year)).arg(QString::asprintf("%04X", day));
-    qDebug()<<"fpgdate"<<fpgDate;
-    if (fpgDate.compare(m_fpgVersion) == 0) {
+    if (fpgaId.compare(m_fpgVersion) == 0) {
         ui->checkBox_firmRpd->setChecked(false);
     } else {
         ui->checkBox_firmRpd->setChecked(true);
@@ -329,6 +393,50 @@ bool FirmwareFlashDialog::deleteDir(const QString &path)
     return ok;
 }
 
+bool FirmwareFlashDialog::getParaFiles()
+{
+    ServoFile* paraManager = new ServoFile;
+    connect(paraManager, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(receiveProcessMsg(int,QString)));
+    ui->infoDisplay_firm->appendPlainText(tr("Restoring parameters!"));
+    QString xmlPath = m_desPath + "/oldPara.xml";
+    bool ok = paraManager->upLoadFile(processCallBack, ui->progressBar_firm, xmlPath, m_devList.at(ui->comboBox_firm->currentIndex()));
+    if (!ok) {
+        ui->infoDisplay_firm->appendPlainText(tr("Restoring parameters fail!"));
+        delete paraManager;
+        return false;
+    }
+    QTreeWidget* restoreTree = QtTreeManager::createTreeWidgetFromXmlFile(xmlPath);
+    QTreeWidget* moduleTree = QtTreeManager::createTreeWidgetFromXmlFile(m_desPath + "/" + FLASH_ALL_PRM_NAME);
+    QTreeWidgetItem* headNode = restoreTree->topLevelItem(XMLFILE_ROW_INDEX)->child(XMLFILE_CHILD_VERSION_ROW_INDEX);
+    QString headNodeName = headNode->parent()->text(GT::COL_FLASH_ALLAXIS_NAME);
+    QString restoreVersion = "";
+    if (headNodeName.compare(XMLFILE_NODE_NAME) == 0) {
+        restoreVersion = headNode->text(GT::COL_FLASH_ALLAXIS_VALUE);
+        restoreTree->takeTopLevelItem(XMLFILE_ROW_INDEX);
+    }
+    headNode = moduleTree->topLevelItem(XMLFILE_ROW_INDEX)->child(XMLFILE_CHILD_VERSION_ROW_INDEX);
+    headNodeName = headNode->parent()->text(GT::COL_FLASH_ALLAXIS_NAME);
+    if (headNodeName.compare(XMLFILE_NODE_NAME) == 0) {
+        moduleTree->takeTopLevelItem(XMLFILE_ROW_INDEX);
+    }
+    if (restoreVersion.compare(m_dspVersion) != 0) {
+        ui->infoDisplay_firm->appendPlainText(tr("Updating parameters!"));
+        paraManager->updatePrmTree(restoreTree, moduleTree);
+        ui->infoDisplay_firm->appendPlainText(tr("Downloading parameters!"));
+        ok = paraManager->downLoadTree(moduleTree, m_devList.at(ui->comboBox_firm->currentIndex()));
+        if (!ok) {
+            delete restoreTree;
+            delete moduleTree;
+            delete paraManager;
+            return false;
+        }
+    }
+    delete restoreTree;
+    delete moduleTree;
+    delete paraManager;
+    return true;
+}
+
 bool FirmwareFlashDialog::downloadHexFile()
 {
     ui->infoDisplay_firm->appendPlainText(tr("2.Downloading hex file!"));
@@ -352,7 +460,7 @@ bool FirmwareFlashDialog::downloadHexFile()
     delete tree;
     for (int i = 0; i < dspNum; i++) {
         ui->infoDisplay_firm->appendPlainText(tr("Downloading DSP %1.").arg(i + 1));
-        qint16 ret = dev->socketCom()->downLoadDSPFLASH(i, hexPath.toStdWString(), processCallBack, (void *)ui->progressBar_firm);        
+        qint16 ret = dev->socketCom()->downLoadDSPFLASH(i, hexPath.toStdWString(), processCallBack, (void *)ui->progressBar_firm);
         if (ret != 0) {
             return false;
         }
@@ -367,9 +475,15 @@ bool FirmwareFlashDialog::downloadRpdFile()
         QMessageBox::information(0, tr("Warning"), tr("please open the com first !"));
         return false;
     }
-    ui->infoDisplay_firm->appendPlainText(tr("4.Downloading rpd file!"));
+    ui->infoDisplay_firm->appendPlainText(tr("3. Downloading rpd file!"));
     QStringList rpdList = getFilesFromExt("rpd", m_desPath, 1);
-    QString rpdPath = rpdList.at(0);
+    QStringList binList = getFilesFromExt("bin", m_desPath, 1);
+    QString rpdPath;
+    if (rpdList.count() > 0) {
+        rpdPath = rpdList.at(0);
+    } else {
+        rpdPath = binList.at(0);
+    }
     int fpgNum;
     int fpgAxis;
     QString filePath = GTUtils::sysPath() + dev->typeName() + "/" + dev->modelName() + "/" \
@@ -387,7 +501,11 @@ bool FirmwareFlashDialog::downloadRpdFile()
     for (int i = 0; i < fpgNum; i++) {
         qDebug()<<"rpdPath"<<rpdPath;
         qDebug()<<"1"<<i * fpgAxis;
-        qint16 ret = dev->socketCom()->downLoadFPGAFLASH(i * fpgAxis, rpdPath.toStdWString(), processCallBack, (void *)ui->progressBar_firm);
+        m_erasing = true;
+        m_downloading = true;
+        qint16 ret = dev->socketCom()->downLoadFPGAFLASH(i * fpgAxis, rpdPath.toStdWString(), updateProgressValueFPGA, (void *)(this));
+        m_erasing = false;
+        m_downloading = false;
         if (ret != 0) {
             return false;
         }
@@ -402,7 +520,7 @@ bool FirmwareFlashDialog::downloadXmlFiles()
         QMessageBox::information(0, tr("Warning"), tr("please open the com first !"));
         return false;
     }
-    ui->infoDisplay_firm->appendPlainText(tr("3.Downloading xml files!"));
+    ui->infoDisplay_firm->appendPlainText(tr("4. Downloading xml files!"));
     QStringList fileNameList;
     fileNameList.append(m_desPath + "/" + FILENAME_XML_FLASHPRM);
     fileNameList.append(m_desPath + "/" + FILENAME_XML_RAMPRM0);

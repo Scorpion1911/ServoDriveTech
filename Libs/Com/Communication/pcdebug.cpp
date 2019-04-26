@@ -2,7 +2,9 @@
 #include "pcdebug_p.h"
 #include "comglobal.h"
 #include "ServoDriverComDll.h"
-#include <QDebug>
+#include "MotionControlComDll.h"
+#include <windows.h>
+#include <wchar.h>
 
 COM_USE_NAMESPACE
 
@@ -315,8 +317,6 @@ errcode_t PcDebug::sendGeneralCmd(uint8_t axis, GeneralPDU &pdu)
 errcode_t PcDebug::readDSPVersion(uint8_t dspInx,uint16_t &version)
 {
   Q_D(PcDebug);
-    qDebug()<<"dsp index"<<dspInx;
-    qDebug()<<"comType"<<d->m_comType;
   int16_t ret=GTSD_CMD_ReadProcessorVersion(dspInx*2,version,d->m_comType);
   return ret;
 }
@@ -329,14 +329,16 @@ errcode_t PcDebug::readFPGAVersion(uint8_t fpgaInx,uint16_t &version)
   return ret;
 }
 
-errcode_t PcDebug::readFPGAYearDay(uint8_t fpgaInx,uint16_t &year,uint16_t &day)
+errcode_t PcDebug::readFPGAYearDay(uint8_t fpgaInx,uint16_t &year,uint16_t &day, uint16_t &devInfo, uint16_t &noteA, uint16_t &noteB)
 {
   Q_D(PcDebug);
-
   VERSION v;
   int16_t ret=GTSD_CMD_ReadFpgaVersion(fpgaInx,&v,d->m_comType);
   year=v.usYear;
   day=v.usMonthDay;
+  devInfo = v.usDeviceMesg;
+  noteA = v.usAddInfA;
+  noteB = v.usAddInfB;
   return ret;
 }
 
@@ -390,11 +392,19 @@ errcode_t PcDebug::downLoadDSPFLASH(uint8_t dspInx, const wstring &fileName, voi
 
 errcode_t PcDebug::downLoadFPGAFLASH(uint8_t fpgaInx, const wstring &fileName, void (*processCallBack)(void *, short *), void *parameters)
 {
-  Q_D(PcDebug);
+    Q_D(PcDebug);
+    UN_USED(fpgaInx);
 
-  wstring file=fileName;
-  int16_t ret=GTSD_CMD_FirmwareFlashHandler(fpgaInx,file,processCallBack,parameters,d->m_comType);
-  return ret;
+    wstring file=fileName;
+    const wchar_t* wp = file.c_str();
+    char* m_char = NULL;
+    int len = WideCharToMultiByte(CP_ACP, 0, wp, wcslen(wp), NULL, 0, NULL, NULL);
+    m_char = new char[len + 1];
+    WideCharToMultiByte(CP_ACP, 0, wp, wcslen(wp), m_char, len, NULL, NULL);
+    m_char[len] ='\0';
+    //int16_t ret = RN_FpgaUpate(m_char, processCallBack, parameters);
+    int16_t ret = GTSD_CMD_FirmwareFlashHandler(fpgaInx,file,processCallBack,parameters,d->m_comType);
+    return ret;
 }
 errcode_t PcDebug::readEEPROM(uint16_t ofst, uint8_t* value, uint16_t num,uint8_t cs)
 {

@@ -21,6 +21,7 @@
 #include <QMessageBox>
 #include <QDebug>
 
+
 //IUiWidget::IUiWidget(QWidget *parent):QWidget(parent),d_ptr(new IUiWidgetPrivate())
 //{
 //  d_ptr->q_ptr=this;

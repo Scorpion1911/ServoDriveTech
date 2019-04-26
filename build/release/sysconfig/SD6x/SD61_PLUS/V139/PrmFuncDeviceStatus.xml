@@ -1086,6 +1086,25 @@
        <property name="text">
         <string>速度跟随误差超限</string>
        </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="text">
+        <string>1.控制器规划加速度过大
+2.驱动器控制参数设置不合适
+3.驱动器与电机间接线异常
+4.电机寻相错误
+</string>
+       </property>
+       <property name="text">
+        <string>1.减小规划加速度
+2.检查驱动器参数设置是否合理
+3.检查驱动器与电机间的接线是否正确
+4.重新寻相</string>
+       </property>
       </item>
       <item>
        <property name="text">
@@ -1109,6 +1128,20 @@
        <property name="text">
         <string>寻相失败</string>
        </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="text">
+        <string>1. 编码器连接异常
+2. 编码器参数设置错误</string>
+       </property>
+       <property name="text">
+        <string>1. 重新寻相 
+2. 调整编码器配置参数</string>
+       </property>
       </item>
       <item>
        <property name="text">
@@ -1131,6 +1164,18 @@
        </property>
        <property name="text">
         <string>回零失败</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="text">
+        <string>IO信号配置错误</string>
+       </property>
+       <property name="text">
+        <string>重新配置IO信号</string>
        </property>
       </item>
       <item>

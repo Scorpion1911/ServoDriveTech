@@ -80,7 +80,7 @@
        <string>2</string>
       </property>
       <property name="text">
-       <string>暂时使用这个ID,非正式号</string>
+       <string/>
       </property>
      </item>
      <item>
@@ -231,6 +231,23 @@
       </property>
       <property name="text">
        <string>SD15_15</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21000326</string>
+      </property>
+      <property name="text">
+       <string>SD1x</string>
+      </property>
+      <property name="text">
+       <string>SD15_7.5</string>
+      </property>
+      <property name="text">
+       <string>SD15_7.5</string>
       </property>
       <property name="text">
        <string>1</string>

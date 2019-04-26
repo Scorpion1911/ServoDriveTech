@@ -174,6 +174,10 @@ void GraphEncoder130::createSupportEncoderItem()
   encItem->createAttributeUi();
   d->m_encConfigManage->addEncItem(1, encItem);
 
+  encItem=new EncConfigHeChuanItem;
+  encItem->createAttributeUi();
+  d->m_encConfigManage->addEncItem(1, encItem);
+
   ui->listWidget_encAbsolute->addItems(d->m_encConfigManage->itemNames().at(1));
 
   ui->rbtn_encLine->setChecked(true);
@@ -348,6 +352,9 @@ void GraphEncoder130::onBtnEncConfigSaveClicked()
   quint8 inx=ui->listWidget_encAbsolute->currentRow();
 
   d->m_curEncConfigItem=d->m_encConfigManage->encItem(1, inx);
+  if (d->m_curEncConfigItem == NULL) {
+      return;
+  }
   if(d->m_curEncConfigItem!=NULL)
   {
     if(ui->rbtn_encBit->isChecked())
@@ -364,7 +371,7 @@ void GraphEncoder130::onBtnEncConfigSaveClicked()
     d->m_iDataBinding->multiBind(static_cast<QObject*>(d->m_curEncConfigItem),d->m_treeWidget);
     d->m_iDataBinding->syncMultiUiDataToTree();
   }
-  d->m_uiWidget->writePageFLASH();
+  //d->m_uiWidget->writePageFLASH();
 
   //写电子齿轮参数
   qint32 a = ui->spinBox_gear_a->value();

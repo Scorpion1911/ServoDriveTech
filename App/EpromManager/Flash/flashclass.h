@@ -1,4 +1,4 @@
-#ifndef FLASHCLASS_H
+﻿#ifndef FLASHCLASS_H
 #define FLASHCLASS_H
 #include <QTreeWidget>
 #include <QString>
@@ -18,7 +18,7 @@ private:
     static void updateProgessBarWhenRestoreClicked(void *arg, qint16 *value);
     static void processCallBack(void *argv, short *value);
     void delayms(quint16 ms);
-    bool uBoot(QString ldrPath, JsonReader net, QObject *proBar);
+    qint16 uBoot(QString ldrPath, JsonReader net, QObject *proBar);
     bool downloadHex(QObject *proBar, const QString &hexPath);
     bool downloadXmlFiles(const QString &desPath, QObject* proBar);
     bool deleteDir(const QString &path);

@@ -166,7 +166,7 @@ void GtPlot::mousePressEvent(QMouseEvent *event)
 {
 
 //  qDebug()<<"press-->";
-  if((event->button()==Qt::LeftButton)&&(QApplication::keyboardModifiers()==Qt::ControlModifier))
+  if((event->button()==Qt::RightButton) /*&&(QApplication::keyboardModifiers()==Qt::ControlModifier)*/)
   {
     setSelectionRectMode(QCP::srmZoom);
     m_ctlAndLeftKeyPressed = true;

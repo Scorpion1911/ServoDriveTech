@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>400</height>
+    <width>487</width>
+    <height>461</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -14323,7 +14323,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28685</string>
+           <string>28690</string>
           </property>
          </item>
          <item>
@@ -14337,7 +14337,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28686</string>
+           <string>28691</string>
           </property>
          </item>
          <item>
@@ -14351,7 +14351,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28687</string>
+           <string>28692</string>
           </property>
          </item>
          <item>
@@ -14365,7 +14365,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28688</string>
+           <string>28693</string>
           </property>
          </item>
         </item>
@@ -14406,7 +14406,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>28689</string>
+            <string>28694</string>
            </property>
           </item>
           <item>
@@ -14518,7 +14518,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>28690</string>
+            <string>28695</string>
            </property>
           </item>
           <item>
@@ -14667,7 +14667,7 @@
            <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
@@ -14695,13 +14695,433 @@
            <string>FPGA.prm.PULSE_SCALING.NUMERATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
           </property>
           <property name="text">
            <string>28699</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.STATION</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.STATION_ID</string>
+          </property>
+          <property name="text">
+           <string>2288</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28700</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.AUTO_MODE</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28701</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28702</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28703</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28704</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE0</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28705</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28706</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28707</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28708</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28709</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE1</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28710</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28711</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28712</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28713</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28714</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE2</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28715</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28716</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28717</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28718</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28719</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE3</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28720</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28721</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28722</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28723</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28724</string>
           </property>
          </item>
         </item>
@@ -30661,7 +31081,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61453</string>
+           <string>61458</string>
           </property>
          </item>
          <item>
@@ -30675,7 +31095,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61454</string>
+           <string>61459</string>
           </property>
          </item>
          <item>
@@ -30689,7 +31109,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61455</string>
+           <string>61460</string>
           </property>
          </item>
          <item>
@@ -30703,7 +31123,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61456</string>
+           <string>61461</string>
           </property>
          </item>
         </item>
@@ -30744,7 +31164,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>61457</string>
+            <string>61462</string>
            </property>
           </item>
           <item>
@@ -30856,7 +31276,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>61458</string>
+            <string>61463</string>
            </property>
           </item>
           <item>
@@ -31005,7 +31425,7 @@
            <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
@@ -31033,13 +31453,433 @@
            <string>FPGA.prm.PULSE_SCALING.NUMERATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
           </property>
           <property name="text">
            <string>61467</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.STATION</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.STATION_ID</string>
+          </property>
+          <property name="text">
+           <string>240</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61468</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61469</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61470</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61471</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61472</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE0</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61473</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61474</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61475</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61476</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61477</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE1</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61478</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61479</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61480</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61481</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61482</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE2</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61483</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61484</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61485</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61486</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61487</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE3</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61488</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61489</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61490</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61491</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61492</string>
           </property>
          </item>
         </item>
@@ -46999,7 +47839,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28685</string>
+           <string>28690</string>
           </property>
          </item>
          <item>
@@ -47013,7 +47853,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28686</string>
+           <string>28691</string>
           </property>
          </item>
          <item>
@@ -47027,7 +47867,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28687</string>
+           <string>28692</string>
           </property>
          </item>
          <item>
@@ -47041,7 +47881,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28688</string>
+           <string>28693</string>
           </property>
          </item>
         </item>
@@ -47082,7 +47922,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>28689</string>
+            <string>28694</string>
            </property>
           </item>
           <item>
@@ -47194,7 +48034,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>28690</string>
+            <string>28695</string>
            </property>
           </item>
           <item>
@@ -47343,7 +48183,7 @@
            <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
@@ -47371,13 +48211,433 @@
            <string>FPGA.prm.PULSE_SCALING.NUMERATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
           </property>
           <property name="text">
            <string>28699</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.STATION</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.STATION_ID</string>
+          </property>
+          <property name="text">
+           <string>240</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28700</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.AUTO_MODE</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28701</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28702</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28703</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28704</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE0</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28705</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28706</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28707</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28708</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28709</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE1</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28710</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28711</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28712</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28713</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28714</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE2</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28715</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28716</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28717</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28718</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28719</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE3</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28720</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28721</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28722</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28723</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28724</string>
           </property>
          </item>
         </item>
@@ -63337,7 +64597,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61453</string>
+           <string>61458</string>
           </property>
          </item>
          <item>
@@ -63351,7 +64611,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61454</string>
+           <string>61459</string>
           </property>
          </item>
          <item>
@@ -63365,7 +64625,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61455</string>
+           <string>61460</string>
           </property>
          </item>
          <item>
@@ -63379,7 +64639,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61456</string>
+           <string>61461</string>
           </property>
          </item>
         </item>
@@ -63420,7 +64680,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>61457</string>
+            <string>61462</string>
            </property>
           </item>
           <item>
@@ -63532,7 +64792,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>61458</string>
+            <string>61463</string>
            </property>
           </item>
           <item>
@@ -63681,7 +64941,7 @@
            <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
@@ -63709,13 +64969,433 @@
            <string>FPGA.prm.PULSE_SCALING.NUMERATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
           </property>
           <property name="text">
            <string>61467</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.STATION</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.STATION_ID</string>
+          </property>
+          <property name="text">
+           <string>240</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61468</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61469</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61470</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61471</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61472</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE0</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61473</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61474</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61475</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61476</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61477</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE1</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61478</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61479</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61480</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61481</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61482</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE2</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61483</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61484</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61485</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61486</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61487</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE3</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61488</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61489</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61490</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61491</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61492</string>
           </property>
          </item>
         </item>
@@ -79675,7 +81355,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28685</string>
+           <string>28690</string>
           </property>
          </item>
          <item>
@@ -79689,7 +81369,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28686</string>
+           <string>28691</string>
           </property>
          </item>
          <item>
@@ -79703,7 +81383,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28687</string>
+           <string>28692</string>
           </property>
          </item>
          <item>
@@ -79717,7 +81397,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>28688</string>
+           <string>28693</string>
           </property>
          </item>
         </item>
@@ -79758,7 +81438,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>28689</string>
+            <string>28694</string>
            </property>
           </item>
           <item>
@@ -79870,7 +81550,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>28690</string>
+            <string>28695</string>
            </property>
           </item>
           <item>
@@ -80019,7 +81699,7 @@
            <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
@@ -80047,13 +81727,433 @@
            <string>FPGA.prm.PULSE_SCALING.NUMERATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
           </property>
           <property name="text">
            <string>28699</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.STATION</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.STATION_ID</string>
+          </property>
+          <property name="text">
+           <string>240</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28700</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.AUTO_MODE</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28701</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28702</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28703</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28704</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE0</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28705</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28706</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28707</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28708</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28709</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE1</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28710</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28711</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28712</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28713</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28714</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE2</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28715</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28716</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28717</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28718</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28719</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE3</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28720</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28721</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28722</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28723</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>28724</string>
           </property>
          </item>
         </item>
@@ -96013,7 +98113,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61453</string>
+           <string>61458</string>
           </property>
          </item>
          <item>
@@ -96027,7 +98127,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61454</string>
+           <string>61459</string>
           </property>
          </item>
          <item>
@@ -96041,7 +98141,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61455</string>
+           <string>61460</string>
           </property>
          </item>
          <item>
@@ -96055,7 +98155,7 @@
            <string>Uint16</string>
           </property>
           <property name="text">
-           <string>61456</string>
+           <string>61461</string>
           </property>
          </item>
         </item>
@@ -96096,7 +98196,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>61457</string>
+            <string>61462</string>
            </property>
           </item>
           <item>
@@ -96208,7 +98308,7 @@
             <string>Uint16</string>
            </property>
            <property name="text">
-            <string>61458</string>
+            <string>61463</string>
            </property>
           </item>
           <item>
@@ -96357,7 +98457,7 @@
            <string>FPGA.prm.PULSE_SCALING.DENOMINATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
@@ -96385,13 +98485,433 @@
            <string>FPGA.prm.PULSE_SCALING.NUMERATOR_Low</string>
           </property>
           <property name="text">
-           <string>0</string>
+           <string>1</string>
           </property>
           <property name="text">
            <string>Uint16</string>
           </property>
           <property name="text">
            <string>61467</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.STATION</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.STATION_ID</string>
+          </property>
+          <property name="text">
+           <string>240</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61468</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61469</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61470</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61471</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.STATION.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61472</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE0</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61473</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61474</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61475</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61476</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE0.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61477</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE1</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61478</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61479</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61480</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61481</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE1.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61482</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE2</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61483</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61484</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61485</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61486</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE2.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61487</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>FPGA.prm.RESERVE3</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string>Uint16</string>
+         </property>
+         <property name="text">
+          <string>-1</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.A</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61488</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.B</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61489</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.C</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61490</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.D</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61491</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FPGA.prm.RESERVE3.E</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="text">
+           <string>Uint16</string>
+          </property>
+          <property name="text">
+           <string>61492</string>
           </property>
          </item>
         </item>

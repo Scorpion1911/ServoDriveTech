@@ -14,6 +14,7 @@
 #include "advusercontainer.h"
 #include "advusercompress.h"
 #include "advuserfirmwaresegmentflash.h"
+#include "advuserstation.h"
 
 #include "gtutils.h"
 
@@ -96,6 +97,8 @@ int main(int argc, char *argv[])
   adv = new AdvUserCompress("advusercompress", 0);
   advc->addAdvUserItem(adv);
   adv = new AdvUserFirmwareSegmentFlash("advuserfirmwaresegmentflash", 0);
+  advc->addAdvUserItem(adv);
+  adv = new AdvUserStation("advuserstation", 0);
   advc->addAdvUserItem(adv);
 
   opt=optc->optItem("optface");

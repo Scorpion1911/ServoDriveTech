@@ -19,6 +19,8 @@ IEncConfigItem::IEncConfigItem(QObject *parent) : QObject(parent),
   m_shiftNum(0),
   m_pulseABModel(0),
   m_auxCfg(0),
+  m_den(1),
+  m_num(1),
   m_needTimer(false)
 {
   m_warnings<<tr("0 when power shut down ,the battery capacity is low ")
@@ -229,6 +231,26 @@ quint16 IEncConfigItem::aufCfg()
 void IEncConfigItem::setAufCfg(quint16 value)
 {
     m_auxCfg = value;
+}
+
+quint32 IEncConfigItem::getDen()
+{
+    return m_den;
+}
+
+void IEncConfigItem::setDen(quint32 value)
+{
+    m_den = value;
+}
+
+quint16 IEncConfigItem::getNum()
+{
+    return m_num;
+}
+
+void IEncConfigItem::setNum(quint16 value)
+{
+    m_num = value;
 }
 
 bool IEncConfigItem::isNeedTimer()

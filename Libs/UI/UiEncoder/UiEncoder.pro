@@ -45,7 +45,8 @@ SOURCES += uiencoder.cpp \
     EncConfig/encconfigsinhiperface.cpp \
     EncConfig/encconfigsinendat.cpp \
     EncConfig/encconfigrotation.cpp \
-    EncConfig/encconfigabz.cpp
+    EncConfig/encconfigabz.cpp \
+    EncConfig/encconfighechuanitem.cpp
 
 HEADERS += uiencoder.h\
         uiencoder_global.h \
@@ -69,7 +70,8 @@ HEADERS += uiencoder.h\
     EncConfig/encconfigsinhiperface.h \
     EncConfig/encconfigsinendat.h \
     EncConfig/encconfigrotation.h \
-    EncConfig/encconfigabz.h
+    EncConfig/encconfigabz.h \
+    EncConfig/encconfighechuanitem.h
 
 unix {
     target.path = /usr/lib

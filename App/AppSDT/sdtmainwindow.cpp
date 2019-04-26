@@ -7,6 +7,7 @@
 #include "advusermask.h"
 #include "advuserfirmwaresegmentflash.h"
 #include "advusercontainer.h"
+#include "advuserstation.h"
 #include "dialogoption.h"
 #include "dialogadvusr.h"
 
@@ -69,7 +70,7 @@
 #define RAM_NAME "RAM"
 
 #define ICON_SDT_LOGO_NAME            "sdtlogo.png"
-#define SDT_VERSION                   "2.0.7"
+#define SDT_VERSION                   "2.0.9"
 
 using namespace GT;
 
@@ -344,6 +345,7 @@ void SDTMainWindow::createConnections()
   connect(ui->treeWidget, SIGNAL(copySingleAxis(int,int,int,int)), this, SLOT(onCopySingleAxisReceived(int,int,int,int)));
   connect(ui->treeWidget, SIGNAL(copyAllAxis(int,int,int)), this, SLOT(onCopyAllAxisReceived(int,int,int)));
   connect(m_statusBar,SIGNAL(statusPageChanged(int)),this,SLOT(onStatusBarPageChanged(int)));
+  connect(m_statusBar, SIGNAL(clearAllAlarm()), this, SLOT(onClearAllAlarmReceived()));
 }
 void SDTMainWindow::clearStackedWidget()
 {
@@ -716,6 +718,10 @@ void SDTMainWindow::onActnAdvUserClicked()
             advFirmFlash->setSevList(sevList());
             advFirmFlash->uiInit();
             connect(advFirmFlash, SIGNAL(startDownload(bool)), this, SLOT(setMonitorStatus(bool)));
+        } else if (adv->name().compare("advuserstation") == 0){
+            AdvUserStation *advStation = dynamic_cast<AdvUserStation*>(adv);
+            advStation->setSevList(sevList());
+            advStation->uiInit();
         } else {
             adv->uiInit();
         }
@@ -891,129 +897,106 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
     setUiAllEnable(false);
     m_statusBar->statusProgressBar()->setValue(5);
     bool isOpen=setConnect(true);
-    if(isOpen)
+    if (isOpen)
     {
-      /*if(isAutoLoad())
-      {
-        //2 根据版本判断是否加CRC
-        //3 是否要进行参数检查 m_versionNeedCheck=(softIsBigger128&&hardIsBigger128);
-      }
-      else
-      {
-        //1 读软件版本校验 不对要提示相关信息
-        //2 根据版本判断是否加CRC
-        //3 是否要进行参数检查 m_versionNeedCheck=(softIsBigger128&&hardIsBigger128);
-      }*/
-      DeviceIdHelper idHelper;
-      //IVerMatching *vMatch=new MemeryVerMatching;
-      IVerMatching *dbMatch=new DbVerMatching;
-      IVerMatching::CheckStatus checkStatus=IVerMatching::CHECK_STA_OK;
-      dbMatch->open();
-      for (int i = 0; i < m_sdAssemblyList.count(); i++)
-      //foreach (SdAssembly*sd, m_sdAssemblyList)
-      {
-          SdAssembly* sd = m_sdAssemblyList.at(i);
-          qDebug()<<"sd i"<<i;
-        ComDriver::ICom *com=sd->sevDevice()->socketCom();
-        idHelper.setCom(com);
+        DeviceIdHelper idHelper;
+        IVerMatching *dbMatch=new DbVerMatching;
+        IVerMatching::CheckStatus checkStatus=IVerMatching::CHECK_STA_OK;
+        dbMatch->open();
+        for (int i = 0; i < m_sdAssemblyList.count(); i++) {
+            SdAssembly* sd = m_sdAssemblyList.at(i);
+            qDebug()<<"sd i"<<i;
+            ComDriver::ICom *com=sd->sevDevice()->socketCom();
+            idHelper.setCom(com);
 
-        bool dspVerOk = true;
-        QString dspVer = idHelper.readVersion(dspVerOk);
+            bool dspVerOk = true;
+            QString dspVer = idHelper.readVersion(dspVerOk);
 
-        if (dspVer.compare("V0") == 0) {
-            QMessageBox::warning(0, tr("Warning"), tr("No Respond from DSP!"));
-            isContinue=false;
-            break;
-        }
+            if (dspVer.compare("V0") == 0) {
+                QMessageBox::warning(0, tr("Warning"), tr("No Respond from DSP!"));
+                isContinue=false;
+                break;
+            }
 
         //-------如果不是自动匹配，要进行V版本配对检查------
-        if(isAutoLoad()==false)
-        {
-          bool vok=true;
-          QString ver=idHelper.readVersion(vok);
-          QString verCurrent=sd->sevDevice()->versionName();
-          if(ver!=verCurrent)
-          {
-            bool accept=MessageBoxAsk(tr("current SDT version = %1\ndevice version = %2\nnot match !\ndo you want to force to continue?\n").arg(verCurrent).arg(ver));
-            if(accept==false)
-            {
-              isContinue=false;
-              break;
+            if (isAutoLoad()==false) {
+                bool vok=true;
+                QString ver=idHelper.readVersion(vok);
+                QString verCurrent=sd->sevDevice()->versionName();
+                if (ver!=verCurrent) {
+                    bool accept=MessageBoxAsk(tr("current SDT version = %1\ndevice version = %2\nnot match !\ndo you want to force to continue?\n").arg(verCurrent).arg(ver));
+                    if (accept==false) {
+                        isContinue=false;
+                        break;
+                    }
+                }
             }
-          }
-        }
         //------组合版本匹配-------
-        quint32 p,c,v,f;
-        p=c=v=f=0;
-        if(com->iComType()!=ComDriver::ICOM_TYPE_PCDEBUG)
-        {
-          bool pok=true;
-          bool cok=true;
-          bool vok=true;
-          bool fok=true;
-          p=idHelper.readPwrId(pok);
-          c=idHelper.readCtrId(cok);
-          v=idHelper.readVersion(vok).remove(0,1).toUInt();
-          f=idHelper.readFpgaId(fok);
-          VerInfo verInfo;
-          verInfo.c=c;
-          verInfo.f=f;
-          verInfo.p=p;
-          verInfo.v=v;
-          //checkStatus=vMatch->check(verInfo);
-          checkStatus = dbMatch->check(verInfo);
+            if (isVersionMatch()) {
+                quint32 p,c,v;
+                QString f = "0";
+                p=c=v=0;
+                if(com->iComType()!=ComDriver::ICOM_TYPE_PCDEBUG) {
+                    bool pok=true;
+                    bool cok=true;
+                    bool vok=true;
+                    bool fok=true;
+                    p=idHelper.readPwrId(pok);
+                    c=idHelper.readCtrId(cok);
+                    v=idHelper.readVersion(vok).remove(0,1).toUInt();
+                    f=idHelper.readFpgaId(fok);
+                    VerInfo verInfo;
+                    verInfo.c=c;
+                    verInfo.f=f;
+                    verInfo.p=p;
+                    verInfo.v=v;
+                    //checkStatus=vMatch->check(verInfo);
+                    checkStatus = dbMatch->check(verInfo);
+                }
+
+                if (checkStatus!=IVerMatching::CHECK_STA_OK) {
+                    QString msg;
+                    if(checkStatus==IVerMatching::CHECK_STA_NSUPPORT)
+                        msg=tr("device's componoent C%1-V%2-F%3-P%4 is not supported\nit maybe cause some error!\ndo you want to continue?\n").arg(c).arg(v).arg(f).arg(p);
+                    else
+                        msg=tr("device's componoent C%1-V%2-F%3-P%4 can not find in your soft database\nyou should update your software from\nhttp://www.googoltech.com.cn\nif you force to continue it maybe cause some error!\ndo you want to continue?\n").arg(c).arg(v).arg(f).arg(p);
+                    bool accept=MessageBoxAsk(msg);
+                    if(accept==false)
+                    {
+                        isContinue=false;
+                        break;
+                    }
+                }
+                sd->sevDevice()->setVersionAttributeActive();
+            } else {
+                isContinue = true;
+            }
+            dbMatch->close();
+            delete dbMatch;
+
+            if (isContinue) {
+                m_connecting=true;
+                m_isOffline = false;
+                OptMode *optmode = dynamic_cast<OptMode *>(OptContainer::instance()->optItem("optmode"));
+                optmode->setOfflineMode(false);
+                m_statusBar->statusProgressBar()->setValue(100);
+                activeCurrentUi();
+                m_statusMonitor->startMonitor(1000);
+                m_actnNewConfig->setEnabled(false);
+            } else {
+                m_connecting=false;
+                setConnect(false);
+                m_actnNewConfig->setEnabled(true);
+            }
         }
-
-        if(checkStatus!=IVerMatching::CHECK_STA_OK)
+    } else {
+        m_statusBar->statusProgressBar()->setValue(50);
+        if (!isAutoLoad())
         {
-          QString msg;
-          if(checkStatus==IVerMatching::CHECK_STA_NSUPPORT)
-            msg=tr("device's componoent C%1-V%2-F%3-P%4 is not supported\nit maybe cause some error!\ndo you want to continue?\n").arg(c).arg(v).arg(f).arg(p);
-          else
-            msg=tr("device's componoent C%1-V%2-F%3-P%4 can not find in your soft database\nyou should update your software from\nhttp://www.googoltech.com.cn\nif you force to continue it maybe cause some error!\ndo you want to continue?\n").arg(c).arg(v).arg(f).arg(p);
-          bool accept=MessageBoxAsk(msg);
-          if(accept==false)
-          {
-            isContinue=false;
-            break;
-          }
+            SdtError::instance()->errorStringList()->append(tr("your connect com is wrong"));
+            SdtError::instance()->errorStringList()->append(tr("your select com type is wrong"));
         }
-
-        sd->sevDevice()->setVersionAttributeActive();
-      }
-//      vMatch->close();
-//      delete vMatch;
-      dbMatch->close();
-      delete dbMatch;
-
-      if(isContinue)
-      {
-        m_connecting=true;
-        m_isOffline = false;
-        OptMode *optmode = dynamic_cast<OptMode *>(OptContainer::instance()->optItem("optmode"));
-        optmode->setOfflineMode(false);
-        m_statusBar->statusProgressBar()->setValue(100);
-        activeCurrentUi();
-        m_statusMonitor->startMonitor(1000);
-        m_actnNewConfig->setEnabled(false);
-      }
-      else
-      {
-        m_connecting=false;
-        setConnect(false);
-        m_actnNewConfig->setEnabled(true);
-      }
-
-    }
-    else
-    {
-      m_statusBar->statusProgressBar()->setValue(50);
-      if(!isAutoLoad())
-      {
-        SdtError::instance()->errorStringList()->append(tr("your connect com is wrong"));
-        SdtError::instance()->errorStringList()->append(tr("your select com type is wrong"));
-      }
-      QMessageBox::information(0,tr("connect error"),tr("Net Error\n\nexception cause maybe:\n%1\n").arg(SdtError::instance()->errorStringList()->join("\n")));
+        QMessageBox::information(0,tr("connect error"),tr("Net Error\n\nexception cause maybe:\n%1\n").arg(SdtError::instance()->errorStringList()->join("\n")));
     }
 
     setUiStatusConnect(m_connecting);
@@ -1146,7 +1129,7 @@ void SDTMainWindow::onActnDownloadClicked()
     connect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
     bool downOk = false;
     if (!m_isOffline) {
-        downOk = servoFile->downLoadFile(processCallBack, (void *)(mp_progressBar), downloadFileName, devList.at(downloadIndex));
+        downOk = servoFile->downLoadFile(processCallBack, (void *)(mp_progressBar), downloadFileName, devList.at(downloadIndex), false, "");
     } else {
         downOk = servoFile->downLoadOfflineFile(downloadFileName, devList.at(downloadIndex));
         activeCurrentUi();
@@ -1398,6 +1381,16 @@ void SDTMainWindow::onStatusBarPageChanged(int pIndex)
   changeConfigSaveBtnStatus();
 }
 
+void SDTMainWindow::onClearAllAlarmReceived()
+{
+    for (int i = 0; i < m_sdAssemblyList.count(); i++) {
+        SevDevice* dev = m_sdAssemblyList.at(i)->sevDevice();
+        for (int j = 0; j < dev->axisNum(); j++) {
+            dev->clearAlarm(j);
+        }
+    }
+}
+
 //!
 //! \brief SDTMainWindow::onDeviceAlarmError
 //! 驱动器报警时 1更新报警信息到statusBar状态树 2只要有一个报警，就显示报警信息
@@ -1575,6 +1568,13 @@ bool SDTMainWindow::isAutoLoad()
   OptAutoLoad *optAuto=dynamic_cast<OptAutoLoad *>(OptContainer::instance()->optItem("optautoload"));
   return optAuto->autoLoad();
 }
+
+bool SDTMainWindow::isVersionMatch()
+{
+    OptAutoLoad *optAuto=dynamic_cast<OptAutoLoad *>(OptContainer::instance()->optItem("optautoload"));
+    return optAuto->versionMatch();
+}
+
 bool SDTMainWindow::MessageBoxAsk(const QString &msg)
 {
   QMessageBox::StandardButton rb = QMessageBox::question(this, tr("Warning"), msg, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);

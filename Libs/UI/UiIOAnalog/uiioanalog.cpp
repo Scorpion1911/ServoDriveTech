@@ -48,9 +48,6 @@ void UiIOAnalog::accept(QWidget *w)
     d->m_graphIOAnalog = dynamic_cast<IGraphIOAnalog *>(w);
 
     d->m_graphIOAnalog->visit(this);
-    qDebug()<<"start";
-    //d->m_graphIOAnalog->setParaScale();
-    qDebug()<<"end";
     d->m_copyAll = false;
 }
 

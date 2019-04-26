@@ -75,6 +75,12 @@ public:
   quint16 aufCfg();
   void setAufCfg(quint16 value);
 
+  quint32 getDen();
+  void setDen(quint32 value);
+
+  quint16 getNum();
+  void setNum(quint16 value);
+
   bool isNeedTimer();
 
 
@@ -106,6 +112,9 @@ protected:
   quint16 m_shiftNum;
   quint16 m_pulseABModel;
   quint16 m_auxCfg;
+
+  quint32 m_den;
+  quint16 m_num;
 
   bool m_needTimer;
 };

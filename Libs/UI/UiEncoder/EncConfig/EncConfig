@@ -12,6 +12,7 @@
 #include "encconfigsinendat.h"
 #include "encconfigrotation.h"
 #include "encconfigabz.h"
+#include "encconfighechuanitem.h"
 
 #endif // ENCCONFIG
 

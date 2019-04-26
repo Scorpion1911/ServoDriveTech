@@ -26,13 +26,15 @@ DEFINES += UIIOCONF_LIBRARY
 SOURCES += uiioconf.cpp \
     graphioconf136.cpp \
     singleiowidget.cpp \
-    graphioconf138.cpp
+    graphioconf138.cpp \
+    maskwheelcombobox.cpp
 
 HEADERS += uiioconf.h\
         uiioconf_global.h \
     graphioconf136.h \
     singleiowidget.h \
-    graphioconf138.h
+    graphioconf138.h \
+    maskwheelcombobox.h
 
 unix {
     target.path = /usr/lib

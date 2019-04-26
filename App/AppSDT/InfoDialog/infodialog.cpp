@@ -63,13 +63,7 @@ void InfoDialog::uiInit(const QList<SevDevice*> &devList)
             verId = "0";
         }
         ui->table_Info->setItem(i, COL_V, new QTableWidgetItem(verId));
-        quint32 fid = idHelper->readFpgaId(ok);
-        QString fpgId;
-        if (ok) {
-            fpgId = QString::number(fid, 10);
-        } else {
-            fpgId = "0";
-        }
+        QString fpgId = idHelper->readFpgaId(ok);
         ui->table_Info->setItem(i, COL_F, new QTableWidgetItem(fpgId));
         delete idHelper;
         DBManager *dbManager = new DBManager(GTUtils::databasePath() + "Version/", "root", "");

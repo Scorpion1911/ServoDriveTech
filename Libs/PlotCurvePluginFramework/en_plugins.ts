@@ -2,6 +2,22 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>CurveCusAcc</name>
+    <message>
+        <location filename="CurveCusAcc/curvecusacc.cpp" line="80"/>
+        <source>Acceleration</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CurveCusAccd</name>
+    <message>
+        <location filename="CurveCusAccd/curvecusaccd.cpp" line="78"/>
+        <source>Acceleration_diff</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CurveUsrIcmd</name>
     <message>
         <location filename="CurveUsrIcmd/curveusricmd.cpp" line="79"/>
@@ -100,7 +116,7 @@
 <context>
     <name>CurveUsrVffd</name>
     <message>
-        <location filename="CurveUsrVffd/curveusrvffd.cpp" line="83"/>
+        <location filename="CurveUsrVffd/curveusrvffd.cpp" line="84"/>
         <source>Pos Velocity Cmd</source>
         <translation type="unfinished"></translation>
     </message>
@@ -115,6 +131,9 @@
         <location filename="PluginsManager/pluginsmanager.cpp" line="205"/>
         <location filename="PluginsManager/pluginsmanager.cpp" line="212"/>
         <location filename="PluginsManager/pluginsmanager.cpp" line="218"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="282"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="289"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="295"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -142,26 +161,29 @@
     </message>
     <message>
         <location filename="PluginsManager/pluginsmanager.cpp" line="205"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="282"/>
         <source>get service error:m_context-&gt;getService</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="PluginsManager/pluginsmanager.cpp" line="212"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="289"/>
         <source>error:m_context-&gt;getServiceReferences is Empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="PluginsManager/pluginsmanager.cpp" line="218"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="295"/>
         <source>error:installPlugin = %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PluginsManager/pluginsmanager.cpp" line="344"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="422"/>
         <source>Reading Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PluginsManager/pluginsmanager.cpp" line="357"/>
+        <location filename="PluginsManager/pluginsmanager.cpp" line="435"/>
         <source>Reading Curve Finish!</source>
         <translation type="unfinished"></translation>
     </message>

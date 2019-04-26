@@ -22,12 +22,17 @@ public:
     explicit GraphHome136(QWidget *parent = 0);
     ~GraphHome136();
     void syncTreeDataToUiFace() Q_DECL_OVERRIDE;
+public slots:
+    void onBtnHomeConfigSaveClicked() Q_DECL_OVERRIDE;
 
 protected:
     void setCustomVisitActive(IUiWidget *uiWidget) Q_DECL_OVERRIDE;
     void setUiVersionName() Q_DECL_OVERRIDE;
     void setupDataMappings() Q_DECL_OVERRIDE;
-
+private:
+    void createHomeItems();
+    void initCurrentHomeItem();
+    void updateUiByCurrentItem();
 private:
     Ui::GraphHome136 *ui;
 };

@@ -117,7 +117,7 @@ UiMotionPTSL *MotionPTSL::UiMotion()
 
 void MotionPTSL::onMotionFinish(quint16 axisInx)
 {
-
+    Q_UNUSED(axisInx);
 }
 
 void MotionPTSL::onTimerOut()

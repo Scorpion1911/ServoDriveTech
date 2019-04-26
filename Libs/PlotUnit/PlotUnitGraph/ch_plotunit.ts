@@ -104,96 +104,96 @@
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="179"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="468"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="645"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="180"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="469"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="646"/>
         <source>on</source>
         <translation>开</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="181"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="479"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="642"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="182"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="480"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="643"/>
         <source>off</source>
         <translation>关</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="370"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="371"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="370"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="417"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="371"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="418"/>
         <source>FFT Curve File(*.dat)</source>
         <translation>傅里叶曲线文件(*.dat)</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="379"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="380"/>
         <source>file error</source>
         <translation>文件错误</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="379"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="380"/>
         <source>can not open file :
 %1</source>
         <translation>无法打开文件：
 %1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="400"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="401"/>
         <source>Reading Curve %1</source>
         <translation>正在读取曲线%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="405"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="406"/>
         <source>Reading Finish!</source>
         <translation>读取完成！</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="417"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="418"/>
         <source>Save FFT Curve</source>
         <translation>保存傅里叶曲线</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="431"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="432"/>
         <source>Saving Curve %1</source>
         <translation>保存曲线%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="449"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="450"/>
         <source>Saving Finish!</source>
         <translation>保存完成！</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="543"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="548"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="544"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="549"/>
         <source>Range Error</source>
         <translation>范围错误</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="543"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="544"/>
         <source>StartTime out range</source>
         <translation>开始时间超限</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="548"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="549"/>
         <source>EndTime out range</source>
         <translation>结束时间超限</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="576"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="577"/>
         <source>%1 ( %2 - %3 s)</source>
         <translation>%1 ( %2 - %3 s)</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="579"/>
-        <location filename="DFTDialog/dftdialog.cpp" line="663"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="580"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="664"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="584"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="585"/>
         <source>&gt;&gt;%1
 &lt;&lt;%2
 ( %3 - %4 s)</source>
@@ -202,19 +202,19 @@
 ( %3 - %4 s)</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="590"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="591"/>
         <source>&gt;&gt;%1
 &lt;&lt;%2</source>
         <translation>&gt;&gt;%1
 &lt;&lt;%2</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="615"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="616"/>
         <source>Amplitude Information:  frequency: %1 HZ , AMP: %2 DB</source>
         <translation>幅频信息：频率：%1 HZ, 幅值：%2 DB</translation>
     </message>
     <message>
-        <location filename="DFTDialog/dftdialog.cpp" line="630"/>
+        <location filename="DFTDialog/dftdialog.cpp" line="631"/>
         <source>Phase Information:  frequency: %1 HZ , Phase: %2 deg</source>
         <translation>相频信息：频率：%1 HZ, 相位：%2 deg</translation>
     </message>
@@ -310,51 +310,54 @@
     </message>
     <message>
         <location filename="DialogPickCurve/dialogpickcurve.ui" line="180"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="269"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
         <location filename="DialogPickCurve/dialogpickcurve.ui" line="185"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="274"/>
         <source>Description</source>
         <translation>注释</translation>
     </message>
     <message>
         <location filename="DialogPickCurve/dialogpickcurve.ui" line="190"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="279"/>
         <source>Unit</source>
         <translation>单位</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="282"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="321"/>
         <source>user</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="310"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="349"/>
         <source>expert</source>
         <translation>专家</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.ui" line="335"/>
+        <location filename="DialogPickCurve/dialogpickcurve.ui" line="374"/>
         <source>custom</source>
         <translation>定制</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="75"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="82"/>
         <source>Keyword:</source>
         <translation>关键词：</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="81"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="88"/>
         <source>Execute Search Item</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="83"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="90"/>
         <source>Cancel Search Item</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="138"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="145"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
@@ -630,8 +633,8 @@
     </message>
     <message>
         <location filename="plotunitgraph129.cpp" line="187"/>
-        <location filename="plotunitgraph129.cpp" line="1138"/>
-        <location filename="plotunitgraph129.cpp" line="1437"/>
+        <location filename="plotunitgraph129.cpp" line="1174"/>
+        <location filename="plotunitgraph129.cpp" line="1475"/>
         <source>error</source>
         <translation>异常</translation>
     </message>
@@ -662,48 +665,48 @@
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="595"/>
+        <location filename="plotunitgraph129.cpp" line="600"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="595"/>
+        <location filename="plotunitgraph129.cpp" line="600"/>
         <source>Curve File(*.src)</source>
         <translation>曲线文件(*.src)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="606"/>
+        <location filename="plotunitgraph129.cpp" line="611"/>
         <source>file error</source>
         <translation>文件错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="606"/>
+        <location filename="plotunitgraph129.cpp" line="611"/>
         <source>can not open file :
 %1</source>
         <translation>无法打开文件：
 %1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="790"/>
-        <location filename="plotunitgraph129.cpp" line="1230"/>
-        <location filename="plotunitgraph129.cpp" line="1676"/>
+        <location filename="plotunitgraph129.cpp" line="795"/>
+        <location filename="plotunitgraph129.cpp" line="1266"/>
+        <location filename="plotunitgraph129.cpp" line="1714"/>
         <source>on</source>
         <translation>开</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="796"/>
-        <location filename="plotunitgraph129.cpp" line="1224"/>
-        <location filename="plotunitgraph129.cpp" line="1682"/>
+        <location filename="plotunitgraph129.cpp" line="801"/>
+        <location filename="plotunitgraph129.cpp" line="1260"/>
+        <location filename="plotunitgraph129.cpp" line="1720"/>
         <source>off</source>
         <translation>关</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="813"/>
+        <location filename="plotunitgraph129.cpp" line="818"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="820"/>
+        <location filename="plotunitgraph129.cpp" line="825"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
@@ -712,57 +715,68 @@
         <translation type="vanished">打开曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="832"/>
         <source>Curve File(*.src);;Text File(*.txt)</source>
-        <translation>曲线文件(*.src);;文本文件(*.txt)</translation>
+        <translation type="vanished">曲线文件(*.src);;文本文件(*.txt)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="832"/>
+        <location filename="plotunitgraph129.cpp" line="837"/>
         <source>Save Curve</source>
         <translation>保存曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="844"/>
+        <location filename="plotunitgraph129.cpp" line="849"/>
+        <location filename="plotunitgraph129.cpp" line="876"/>
         <source>Saving Curve Information</source>
         <translation>正在保存曲线信息</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="855"/>
-        <location filename="plotunitgraph129.cpp" line="869"/>
+        <location filename="plotunitgraph129.cpp" line="904"/>
         <source>Saving Curve %1</source>
         <translation>保存曲线%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="861"/>
-        <location filename="plotunitgraph129.cpp" line="872"/>
+        <location filename="plotunitgraph129.cpp" line="868"/>
+        <location filename="plotunitgraph129.cpp" line="896"/>
+        <location filename="plotunitgraph129.cpp" line="907"/>
         <source>Saving Finish!</source>
         <translation>保存完成！</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="969"/>
-        <location filename="plotunitgraph129.cpp" line="998"/>
-        <location filename="plotunitgraph129.cpp" line="1068"/>
+        <location filename="plotunitgraph129.cpp" line="837"/>
+        <source>Curve File(*.src);;Text File(*.txt);;CSV File(*.csv)</source>
+        <translation>曲线文件(*.src);;文本文件(*.txt);;CSV文件(*.csv)</translation>
+    </message>
+    <message>
+        <location filename="plotunitgraph129.cpp" line="864"/>
+        <location filename="plotunitgraph129.cpp" line="892"/>
+        <source>Saving Curve</source>
+        <translation>正在保存曲线</translation>
+    </message>
+    <message>
+        <location filename="plotunitgraph129.cpp" line="1004"/>
+        <location filename="plotunitgraph129.cpp" line="1034"/>
+        <location filename="plotunitgraph129.cpp" line="1104"/>
         <source>warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="969"/>
+        <location filename="plotunitgraph129.cpp" line="1004"/>
         <source>plugin load error</source>
         <translation>插件加载错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="998"/>
+        <location filename="plotunitgraph129.cpp" line="1034"/>
         <source>%1 is BIT</source>
         <translation>%1是位变量，不能增加</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1068"/>
+        <location filename="plotunitgraph129.cpp" line="1104"/>
         <source>The numbers of selected curves is too much</source>
         <translation>所选曲线过多</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1138"/>
-        <location filename="plotunitgraph129.cpp" line="1437"/>
+        <location filename="plotunitgraph129.cpp" line="1174"/>
+        <location filename="plotunitgraph129.cpp" line="1475"/>
         <source>The curve = %1 is not in the device</source>
         <translation>曲线变量  = %1 不在当前设备</translation>
     </message>
@@ -777,6 +791,9 @@
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="205"/>
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="212"/>
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="218"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="282"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="289"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="295"/>
         <source>error</source>
         <translation>异常</translation>
     </message>
@@ -806,26 +823,29 @@
     </message>
     <message>
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="205"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="282"/>
         <source>get service error:m_context-&gt;getService</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="212"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="289"/>
         <source>error:m_context-&gt;getServiceReferences is Empty</source>
         <translation>错误：context-&gt;getServiceReferences 为空</translation>
     </message>
     <message>
         <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="218"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="295"/>
         <source>error:installPlugin = %1</source>
         <translation>错误：建立插件  = %1</translation>
     </message>
     <message>
-        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="344"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="422"/>
         <source>Reading Curve %1</source>
         <translation>正在读取曲线%1</translation>
     </message>
     <message>
-        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="357"/>
+        <location filename="../../PlotCurvePluginFramework/PluginsManager/pluginsmanager.cpp" line="435"/>
         <source>Reading Curve Finish!</source>
         <translation>曲线读取完成！</translation>
     </message>
@@ -833,12 +853,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="251"/>
         <source>Warning!</source>
         <translation>警告！</translation>
     </message>
     <message>
-        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="228"/>
+        <location filename="DialogPickCurve/dialogpickcurve.cpp" line="251"/>
         <source>No corresponding Item was found!
 Please input again!</source>
         <translation>没有与关键词匹配的项！

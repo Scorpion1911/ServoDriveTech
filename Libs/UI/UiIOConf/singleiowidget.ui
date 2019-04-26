@@ -34,7 +34,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QComboBox" name="comboBox_funcList">
+    <widget class="MaskWheelComboBox" name="comboBox_funcList">
      <property name="minimumSize">
       <size>
        <width>140</width>
@@ -66,6 +66,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MaskWheelComboBox</class>
+   <extends>QComboBox</extends>
+   <header>maskwheelcombobox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

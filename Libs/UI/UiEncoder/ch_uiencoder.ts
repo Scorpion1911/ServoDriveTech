@@ -26,6 +26,14 @@
     </message>
 </context>
 <context>
+    <name>EncConfigHeChuanItem</name>
+    <message>
+        <location filename="EncConfig/encconfighechuanitem.cpp" line="6"/>
+        <source>EncHeChuan</source>
+        <translation>禾川</translation>
+    </message>
+</context>
+<context>
     <name>EncConfigNiKangItem</name>
     <message>
         <location filename="EncConfig/encconfignikangitem.cpp" line="14"/>
@@ -263,7 +271,7 @@
         <location filename="graphencoder126.ui" line="509"/>
         <location filename="graphencoder126.ui" line="546"/>
         <location filename="graphencoder126.ui" line="583"/>
-        <location filename="graphencoder126.cpp" line="151"/>
+        <location filename="graphencoder126.cpp" line="152"/>
         <source>0</source>
         <translation></translation>
     </message>
@@ -283,114 +291,114 @@
         <translation>机械角</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="64"/>
+        <location filename="graphencoder126.cpp" line="65"/>
         <source>encoder lineNumber:</source>
         <translation>线数：</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="65"/>
+        <location filename="graphencoder126.cpp" line="66"/>
         <source>clearAlarm</source>
         <translation>清报警</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="69"/>
+        <location filename="graphencoder126.cpp" line="70"/>
         <source>Enc None</source>
         <translation>None</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="70"/>
+        <location filename="graphencoder126.cpp" line="71"/>
         <source>Enc Absolute</source>
         <translation>绝对式</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="71"/>
+        <location filename="graphencoder126.cpp" line="72"/>
         <source>Enc Increase</source>
         <translation>增量式</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="72"/>
+        <location filename="graphencoder126.cpp" line="73"/>
         <source>Enc Resolution</source>
         <translation>无传感</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="74"/>
+        <location filename="graphencoder126.cpp" line="75"/>
         <source>active after reset</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="147"/>
-        <location filename="graphencoder126.cpp" line="179"/>
+        <location filename="graphencoder126.cpp" line="148"/>
+        <location filename="graphencoder126.cpp" line="180"/>
         <source>Over Speed</source>
         <translation>速度异常，电池供电时转速超过设定转速</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="148"/>
+        <location filename="graphencoder126.cpp" line="149"/>
         <source>Full absolute status</source>
         <translation>电源打开时转速超过设定值</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="149"/>
+        <location filename="graphencoder126.cpp" line="150"/>
         <source>Counting Error</source>
         <translation>绝对位置偏差过大，编码器位置信息不可信</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="150"/>
+        <location filename="graphencoder126.cpp" line="151"/>
         <source>Counter Overflow</source>
         <translation>多圈计数器溢出</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="152"/>
-        <location filename="graphencoder126.cpp" line="181"/>
+        <location filename="graphencoder126.cpp" line="153"/>
+        <location filename="graphencoder126.cpp" line="182"/>
         <source>Multi-turn Error</source>
         <translation>多圈传感器通信错误，电源打开时不能取得多圈值数据</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="153"/>
-        <location filename="graphencoder126.cpp" line="183"/>
-        <location filename="graphencoder126.cpp" line="197"/>
+        <location filename="graphencoder126.cpp" line="154"/>
+        <location filename="graphencoder126.cpp" line="184"/>
+        <location filename="graphencoder126.cpp" line="198"/>
         <source>Battery Error</source>
         <translation>电源关闭时，电池电压低于规定值</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="154"/>
-        <location filename="graphencoder126.cpp" line="166"/>
-        <location filename="graphencoder126.cpp" line="186"/>
-        <location filename="graphencoder126.cpp" line="195"/>
+        <location filename="graphencoder126.cpp" line="155"/>
+        <location filename="graphencoder126.cpp" line="167"/>
+        <location filename="graphencoder126.cpp" line="187"/>
+        <location filename="graphencoder126.cpp" line="196"/>
         <source>Battery Alarm</source>
         <translation>电池电压低于规定值</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="180"/>
+        <location filename="graphencoder126.cpp" line="181"/>
         <source>MR Error</source>
         <translation>绝对位置偏差过大，编码器位置信息不可信</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="182"/>
+        <location filename="graphencoder126.cpp" line="183"/>
         <source>Position Error</source>
         <translation>位置错误，因传感器故障导致绝对值传感器与多圈传感器值不一致，编码器位置信息不可信</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="184"/>
+        <location filename="graphencoder126.cpp" line="185"/>
         <source>EEP Error</source>
         <translation>编码器存储器访问异常</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="185"/>
+        <location filename="graphencoder126.cpp" line="186"/>
         <source>Over temperature</source>
         <translation>	编码器基板温度超过设定温度</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="294"/>
+        <location filename="graphencoder126.cpp" line="295"/>
         <source>EnclineNumber:</source>
         <translation>线数：</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="301"/>
+        <location filename="graphencoder126.cpp" line="302"/>
         <source>EncbitNumber:</source>
         <translation>位数：</translation>
     </message>
     <message>
-        <location filename="graphencoder126.cpp" line="482"/>
+        <location filename="graphencoder126.cpp" line="486"/>
         <source>Enc Lost</source>
         <translation>编码器丢失</translation>
     </message>
@@ -607,52 +615,52 @@
         <translation>分子</translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="449"/>
+        <location filename="graphencoder130.ui" line="433"/>
         <source>den a</source>
         <translation>分母</translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="474"/>
+        <location filename="graphencoder130.ui" line="462"/>
         <source>prms active after reset device</source>
         <translation>设备重启，参数生效</translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="481"/>
+        <location filename="graphencoder130.ui" line="469"/>
         <source>save config</source>
         <translation>保存配置</translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="537"/>
-        <location filename="graphencoder130.ui" line="574"/>
-        <location filename="graphencoder130.ui" line="611"/>
+        <location filename="graphencoder130.ui" line="525"/>
+        <location filename="graphencoder130.ui" line="562"/>
+        <location filename="graphencoder130.ui" line="599"/>
         <source>(pluse)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="544"/>
+        <location filename="graphencoder130.ui" line="532"/>
         <source>encoder input</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="581"/>
+        <location filename="graphencoder130.ui" line="569"/>
         <source>encoder offset</source>
         <translation>偏移</translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="618"/>
+        <location filename="graphencoder130.ui" line="606"/>
         <source>encoder real</source>
         <translation>实际</translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="527"/>
-        <location filename="graphencoder130.ui" line="564"/>
-        <location filename="graphencoder130.ui" line="601"/>
-        <location filename="graphencoder130.ui" line="638"/>
+        <location filename="graphencoder130.ui" line="515"/>
+        <location filename="graphencoder130.ui" line="552"/>
+        <location filename="graphencoder130.ui" line="589"/>
+        <location filename="graphencoder130.ui" line="626"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphencoder130.ui" line="648"/>
+        <location filename="graphencoder130.ui" line="636"/>
         <source>motor phase</source>
         <translation>相序</translation>
     </message>
@@ -667,52 +675,52 @@
         <translation>机械角</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="64"/>
+        <location filename="graphencoder130.cpp" line="65"/>
         <source>encoder lineNumber:</source>
         <translation>线数：</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="65"/>
+        <location filename="graphencoder130.cpp" line="66"/>
         <source>clearAlarm</source>
         <translation>清报警</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="69"/>
+        <location filename="graphencoder130.cpp" line="70"/>
         <source>Enc None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="70"/>
+        <location filename="graphencoder130.cpp" line="71"/>
         <source>Enc Absolute</source>
         <translation>绝对式</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="71"/>
+        <location filename="graphencoder130.cpp" line="72"/>
         <source>Enc Increase</source>
         <translation>增量式</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="72"/>
+        <location filename="graphencoder130.cpp" line="73"/>
         <source>Enc Resolution</source>
         <translation>无传感</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="74"/>
+        <location filename="graphencoder130.cpp" line="75"/>
         <source>active after reset</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="267"/>
+        <location filename="graphencoder130.cpp" line="272"/>
         <source>EnclineNumber:</source>
         <translation>线数：</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="274"/>
+        <location filename="graphencoder130.cpp" line="279"/>
         <source>EncbitNumber:</source>
         <translation>位数：</translation>
     </message>
     <message>
-        <location filename="graphencoder130.cpp" line="487"/>
+        <location filename="graphencoder130.cpp" line="495"/>
         <source>Enc Lost</source>
         <translation>编码器丢失</translation>
     </message>
@@ -760,195 +768,209 @@
         <translation>清报警</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="289"/>
+        <location filename="graphencoder136.ui" line="314"/>
         <source>encoder configuration</source>
         <translation>编码器配置</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="346"/>
+        <location filename="graphencoder136.ui" line="385"/>
         <source>GroupBox</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="352"/>
+        <location filename="graphencoder136.ui" line="391"/>
         <source>LineNum</source>
         <translation>线数</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="362"/>
+        <location filename="graphencoder136.ui" line="401"/>
         <source>BitNum</source>
         <translation>位数</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="374"/>
+        <location filename="graphencoder136.ui" line="413"/>
         <source>linenumber</source>
         <translation>线数</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="402"/>
+        <location filename="graphencoder136.ui" line="438"/>
         <source>associate pos gear prm</source>
         <translation>关联电子齿轮比</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="411"/>
+        <location filename="graphencoder136.ui" line="447"/>
         <source>num b</source>
         <translation>分子</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="434"/>
+        <location filename="graphencoder136.ui" line="454"/>
         <source>den a</source>
         <translation>分母</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="495"/>
+        <location filename="graphencoder136.ui" line="518"/>
         <source>Output pulse</source>
         <translation>输出脉冲</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="501"/>
-        <source>Resolution</source>
-        <translation>分辨率</translation>
+        <location filename="graphencoder136.ui" line="587"/>
+        <source>Input Resolution:</source>
+        <translation>输入分辨率：</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="521"/>
+        <source>Resolution</source>
+        <translation type="vanished">分辨率</translation>
+    </message>
+    <message>
+        <location filename="graphencoder136.ui" line="524"/>
         <source>Output Type</source>
         <translation>输出类型</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="534"/>
+        <location filename="graphencoder136.ui" line="541"/>
+        <source>Output Resolution:</source>
+        <translation>输出分辨率：</translation>
+    </message>
+    <message>
+        <location filename="graphencoder136.ui" line="564"/>
         <source>Input pulse</source>
         <translation>输入脉冲</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="540"/>
+        <location filename="graphencoder136.ui" line="534"/>
+        <location filename="graphencoder136.ui" line="580"/>
         <source>Reverse</source>
         <translation>取反</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="550"/>
+        <location filename="graphencoder136.ui" line="570"/>
         <source>Pulse cmd</source>
         <translation>脉冲类型</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="573"/>
+        <source>Resolution:</source>
+        <translation type="vanished">分辨率：</translation>
+    </message>
+    <message>
+        <location filename="graphencoder136.ui" line="623"/>
         <source>prms active after reset device</source>
         <translation>设备重启，参数生效</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="580"/>
+        <location filename="graphencoder136.ui" line="630"/>
         <source>save config</source>
         <translation>保存配置</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="633"/>
-        <location filename="graphencoder136.ui" line="670"/>
-        <location filename="graphencoder136.ui" line="707"/>
-        <location filename="graphencoder136.ui" line="744"/>
+        <location filename="graphencoder136.ui" line="684"/>
+        <location filename="graphencoder136.ui" line="721"/>
+        <location filename="graphencoder136.ui" line="758"/>
+        <location filename="graphencoder136.ui" line="795"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="643"/>
-        <location filename="graphencoder136.ui" line="680"/>
-        <location filename="graphencoder136.ui" line="717"/>
+        <location filename="graphencoder136.ui" line="694"/>
+        <location filename="graphencoder136.ui" line="731"/>
+        <location filename="graphencoder136.ui" line="768"/>
         <source>(pluse)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="650"/>
+        <location filename="graphencoder136.ui" line="701"/>
         <source>encoder input</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="687"/>
+        <location filename="graphencoder136.ui" line="738"/>
         <source>encoder offset</source>
         <translation>偏移</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="724"/>
+        <location filename="graphencoder136.ui" line="775"/>
         <source>encoder real</source>
         <translation>实际</translation>
     </message>
     <message>
-        <location filename="graphencoder136.ui" line="754"/>
+        <location filename="graphencoder136.ui" line="805"/>
         <source>motor phase</source>
         <translation>相序</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="56"/>
+        <location filename="graphencoder136.cpp" line="58"/>
         <source>Electronic Angle</source>
         <translation>电气角</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="57"/>
+        <location filename="graphencoder136.cpp" line="59"/>
         <source>Mechanical Angle</source>
         <translation>机械角</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="71"/>
         <location filename="graphencoder136.cpp" line="75"/>
+        <location filename="graphencoder136.cpp" line="79"/>
         <source>AB Pulse</source>
         <translation>AB脉冲</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="71"/>
         <location filename="graphencoder136.cpp" line="75"/>
+        <location filename="graphencoder136.cpp" line="79"/>
         <source>Direction Pulse</source>
         <translation>方向脉冲</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="71"/>
         <location filename="graphencoder136.cpp" line="75"/>
+        <location filename="graphencoder136.cpp" line="79"/>
         <source>Positive and Negative Pulse</source>
         <translation>正负脉冲</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="78"/>
+        <location filename="graphencoder136.cpp" line="82"/>
         <source>encoder lineNumber:</source>
         <translation>线数：</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="79"/>
+        <location filename="graphencoder136.cpp" line="83"/>
         <source>clearAlarm</source>
         <translation>清报警</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="83"/>
+        <location filename="graphencoder136.cpp" line="87"/>
         <source>Enc SIN</source>
         <translation>正余弦编码器</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="84"/>
+        <location filename="graphencoder136.cpp" line="88"/>
         <source>Enc Absolute</source>
         <translation>绝对式编码器</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="85"/>
+        <location filename="graphencoder136.cpp" line="89"/>
         <source>Enc ROTATION</source>
         <translation>旋变式编码器</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="86"/>
+        <location filename="graphencoder136.cpp" line="90"/>
         <source>Enc ABZ</source>
         <translation>ABZ编码器</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="88"/>
+        <location filename="graphencoder136.cpp" line="92"/>
         <source>active after reset</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="314"/>
+        <location filename="graphencoder136.cpp" line="322"/>
         <source>EnclineNumber:</source>
         <translation>线数：</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="321"/>
+        <location filename="graphencoder136.cpp" line="329"/>
         <source>EncbitNumber:</source>
         <translation>位数：</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="637"/>
+        <location filename="graphencoder136.cpp" line="683"/>
         <source>Enc Lost</source>
         <translation>编码器丢失</translation>
     </message>
@@ -956,72 +978,72 @@
 <context>
     <name>IEncConfigItem</name>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="24"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="26"/>
         <source>0 when power shut down ,the battery capacity is low </source>
         <translation>0 关闭时，电量低</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="25"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="27"/>
         <source>1 battery capacity is low</source>
         <translation>1 电量低</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="26"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="28"/>
         <source>2 position error,absolute and mutil value is not the same</source>
         <translation>2 位置错误，绝对与多圈值不一致</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="27"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="29"/>
         <source>3 encoder of mutil communication error</source>
         <translation>3 通信错误</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="28"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="30"/>
         <source>4 absolute position error is over threshold</source>
         <translation>4 绝对位置过限</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="29"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="31"/>
         <source>5 speed exception</source>
         <translation>5 速度异常</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="30"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="32"/>
         <source>6 the base board of encoder is over temperature</source>
         <translation>6 过温</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="31"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="33"/>
         <source>7 speed over when open power</source>
         <translation>7 开电源时速度异常</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="32"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="34"/>
         <source>8 mutil value overflow</source>
         <translation>8 多圈溢出</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="33"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="35"/>
         <source>9 encoder memery access exception</source>
         <translation>9 内存访问异常</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="34"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="36"/>
         <source>10 encoder memery accessing...</source>
         <translation>10 内存访问中....</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="35"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="37"/>
         <source>11 position error,absolute is not equal to increase</source>
         <translation>11 位置异常，绝对与增量不相等</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="36"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="38"/>
         <source>12 single absolute value working now....</source>
         <translation>12 单圈绝对值工作中....</translation>
     </message>
     <message>
-        <location filename="EncConfig/iencconfigitem.cpp" line="37"/>
+        <location filename="EncConfig/iencconfigitem.cpp" line="39"/>
         <source>IEncConfig</source>
         <translation>编码器配置</translation>
     </message>

@@ -180,6 +180,7 @@ void IGraphStatus::onTimeOut()
 void IGraphStatus::addAlarmLedsToWidget(IUiWidget *uiWidget)
 {
   Q_D(IGraphStatus);
+    Q_UNUSED(uiWidget);
 
   QWidget *widget=alarmBackgroundWidget();
   if(!widget)

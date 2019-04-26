@@ -48,7 +48,7 @@ QList<DeviceConfig *>DevTextRWriter::createConfig(void (*processCallback)(void *
       //根据modeName typeName找到powerId
       device->m_pwrId=modelItem->text(GT::COL_CONFIG_ID).toUInt();
       device->m_ctrId=versionItem->text(GT::COL_CONFIG_ID).toUInt();
-      device->m_fpgaId=comItem->text(GT::COL_CONFIG_ID).toUInt();
+      device->m_fpgaId=comItem->text(GT::COL_CONFIG_ID);
       list.append(device);
       pvalue+=40;
       processCallback(processbar,&pvalue);
@@ -66,7 +66,7 @@ QList<DeviceConfig *>DevTextRWriter::createConfig(void (*processCallback)(void *
     //根据modeName typeName找到powerId
     device->m_pwrId=21000541;
     device->m_ctrId=0;
-    device->m_fpgaId=0;
+    device->m_fpgaId="0";
     list.append(device);
   }
   pvalue=100;

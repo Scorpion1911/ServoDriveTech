@@ -60,6 +60,14 @@ UiRAM::~UiRAM()
     delete ui;
 }
 
+bool UiRAM::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
+{
+    Q_UNUSED(srcAxisInx);
+    Q_UNUSED(desAxisInx);
+    Q_UNUSED(tree);
+    return true;
+}
+
 bool UiRAM::hasConfigFunc()
 {
   return false;
@@ -176,6 +184,18 @@ bool UiRAM::eventFilter(QObject *obj, QEvent *event)
         }
     }
     return QWidget::eventFilter(obj, event);
+}
+
+void UiRAM::updateTree(QTreeWidget *srcTree, QTreeWidget *desTree)
+{
+    Q_UNUSED(srcTree);
+    Q_UNUSED(desTree);
+}
+
+void UiRAM::updateTreeItem(QTreeWidgetItem *srcTreeItem, QTreeWidgetItem *desTreeItem)
+{
+    Q_UNUSED(srcTreeItem);
+    Q_UNUSED(desTreeItem);
 }
 
 QStackedWidget *UiRAM::getUiStackedWidget(void)
@@ -340,7 +360,7 @@ void UiRAM::onItemExpanded(QTreeWidgetItem *item)
 
 bool UiRAM::isEditedDataValid(QTreeWidgetItem *item)
 {
-    Q_D(UiRAM);
+    //Q_D(UiRAM);
     QString itemType = item->text(GT::COL_FLASH_RAM_TREE_TYPE);
     bool ok;
     QStringList list = item->parent()->text(GT::COL_FLASH_RAM_TREE_NAME).split(".");

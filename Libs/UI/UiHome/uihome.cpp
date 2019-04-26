@@ -3,6 +3,7 @@
 
 #include "igraphhome.h"
 #include "iuiwidget_p.h"
+#include "sevdevice.h"
 
 #include <QDebug>
 
@@ -49,16 +50,29 @@ void UiHome::accept(QWidget *w)
 
 void UiHome::setUiActive(bool actived)
 {
-
+    if(actived)
+    {
+      Q_D(UiHome);
+        bool ok;
+        if (d->m_device->isOffline()) {
+            ok = readOfflinePrm();
+        } else {
+            ok = readGenPageRAM();
+        }
+        if (ok) {
+            d->m_graphHome->syncTreeDataToUiFace();
+        }
+    }
 }
 
 bool UiHome::writePageFLASH()
 {
-    return true;
-}
-
-bool UiHome::writePageFlashToOtherAxis(int srcAxisInx, int desAxisInx, QTreeWidget *tree)
-{
+    Q_D(UiHome);
+    d->m_graphHome->onBtnHomeConfigSaveClicked();
+    bool ok = IUiWidget::writePageFLASH();
+    if (ok) {
+        d->m_graphHome->syncTreeDataToUiFace();
+    }
     return true;
 }
 
@@ -89,5 +103,5 @@ QVBoxLayout *UiHome::getVBoxLayout()
 
 void UiHome::setDefaultUi()
 {
-
+    setCurrentUiIndex(0);
 }

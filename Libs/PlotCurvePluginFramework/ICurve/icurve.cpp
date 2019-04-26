@@ -608,6 +608,7 @@ CurveData *ICurve::sData()
 void ICurve::savePrepare()
 {
   dd.m_sData.keys.clear();
+  qDebug()<<"cur time"<<dd.m_currentTime;
   for(int i = dd.m_sData.values.size();i >0; i--)
   {
     double time = dd.m_currentTime - dd.m_samplInterval * i;

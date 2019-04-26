@@ -298,6 +298,29 @@
        </item>
        <item>
         <property name="text">
+         <string>Home</string>
+        </property>
+        <property name="text">
+         <string>NULL</string>
+        </property>
+        <property name="text">
+         <string>UiHome</string>
+        </property>
+        <property name="text">
+         <string>PrmFuncHome</string>
+        </property>
+        <property name="text">
+         <string>9</string>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+        <property name="text">
+         <string>GraphHome136</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>Status</string>
         </property>
         <property name="text">
@@ -310,7 +333,7 @@
          <string>PrmFuncDeviceStatus</string>
         </property>
         <property name="text">
-         <string>9</string>
+         <string>10</string>
         </property>
         <property name="text">
          <string>0</string>
@@ -333,7 +356,7 @@
          <string>PrmRAMAxis</string>
         </property>
         <property name="text">
-         <string>10</string>
+         <string>11</string>
         </property>
         <property name="text">
          <string>1</string>
@@ -356,7 +379,7 @@
          <string>PrmFlashAxis</string>
         </property>
         <property name="text">
-         <string>11</string>
+         <string>12</string>
         </property>
         <property name="text">
          <string>1</string>

@@ -3,6 +3,7 @@
 #include "selfbuilder.h"
 #include "gtutils.h"
 #include "rnnet.h"
+#include "dbmanager.h"
 #include "qttreemanager.h"
 
 #include <QTreeWidget>
@@ -11,6 +12,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDebug>
+
 
 SelfBuilderMainWindow::SelfBuilderMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -32,10 +34,50 @@ SelfBuilderMainWindow::SelfBuilderMainWindow(QWidget *parent) :
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(onAssignClicked()));
     connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(onSaveClicked()));
 
-    qint16 a = 20000;
-    int b = 20000;
-    int c = a + b;
-    qDebug()<<"c = "<<c;
+    QTreeWidget* newTree = QtTreeManager::createTreeWidgetFromXmlFile("C:/Users/googol/Desktop/3/PrmPrtyTree.xml");
+    QTreeWidget* oldTree = QtTreeManager::createTreeWidgetFromXmlFile("E:/Jiang/ServoDriveTech/build/debug/sysconfig/SD6x/SD61_PLUS/V139/PrmPrtyTree.xml");
+    QList<QTreeWidgetItem*> list0;
+    QList<QTreeWidgetItem*> list1;
+//    for (int i = 5; i < 10; i++) {
+//        list0.append(newTree->topLevelItem(0)->child(0)->child(2)->child(i)->clone());
+//        list1.append(newTree->topLevelItem(1)->child(0)->child(2)->child(i)->clone());
+//    }
+//    list0.at(0)->child(0)->setText(1, "240");
+//    list1.at(0)->child(0)->setText(1, "240");
+//    qDebug()<<"count"<<oldTree->topLevelItemCount() - 1;
+//    for (int i = 0; i < oldTree->topLevelItemCount() - 1; i++) {
+//        list0.clear();
+//        list1.clear();
+//        for (int j = 5; j < 10; j++) {
+//            list0.append(newTree->topLevelItem(0)->child(0)->child(2)->child(j)->clone());
+//            list1.append(newTree->topLevelItem(1)->child(0)->child(2)->child(j)->clone());
+//        }
+//        list0.at(0)->child(0)->setText(1, "240");
+//        list1.at(0)->child(0)->setText(1, "240");
+//        if (i % 2 == 0) {
+//            qDebug()<<"i = "<<i;
+//            oldTree->topLevelItem(i + 1)->child(0)->child(2)->addChildren(list0);
+//        } else {
+//            qDebug()<<"i = "<<i;
+//            oldTree->topLevelItem(i + 1)->child(0)->child(2)->addChildren(list1);
+//        }
+//    }
+//    QtTreeManager::writeTreeWidgetToXmlFile("E:/Jiang/ServoDriveTech/build/debug/sysconfig/SD6x/SD61_PLUS/V139/FlashPrm_AllAxis.xml", oldTree);
+//    delete oldTree;
+//    delete newTree;
+
+
+    for (int i = 0; i < oldTree->topLevelItemCount(); i++) {
+        list0.clear();
+        for (int j = 5; j < 10; j++) {
+            list0.append(newTree->topLevelItem(0)->child(0)->child(2)->child(j)->clone());
+        }
+        oldTree->topLevelItem(i)->child(0)->child(2)->addChildren(list0);
+    }
+    QtTreeManager::writeTreeWidgetToXmlFile("E:/Jiang/ServoDriveTech/build/debug/sysconfig/SD6x/SD61_PLUS/V139/PrmPrtyTree.xml", oldTree);
+    delete oldTree;
+    delete newTree;
+    qDebug()<<"finish";
 }
 
 SelfBuilderMainWindow::~SelfBuilderMainWindow()

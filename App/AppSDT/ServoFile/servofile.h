@@ -13,10 +13,13 @@ class ServoFile : public QObject
     Q_OBJECT
 public:
     explicit ServoFile(QObject *parent = 0);
-    bool downLoadFile(void (*processCallback)(void *pbar,short *value), void *processbar, const QString &xmlPath, SevDevice *dev);
+    bool downLoadFile(void (*processCallback)(void *pbar,short *value), void *processbar, const QString &xmlPath, SevDevice *dev, bool isPackage, const QString &modulePath);
     bool upLoadFile(void (*processCallback)(void *pbar,short *value), void *processbar, const QString &xmlPath, SevDevice *dev);
     bool downLoadOfflineFile(const QString &xmlPath, SevDevice *dev);
     bool upLoadOfflineFile(const QString &xmlPath, SevDevice *dev);
+    void updatePrmTree(QTreeWidget *downloadTree, QTreeWidget *dspTree);
+    bool downLoadTree(QTreeWidget *downloadTree, SevDevice *dev);
+
 
 signals:
     void sendProgressbarMsg(int, QString);

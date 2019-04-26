@@ -31,6 +31,7 @@ protected:
     void respondErrorExecute()Q_DECL_OVERRIDE;
 
     static void updateProgressBar(void *arg,qint16 *value);
+    static void updateProgressValueFPGA(void *arg, qint16 *value);
     bool firmwareFlashCheck();
 
 private slots:
@@ -44,6 +45,7 @@ private slots:
 
 private:
     Ui::AdvUserFirmwareSegmentFlash *ui;
+
 };
 
 #endif // ADVUSERFIRMWARESEGMENTFLASH_H

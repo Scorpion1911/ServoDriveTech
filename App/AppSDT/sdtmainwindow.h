@@ -82,6 +82,7 @@ private:
   bool setConnect(bool net);
 
   bool isAutoLoad();
+  bool isVersionMatch();
 
   bool MessageBoxAsk(const QString &msg);
   void startListen();
@@ -130,6 +131,7 @@ private slots:
   void onCopyAllAxisReceived(int devIndex, int srcAxisIndex, int pageIndex);
 
   void onStatusBarPageChanged(int pIndex);
+  void onClearAllAlarmReceived();
 
   //响应状态监视器
   void onDeviceAlarmError(quint16 devId,quint16 axisInx,bool hasError);

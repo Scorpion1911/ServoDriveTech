@@ -138,7 +138,7 @@ bool PTPlanMotion::writeData(int index)
 {
     qint64 pos = (qint32)m_posVector.at(index);
     qint64 time = (qint32)m_timeVector.at(index);
-    qint64 data = pos + time<<32;
+    qint64 data = pos + (time<<32);
     bool ok = m_sev->genCmdWrite(PT_BUFFER_DATA_IN, data, m_axisInx);
     if (ok) {
         m_count++;

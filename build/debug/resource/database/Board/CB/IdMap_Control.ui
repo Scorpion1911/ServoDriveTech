@@ -228,6 +228,23 @@
        <string>1</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>21000655</string>
+      </property>
+      <property name="text">
+       <string>SD1x</string>
+      </property>
+      <property name="text">
+       <string>SD15_7.5</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
     </widget>
    </item>
   </layout>

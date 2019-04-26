@@ -1,8 +1,12 @@
 ﻿#include "ihomeconfigitem.h"
+#include "sevdevice.h"
 
-IHomeConfigItem::IHomeConfigItem(QObject *parent) : QObject(parent),
+IHomeConfigItem::IHomeConfigItem(int axisInx, SevDevice *dev, QObject *parent) : QObject(parent),
+    m_axisInx(axisInx),
     m_homeConfig(0),
-    m_homeType(0)
+    m_homeType(0),
+    m_reverse(false),
+    m_dev(dev)
 {
     setObjectName(tr("IHomeConfig"));
 }
@@ -35,5 +39,15 @@ quint16 IHomeConfigItem::getHomeConfig()
 void IHomeConfigItem::setHomeConfig(quint16 config)
 {
     m_homeConfig = config;
+}
+
+bool IHomeConfigItem::getReverse()
+{
+    return m_reverse;
+}
+
+void IHomeConfigItem::setReverse(bool en)
+{
+    m_reverse = en;
 }
 

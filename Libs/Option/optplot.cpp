@@ -171,6 +171,7 @@ void OptPlot::onComboBoxColorChanged(int inx)
 {
   //根据inx改变颜色组
   //to be added
+    Q_UNUSED(inx);
   setModify(true);
   emit plotParametersChanged();
 }
