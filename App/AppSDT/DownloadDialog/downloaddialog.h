@@ -1,9 +1,10 @@
-#ifndef DOWNLOADDIALOG_H
+﻿#ifndef DOWNLOADDIALOG_H
 #define DOWNLOADDIALOG_H
 
 #include <QDialog>
 
 class SevDevice;
+class QCheckBox;
 
 namespace Ui {
 class DownloadDialog;
@@ -16,7 +17,7 @@ class DownloadDialog : public QDialog
 public:
     explicit DownloadDialog(QWidget *parent = 0);
     ~DownloadDialog();
-    void uiInit(const QList<SevDevice *> &devList, const QString &downloadPath, QString &filePath, int &index);
+    void uiInit(const QList<SevDevice *> &devList, const QString &downloadPath, QString &filePath, QList<int> &indexList);
 signals:
 
 private:
@@ -24,10 +25,14 @@ private:
 private slots:
     void onToolButtonClicked();
     void onOkButtonClicked();
+    void onAllBoxClicked(bool checked);
+    void onSingleBoxClicked(bool checked);
 private:
     QString* m_filePath;
     QString m_downloadPath;
-    int* m_index;
+    QList<int> *m_indexList;
+    QList<QCheckBox *> m_boxList;
+    int m_devNum;
 };
 
 #endif // DOWNLOADDIALOG_H

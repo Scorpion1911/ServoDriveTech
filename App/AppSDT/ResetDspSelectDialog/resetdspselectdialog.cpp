@@ -12,6 +12,7 @@ ResetDspSelectDialog::ResetDspSelectDialog(QList<SevDevice*> *dstSevList,const Q
 {
   ui->setupUi(this);
   SevDevice *sev = NULL;
+  QVBoxLayout *vBox = new QVBoxLayout;
   for(int i = 0;i<srcSevList.size();i++)
   {
     sev = srcSevList.at(i);
@@ -19,8 +20,10 @@ ResetDspSelectDialog::ResetDspSelectDialog(QList<SevDevice*> *dstSevList,const Q
     box->setText(tr("[%1]%2").arg(sev->aliasName()).arg(sev->modelName()));
     box->setChecked(false);
     m_boxList.append(box);
-    ui->verticalLayout_selectItem->insertWidget(i,box);
+    vBox->addWidget(box);
   }
+  vBox->setSpacing(2);
+  ui->scrollAreaWidgetContents->setLayout(vBox);
   m_boxList.at(0)->setChecked(true);
   ui->label_resetDspTitle->setText(tr("Select Device:\n"));
   setWindowTitle(tr("Dialog Reset DSP"));

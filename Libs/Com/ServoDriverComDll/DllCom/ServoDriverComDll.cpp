@@ -3197,4 +3197,3 @@ SERVODRIVERCOMDLL_API short GTSD_CMD_XmlReadFile(int16 axis, char* pFileNameList
 	return Unlock(RTN_PARAM_ERR);
 
 }
-

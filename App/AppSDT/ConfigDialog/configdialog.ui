@@ -153,13 +153,25 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_queryList">
-           <property name="text">
-            <string/>
+          <widget class="QTableWidget" name="table_queryList">
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustIgnored</enum>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-           </property>
+           <column>
+            <property name="text">
+             <string>Station</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>AxisNum</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>DSP</string>
+            </property>
+           </column>
           </widget>
          </item>
          <item>

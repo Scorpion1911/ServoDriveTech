@@ -42,6 +42,8 @@ private slots:
     void onActionDSPFlashBtnClicked();
     void onActionFPGAFlashBtnClicked();
     void onActionFLASHFlashBtnClicked();
+    void onAllBoxClicked(bool checked);
+    void onSingleBoxClicked(bool checked);
 
 private:
     Ui::AdvUserFirmwareSegmentFlash *ui;

@@ -24,18 +24,23 @@ public:
     void setFuncIndex(int index);
     void setBoxIndex(int index);
     void setCheckable(bool en);
+    void setControlSrcList(const QStringList &srcList);
+    void setControlSrc(int index);
 
     bool getReverseStatus();
     bool getIOStatus();
     int getFuncIndex();
     int getBoxIndex();
+    int getControlSrc();
 
 signals:
     void funcIndexChanged(int funcIndex, int preFuncIndex, int boxIndex);
     void reverseStatusChanged(bool checked, int boxIndex);
     void enStatusChanged(int index, bool en);
+    void controlSrcChanged(int index);
 private slots:
     void onBoxIndexChanged(int index);
+    void onControlSrcChanged(int index);
     void onReverseBoxChanged(bool checked);
     void onEnStatusChanged(bool en);
 private:

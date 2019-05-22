@@ -121,11 +121,11 @@ TabMotion::TabMotion(const QString &name, SevDevice *sev, QWidget *parent) :
     m_motionList.append(pMotion);
   }
 
-//  if (ver >= 136) {
-//      MotionPTSL *ptMotion = new MotionPTSL(ui->listWidget_plot_tab2_axis, m_sev, tr("PTSL"));
-//      connect(ptMotion, SIGNAL(progressValueChanged(quint16, int)), this, SLOT(onProgressValueChanged(quint16,int)));
-//      m_motionList.append(ptMotion);
-//  }
+  if (ver >= 139) {
+      MotionPTSL *ptMotion = new MotionPTSL(ui->listWidget_plot_tab2_axis, m_sev, tr("PTSL"));
+      connect(ptMotion, SIGNAL(progressValueChanged(quint16, int)), this, SLOT(onProgressValueChanged(quint16,int)));
+      m_motionList.append(ptMotion);
+  }
 
   for(int i=0;i<m_motionList.size();i++)
   {
@@ -422,7 +422,7 @@ void TabMotion::onBtnMotionGoClicked(bool checked)
         GTUtils::delayms(plot->delayTime());
         qDebug()<<"begin to move";
 
-    //    m_barWidget->setVisible(true);
+//        m_barWidget->setVisible(true);
 
 
 
@@ -449,8 +449,8 @@ void TabMotion::onBtnMotionGoClicked(bool checked)
         if (ui->listWidget_plot_motion_type_inx->currentRow() >= 2) {
             onMotionAllDone();
         }
-        //m_barWidget->setVisible(false);
-        //m_barWidget->hideAllBar();
+//        m_barWidget->setVisible(false);
+//        m_barWidget->hideAllBar();
       }
 }
 

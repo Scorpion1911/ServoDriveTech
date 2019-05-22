@@ -54,7 +54,7 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Version (Format Example: F86032018040600000000):</string>
+         <string>Version (Format Example: F860300000000):</string>
         </property>
        </widget>
       </item>

@@ -1127,6 +1127,7 @@ void PlotUnitGraph129::onExpertTreeWidgetDoubleClicked(QTableWidget *table,QTree
     curve->reset();
     curve->setAxisInx(axisInx);
     curve->setDevInx(d->m_curSevInx);
+    curve->setStationId(d->m_sevList.at(d->m_curSevInx)->stationId());
     curve->setName(name);
     curve->setNote("");
     curve->setColor(d->m_curveManager->color(curveTotalSize));
@@ -1852,6 +1853,7 @@ void PlotUnitGraph129::checkCurveValid()
       if(c->axisCount() == dev->axisNum())
       {
         c->setDevInx(dev->devId());
+        c->setStationId(dev->stationId());
         clist.append(c);
       }
     }
@@ -1915,6 +1917,7 @@ void PlotUnitGraph129::checkCurveValid()
       ICurve *c = clistOrigin.at(i);
       c->setAxisCount(dev->axisNum());
       c->setDevInx(dev->devId());
+      c->setStationId(dev->stationId());
       if(c->axisInx() >dev->axisNum()-1)
         c->setAxisInx(0);
       qDebug()<<"change curve "<<c->fullName()<< "to dev = "<<dev->aliasName();

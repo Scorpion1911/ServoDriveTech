@@ -23,6 +23,8 @@ SingleIOWidget::SingleIOWidget(QWidget *parent) :
     connect(ui->btn_status, SIGNAL(clicked(bool)), this, SLOT(onEnStatusChanged(bool)));
     m_preFuncIndex = 0;
     m_curFunIndex = 0;
+    ui->label->setVisible(false);
+    ui->comboBox_controlSrc->setVisible(false);
 }
 
 SingleIOWidget::~SingleIOWidget()
@@ -85,6 +87,21 @@ void SingleIOWidget::setCheckable(bool en)
     ui->btn_status->setEnabled(en);
 }
 
+void SingleIOWidget::setControlSrcList(const QStringList &srcList)
+{
+    ui->comboBox_controlSrc->addItems(srcList);
+    connect(ui->comboBox_controlSrc, SIGNAL(currentIndexChanged(int)), this, SLOT(onControlSrcChanged(int)));
+}
+
+void SingleIOWidget::setControlSrc(int index)
+{
+    if (index >= ui->comboBox_controlSrc->count()) {
+        index = 0;
+    }
+    ui->comboBox_controlSrc->setCurrentIndex(index);
+    ui->comboBox_controlSrc->setStyleSheet("");
+}
+
 bool SingleIOWidget::getReverseStatus()
 {
     ui->checkBox_reverse->setStyleSheet("");
@@ -106,12 +123,23 @@ int SingleIOWidget::getBoxIndex()
     return m_index;
 }
 
+int SingleIOWidget::getControlSrc()
+{
+    return ui->comboBox_controlSrc->currentIndex();
+}
+
 void SingleIOWidget::onBoxIndexChanged(int index)
 {
     ui->comboBox_funcList->setStyleSheet("QComboBox { background-color: yellow; }");
     m_preFuncIndex = m_curFunIndex;
     m_curFunIndex = index;
     emit funcIndexChanged(index, m_preFuncIndex, m_index);
+}
+
+void SingleIOWidget::onControlSrcChanged(int index)
+{
+    ui->comboBox_controlSrc->setStyleSheet("QComboBox { background-color: yellow; }");
+    emit controlSrcChanged(index);
 }
 
 void SingleIOWidget::onReverseBoxChanged(bool checked)

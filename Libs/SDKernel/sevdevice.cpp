@@ -25,6 +25,7 @@
 
 #define CMD_PRO_ALM_FLAG "gSevDrv.sev_obj.cur.pro.alm_flag"
 #define FILENAME_PRM_PTY_TREE "PrmPrtyTree.xml"
+#define FILENAME_PRM_MASK_TREE "PrmMaskList.xml"
 #define CMD_SRC_SEL_NAME "gSevDrv.sev_obj.pos.seq.prm.cmd_src_sel"
 
 #define PRM_FIRMWARE_UPDATE_FILE_NAME         "PrmFirmwareUpdate.xml"
@@ -173,9 +174,19 @@ bool SevDevicePrivate::init(const DeviceConfig *dConfig)
   m_socket=new LinkSocket(this,0);
   m_verAttribute=new VerAttribute(0);
 
+  QTreeWidget *maskTree = QtTreeManager::createTreeWidgetFromXmlFile(m_filePath + FILENAME_PRM_MASK_TREE);
+  if (maskTree != NULL) {
+      for (int i = 0; i < maskTree->topLevelItemCount(); i++) {
+          m_paraBanList.append(maskTree->topLevelItem(i)->text(0));
+      }
+  }
+  delete maskTree;
+
   QByteArray byte;
   byte.append(65+m_devConfig->m_devId);
-  m_aliasName=QString::fromLatin1(byte);
+
+  //m_aliasName=QString::fromLatin1(byte);
+  m_aliasName = QString::number(m_devConfig->m_rnStationId);
 
   for(int i = 0;i<m_devConfig->m_axisNum;i++)
   {
@@ -505,16 +516,18 @@ bool SevDevice::readOfflineAdvItem(quint16 axisInx, QTreeWidgetItem *item)
 bool SevDevice::writeOfflineAdvItem(quint16 axisInx, QTreeWidgetItem *item)
 {
     Q_D(SevDevice);
-    QTreeWidgetItem *treeItem = d->m_offlineTree->topLevelItem(axisInx);
-    QString str = item->text(GT::COL_FLASH_ALLAXIS_NAME);
-    QTreeWidgetItem* offItem = GTUtils::findItemInItem(str, treeItem, GT::COL_FLASH_ALLAXIS_NAME);
-    if (offItem == NULL) {
-        return false;
+    if (!d->m_paraBanList.contains(item->text(COL_FLASH_ALLAXIS_NAME))) {
+        QTreeWidgetItem *treeItem = d->m_offlineTree->topLevelItem(axisInx);
+        QString str = item->text(GT::COL_FLASH_ALLAXIS_NAME);
+        QTreeWidgetItem* offItem = GTUtils::findItemInItem(str, treeItem, GT::COL_FLASH_ALLAXIS_NAME);
+        if (offItem == NULL) {
+            return false;
+        }
+        QString srcValueStr = item->text(GT::COL_FLASH_ALLAXIS_VALUE);
+        int value = (int)(srcValueStr.toDouble() + 0.5);
+        QString desValueStr = QString::number(value);
+        offItem->setText(GT::COL_FLASH_ALLAXIS_VALUE, desValueStr);
     }
-    QString srcValueStr = item->text(GT::COL_FLASH_ALLAXIS_VALUE);
-    int value = (int)(srcValueStr.toDouble() + 0.5);
-    QString desValueStr = QString::number(value);
-    offItem->setText(GT::COL_FLASH_ALLAXIS_VALUE, desValueStr);
     return true;
 }
 
@@ -560,7 +573,10 @@ bool SevDevice::readPageItemFlash(quint16 axisInx, QTreeWidgetItem *item)
 bool SevDevice::writePrmItemFlash(quint16 axisInx, QTreeWidgetItem *item)
 {
   Q_D(SevDevice);
-  return d->m_socket->writePrmItemFlash(axisInx,item);
+    if (!d->m_paraBanList.contains(item->text(COL_FLASH_ALLAXIS_NAME))) {
+        return d->m_socket->writePrmItemFlash(axisInx,item);
+    }
+    return true;
 }
 
 bool SevDevice::readPrmItemFlash(quint16 axisInx, QTreeWidgetItem *item)
@@ -669,9 +685,9 @@ void SevDevice::resetDevId(quint32 id)
 {
   Q_D(SevDevice);
   d->m_devConfig->m_devId=id;
-  QByteArray byte;
-  byte.append(65+d->m_devConfig->m_devId);
-  d->m_aliasName=QString::fromLatin1(byte);
+//  QByteArray byte;
+//  byte.append(65+d->m_devConfig->m_devId);
+//  d->m_aliasName=QString::fromLatin1(byte);
 }
 quint32 SevDevice::pwrId() const
 {
@@ -691,8 +707,15 @@ QString SevDevice::fpgaId() const
 quint8 SevDevice::axisNum() const
 {
   Q_D(const SevDevice);
-  return d->m_devConfig->m_axisNum;
+    return d->m_devConfig->m_axisNum;
 }
+
+quint8 SevDevice::stationId() const
+{
+    Q_D(const SevDevice);
+      return d->m_devConfig->m_rnStationId;
+}
+
 DeviceConfig *SevDevice::deviceConfig() const
 {
   Q_D(const SevDevice);

@@ -393,7 +393,6 @@ errcode_t PcDebug::downLoadDSPFLASH(uint8_t dspInx, const wstring &fileName, voi
 errcode_t PcDebug::downLoadFPGAFLASH(uint8_t fpgaInx, const wstring &fileName, void (*processCallBack)(void *, short *), void *parameters)
 {
     Q_D(PcDebug);
-    UN_USED(fpgaInx);
 
     wstring file=fileName;
     const wchar_t* wp = file.c_str();

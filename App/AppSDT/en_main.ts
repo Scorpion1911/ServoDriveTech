@@ -187,22 +187,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="168"/>
+        <location filename="ConfigDialog/configdialog.ui" line="162"/>
+        <source>Station</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog/configdialog.ui" line="167"/>
+        <source>AxisNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog/configdialog.ui" line="172"/>
+        <source>DSP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog/configdialog.ui" line="180"/>
         <source>query</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="178"/>
+        <location filename="ConfigDialog/configdialog.ui" line="190"/>
         <source>add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="191"/>
+        <location filename="ConfigDialog/configdialog.ui" line="203"/>
         <source>current select:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="213"/>
+        <location filename="ConfigDialog/configdialog.ui" line="225"/>
         <source>remove</source>
         <translation type="unfinished"></translation>
     </message>
@@ -217,28 +232,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="191"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="192"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="191"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="192"/>
         <source>Unable to open com.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="206"/>
-        <source>Station Index: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="207"/>
-        <source>Axis Number: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="208"/>
-        <source>DSP Version: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1214,12 +1214,12 @@ exception cause maybe:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1047"/>
+        <location filename="sdtmainwindow.cpp" line="1046"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1049"/>
+        <location filename="sdtmainwindow.cpp" line="1048"/>
         <source>Version:%1
 
 get more help from:
@@ -1227,109 +1227,109 @@ http://www.googoltech.com</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="sdtmainwindow.cpp" line="1141"/>
         <location filename="sdtmainwindow.cpp" line="1142"/>
-        <location filename="sdtmainwindow.cpp" line="1143"/>
         <source>Download xml file OK! Please reset DSP!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1143"/>
+        <location filename="sdtmainwindow.cpp" line="1142"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="sdtmainwindow.cpp" line="783"/>
         <location filename="sdtmainwindow.cpp" line="916"/>
-        <location filename="sdtmainwindow.cpp" line="1103"/>
-        <location filename="sdtmainwindow.cpp" line="1156"/>
-        <location filename="sdtmainwindow.cpp" line="1317"/>
-        <location filename="sdtmainwindow.cpp" line="1334"/>
-        <location filename="sdtmainwindow.cpp" line="1580"/>
+        <location filename="sdtmainwindow.cpp" line="1102"/>
+        <location filename="sdtmainwindow.cpp" line="1155"/>
+        <location filename="sdtmainwindow.cpp" line="1316"/>
+        <location filename="sdtmainwindow.cpp" line="1333"/>
+        <location filename="sdtmainwindow.cpp" line="1579"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1084"/>
+        <location filename="sdtmainwindow.cpp" line="1083"/>
         <source>Save success! Please reset DSP!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1103"/>
-        <location filename="sdtmainwindow.cpp" line="1156"/>
+        <location filename="sdtmainwindow.cpp" line="1102"/>
+        <location filename="sdtmainwindow.cpp" line="1155"/>
         <source>Please open com first!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1111"/>
-        <location filename="sdtmainwindow.cpp" line="1171"/>
+        <location filename="sdtmainwindow.cpp" line="1110"/>
+        <location filename="sdtmainwindow.cpp" line="1170"/>
         <source>Open XML File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1111"/>
-        <location filename="sdtmainwindow.cpp" line="1171"/>
+        <location filename="sdtmainwindow.cpp" line="1110"/>
+        <location filename="sdtmainwindow.cpp" line="1170"/>
         <source>XML Files(*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1147"/>
+        <location filename="sdtmainwindow.cpp" line="1146"/>
         <source>Error: Download xml file fails !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1201"/>
+        <location filename="sdtmainwindow.cpp" line="1200"/>
         <source>Upload xml file OK !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1205"/>
+        <location filename="sdtmainwindow.cpp" line="1204"/>
         <source>Error: Upload xml file fails !</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1317"/>
-        <location filename="sdtmainwindow.cpp" line="1334"/>
+        <location filename="sdtmainwindow.cpp" line="1316"/>
+        <location filename="sdtmainwindow.cpp" line="1333"/>
         <source>Please connect the device!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1323"/>
-        <location filename="sdtmainwindow.cpp" line="1325"/>
-        <location filename="sdtmainwindow.cpp" line="1345"/>
-        <location filename="sdtmainwindow.cpp" line="1347"/>
+        <location filename="sdtmainwindow.cpp" line="1322"/>
+        <location filename="sdtmainwindow.cpp" line="1324"/>
+        <location filename="sdtmainwindow.cpp" line="1344"/>
+        <location filename="sdtmainwindow.cpp" line="1346"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1323"/>
-        <location filename="sdtmainwindow.cpp" line="1345"/>
+        <location filename="sdtmainwindow.cpp" line="1322"/>
+        <location filename="sdtmainwindow.cpp" line="1344"/>
         <source>Copy finish! Please restart the device!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1325"/>
-        <location filename="sdtmainwindow.cpp" line="1347"/>
+        <location filename="sdtmainwindow.cpp" line="1324"/>
+        <location filename="sdtmainwindow.cpp" line="1346"/>
         <source>Copy finish!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1368"/>
+        <location filename="sdtmainwindow.cpp" line="1367"/>
         <source>dev:%1,axis:%2,page:%3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1425"/>
+        <location filename="sdtmainwindow.cpp" line="1424"/>
         <source>Device:%1 NetError!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1440"/>
+        <location filename="sdtmainwindow.cpp" line="1439"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="sdtmainwindow.cpp" line="1445"/>
         <location filename="sdtmainwindow.cpp" line="1446"/>
-        <location filename="sdtmainwindow.cpp" line="1447"/>
         <source>search phase complete !</source>
         <oldsource>search phase complete</oldsource>
         <translation type="unfinished"></translation>

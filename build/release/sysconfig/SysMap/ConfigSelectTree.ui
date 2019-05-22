@@ -293,7 +293,7 @@
          <string>1</string>
         </property>
         <property name="text">
-         <string>21000670</string>
+         <string>31000025</string>
         </property>
         <item>
          <property name="text">
@@ -304,6 +304,56 @@
          </property>
          <property name="text">
           <string>0</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>HD11_6A</string>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+        <property name="text">
+         <string>31000028</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>V141</string>
+         </property>
+         <property name="text">
+          <string>NULL</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>HD11_13A</string>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+        <property name="text">
+         <string>31000029</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>V141</string>
+         </property>
+         <property name="text">
+          <string>NULL</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </item>
        </item>

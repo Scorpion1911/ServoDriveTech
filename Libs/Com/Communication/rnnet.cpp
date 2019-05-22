@@ -225,7 +225,6 @@ errcode_t RnNet::downLoadDSPFLASH(uint8_t dspInx, const wstring &fileName, void 
 errcode_t RnNet::downLoadFPGAFLASH(uint8_t fpgaInx, const wstring &fileName, void (*processCallBack)(void *, short *), void *parameters)
 {
     Q_D(RnNet);
-    UN_USED(fpgaInx);
     wstring file=fileName;
     const wchar_t* wp = file.c_str();
     char* m_char = NULL;
@@ -233,8 +232,9 @@ errcode_t RnNet::downLoadFPGAFLASH(uint8_t fpgaInx, const wstring &fileName, voi
     m_char = new char[len + 1];
     WideCharToMultiByte(CP_ACP, 0, wp, wcslen(wp), m_char, len, NULL, NULL);
     m_char[len] ='\0';
-    int16_t ret = RN_FpgaUpate(m_char, processCallBack, parameters, d->m_rnStation);
-    //int16_t ret=GTSD_CMD_FirmwareFlashHandler(fpgaInx,file,processCallBack,parameters,d->m_comType,d->m_rnStation);
+//    int16_t rnStation = GTSD_CMD_CONVERT_AXIS(fpgaInx);
+//    int16_t ret = RN_FpgaUpate(m_char, processCallBack, parameters, rnStation);
+    int16_t ret=GTSD_CMD_FirmwareFlashHandler(fpgaInx,file,processCallBack,parameters,d->m_comType,d->m_rnStation);
     return ret;
 }
 

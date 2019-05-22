@@ -115,6 +115,78 @@ int16 CFirmwareDL::CheckRemoteUpdataState(int16 com_type, int16 stationId,int32 
 	}
 	return iRet;
 }
+//设置使能位
+int16 CFirmwareDL::SetRemoteUpdataEnableBit(int16 com_type, int16 stationId)
+{
+	int16 data = 2; //bit1置1
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr	= REMOTE_FPGA_CTL;
+		base_addr	= FPGA_DSPA_BASEADDR;
+		comAddr		= base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr	= RN_REMOTE_FPGA_CTL;
+		base_addr	= FPGA_RN_RMT_START_OFST;
+		comAddr		= base_addr + (com_addr);
+	}
+
+	int16 Data = data;
+	int16 comNum = 1;
+	int16 rtn = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, &Data, comNum, stationId);
+	return rtn;
+
+}
+int16 CFirmwareDL::GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType, uint32& flash_ofst_addr)
+{
+	//读FPGA类型
+	int16 iRet;
+	int16 com_addr;
+	int16 base_addr;
+	int16 data;
+	int16 comAddr;
+	int16 comNum = 1;
+
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		FPGAType = FPGA_ALTERA;
+		flash_ofst_addr = 0;
+		return RTN_SUCCESS;
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		comAddr = FPGA_RN_COMM_FUNC_CODE;
+		iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_READ, comAddr, &data, comNum, stationId);
+		if (iRet != 0)
+		{
+			return iRet;
+		}
+		FPGAType = data >> 8;
+	}
+	if (FPGAType == FPGA_XILINX)
+	{
+		com_addr = RN_REMOTE_FPGA_FILE_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+		iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_READ, comAddr, &data, comNum, stationId);
+		if (iRet != 0)
+		{
+			return iRet;
+		}
+		flash_ofst_addr = data << 8;
+	}
+	else
+	{
+		flash_ofst_addr = 0;
+	}
+	return iRet;
+}
 int16 CFirmwareDL::SetRemoteUpdataReadRequest(int16 com_type,Uint32 flash_addr, Uint16 iLength, int16 stationId)
 {
 	//首先写入读命令
@@ -305,7 +377,7 @@ int16 CFirmwareDL::EraseData(int16 com_type, void(*tpfUpdataProgressPt)(void*, i
 		return iRet;
 	}
 
-  int32 num = 1000000;
+  int32 num = 100;//0000;
   //!progress高16位置1，用来给界面提示当前正处于擦除状态
   int16 highSet;
   highSet = (int16)(1 << 15);
@@ -314,6 +386,7 @@ int16 CFirmwareDL::EraseData(int16 com_type, void(*tpfUpdataProgressPt)(void*, i
     iRet = CheckRemoteUpdataState(com_type, stationId, 100);
     if (iRet == 0)
       break;
+	Sleep(1);
     if (i % 10 == 0)
     {
       progress++;
@@ -332,10 +405,146 @@ int16 CFirmwareDL::EraseData(int16 com_type, void(*tpfUpdataProgressPt)(void*, i
 	}
 	return iRet;
 }
+int16 CFirmwareDL::GetFPGAByteNum(string pFileName, uint32& byte_num)
+{
+	fstream file;
+	file.open(pFileName.c_str(), ios::in | ios::out | ios::binary);
+	if (!file.is_open())
+	{
+		//		ProtectOn(com_type, stationId);
+		return RTN_FILE_CREATE_FAIL; //文件打开错误
+	}
+	unsigned char pBuffer[SECTOR_SIZE];
+	file.seekg(0, file.end);
+	uint32 file_size = (uint32)file.tellg();
+	int file_sector_num = (int)((file_size + SECTOR_SIZE - 1) / SECTOR_SIZE);
+	uint32 unuseful_byte_num = 0;
+
+	int read_num = file_size % SECTOR_SIZE;
+	if (read_num == 0)
+	{
+		read_num = SECTOR_SIZE;
+	}
+	bool find_end = false;
+	for (int i = file_sector_num-1; i >= 0; i--)
+	{
+		file.seekg(i*SECTOR_SIZE, file.beg);
+		file.read((char*)pBuffer, read_num);
+		for (int j = read_num - 1; j >= 0; j--)
+		{
+			if (pBuffer[j] == 0xFF)
+			{
+				unuseful_byte_num++;
+				continue;
+			}
+			else
+			{
+				byte_num = file_size - unuseful_byte_num;
+				file.close();
+				return RTN_SUCCESS;
+			}
+		}
+		read_num = SECTOR_SIZE;
+	}
+	file.close();
+	byte_num = 0;//
+	return RTN_IMPOSSIBLE_ERR;
+}
+
+int16 CFirmwareDL::EraseFPGAData(int16 com_type, uint32 byte_num, uint32 offset_addr, void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv, int16& progress, int16 stationId)
+{
+	void* ptr = ptrv;
+	progress = 10;
+	if (tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptr, &progress);
+	int sector_num = (byte_num + SECTOR_SIZE - 1) / SECTOR_SIZE;
+	for (int i = 0; i < sector_num;i++)
+	{
+		short rtn = EraseSectorData(com_type, offset_addr + SECTOR_SIZE*i, tpfUpdataProgressPt, ptrv, progress, stationId);
+		if (rtn)
+		{
+			rtn = EraseSectorData(com_type, offset_addr + SECTOR_SIZE*i, tpfUpdataProgressPt, ptrv, progress, stationId);
+			if (rtn)
+			{
+				return rtn;
+			}
+		}
+	}
+	return RTN_SUCCESS;
+}
+
+int16 CFirmwareDL::EraseSectorData(int16 com_type, uint32 byte_address, void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv, int16& progress, int16 stationId)
+{
+
+	int16 iRet;
+	Uint8 data[20] = { 0 };
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
+
+	int16 comNum = 3;
+	data[0] = CMD_SECTOR_ERASE;					//命令
+	data[1] = byte_address & 0xFF;
+	data[2] = (byte_address>>8) & 0xFF;
+	data[3] = (byte_address>>16) & 0xFF;
+	data[4] = 1;							//lenth写1
+	
+	iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, (int16*)(data), comNum, stationId);
+	if (iRet != 0)
+	{
+		return iRet;
+	}
+
+	iRet = SetRemoteUpdataStartbit(com_type, stationId);
+	if (iRet != 0)
+	{
+		return iRet;
+	}
+
+	int32 num = 100;// 0000;
+	//!progress高16位置1，用来给界面提示当前正处于擦除状态
+	int16 highSet;
+	highSet = (int16)(1 << 15);
+	for (int32 i = 0; i < num; i++)
+	{
+		iRet = CheckRemoteUpdataState(com_type, stationId, 100);
+		if (iRet == 0)
+			break;
+		Sleep(1);
+		if (i % 10 == 0)
+		{
+			progress++;
+			progress |= highSet;
+			if ((progress&(~highSet))>100)
+				progress = highSet;
+			//      std::cout << "erase num=" << i << "  progress=" << progress << "   progress&(~highSet)=" << (progress&(~highSet))<<std::endl;
+			if (tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptrv, &progress);
+		}
+	}
+
+	//iRet = CheckRemoteUpdataState(com_type, stationId,100000000);
+	if (iRet != 0)
+	{
+		return iRet;
+	}
+	return iRet;
+}
 int16 CFirmwareDL::GetFpgaFlashData(int16 com_type,Uint32 flash_addr, int16 *Getbuf, Uint16 iLength, int16 stationId)
 {
 	int16 iRet;
-	if (iLength > 120)
+	if (iLength > MAX_OP_WORD_NUM || (flash_addr & 0x0) == 0x1)
 	{
 		return RTN_PARAM_OVERFLOW;
 	}
@@ -385,7 +594,7 @@ int16 CFirmwareDL::SendFpgaFlashData(int16 com_type,Uint32 flash_addr, int16 *Se
 {
 	int16 iRet;
 	Uint8 data[300]		= {0};
-	if (iLength > 120)
+	if (iLength > MAX_OP_WORD_NUM || (flash_addr&0x0) == 0x1)
 	{
 		return RTN_PARAM_OVERFLOW;
 	}
@@ -493,20 +702,41 @@ int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*
 {
     void* ptr = ptrv;
 	int iRet; 
+	int16 FPGAType;
+	iRet = GetFPGAInfo(com_type, stationId, FPGAType,m_addr_ofst);
+ 	if (iRet != 0)
+	{
+		return iRet;
+	}
+	//获取文件扩展名
+	string ext;
+	ext = pFileName.substr(pFileName.find_last_of('.'));
+	if (ext == ".rpd" || ext == ".RPD")
+	{
+		if (FPGAType != FPGA_ALTERA)
+			return RTN_FILE_FORMAT_ERR;
+	}	
+	else if (ext == ".bin" || ext == ".BIN")
+	{
+		if (FPGAType != FPGA_XILINX)
+			return RTN_FILE_FORMAT_ERR;
+	}
+	else
+	{
+		return RTN_FILE_FORMAT_ERR;
+	}
+		
+	iRet = SetRemoteUpdataEnableBit(com_type, stationId);//使能升级
+	if (iRet != 0)
+	{
+		return iRet;
+	}
 	iRet = ProtectOff(com_type, stationId);//关闭写保护
-	if (iRet != 0)
+  	if (iRet != 0)
 	{
 		return iRet;
 	}
-
-  iRet = EraseData(com_type, tpfUpdataProgressPt,ptr,progress, stationId); //清除fpga flash
-	if (iRet != 0)
-	{
-//		ProtectOn(com_type, stationId);
-		return iRet;
-	}
-
-// 	//  [8/2/2017 googol]
+	//////////////////////////////////////////////////////////////////////////
 // 	{
 // 		int16 tx_buffer[1000] = {0};
 // 		int16 rx_buffer[1000] = {0};
@@ -522,73 +752,98 @@ int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*
 // 		}
 // 	}
 
-	//  [8/2/2017 googol]
-	//百分比进度
-    progress = 10;
-	if (tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptr, &progress);
-
-	//打开文件
-	fstream file;
-	file.open(pFileName.c_str(), ios::in | ios::out | ios::binary);
-	if (!file)
+	//////////////////////////////////////////////////////////////////////////
+//	int32 byte_num = 0;
+	iRet = GetFPGAByteNum(pFileName, m_byte_write);
+	if (iRet)
 	{
-//		ProtectOn(com_type, stationId);
-		return RTN_FILE_CREATE_FAIL; //文件打开错误
+		return iRet;
+	}
+	iRet = EraseFPGAData(com_type, m_byte_write, m_addr_ofst, tpfUpdataProgressPt, ptr, progress, stationId);
+	if (iRet)
+	{
+		return iRet;
 	}
 
-	//首先将数据读出来
-	int16 buffer[BUF_LEN]		= {0};
-	int16 real_read_lenth		= 0;
-	int16 finish_flag			= 0;//是否读取完成标志
-	Uint32 flash_addr			= 0;
-	Uint32 sum_byte_lenth		= 0;
-    Uint32 index                = 0;
-    Uint32 times                = 0;//需要读取的次数
-	Uint32 times_bk				= 0; 
-    while(!finish_flag)
-    {
-        //读取BUF_LEN个数据，返回真正读取的数据，该条件的前提是后面的ffff足够多
-        file.read((int8*)&buffer,sizeof(Uint16)*BUF_LEN);
+// 	iRet = EraseData(tpfUpdataProgressPt, ptr, progress); //清除fpga flash
+// 	if (iRet != 0)
+// 	{
+// 		//		ProtectOn(com_type, stationId);
+// 		return iRet;
+// 	}
+	//  [8/2/2017 googol]
+	//百分比进度
+//  progress = 10;
+//	if (tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptr, &progress);
 
-        sum_byte_lenth += 2 * BUF_LEN;
+//	//打开文件
+//	fstream file;
+//	file.open(pFileName.c_str(), ios::in | ios::out | ios::binary);
+//	if (!file)
+//	{
+//		ProtectOn(com_type, stationId);
+//		return RTN_FILE_CREATE_FAIL; //文件打开错误
+//	}
 
-        //判断其中的数据是否有连续的FF_LEN个0xffff
-        int32 number = CheckFFNumber(buffer, BUF_LEN);
-
-        //如果全是0xff那么就说明已经读取到最后的无用区域了
-        if(number == BUF_LEN)
-        {
-            finish_flag = 1;
-            m_byte_write = sum_byte_lenth;
-        }
-        else
-        {
-            finish_flag = 0;
-        }
-		index++;
-		if (index > 1400)
-		{
-			//百分比
-      if (index % 20 == 0)
-      {
-			progress = 13;
-			if(tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptr, &progress);
-      }
-		}
-    }
-	index		= 0;
-    //get the times
-    times		= m_byte_write/(2 * BUF_LEN);
-	times_bk	= times;
-	file.close();
+//	//首先将数据读出来
+//	int16 buffer[BUF_LEN]		= {0};
+//	int16 real_read_lenth		= 0;
+//	int16 finish_flag			= 0;//是否读取完成标志
+//	Uint32 flash_addr			= 0;
+//	Uint32 sum_byte_lenth		= 0;
+//    Uint32 index                = 0;
+//  Uint32 times                = 0;//需要读取的次数
+//	Uint32 times_bk				= 0; 
+//  while(!finish_flag)
+//  {
+//        //读取BUF_LEN个数据，返回真正读取的数据，该条件的前提是后面的ffff足够多
+//        file.read((int8*)&buffer,sizeof(Uint16)*BUF_LEN);
+//
+//        sum_byte_lenth += 2 * BUF_LEN;
+//
+//        //判断其中的数据是否有连续的FF_LEN个0xffff
+//        int32 number = CheckFFNumber(buffer, BUF_LEN);
+//
+//        //如果全是0xff那么就说明已经读取到最后的无用区域了
+//        if(number == BUF_LEN)
+//        {
+//            finish_flag = 1;
+//            m_byte_write = sum_byte_lenth;
+//        }
+//        else
+//        {
+//            finish_flag = 0;
+//        }
+//		index++;
+//		if (index > 1400)
+//		{
+//			//百分比
+//      if (index % 20 == 0)
+//      {
+//			progress = 13;
+//			if(tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptr, &progress);
+//      }
+//		}
+//    }
+//	index		= 0;
+//    //get the times
+//    times		= m_byte_write/(2 * BUF_LEN);
+//	times_bk	= times;
+//	file.close();
 
 	//百分比
     progress = 15;
 	if (tpfUpdataProgressPt)(*tpfUpdataProgressPt)(ptr, &progress);
 
+	int16 buffer[BUF_LEN] = { 0 };
+	Uint32 flash_addr = m_addr_ofst;
+	Uint32 index = 0;
+	Uint32 times = m_byte_write / (2 * BUF_LEN) + 1;//需要读取的次数
+	Uint32 times_bk = times;
 	//打开文件
+	fstream file;
 	file.open(pFileName.c_str(), ios::in | ios::out | ios::binary);
-	if (file.is_open() == NULL)
+	if (!file.is_open())
 	{
 //		ProtectOn(com_type, stationId);
 		return 4; //文件打开错误
@@ -642,14 +897,14 @@ int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*
 	////读数数据进行校验
 	//打开文件
 	file.open(pFileName.c_str(), ios::in | ios::out | ios::binary);
-	if (file.is_open() == NULL)
+	if (!file.is_open())
 	{
 		//		ProtectOn(com_type, stationId);
 		return RTN_FILE_CREATE_FAIL; //文件打开错误
 	}
 
 	times = times_bk;
-	flash_addr = 0;
+	flash_addr = m_addr_ofst;
 	index = 0;
 	while (times != 0)
 	{

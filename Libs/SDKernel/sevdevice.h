@@ -96,6 +96,8 @@ public:
   quint32 ctrId() const;
   QString fpgaId() const ;
   quint8 axisNum() const;
+  quint8 stationId() const;
+
   DeviceConfig *deviceConfig() const;
   QTreeWidgetItem* targetTree() const;
   QTreeWidget *axisTreeSource(int axis,int page) const;

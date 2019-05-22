@@ -24,7 +24,7 @@
     <message>
         <location filename="graphposition133.cpp" line="117"/>
         <source>PID Controller</source>
-        <translation>PID控制器</translation>
+        <translation>线性控制器</translation>
     </message>
     <message>
         <location filename="graphposition133.cpp" line="117"/>
@@ -364,7 +364,7 @@ you need to stop autoturning and try again!</source>
     <message>
         <location filename="pospid133.ui" line="26"/>
         <source>PID Controller</source>
-        <translation>PID控制器</translation>
+        <translation>控制器</translation>
     </message>
     <message>
         <location filename="pospid133.ui" line="52"/>

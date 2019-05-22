@@ -48,7 +48,7 @@ EpromManager::EpromManager(QWidget *parent) :
     ui->list->item(1)->setIcon(QIcon(GTUtils::iconPath() + "menu_restoresetting.png"));
     ui->list->item(2)->setIcon(QIcon(GTUtils::iconPath() + "Power.png"));
     ui->list->item(3)->setIcon(QIcon(GTUtils::iconPath() + "Control.png"));
-    connect(ui->list, SIGNAL(currentRowChanged(int)), ui->stack, SLOT(setCurrentIndex(int)));
+    connect(ui->list, SIGNAL(currentRowChanged(int)), this, SLOT(onCurrentIndexChanged(int)));
     setComConnectStatus(false);
 
     ui->hexLine->setReadOnly(true);
@@ -186,7 +186,7 @@ void EpromManager::showSelectTree() {
 /**************************************************************/
 
 /********************** write *************************/
-void EpromManager::onWriteClicked() {
+void EpromManager:: onWriteClicked() {
     //QString typeText = ui->typeLabel->text();
     QString code = ui->lineEdit->text();
     if (code == "") {
@@ -270,6 +270,8 @@ void EpromManager::treeItemClicked(QTreeWidgetItem* item, int column) {
         m_controlID = controlItem->text(IDMAP_ID);
         if (!m_tcpSuccess) {
             m_dspNum = item->text(column + 1).toInt();
+            m_axisNum = item->text(column + 2).toInt();
+            m_fpgaNum = item->text(column + 3).toInt();
         }
         QTreeWidgetItem *powerIndexItem = GLO::findItem(m_powerID, m_powerIndex, TREE_VALUE);
         QTreeWidgetItem *controlIndexItem = GLO::findItem(m_controlID, m_controlIndex, TREE_VALUE);
@@ -415,10 +417,10 @@ void EpromManager::onActionDisConnectClicked() {
         ui->writeButton_2->setEnabled(false);
         ui->readButton_2->setEnabled(false);
         ui->compareButton_2->setEnabled(false);
-        ui->flashButton->setEnabled(false);
+        //ui->flashButton->setEnabled(false);
         ui->warnLabel->clear();
-        ui->hexLine->clear();
-        ui->xmlLine->clear();
+        //ui->hexLine->clear();
+        //ui->xmlLine->clear();
         ui->treeWidget->clear();
         ui->treeWidget_2->clear();
         ui->lineEdit->clear();
@@ -504,7 +506,7 @@ void EpromManager::onActionFlashClicked() {
         ui->progressBar->setVisible(true);
         ui->warnLabel->setEnabled(true);
         ui->progressBar->setValue(2);
-        flashManager->flash(getComType(), m_hexPath, m_xmlPath, m_dspNum, ui->checkBox_Hex->isChecked(), ui->checkBox_Rpd->isChecked(), ui->checkBox_Xml->isChecked(), ui->progressBar);
+        flashManager->flash(getComType(), m_hexPath, m_xmlPath, m_dspNum, m_axisNum, m_fpgaNum, ui->checkBox_Hex->isChecked(), ui->checkBox_Rpd->isChecked(), ui->checkBox_Xml->isChecked(), ui->progressBar);
         ui->progressBar->setVisible(false);
         delete flashManager;
     } else {
@@ -605,6 +607,18 @@ void EpromManager::onTimerOut()
     int16 err = GTSD_CMD_Get16bitFPGAByAddr(0, 0, &pValue, getComType(), 0xf0);
     if (err != 0) {
         onActionDisConnectClicked();
+    }
+}
+
+void EpromManager::onCurrentIndexChanged(int index)
+{
+    ui->stack->setCurrentIndex(index);
+    if (index == 2) {
+        ui->lineEdit_ctr_scan->clearFocus();
+        ui->lineEdit_pwr_scan->setFocus();
+    } else if (index == 3) {
+        ui->lineEdit_pwr_scan->setFocus();
+        ui->lineEdit_ctr_scan->setFocus();
     }
 }
 

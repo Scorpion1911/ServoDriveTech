@@ -14,8 +14,9 @@ IVerMatching::CheckStatus IVerMatching::check(const VerInfo &verinfo)
 {
   CheckStatus sta=CHECK_STA_OK;
   bool hasLink=true;
-  if(m_verLinkLists.isEmpty())
+  if(m_verLinkLists.isEmpty()) {
     fillVerLinkLists(m_verLinkLists);
+  }
   QString matLink=QString("C%1-V%2-F%3-P%4").arg(verinfo.c).arg(verinfo.v).arg(verinfo.f).arg(verinfo.p);
   hasLink=m_verLinkLists.contains(matLink);
   if(!hasLink)
@@ -25,6 +26,7 @@ IVerMatching::CheckStatus IVerMatching::check(const VerInfo &verinfo)
     else
       sta=CHECK_STA_SOFT_OLD;
   }
+  qDebug()<<"sta2"<<sta;
   return sta;
 }
 

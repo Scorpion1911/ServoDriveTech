@@ -47,6 +47,8 @@ private:
     QTreeWidget *m_controlIndex;
     QString m_itemText;
     int m_dspNum;
+    int m_axisNum;
+    int m_fpgaNum;
     int m_barCount;
     bool m_isOpenCom;
     QString m_filePath;
@@ -89,6 +91,7 @@ private slots:
     void onProNumTextChanged(const QString &text);
     void onProNumTextChanged_2(const QString &text);
     void onTimerOut();
+    void onCurrentIndexChanged(int index);
 
 //    void onComButtonClicked();
     

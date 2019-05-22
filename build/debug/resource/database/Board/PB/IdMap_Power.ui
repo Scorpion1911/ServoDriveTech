@@ -170,7 +170,7 @@
      </item>
      <item>
       <property name="text">
-       <string>21000670</string>
+       <string>31000025</string>
       </property>
       <property name="text">
        <string>HD1x</string>
@@ -248,6 +248,40 @@
       </property>
       <property name="text">
        <string>SD15_7.5</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>31000028</string>
+      </property>
+      <property name="text">
+       <string>HD1x</string>
+      </property>
+      <property name="text">
+       <string>HD11_6A</string>
+      </property>
+      <property name="text">
+       <string>HD11_6A</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>31000029</string>
+      </property>
+      <property name="text">
+       <string>HD1x</string>
+      </property>
+      <property name="text">
+       <string>HD11_13A</string>
+      </property>
+      <property name="text">
+       <string>HD11_13A</string>
       </property>
       <property name="text">
        <string>1</string>

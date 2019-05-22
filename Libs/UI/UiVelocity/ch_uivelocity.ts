@@ -32,7 +32,7 @@
     <message>
         <location filename="velpid133.ui" line="26"/>
         <source>PID Controller</source>
-        <translation>PID控制器</translation>
+        <translation>控制器</translation>
     </message>
     <message>
         <location filename="velpid133.ui" line="36"/>

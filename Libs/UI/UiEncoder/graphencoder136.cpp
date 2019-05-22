@@ -634,6 +634,9 @@ void GraphEncoder136::updateEncConfigUiByCurrentConfigItem()
     qint32 c = 1;
     qint32 dd = 1;
     d->m_dev->readPulseGearPrm(d->m_uiWidget->uiIndexs().axisInx, c, dd);
+    if (dd == 0) {
+        dd = 1;
+    }
     qint64 inValue = (qint64)POW2_24 * c / dd;
     ui->spinBox_inResolution->setValue(inValue);
 

@@ -191,23 +191,23 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="ICurve/icurve.cpp" line="66"/>
+        <location filename="ICurve/icurve.cpp" line="67"/>
         <location filename="CurveRaw/curveraw.cpp" line="68"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ICurve/icurve.cpp" line="68"/>
+        <location filename="ICurve/icurve.cpp" line="69"/>
         <source>%1(%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ICurve/icurve.cpp" line="77"/>
+        <location filename="ICurve/icurve.cpp" line="78"/>
         <source>%1.%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ICurve/icurve.cpp" line="79"/>
+        <location filename="ICurve/icurve.cpp" line="80"/>
         <source>%1.%2(%3)</source>
         <translation type="unfinished"></translation>
     </message>

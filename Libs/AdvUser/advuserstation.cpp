@@ -6,8 +6,8 @@
 #include <QMessageBox>
 
 #define    STATION_ADDR         28700
-#define    AUTO_MODE_FLAG       0xF7FF
-#define    MANUAL_MODE_FLAG     0x0800
+#define    AUTO_MODE_FLAG       0xFFEF
+#define    MANUAL_MODE_FLAG     0x0010
 
 class AdvUserStationPrivate : public IAdvUserPrivate
 {
@@ -72,9 +72,9 @@ void AdvUserStation::uiInit()
          quint16 configValue = 0;
          bool ok = d->m_curDev->readFLASH16ByAddr(0, STATION_ADDR, configValue);
          if (ok) {
-             d->m_stationId = configValue & 0x00FF;
+             d->m_stationId = (configValue & 0xFF00) >> 8;
              ui->spinBox_stationid->setValue(d->m_stationId);
-             int mode = (configValue & MANUAL_MODE_FLAG) >> 11;
+             int mode = (configValue & MANUAL_MODE_FLAG) >> 4;
              if (mode == 0) {
                  ui->radioBtn_manual->setChecked(true);
                  d->m_isAuto = false;
@@ -106,7 +106,7 @@ bool AdvUserStation::advUserActive()
     } else {
         configValue &= AUTO_MODE_FLAG;
     }
-    configValue = (configValue & 0xFF00) | d->m_stationId;
+    configValue = (configValue & 0x00FF) | (d->m_stationId << 8);
     ok = d->m_curDev->writeFLASH16ByAddr(0, STATION_ADDR, configValue);
     if (!ok) {
         return false;
@@ -138,9 +138,9 @@ void AdvUserStation::onComboBoxIndexChanged(int index)
         quint16 configValue = 0;
         bool ok = d->m_curDev->readFLASH16ByAddr(0, STATION_ADDR, configValue);
         if (ok) {
-            d->m_stationId = configValue & 0x00FF;
+            d->m_stationId = (configValue & 0xFF00) >> 8;
             ui->spinBox_stationid->setValue(d->m_stationId);
-            int mode = (configValue & MANUAL_MODE_FLAG) >> 11;
+            int mode = (configValue & MANUAL_MODE_FLAG) >> 4;
             if (mode == 0) {
                 ui->radioBtn_manual->setChecked(true);
                 d->m_isAuto = false;

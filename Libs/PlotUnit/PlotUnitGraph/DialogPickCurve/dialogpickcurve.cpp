@@ -301,6 +301,7 @@ void DialogPickCurve::onUsrTableCellDoubleClicked(int row, int column)
       newCurve->setAxisInx(axis);
       newCurve->setAxisCount(axisCount);
       newCurve->setDevInx(m_sev->devId());
+      newCurve->setStationId(m_sev->stationId());
       qDebug()<<newCurve->curUnitName()<<" curve unit k = "<<newCurve->curUnitK() <<"axis = "<<newCurve->axisInx();
       emit addUsrCurveRequest(newCurve);
     }
@@ -326,6 +327,7 @@ void DialogPickCurve::onCusTableCellDoubleClicked(int row, int column)
         newCurve->setAxisInx(axis);
         newCurve->setAxisCount(axisCount);
         newCurve->setDevInx(m_sev->devId());
+        newCurve->setStationId(m_sev->stationId());
         qDebug()<<newCurve->curUnitName()<<" curve unit k = "<<newCurve->curUnitK() <<"axis = "<<newCurve->axisInx();
         emit addUsrCurveRequest(newCurve);
       }
