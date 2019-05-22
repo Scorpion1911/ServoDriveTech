@@ -216,7 +216,11 @@ void DBManager::writeRelation(QString firstRole, QString secondRole, QStringList
     } else if (firstIndex < secondIndex) {
         tableName = "Relation" + firstRole + secondRole;
     } else {
-        tableName = "Relation" + secondRole + firstRole;
+        tableName = "Relation" + secondRole + firstRole;        
+        for(int i; i<strList.count(); i++){
+            QStringList splitStr = strList.at(i).split('-');
+            strList.replace(i, splitStr.at(1) + '-' + splitStr.at(0));
+        }
     }
     clearTable(tableName);
     QSqlTableModel* model = new QSqlTableModel(this);

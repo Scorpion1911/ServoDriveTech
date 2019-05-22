@@ -29,5 +29,5 @@ SUBDIRS += \
     AppCTKPluginFrameworkTest \
     consoleTest \
     #AppFirmwareSegmentFlashTest \
-    ParaFileConversion
+    ParaFileConversion \
     ConvertXml
