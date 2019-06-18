@@ -24,6 +24,9 @@ DBManager::DBManager(QString dbPath, QString userName, QString psw)
     QTextStream in(&file);
     QString line = in.readLine();
     typeList = line.split("-");
+//+++++++++++++++++++++++++++++++++++++++++++++++
+    file.close();
+//+++++++++++++++++++++++++++++++++++++++++++++++
 }
 
 DBManager::~DBManager()

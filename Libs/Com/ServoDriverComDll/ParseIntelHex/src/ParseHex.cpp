@@ -37,19 +37,19 @@ Uint16 Hex::GetRecordLength()
 {
 	if (strlen(m_cBuffer) >= 2)
 	{
-		m_nRecordLength		= new int8[3];
+//+++++++++++++++++++++2019.05.28modification+++++++++++++++++++
+        if(m_nRecordLength == NULL)
+        {
+            m_nRecordLength		= new int8[3];
+        }
+//--------------------------------------------------------------
+//		m_nRecordLength		= new int8[3];
+//==============================================================
 		m_nRecordLength[0]	= m_cBuffer[0];
 		m_nRecordLength[1]	= m_cBuffer[1];
 		m_nRecordLength[2]	= '\0';
-		int8 *p = NULL;
-//+++++++++++++++++++++2019.05.28modification+++++++++++++++++++
-        Uint16 len = (Uint16)strtol(m_nRecordLength, &p, 16);  //将字符串转化为整形
-        delete m_nRecordLength;
-        m_nRecordLength		= NULL;
-        return len;
-//--------------------------------------------------------------
-//    	return (Uint16)strtol(m_nRecordLength, &p, 16);  //将字符串转化为整形
-//==============================================================
+        int8 *p = NULL;
+        return (Uint16)strtol(m_nRecordLength, &p, 16);  //将字符串转化为整形
 	}
 	else
 	{

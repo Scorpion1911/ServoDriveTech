@@ -468,7 +468,8 @@ void SDTMainWindow::navigationTreeInit()
     axisNumList.append(axisNum);
     deviceItem=new QTreeWidgetItem(ui->treeWidget);
     QString prefix;
-    prefix=hasNickName?tr("[%1] ").arg(sd->sevDevice()->aliasName()):"";
+//    prefix=hasNickName?tr("[%1] ").arg(sd->sevDevice()->aliasName()):"";
+    prefix=tr("[%1] ").arg(sd->sevDevice()->aliasName());
     deviceItem->setText(COL_TARGET_CONFIG_NAME,prefix+sd->sevDevice()->modelName());
     deviceItem->setText(COL_TARGET_CONFIG_PRM,QString::number(axisNum));
     qDebug()<<"deviceItem->setText";
@@ -613,8 +614,9 @@ void SDTMainWindow::removeAllStackedWidget()
   QWidget *w;
   while (ui->mainStackedWidget->count()) {
     w=ui->mainStackedWidget->widget(0);
-    ui->mainStackedWidget->removeWidget(w);
+    ui->mainStackedWidget->removeWidget(w);   
     w->setParent(0);
+//    delete w;
     qDebug()<<"remove stackedWidget "<<i;
     i++;
     m_statusBar->statusProgressBar()->setValue(i);

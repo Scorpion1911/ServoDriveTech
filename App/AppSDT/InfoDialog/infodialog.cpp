@@ -31,7 +31,8 @@ void InfoDialog::uiInit(const QList<SevDevice*> &devList)
         ui->table_Info->insertRow(i);
         bool hasNickName = true;
         QString prefix;
-        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
+//        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
+        prefix = tr("[%1] ").arg(m_devList.at(i)->aliasName());
         ui->table_Info->setItem(i, COL_NAME, new QTableWidgetItem(prefix + m_devList.at(i)->modelName()));
         bool ok;
         quint32 pid = idHelper->readPwrId(ok);

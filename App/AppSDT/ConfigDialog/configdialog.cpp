@@ -11,7 +11,7 @@
 #include <QTextCodec>
 #include <QMessageBox>
 
-#define CONFIG_SELECT_FILE_PATH "SysMap/ConfigSelectTree.ui"
+#define CONFIG_SELECT_FILE_PATH "SysMap/ConfigSelectTree.ui"		 
 
 
 ConfigDialog::ConfigDialog(QList<DeviceConfig *> *devList, QWidget *parent) :
@@ -192,7 +192,13 @@ void ConfigDialog::onBtnQueryClicked()
         ComDriver::RnNet *rnCom = new ComDriver::RnNet("RnNet");
         ComDriver::errcode_t err = rnCom->open(processCallBack, ui->progressBar);
         if (err != 0) {
-            QMessageBox::information(0, tr("Warning"), tr("Unable to open com."), QMessageBox::Ok);
+            if(err == -108){
+               uchar deviceSequence = 0;
+               rnCom->readConflictDevSeq(deviceSequence);
+               QMessageBox::information(0, tr("Warning"), tr("Unable to open com\nDevice %1 is in conflict with the previous device").arg(deviceSequence), QMessageBox::Ok);
+            }else{
+               QMessageBox::information(0, tr("Warning"), tr("Unable to open com."), QMessageBox::Ok);
+            }
             rnCom->close();
             delete rnCom;
             ui->progressBar->setVisible(false);

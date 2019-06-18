@@ -13,6 +13,9 @@ INCLUDEPATH += $${PWD}/../../Libs/GTUtils
 TARGET = ParaFileConversion
 TEMPLATE = app
 
+#    LIB_PATH = $${PWD}/../../build/debug/bin
+#    LIBS += $${LIB_PATH}/GTUtilsd.lib
+
 CONFIG(debug debug|release){
     LIB_PATH = $${PWD}/../../build/debug/bin
     LIBS += $${LIB_PATH}/GTUtilsd.lib

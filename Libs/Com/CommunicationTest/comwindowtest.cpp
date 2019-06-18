@@ -29,28 +29,28 @@ void ComWindowTest::on_btn_open_clicked()
   ret=icom->open(processCallback,(void*)(ui->progressBar));
   qDebug()<<ret;
 
-//  QString fileName="D:/Smart/ServoMaster/git-project/ServoDriveTech/ServoDriveTech/Libs/Com/CommunicationTest/FlashPrm_AllAxis.xml";
-  QString fileName=QApplication::applicationDirPath()+"/FlashPrm_AllAxis.xml";
-  qDebug()<<fileName;
-  QTreeWidget *tree=QtTreeManager::createTreeWidgetFromXmlFile(fileName);
-  tree->expandAll();
-  tree->resizeColumnToContents(0);
-  tree->resizeColumnToContents(1);
-  tree->resizeColumnToContents(2);
-  tree->showMaximized();
-  QTreeWidgetItem *item;
-  QTreeWidgetItem *top;
-  top=tree->takeTopLevelItem(0);
-  for(int i=0;i<tree->topLevelItemCount();i++)
-  {
-    item=tree->topLevelItem(i);
-    write(item,i);
-  }
-  tree->insertTopLevelItem(0,top);
+////  QString fileName="D:/Smart/ServoMaster/git-project/ServoDriveTech/ServoDriveTech/Libs/Com/CommunicationTest/FlashPrm_AllAxis.xml";
+//  QString fileName=QApplication::applicationDirPath()+"/FlashPrm_AllAxis.xml";
+//  qDebug()<<fileName;
+//  QTreeWidget *tree=QtTreeManager::createTreeWidgetFromXmlFile(fileName);
+//  tree->expandAll();
+//  tree->resizeColumnToContents(0);
+//  tree->resizeColumnToContents(1);
+//  tree->resizeColumnToContents(2);
+//  tree->showMaximized();
+//  QTreeWidgetItem *item;
+//  QTreeWidgetItem *top;
+//  top=tree->takeTopLevelItem(0);
+//  for(int i=0;i<tree->topLevelItemCount();i++)
+//  {
+//    item=tree->topLevelItem(i);
+//    write(item,i);
+//  }
+//  tree->insertTopLevelItem(0,top);
 
-//  fileName="D:/Smart/ServoMaster/git-project/ServoDriveTech/ServoDriveTech/Libs/Com/CommunicationTest/ret.xml";
-  fileName=QApplication::applicationDirPath()+"/ret.xml";
-  QtTreeManager::writeTreeWidgetToXmlFile(fileName,tree);
+////  fileName="D:/Smart/ServoMaster/git-project/ServoDriveTech/ServoDriveTech/Libs/Com/CommunicationTest/ret.xml";
+//  fileName=QApplication::applicationDirPath()+"/ret.xml";
+//  QtTreeManager::writeTreeWidgetToXmlFile(fileName,tree);
 }
 
 void ComWindowTest::on_btn_test_clicked()

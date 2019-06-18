@@ -62,7 +62,8 @@ void AdvUserStation::uiInit()
          for (int i = 0; i < d->m_devList.length(); i++) {
              bool hasNickName = true;
              QString prefix;
-             prefix = hasNickName?tr("[%1] ").arg(d->m_devList.at(i)->aliasName()):"";
+//             prefix = hasNickName?tr("[%1] ").arg(d->m_devList.at(i)->aliasName()):"";
+             prefix = tr("[%1] ").arg(d->m_devList.at(i)->aliasName());
              ui->comboBox_deviceList->addItem(prefix + d->m_devList.at(i)->modelName());
          }
      }

@@ -19,6 +19,7 @@ public:
 
   errcode_t open(ProcessCallBackHandler,void *parameter);
   errcode_t close();
+  errcode_t readConflictDevSeq(uint8_t &deviceSequence);
 
   //----------伺服相关操作------------------------
   virtual errcode_t setServoEnable(uint8_t axis,bool on)=0;

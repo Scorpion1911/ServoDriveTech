@@ -119,7 +119,7 @@ short CMotionCtrlCom::PostPci(TPci* gPci, Uint8 station_id, Uint8 ch_id)
 
 	switch (m_pDriver->m_pRnDevice[station_id]->m_staion_type)
 	{
-	case TB_GTSD13:
+    case TB_GTSD13_8100:
 		rtn = m_pDriver->RnNetComHandler(RN_PACKET_PDU_WR_ASK, RN_USER_PROTOCOL_MOTION, (int16*)pData, dword_num << 1, station_id, ch_id, 1, RN_ADDR_SAME);
 		break;
 	default:
@@ -150,7 +150,7 @@ short CMotionCtrlCom::SendPci(TPci* gPci, Uint8 station_id, Uint8 ch_id)
 	memcpy(pData, gPci, byte_num);
 	switch (m_pDriver->m_pRnDevice[station_id]->m_staion_type)
 	{
-	case TB_GTSD13: 
+    case TB_GTSD13_8100:
 		rtn = m_pDriver->RnNetComHandler(RN_PACKET_PDU_WR_ASK, RN_USER_PROTOCOL_MOTION, (int16*)pData, dword_num << 1, station_id, ch_id, 1, RN_ADDR_SAME);
 		break;
 	default:

@@ -23,37 +23,37 @@ signals:
 
 protected:
     void init();
-//    bool findAxisParameter(QTreeWidget *treeWidget);
     void printStructMemberToText(QTreeWidgetItem *treeWidgetItem, QTextStream &out);
     void setEnabledExprotPushBtn();
     void findOutIncreaseParameter(QTreeWidgetItem *treeWidgetItem);
+    void addUpdateInfo(QTreeWidgetItem *treeWidgetItem);
+    void addParameterToParaItem(QTreeWidgetItem *treeWidgetItem, QTreeWidgetItem *paraItem);
 
 private slots:
     void onPushBtnOpenFileClicked();
-//    void onComboBoxIndexChanged(int index);
     void onPushBtnExprotFileClicked();
     void onCheckBoxUpgradeToggled(bool checked);
+    void onCheckBoxOutputHeadFileToggled(bool checked);
     void onPushBtnOpenFileUpgradeClicked();
 
 private:
     Ui::ParaFileConversion *ui;
     QTreeWidgetItem *m_treeWidgetItem;
-//    QStringList m_axisList;
     QString m_savePath;
     quint32 m_memberSerialNum;
+    quint32 m_insertNum;
+    quint32 m_paraSum;
     QStringList m_memberType;
     QStringList m_oldParaFileAddr;
-    bool m_xmlPrepare;
-    bool m_headPrepare;
+    bool m_openFilePrepare;
+    bool m_upgradeFilePrepare;
     QTreeWidgetItem m_increaseItem;
-    QString m_headFilePath;
+    QString m_upgradeFilePath;
     QString m_xmlVersion;
-    QString m_headFileUpPath;
-    QString m_headFileNameCom;
-
-//    quint32 m_oldParaNum;
-//    quint8 m_axisNum;
-//    bool m_isParaFile;
+    QString m_upgradeFileUpPath;
+    QString m_upgradeFileNameCom;
+    QTreeWidget *m_saveTreeWidget;
+    quint8 m_upgradeFileType;
 };
 
 #endif // PARAFILECONVERSION_H

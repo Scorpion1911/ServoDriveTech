@@ -14,6 +14,8 @@ CRnMotionAxiMapping::~CRnMotionAxiMapping()
 
 short CRnMotionAxiMapping::InitialMapping(CRingNetDriver* driver)
 {
+    return RTN_IMPOSSIBLE_ERR;
+
 	if (driver == NULL)
 		return RTN_NULL_POINT;
 	m_pDriver = driver;
@@ -35,7 +37,7 @@ short CRnMotionAxiMapping::InitialMapping(CRingNetDriver* driver)
 
 		switch (driver->m_pRnDeviceOnline[i]->m_staion_type)
 		{
-		case TB_MARVIE42:
+        case TB_MARVIE42_8401:
 			//////////////////////////////////////////////////////////////////////////
 			m_axi_inf[m_axi_num].m_station_id = driver->m_pRnDeviceOnline[i]->m_station_id;
 			m_axi_inf[m_axi_num].m_station_ch = RN_PCI_CH_ID;

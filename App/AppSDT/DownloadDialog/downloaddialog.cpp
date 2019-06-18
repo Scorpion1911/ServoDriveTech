@@ -27,7 +27,8 @@ void DownloadDialog::uiInit(const QList<SevDevice *> &devList, const QString &do
     for (int i = 0; i < m_devNum; i++) {
         bool hasNickName = true;
         QString prefix;
-        prefix = hasNickName?tr("[%1] ").arg(devList.at(i)->aliasName()):"";
+//        prefix = hasNickName?tr("[%1] ").arg(devList.at(i)->aliasName());
+        prefix = tr("[%1] ").arg(devList.at(i)->aliasName());
         QCheckBox *box = new QCheckBox(prefix + devList.at(i)->modelName());
         m_boxList.append(box);
         vBox->addWidget(box);

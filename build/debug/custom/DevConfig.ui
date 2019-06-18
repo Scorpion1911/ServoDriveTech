@@ -57,7 +57,62 @@
                                 <string>0</string>
                             </property>
                             <property name="text">
-                                <string>240</string>
+                                <string>9</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>GTHD1x</string>
+                                </property>
+                                <property name="text">
+                                    <string>1</string>
+                                </property>
+                                <item>
+                                    <property name="text">
+                                        <string>GTHD11_3A</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>1</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>31000025</string>
+                                    </property>
+                                    <item>
+                                        <property name="text">
+                                            <string>V141</string>
+                                        </property>
+                                        <property name="text">
+                                            <string>NULL</string>
+                                        </property>
+                                        <property name="text">
+                                            <string>0</string>
+                                        </property>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Device</string>
+                        </property>
+                        <property name="text">
+                            <string>NULL</string>
+                        </property>
+                        <property name="text">
+                            <string>1</string>
+                        </property>
+                        <item>
+                            <property name="text">
+                                <string>RnNet</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                            <property name="text">
+                                <string>8</string>
                             </property>
                             <item>
                                 <property name="text">

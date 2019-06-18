@@ -70,7 +70,8 @@ void FirmwareFlashDialog::uiInit()
     for (int i = 0; i < m_devList.length(); i++) {
         bool hasNickName = true;
         QString prefix;
-        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
+//        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"[0]";
+        prefix = tr("[%1] ").arg(m_devList.at(i)->aliasName());
         QCheckBox *box = new QCheckBox(prefix + m_devList.at(i)->modelName());
         m_boxList.append(box);
         vBox->addWidget(box);
@@ -235,6 +236,7 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
             continue;
         }
         if (!m_devList.at(i)->isConnecting()) {
+//---------------------------------
             return;
         }
         ui->progressBar_firm->setValue(0);

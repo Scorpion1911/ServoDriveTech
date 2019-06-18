@@ -89,7 +89,8 @@ void AdvUserMask::uiInit()
         SevDevice* dev = d->m_devList.at(i);
         bool hasNickName = true;
         QString prefix;
-        prefix = hasNickName?tr("[%1] ").arg(dev->aliasName()):"";
+//        prefix = hasNickName?tr("[%1] ").arg(dev->aliasName()):"";
+        prefix = tr("[%1] ").arg(dev->aliasName());
         QStringList strList;
         strList<<prefix + dev->deviceConfig()->m_modeName;
         QTreeWidgetItem *item = new QTreeWidgetItem(strList);
