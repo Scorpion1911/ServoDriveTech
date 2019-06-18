@@ -179,7 +179,7 @@
     <message>
         <location filename="ConfigDialog/configdialog.ui" line="137"/>
         <source>input rnnet station:</source>
-        <translation>GLink2网络信息：</translation>
+        <translation>站号信息：</translation>
     </message>
     <message>
         <location filename="ConfigDialog/configdialog.ui" line="151"/>
@@ -187,22 +187,37 @@
         <translation>GLink2网络信息：</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="168"/>
+        <location filename="ConfigDialog/configdialog.ui" line="162"/>
+        <source>Station</source>
+        <translation>站号</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog/configdialog.ui" line="167"/>
+        <source>AxisNum</source>
+        <translation>轴数</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog/configdialog.ui" line="172"/>
+        <source>DSP</source>
+        <translation>DSP版本</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog/configdialog.ui" line="180"/>
         <source>query</source>
         <translation>查询网络</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="178"/>
+        <location filename="ConfigDialog/configdialog.ui" line="190"/>
         <source>add</source>
         <translation>增加配置</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="191"/>
+        <location filename="ConfigDialog/configdialog.ui" line="203"/>
         <source>current select:</source>
         <translation>当前增加项:</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.ui" line="213"/>
+        <location filename="ConfigDialog/configdialog.ui" line="225"/>
         <source>remove</source>
         <translation>移除</translation>
     </message>
@@ -217,29 +232,26 @@
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="191"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="192"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="191"/>
+        <location filename="ConfigDialog/configdialog.cpp" line="192"/>
         <source>Unable to open com.</source>
         <translation>连接失败。</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="206"/>
         <source>Station Index: </source>
-        <translation>站号：</translation>
+        <translation type="vanished">站号：</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="207"/>
         <source>Axis Number: </source>
-        <translation>轴数：</translation>
+        <translation type="vanished">轴数：</translation>
     </message>
     <message>
-        <location filename="ConfigDialog/configdialog.cpp" line="208"/>
         <source>DSP Version: </source>
-        <translation>DSP版本：</translation>
+        <translation type="vanished">DSP版本：</translation>
     </message>
 </context>
 <context>
@@ -1325,12 +1337,12 @@ exception cause maybe:
 </translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1047"/>
+        <location filename="sdtmainwindow.cpp" line="1046"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1049"/>
+        <location filename="sdtmainwindow.cpp" line="1048"/>
         <source>Version:%1
 
 get more help from:
@@ -1341,47 +1353,47 @@ http://www.googoltech.com</source>
 http://www.googoltech.com</translation>
     </message>
     <message>
+        <location filename="sdtmainwindow.cpp" line="1141"/>
         <location filename="sdtmainwindow.cpp" line="1142"/>
-        <location filename="sdtmainwindow.cpp" line="1143"/>
         <source>Download xml file OK! Please reset DSP!</source>
         <translation>烧写参数成功，请复位DSP！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1143"/>
+        <location filename="sdtmainwindow.cpp" line="1142"/>
         <source>Information</source>
         <translation>提示</translation>
     </message>
     <message>
         <location filename="sdtmainwindow.cpp" line="783"/>
         <location filename="sdtmainwindow.cpp" line="916"/>
-        <location filename="sdtmainwindow.cpp" line="1103"/>
-        <location filename="sdtmainwindow.cpp" line="1156"/>
-        <location filename="sdtmainwindow.cpp" line="1317"/>
-        <location filename="sdtmainwindow.cpp" line="1334"/>
-        <location filename="sdtmainwindow.cpp" line="1580"/>
+        <location filename="sdtmainwindow.cpp" line="1102"/>
+        <location filename="sdtmainwindow.cpp" line="1155"/>
+        <location filename="sdtmainwindow.cpp" line="1316"/>
+        <location filename="sdtmainwindow.cpp" line="1333"/>
+        <location filename="sdtmainwindow.cpp" line="1579"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1084"/>
+        <location filename="sdtmainwindow.cpp" line="1083"/>
         <source>Save success! Please reset DSP!</source>
         <translation>保存参数成功，请复位DSP！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1103"/>
-        <location filename="sdtmainwindow.cpp" line="1156"/>
+        <location filename="sdtmainwindow.cpp" line="1102"/>
+        <location filename="sdtmainwindow.cpp" line="1155"/>
         <source>Please open com first!</source>
         <translation>请先连接设备！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1111"/>
-        <location filename="sdtmainwindow.cpp" line="1171"/>
+        <location filename="sdtmainwindow.cpp" line="1110"/>
+        <location filename="sdtmainwindow.cpp" line="1170"/>
         <source>Open XML File</source>
         <translation>打开Xml文件</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1111"/>
-        <location filename="sdtmainwindow.cpp" line="1171"/>
+        <location filename="sdtmainwindow.cpp" line="1110"/>
+        <location filename="sdtmainwindow.cpp" line="1170"/>
         <source>XML Files(*.xml)</source>
         <translation>Xml文件(*.xml)</translation>
     </message>
@@ -1390,64 +1402,64 @@ http://www.googoltech.com</translation>
         <translation type="vanished">烧写参数文件成功 !</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1147"/>
+        <location filename="sdtmainwindow.cpp" line="1146"/>
         <source>Error: Download xml file fails !</source>
         <translation>异常：烧写参数文件失败 ！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1201"/>
+        <location filename="sdtmainwindow.cpp" line="1200"/>
         <source>Upload xml file OK !</source>
         <translation>导出参数文件成功 ！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1205"/>
+        <location filename="sdtmainwindow.cpp" line="1204"/>
         <source>Error: Upload xml file fails !</source>
         <translation>异常：导出参数文件失败 ！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1317"/>
-        <location filename="sdtmainwindow.cpp" line="1334"/>
+        <location filename="sdtmainwindow.cpp" line="1316"/>
+        <location filename="sdtmainwindow.cpp" line="1333"/>
         <source>Please connect the device!</source>
         <translation>请连接设备！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1323"/>
-        <location filename="sdtmainwindow.cpp" line="1325"/>
-        <location filename="sdtmainwindow.cpp" line="1345"/>
-        <location filename="sdtmainwindow.cpp" line="1347"/>
+        <location filename="sdtmainwindow.cpp" line="1322"/>
+        <location filename="sdtmainwindow.cpp" line="1324"/>
+        <location filename="sdtmainwindow.cpp" line="1344"/>
+        <location filename="sdtmainwindow.cpp" line="1346"/>
         <source>Info</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1323"/>
-        <location filename="sdtmainwindow.cpp" line="1345"/>
+        <location filename="sdtmainwindow.cpp" line="1322"/>
+        <location filename="sdtmainwindow.cpp" line="1344"/>
         <source>Copy finish! Please restart the device!</source>
         <translation>复制完成，请重启设备！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1325"/>
-        <location filename="sdtmainwindow.cpp" line="1347"/>
+        <location filename="sdtmainwindow.cpp" line="1324"/>
+        <location filename="sdtmainwindow.cpp" line="1346"/>
         <source>Copy finish!</source>
         <translation>复制完成！</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1368"/>
+        <location filename="sdtmainwindow.cpp" line="1367"/>
         <source>dev:%1,axis:%2,page:%3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1425"/>
+        <location filename="sdtmainwindow.cpp" line="1424"/>
         <source>Device:%1 NetError!</source>
         <translation>设备：%1 通信异常 !</translation>
     </message>
     <message>
-        <location filename="sdtmainwindow.cpp" line="1440"/>
+        <location filename="sdtmainwindow.cpp" line="1439"/>
         <source>Error</source>
         <translation>异常</translation>
     </message>
     <message>
+        <location filename="sdtmainwindow.cpp" line="1445"/>
         <location filename="sdtmainwindow.cpp" line="1446"/>
-        <location filename="sdtmainwindow.cpp" line="1447"/>
         <source>search phase complete !</source>
         <oldsource>search phase complete</oldsource>
         <translation>电机寻相结束！</translation>

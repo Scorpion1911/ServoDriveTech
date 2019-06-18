@@ -255,28 +255,38 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="316"/>
+        <location filename="graphioconf136.cpp" line="313"/>
+        <source>Controller</source>
+        <translation>控制器</translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="313"/>
+        <source>Driver</source>
+        <translation>驱动器</translation>
+    </message>
+    <message>
+        <location filename="graphioconf136.cpp" line="318"/>
         <source>Input_%1</source>
         <translation>输入%1</translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="331"/>
+        <location filename="graphioconf136.cpp" line="334"/>
         <source>Output_%1</source>
         <translation>输出%1</translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="375"/>
-        <location filename="graphioconf136.cpp" line="387"/>
+        <location filename="graphioconf136.cpp" line="379"/>
+        <location filename="graphioconf136.cpp" line="391"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="375"/>
+        <location filename="graphioconf136.cpp" line="379"/>
         <source>Cannot set a same function for different inputs!</source>
         <translation>不能使不同的输入配置相同的功能！</translation>
     </message>
     <message>
-        <location filename="graphioconf136.cpp" line="387"/>
+        <location filename="graphioconf136.cpp" line="391"/>
         <source>Cannot set a same function for different outputs!</source>
         <translation>不能使不同的输出配置相同的功能！</translation>
     </message>
@@ -548,7 +558,12 @@
     </message>
     <message>
         <location filename="singleiowidget.ui" line="56"/>
-        <location filename="singleiowidget.ui" line="63"/>
+        <source>Control Source:</source>
+        <translation>控制源：</translation>
+    </message>
+    <message>
+        <location filename="singleiowidget.ui" line="66"/>
+        <location filename="singleiowidget.ui" line="73"/>
         <source>TextLabel</source>
         <translation></translation>
     </message>

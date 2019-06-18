@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en_US" sourcelanguage="en">
 <context>
     <name>GraphCurrent129</name>
     <message>
         <location filename="graphcurrent129.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="graphcurrent129.ui" line="20"/>
         <source>current 129</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -19,18 +19,18 @@
     <message>
         <location filename="graphcurrent130.cpp" line="77"/>
         <source>PID controller</source>
-        <translation type="unfinished"></translation>
+        <translation>Controller</translation>
     </message>
     <message>
         <location filename="graphcurrent130.cpp" line="82"/>
         <source>P gain(HZ)</source>
-        <translation type="unfinished"></translation>
+        <translation>Proportion Gain(Hz)</translation>
     </message>
     <message>
         <location filename="graphcurrent130.cpp" line="93"/>
         <source>I gain(us)</source>
         <oldsource>I gain(ms)</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Integration Gain(us)</translation>
     </message>
 </context>
 <context>
@@ -38,22 +38,22 @@
     <message>
         <location filename="graphcurrent133.cpp" line="66"/>
         <source>%1 axis = %2 current iir filter</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Axis = %2 Current IIR Filter</translation>
     </message>
     <message>
         <location filename="graphcurrent133.cpp" line="133"/>
         <source>PID controller</source>
-        <translation type="unfinished"></translation>
+        <translation>Controller</translation>
     </message>
     <message>
         <location filename="graphcurrent133.cpp" line="138"/>
         <source>P gain(HZ)</source>
-        <translation type="unfinished"></translation>
+        <translation>Proportion Gain(Hz)</translation>
     </message>
     <message>
         <location filename="graphcurrent133.cpp" line="149"/>
         <source>I gain(us)</source>
-        <translation type="unfinished"></translation>
+        <translation>Integration Gain(us)</translation>
     </message>
 </context>
 <context>
@@ -144,7 +144,7 @@
     <message>
         <location filename="uicurrent.ui" line="17"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

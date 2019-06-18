@@ -16,9 +16,9 @@ CRingNetDriver::CRingNetDriver()
 	for (i = 0; i < MAX_STATION_NUM; i++)
 	{
 		m_pRnDevice[i] = NULL;
-		m_pRnDeviceOnline[i] = NULL;
+        m_pRnDeviceOnline[i] = NULL;
 		m_index[i] = 0;//rand()
-	}
+    }
 	m_device_num = 0;
 	m_topology_update = 0;
 
@@ -42,10 +42,10 @@ CRingNetDriver::~CRingNetDriver()
 	int i;
 	for (i = 0; i < MAX_STATION_NUM; i++)
 	{
-		if (m_pRnDeviceOnline[i])
+        if (m_pRnDeviceOnline[i])
 		{
-			delete m_pRnDeviceOnline[i];
-			m_pRnDeviceOnline[i] = NULL;
+            delete m_pRnDeviceOnline[i];
+            m_pRnDeviceOnline[i] = NULL;
 		}	
 	}
 
@@ -109,6 +109,17 @@ short CRingNetDriver::OpenAdapter(void(*tpfUpdataProgressPt)(void*, int16*), voi
 		if (rtn == RTN_SUCCESS)
 		{
 			progress = 100;
+            /////////////////////////////
+            m_conflict_device_seq = 0;
+            for(int i = 0; i < m_device_num;i++)
+            {
+                if(m_pRnDeviceOnline[i] == NULL)
+                {
+                    if (tpfUpdataProgressPt) (*tpfUpdataProgressPt)(ptrv, &progress);
+                    m_conflict_device_seq = i+1;
+                    return RTN_TOPOLOGY_CONFLICT;
+                }
+            }
 			if (tpfUpdataProgressPt) (*tpfUpdataProgressPt)(ptrv, &progress);
 			return RTN_SUCCESS;
 		}
@@ -123,12 +134,12 @@ short CRingNetDriver::CloseAdapter()
 	int i;
 	for (i = 0; i < MAX_STATION_NUM; i++)
 	{
-		if (m_pRnDeviceOnline[i])
+        if (m_pRnDeviceOnline[i])
 		{
-			delete m_pRnDeviceOnline[i];
-			m_pRnDeviceOnline[i] = NULL;
+            delete m_pRnDeviceOnline[i];
+            m_pRnDeviceOnline[i] = NULL;
 		}
-		m_pRnDevice[i] = NULL;
+        m_pRnDevice[i] = NULL;
 	}
 	m_none_gigabit_device = true;
 	m_none_operate_device = true;
@@ -476,30 +487,30 @@ short CRingNetDriver::RxPacketDecoder(const void* src, const Uint16 src_len, voi
 		return RTN_PACKET_ERR;
 	}
 
-	if (m_pRnDeviceOnline[pPacket->ringnet_head.ttl] == NULL) //如果发现新的对象，则创建该对象。
+    if (m_pRnDeviceOnline[pPacket->ringnet_head.ttl] == NULL) //如果发现新的对象，则创建该对象。
 	{
-		m_pRnDeviceOnline[pPacket->ringnet_head.ttl] = new CRnDeviceDataBase;
-		m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_distance = pPacket->ringnet_head.ttl;
-		m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id = pPacket->ringnet_head.src_id;//record  new object id and distance;
+        m_pRnDeviceOnline[pPacket->ringnet_head.ttl] = new CRnDeviceDataBase;
+        m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_distance = pPacket->ringnet_head.ttl;
+        m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id = pPacket->ringnet_head.src_id;//record  new object id and distance;
 //		if (m_pRnDevice[pPacket->ringnet_head.src_id] != NULL)
-		{
+        {
 			m_topology_update++;
 		}
-		m_pRnDevice[pPacket->ringnet_head.src_id] = m_pRnDeviceOnline[pPacket->ringnet_head.ttl];//set the device point to new object
-		m_device_num++;
+        m_pRnDevice[pPacket->ringnet_head.src_id] = m_pRnDeviceOnline[pPacket->ringnet_head.ttl];//set the device point to new object
+        m_device_num++;
 	}
 	else 
 	{
-		if (m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id != pPacket->ringnet_head.src_id) //the object id change 
+        if (m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id != pPacket->ringnet_head.src_id) //the object id change
 		{
-			m_pRnDevice[m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id] = NULL;
-			m_pRnDevice[pPacket->ringnet_head.src_id] = m_pRnDeviceOnline[pPacket->ringnet_head.ttl];
-			m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id = pPacket->ringnet_head.src_id;
-			m_topology_update++;
+            m_pRnDevice[m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id] = NULL;
+            m_pRnDevice[pPacket->ringnet_head.src_id] = m_pRnDeviceOnline[pPacket->ringnet_head.ttl];
+            m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->m_station_id = pPacket->ringnet_head.src_id;
+            m_topology_update++;
 		}
 	}
 ////////////////////////////////check packet lost//////////////////////////////////////////
-	m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->CheckRxIndex(pPacket->ringnet_head.protocolType0);
+    m_pRnDeviceOnline[pPacket->ringnet_head.ttl]->CheckRxIndex(pPacket->ringnet_head.protocolType0);
 	//////////////////////////////////////////////////////////////////////////
 
 	if (pPacket->ringnet_head.basecontrol.packet_type == RN_PACKET_USER) //用户数据报文

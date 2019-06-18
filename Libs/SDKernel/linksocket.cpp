@@ -831,6 +831,7 @@ bool LinkSocket::writeXml(quint8 axis, const QStringList &fileNameList, QList<in
         pFileNameList[i] = p;
     }
     errcode_t ret = m_com->writeXML(axis, pFileNameList, pFileTypeList, file_num, processCallBack, ptrv, progress);
+    qDebug()<<"write xml finish";
     for (int i = 0; i < file_num; i++)
     {
         free(pFileNameList[i]);

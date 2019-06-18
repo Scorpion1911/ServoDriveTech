@@ -321,6 +321,7 @@ SERVODRIVERCOMDLL_API int16 GTSD_CMD_GetNetCardMsg(void);
 //////////////////////////////////////////////////////////////////////////
 SERVODRIVERCOMDLL_API int16 GTSD_CMD_Open(void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv, int16 com_type = GTSD_COM_TYPE_NET);
 SERVODRIVERCOMDLL_API int16 GTSD_CMD_Close(int16 com_type = GTSD_COM_TYPE_NET);
+SERVODRIVERCOMDLL_API int16 GTSD_CMD_ReadConflictDevSeq(Uint8 &deviceSequence);
 ////////////   add by luo.mj 20180329                //////////////////////////////////////////////
 SERVODRIVERCOMDLL_API int16 GTSD_CMD_GetStationIdList(vector<int16>& stationIdList, int16 com_type = GTSD_COM_TYPE_NET);
 SERVODRIVERCOMDLL_API int16 GTSD_CMD_GetStationAxisNum(int16* axisNum, int16 com_type = GTSD_COM_TYPE_NET, int16 stationId = 0xf0);

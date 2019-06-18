@@ -22,6 +22,7 @@ private:
   static void printfInfo(void *argv, short *v);
   QTreeWidgetItem* findItemByText(QTreeWidgetItem*srcItem,const QString &text);
   bool checkSupport(DeviceConfig *config);
+  uchar m_conflictdeviceSeq;
 };
 
 #endif // DEVCOMRWRITER_H

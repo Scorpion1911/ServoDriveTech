@@ -140,6 +140,7 @@ void CurveManager::updateCurveCtlPrmsFromDevice(SevDevice *dev, ICurve *c)
   CmdManager cmd;
 
   c->setDevInx(dev->devId());
+  c->setStationId(dev->stationId());
 
   qDebug()<<"---------------------update curve :axis = "<<c->axisInx()<<"----------------------";
   for(int i = 0;i<c->constInputKeys().size();i++)

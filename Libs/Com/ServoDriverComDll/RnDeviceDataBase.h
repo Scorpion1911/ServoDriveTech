@@ -10,7 +10,7 @@ public:
 	virtual ~CRnDeviceDataBase();
 public:
 	COMMON_NET_STATUS		m_CNS;
-	Uint8					m_index;
+    Uint8					m_index;
 
 	Uint8					m_rx_index;
 	Uint32					m_lose_cnt;

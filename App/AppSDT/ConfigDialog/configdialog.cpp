@@ -11,7 +11,7 @@
 #include <QTextCodec>
 #include <QMessageBox>
 
-#define CONFIG_SELECT_FILE_PATH "SysMap/ConfigSelectTree.ui"
+#define CONFIG_SELECT_FILE_PATH "SysMap/ConfigSelectTree.ui"		 
 
 
 ConfigDialog::ConfigDialog(QList<DeviceConfig *> *devList, QWidget *parent) :
@@ -47,7 +47,8 @@ ConfigDialog::ConfigDialog(QList<DeviceConfig *> *devList, QWidget *parent) :
 
   ui->progressBar->setVisible(false);
 
-  ui->comboBox_rnStation->addItem("240");
+  ui->comboBox_rnStation->addItem("240");  
+  ui->table_queryList->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
 }
 
@@ -182,34 +183,49 @@ void ConfigDialog::onBtnApplyClicked()
 
 void ConfigDialog::onBtnQueryClicked()
 {
+    for (int i = ui->table_queryList->rowCount(); i > 0; i--) {
+        ui->table_queryList->removeRow(i - 1);
+    }
     if (m_curSelectSta == SELECT_STATUS_RNNET) {
         ui->progressBar->setVisible(true);
         ui->comboBox_rnStation->clear();
         ComDriver::RnNet *rnCom = new ComDriver::RnNet("RnNet");
         ComDriver::errcode_t err = rnCom->open(processCallBack, ui->progressBar);
         if (err != 0) {
-            QMessageBox::information(0, tr("Warning"), tr("Unable to open com."), QMessageBox::Ok);
+            if(err == -108){
+               uchar deviceSequence = 0;
+               rnCom->readConflictDevSeq(deviceSequence);
+               QMessageBox::information(0, tr("Warning"), tr("Unable to open com\nDevice %1 is in conflict with the previous device").arg(deviceSequence), QMessageBox::Ok);
+            }else{
+               QMessageBox::information(0, tr("Warning"), tr("Unable to open com."), QMessageBox::Ok);
+            }
             rnCom->close();
             delete rnCom;
             ui->progressBar->setVisible(false);
             return;
         }
         std::vector<ComDriver::int16_t> stnList = rnCom->broadcast();
-        QString staInfo = "";
         for (uint i = 0; i < stnList.size(); i++) {
             ComDriver::int16_t rnSta = stnList.at(i);
             ui->comboBox_rnStation->addItem(QString::number(rnSta));
             rnCom->setRnStation(rnSta);
             ComDriver::int16_t axisNum = rnCom->getCurrentAxisNumByReadFPGA();
             ComDriver::uint16_t version = 0;
-            rnCom->readDSPVersion(0, version);
-            staInfo = staInfo + tr("Station Index: ") + QString::number(rnSta) + "\n"\
-                    + tr("Axis Number: ") + QString::number(axisNum) + "\n"\
-                    + tr("DSP Version: ") + QString::number(version) + "\n";
+            rnCom->readDSPVersion(0, version);;
+            ui->table_queryList->insertRow(i);
+            QTableWidgetItem* stationItem = new QTableWidgetItem(QString::number(rnSta));
+            QTableWidgetItem* axisItem = new QTableWidgetItem(QString::number(axisNum));
+            QTableWidgetItem* verItem = new QTableWidgetItem(QString::number(version));
+            stationItem->setFlags(stationItem->flags() & (~Qt::ItemIsEditable));
+            axisItem->setFlags(axisItem->flags() & (~Qt::ItemIsEditable));
+            verItem->setFlags(verItem->flags() & (~Qt::ItemIsEditable));
+            ui->table_queryList->setItem(i, 0, stationItem);
+            ui->table_queryList->setItem(i, 1, axisItem);
+            ui->table_queryList->setItem(i, 2, verItem);
         }
-        ui->label_queryList->setText(staInfo);
         rnCom->close();
         delete rnCom;
+        ui->progressBar->setVisible(false);
     }
 }
 
@@ -284,7 +300,7 @@ void ConfigDialog::createDstDevice(QTreeWidgetItem*curItem)
   QTreeWidgetItem *typeItem=modelItem->parent();
   QTreeWidgetItem *comItem=typeItem->parent();
   QTreeWidgetItem *devItem=new QTreeWidgetItem(ui->treeWidget_dst);
-  devItem->setText(COL_NAME,"Device");
+  devItem->setText(COL_NAME,QString("Device_%1").arg(QString::number(ui->comboBox_rnStation->currentText().toInt())));
   devItem->setText(COL_ID,QString::number(ui->treeWidget_dst->topLevelItemCount()-1));
 
   QTreeWidgetItem *modelItemDst;

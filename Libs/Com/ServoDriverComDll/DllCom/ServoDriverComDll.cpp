@@ -1915,74 +1915,74 @@ SERVODRIVERCOMDLL_API int16 GTSD_CMD_ProcessorFlashHandler(int16 axis, wstring& 
 		return rtn;
 	}
 
-	rtn = g_hex->ParseHex(ws2s(filePath));
-	if (rtn != 0)
-	{
-		GTSD_CMD_FroceCheckMode(pre_mode);
-		return rtn;
-	}
-	//百分比进度
-	progress = 10;
-	(*tpfUpdataProgressPt)(ptr, &progress);
+    rtn = g_hex->ParseHex(ws2s(filePath));
+    if (rtn != 0)
+    {
+        GTSD_CMD_FroceCheckMode(pre_mode);
+        return rtn;
+    }
+    //百分比进度
+    progress = 10;
+    (*tpfUpdataProgressPt)(ptr, &progress);
 
-	//计算需要擦出多少块block,先将16bit数据个数转化为bit长度
-	//flash 2M byte 4kbyte 为1个block 
-	byteLenth = g_hex->dataLenth * 2;
-	block = (int16)(byteLenth / 4096.0);
-	block += 1;
+    //计算需要擦出多少块block,先将16bit数据个数转化为bit长度
+    //flash 2M byte 4kbyte 为1个block
+    byteLenth = g_hex->dataLenth * 2;
+    block = (int16)(byteLenth / 4096.0);
+    block += 1;
 
-	rtn = GTSD_CMD_FlashErase(axis, block, com_type, stationId);
-	if (rtn != 0)
-	{
-		GTSD_CMD_FroceCheckMode(pre_mode);
-		return rtn;
-	}
-	//百分比进度
-	progress = 30;
-	(*tpfUpdataProgressPt)(ptr, &progress);
+    rtn = GTSD_CMD_FlashErase(axis, block, com_type, stationId);
+    if (rtn != 0)
+    {
+        GTSD_CMD_FroceCheckMode(pre_mode);
+        return rtn;
+    }
+    //百分比进度
+    progress = 30;
+    (*tpfUpdataProgressPt)(ptr, &progress);
 
-	rtn = g_hex->WriteFlash(axis, &(g_hex->m_hex_frame_write),tpfUpdataProgressPt,ptr,com_type,stationId);
-	if (rtn != 0)
-	{
-		GTSD_CMD_FroceCheckMode(pre_mode);
-		return rtn;
-	}
+    rtn = g_hex->WriteFlash(axis, &(g_hex->m_hex_frame_write),tpfUpdataProgressPt,ptr,com_type,stationId);
+    if (rtn != 0)
+    {
+        GTSD_CMD_FroceCheckMode(pre_mode);
+        return rtn;
+    }
 
-	//百分比进度
-	progress = 50;
-	(*tpfUpdataProgressPt)(ptr, &progress);
+    //百分比进度
+    progress = 50;
+    (*tpfUpdataProgressPt)(ptr, &progress);
 
 
-	rtn = g_hex->ReadFlash(axis, &(g_hex->m_hex_frame_write),tpfUpdataProgressPt, ptr, com_type,stationId);
-	if (rtn != 0)
-	{
-		GTSD_CMD_FroceCheckMode(pre_mode);
-		return rtn;
-	}
+    rtn = g_hex->ReadFlash(axis, &(g_hex->m_hex_frame_write),tpfUpdataProgressPt, ptr, com_type,stationId);
+    if (rtn != 0)
+    {
+        GTSD_CMD_FroceCheckMode(pre_mode);
+        return rtn;
+    }
 
-	//百分比进度
-	progress = 90;
-	(*tpfUpdataProgressPt)(ptr, &progress);
+    //百分比进度
+    progress = 90;
+    (*tpfUpdataProgressPt)(ptr, &progress);
 
-	rtn = g_hex->CompareFlash(&(g_hex->m_hex_frame_write), &(g_hex->m_hex_frame_read));
-	if (rtn != 0)
-	{
-		GTSD_CMD_FroceCheckMode(pre_mode);
-		return rtn;
-	}
+    rtn = g_hex->CompareFlash(&(g_hex->m_hex_frame_write), &(g_hex->m_hex_frame_read));
+    if (rtn != 0)
+    {
+        GTSD_CMD_FroceCheckMode(pre_mode);
+        return rtn;
+    }
 
-	//开中断
-	rtn = GTSD_CMD_InterruptSwitch(axis, 1, com_type, stationId);
-	if (rtn != 0)
-	{
-		GTSD_CMD_FroceCheckMode(pre_mode);
-		return rtn;
-	}
-	//百分比进度
-	progress = 100;
-	(*tpfUpdataProgressPt)(ptr, &progress);
+    //开中断
+    rtn = GTSD_CMD_InterruptSwitch(axis, 1, com_type, stationId);
+    if (rtn != 0)
+    {
+        GTSD_CMD_FroceCheckMode(pre_mode);
+        return rtn;
+    }
+    //百分比进度
+    progress = 100;
+    (*tpfUpdataProgressPt)(ptr, &progress);
 
-	GTSD_CMD_FroceCheckMode(pre_mode);
+    GTSD_CMD_FroceCheckMode(pre_mode);
 
 	return RTN_SUCCESS;
 }
@@ -3196,4 +3196,10 @@ SERVODRIVERCOMDLL_API short GTSD_CMD_XmlReadFile(int16 axis, char* pFileNameList
 
 	return Unlock(RTN_PARAM_ERR);
 
+}
+
+int16 GTSD_CMD_ReadConflictDevSeq(Uint8 &deviceSequence)
+{
+    deviceSequence = g_RnInterface->m_conflict_device_seq;
+    return RTN_SUCCESS;
 }

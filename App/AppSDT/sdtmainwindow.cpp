@@ -70,7 +70,7 @@
 #define RAM_NAME "RAM"
 
 #define ICON_SDT_LOGO_NAME            "sdtlogo.png"
-#define SDT_VERSION                   "2.0.9"
+#define SDT_VERSION                   "2.1.0"
 
 using namespace GT;
 
@@ -436,7 +436,7 @@ void SDTMainWindow::navigationTreeInit()
   QTreeWidgetItem *globalItem=NULL;
   SdAssembly * sd;
   int pageIndex=0;
-  bool hasNickName=m_sdAssemblyList.count()>1;
+//  bool hasNickName=m_sdAssemblyList.count()>1;
 
   QHash<QString ,QString>navTreeNameSwitchHash;
   navTreeNameSwitchHash.insert("Motor",tr("Motor"));
@@ -464,7 +464,8 @@ void SDTMainWindow::navigationTreeInit()
     axisNumList.append(axisNum);
     deviceItem=new QTreeWidgetItem(ui->treeWidget);
     QString prefix;
-    prefix=hasNickName?tr("[%1] ").arg(sd->sevDevice()->aliasName()):"";
+//    prefix=hasNickName?tr("[%1] ").arg(sd->sevDevice()->aliasName()):"";
+    prefix=tr("[%1] ").arg(sd->sevDevice()->aliasName());
     deviceItem->setText(COL_TARGET_CONFIG_NAME,prefix+sd->sevDevice()->modelName());
     deviceItem->setText(COL_TARGET_CONFIG_PRM,QString::number(axisNum));
     qDebug()<<"deviceItem->setText";
@@ -609,8 +610,9 @@ void SDTMainWindow::removeAllStackedWidget()
   QWidget *w;
   while (ui->mainStackedWidget->count()) {
     w=ui->mainStackedWidget->widget(0);
-    ui->mainStackedWidget->removeWidget(w);
+    ui->mainStackedWidget->removeWidget(w);   
     w->setParent(0);
+//    delete w;
     qDebug()<<"remove stackedWidget "<<i;
     i++;
     m_statusBar->statusProgressBar()->setValue(i);
@@ -971,8 +973,6 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
             } else {
                 isContinue = true;
             }
-            dbMatch->close();
-            delete dbMatch;
 
             if (isContinue) {
                 m_connecting=true;
@@ -989,6 +989,8 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
                 m_actnNewConfig->setEnabled(true);
             }
         }
+        dbMatch->close();
+        delete dbMatch;
     } else {
         m_statusBar->statusProgressBar()->setValue(50);
         if (!isAutoLoad())
@@ -998,7 +1000,6 @@ void SDTMainWindow::onActnConnectClicked(bool checked)
         }
         QMessageBox::information(0,tr("connect error"),tr("Net Error\n\nexception cause maybe:\n%1\n").arg(SdtError::instance()->errorStringList()->join("\n")));
     }
-
     setUiStatusConnect(m_connecting);
     setUiAllEnable(true);
     m_statusBar->statusProgressBar()->setVisible(false);
@@ -1104,20 +1105,20 @@ void SDTMainWindow::onActnDownloadClicked()
         return;
     }
     QString downloadFileName = QString::null;
-    int downloadIndex = -1;
+    QList<int> downloadIndexList;
     QList<SevDevice *> devList = sevList();
     if (devList.count() == 1) {
-        downloadIndex = 0;
+        downloadIndexList.append(0);
         downloadFileName = QFileDialog::getOpenFileName(this, tr("Open XML File"), m_downloadPath, tr("XML Files(*.xml)"));
     } else {
         DownloadDialog downloadDialog;
-        downloadDialog.uiInit(devList, m_downloadPath, downloadFileName, downloadIndex);
+        downloadDialog.uiInit(devList, m_downloadPath, downloadFileName, downloadIndexList);
         downloadDialog.exec();
         qDebug()<<"downloadfilename"<<downloadFileName;
-        qDebug()<<"downloadIndex"<<downloadIndex;
+        qDebug()<<"downloadIndex Num"<<downloadIndexList.count();
     }
     //fileName = QFileDialog::getOpenFileName(this, tr("Open XML File"), m_downloadPath, tr("XML Files(*.xml)"));
-    if (downloadFileName.isNull() || downloadIndex == -1) {
+    if (downloadFileName.isNull() || downloadIndexList.count() == 0) {
         return;
     }
     QFileInfo fileInfo;
@@ -1129,9 +1130,19 @@ void SDTMainWindow::onActnDownloadClicked()
     connect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
     bool downOk = false;
     if (!m_isOffline) {
-        downOk = servoFile->downLoadFile(processCallBack, (void *)(mp_progressBar), downloadFileName, devList.at(downloadIndex), false, "");
+        for (int i = 0; i < downloadIndexList.count(); i++) {
+            downOk = servoFile->downLoadFile(processCallBack, (void *)(mp_progressBar), downloadFileName, devList.at(downloadIndexList.at(i)), false, "");
+            if (!downOk) {
+                return;
+            }
+        }
     } else {
-        downOk = servoFile->downLoadOfflineFile(downloadFileName, devList.at(downloadIndex));
+        for (int i = 0; i < downloadIndexList.count(); i++) {
+            downOk = servoFile->downLoadOfflineFile(downloadFileName, devList.at(downloadIndexList.at(i)));
+            if (!downOk) {
+                return;
+            }
+        }
         activeCurrentUi();
     }
     disconnect(servoFile, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));

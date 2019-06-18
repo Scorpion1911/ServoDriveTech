@@ -109,6 +109,10 @@ void PTPlanMotion::movePrepare()
         }
     }
     m_length = m_timeVector.count();
+//    for (int i = 0; i < m_length; i++) {
+//        qDebug()<<"i = "<<i<<"time = "<<m_timeVector.at(i);
+//        qDebug()<<"i = "<<i<<"pos = "<<m_posVector.at(i);
+//    }
     m_sev->genCmdWrite(PT_BUFFER_DATA_CLR, 0, m_axisInx);
     for (int i = 0; i < PT_INIT_POINT; i++) {
         if (i >= m_length) {

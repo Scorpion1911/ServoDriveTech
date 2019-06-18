@@ -509,6 +509,7 @@
     <message>
         <location filename="plotunitgraph129.ui" line="439"/>
         <source>Sampling(62.5us X):</source>
+        <oldsource>Sampling(31.25us X):</oldsource>
         <translation>采样周期(62.5us X):</translation>
     </message>
     <message>
@@ -587,126 +588,126 @@
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="163"/>
+        <location filename="plotunitgraph129.cpp" line="165"/>
         <source>startSampling</source>
         <translation>画图采集控制</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="164"/>
+        <location filename="plotunitgraph129.cpp" line="166"/>
         <source>auto fit window</source>
         <translation>全程自动适应窗口</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="165"/>
+        <location filename="plotunitgraph129.cpp" line="167"/>
         <source>fit window</source>
         <translation>单次适应窗口</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="166"/>
+        <location filename="plotunitgraph129.cpp" line="168"/>
         <source>horizontal measure</source>
         <translation>水平测量</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="167"/>
+        <location filename="plotunitgraph129.cpp" line="169"/>
         <source>vertical measure</source>
         <translation>垂直测量</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="168"/>
+        <location filename="plotunitgraph129.cpp" line="170"/>
         <source>open hostory curve</source>
         <translation>打开历史曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="169"/>
+        <location filename="plotunitgraph129.cpp" line="171"/>
         <source>save all curves</source>
         <translation>保存当前所有曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="170"/>
+        <location filename="plotunitgraph129.cpp" line="172"/>
         <source>load all range curves </source>
         <translation>加载全测量范围曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="171"/>
+        <location filename="plotunitgraph129.cpp" line="173"/>
         <source>full screen switch</source>
         <translation>全屏切换</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="187"/>
-        <location filename="plotunitgraph129.cpp" line="1174"/>
-        <location filename="plotunitgraph129.cpp" line="1475"/>
+        <location filename="plotunitgraph129.cpp" line="189"/>
+        <location filename="plotunitgraph129.cpp" line="1177"/>
+        <location filename="plotunitgraph129.cpp" line="1478"/>
         <source>error</source>
         <translation>异常</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="187"/>
+        <location filename="plotunitgraph129.cpp" line="189"/>
         <source>load plugin error!
 </source>
         <translation>加载插件出错！</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="213"/>
+        <location filename="plotunitgraph129.cpp" line="215"/>
         <source>checked</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="213"/>
+        <location filename="plotunitgraph129.cpp" line="215"/>
         <source>name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="213"/>
+        <location filename="plotunitgraph129.cpp" line="215"/>
         <source>axis</source>
         <translation>轴</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="213"/>
+        <location filename="plotunitgraph129.cpp" line="215"/>
         <source>dev</source>
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="600"/>
+        <location filename="plotunitgraph129.cpp" line="602"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="600"/>
+        <location filename="plotunitgraph129.cpp" line="602"/>
         <source>Curve File(*.src)</source>
         <translation>曲线文件(*.src)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="611"/>
+        <location filename="plotunitgraph129.cpp" line="613"/>
         <source>file error</source>
         <translation>文件错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="611"/>
+        <location filename="plotunitgraph129.cpp" line="613"/>
         <source>can not open file :
 %1</source>
         <translation>无法打开文件：
 %1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="795"/>
-        <location filename="plotunitgraph129.cpp" line="1266"/>
-        <location filename="plotunitgraph129.cpp" line="1714"/>
+        <location filename="plotunitgraph129.cpp" line="797"/>
+        <location filename="plotunitgraph129.cpp" line="1269"/>
+        <location filename="plotunitgraph129.cpp" line="1717"/>
         <source>on</source>
         <translation>开</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="801"/>
-        <location filename="plotunitgraph129.cpp" line="1260"/>
-        <location filename="plotunitgraph129.cpp" line="1720"/>
+        <location filename="plotunitgraph129.cpp" line="803"/>
+        <location filename="plotunitgraph129.cpp" line="1263"/>
+        <location filename="plotunitgraph129.cpp" line="1723"/>
         <source>off</source>
         <translation>关</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="818"/>
+        <location filename="plotunitgraph129.cpp" line="820"/>
         <source>Axis_%1</source>
         <translation>轴_%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="825"/>
+        <location filename="plotunitgraph129.cpp" line="827"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
@@ -719,64 +720,64 @@
         <translation type="vanished">曲线文件(*.src);;文本文件(*.txt)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="837"/>
+        <location filename="plotunitgraph129.cpp" line="839"/>
         <source>Save Curve</source>
         <translation>保存曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="849"/>
-        <location filename="plotunitgraph129.cpp" line="876"/>
+        <location filename="plotunitgraph129.cpp" line="851"/>
+        <location filename="plotunitgraph129.cpp" line="878"/>
         <source>Saving Curve Information</source>
         <translation>正在保存曲线信息</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="904"/>
+        <location filename="plotunitgraph129.cpp" line="906"/>
         <source>Saving Curve %1</source>
         <translation>保存曲线%1</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="868"/>
-        <location filename="plotunitgraph129.cpp" line="896"/>
-        <location filename="plotunitgraph129.cpp" line="907"/>
+        <location filename="plotunitgraph129.cpp" line="870"/>
+        <location filename="plotunitgraph129.cpp" line="898"/>
+        <location filename="plotunitgraph129.cpp" line="909"/>
         <source>Saving Finish!</source>
         <translation>保存完成！</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="837"/>
+        <location filename="plotunitgraph129.cpp" line="839"/>
         <source>Curve File(*.src);;Text File(*.txt);;CSV File(*.csv)</source>
         <translation>曲线文件(*.src);;文本文件(*.txt);;CSV文件(*.csv)</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="864"/>
-        <location filename="plotunitgraph129.cpp" line="892"/>
+        <location filename="plotunitgraph129.cpp" line="866"/>
+        <location filename="plotunitgraph129.cpp" line="894"/>
         <source>Saving Curve</source>
         <translation>正在保存曲线</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1004"/>
-        <location filename="plotunitgraph129.cpp" line="1034"/>
-        <location filename="plotunitgraph129.cpp" line="1104"/>
+        <location filename="plotunitgraph129.cpp" line="1006"/>
+        <location filename="plotunitgraph129.cpp" line="1036"/>
+        <location filename="plotunitgraph129.cpp" line="1106"/>
         <source>warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1004"/>
+        <location filename="plotunitgraph129.cpp" line="1006"/>
         <source>plugin load error</source>
         <translation>插件加载错误</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1034"/>
+        <location filename="plotunitgraph129.cpp" line="1036"/>
         <source>%1 is BIT</source>
         <translation>%1是位变量，不能增加</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1104"/>
+        <location filename="plotunitgraph129.cpp" line="1106"/>
         <source>The numbers of selected curves is too much</source>
         <translation>所选曲线过多</translation>
     </message>
     <message>
-        <location filename="plotunitgraph129.cpp" line="1174"/>
-        <location filename="plotunitgraph129.cpp" line="1475"/>
+        <location filename="plotunitgraph129.cpp" line="1177"/>
+        <location filename="plotunitgraph129.cpp" line="1478"/>
         <source>The curve = %1 is not in the device</source>
         <translation>曲线变量  = %1 不在当前设备</translation>
     </message>
@@ -1143,6 +1144,11 @@ Please input again!</source>
         <location filename="TabMotion/tabmotion.cpp" line="118"/>
         <source>Position</source>
         <translation>位置模式</translation>
+    </message>
+    <message>
+        <location filename="TabMotion/tabmotion.cpp" line="125"/>
+        <source>PTSL</source>
+        <translation>PT模拟器</translation>
     </message>
 </context>
 <context>

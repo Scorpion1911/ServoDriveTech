@@ -30,4 +30,6 @@ SUBDIRS += \
     consoleTest \
     #AppFirmwareSegmentFlashTest \
     ParaFileConversion \
-    ConvertXml
+    AppUiTest2\
+    ConvertXml\
+    AbbSim

@@ -23,6 +23,7 @@ public:
   int m_axisInx;
   int m_dspInx;
   int m_devInx;
+  quint8 m_stationId;
 
   bool m_isDraw;
   QColor m_color;
@@ -112,6 +113,9 @@ public:
 
   int devInx() const;
   void setDevInx(int devInx);
+
+  quint8 stationId() const;
+  void setStationId(quint8 value);
 
   QString devName() const;
 

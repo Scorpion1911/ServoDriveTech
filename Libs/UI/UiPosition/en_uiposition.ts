@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en_US">
 <context>
     <name>GraphPosition129</name>
     <message>
         <location filename="graphposition129.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="graphposition129.ui" line="20"/>
         <source>graph position 129</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -19,17 +19,17 @@
     <message>
         <location filename="graphposition133.cpp" line="114"/>
         <source>select controller:</source>
-        <translation type="unfinished"></translation>
+        <translation>Select Controller:</translation>
     </message>
     <message>
         <location filename="graphposition133.cpp" line="117"/>
         <source>PID Controller</source>
-        <translation type="unfinished"></translation>
+        <translation>Linear Controller</translation>
     </message>
     <message>
         <location filename="graphposition133.cpp" line="117"/>
         <source>Nolinear Controller</source>
-        <translation type="unfinished"></translation>
+        <translation>Nolinear Controller</translation>
     </message>
     <message>
         <location filename="graphposition133.cpp" line="361"/>
@@ -364,7 +364,7 @@ you need to stop autoturning and try again!</source>
     <message>
         <location filename="pospid133.ui" line="26"/>
         <source>PID Controller</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Linear Controller</translation>
     </message>
     <message>
         <location filename="pospid133.ui" line="52"/>

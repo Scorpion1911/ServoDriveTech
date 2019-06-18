@@ -6,6 +6,7 @@
 #include "globaldefine.h"
 #include "gtutils.h"
 #include "FolderCompressor/FolderCompressor.h"
+#include "Windows.h"
 #include <QProgressBar>
 #include <QDir>
 
@@ -29,6 +30,17 @@ void FlashClass::updateProgessBarWhenRestoreClicked(void *arg, qint16 *value)
     qApp->processEvents();
 }
 
+void FlashClass::updateProgessValueFPGA(void *arg, qint16 *value)
+{
+    bool isErase;
+    quint16 bitHigh = (quint16)(1<<15);
+    isErase = (*value) &bitHigh;
+    qint16 v = (*value)&(~bitHigh);
+    QProgressBar *bar = static_cast<QProgressBar *>(arg);
+    bar->setValue(v % 100);
+    qApp->processEvents();
+}
+
 void FlashClass::onXmlPrmToServo(int value)
 {
     emit changeBarCount(value);
@@ -41,21 +53,20 @@ void FlashClass::delayms(quint16 ms)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
-void FlashClass::flash(int netId, QString hexPath, QString xmlPath, int dspNum, bool hexChecked, bool rpdChecked, bool xmlChecked, QObject *proBar) {
+void FlashClass::flash(int netId, QString hexPath, QString xmlPath, int dspNum, int axisNum, int fpgaNum, bool hexChecked, bool rpdChecked, bool xmlChecked, QObject *proBar) {
     m_hexPath = hexPath;
     m_xmlPath = xmlPath;
     m_dspNum = dspNum;
+    m_axisNum = axisNum;
+    m_fpgaNum = fpgaNum;
     m_netId = netId;
-    int axisCount = 0;
     QTreeWidget *treePrm = TreeManager::createTreeWidgetFromXmlFile(m_xmlPath);
     if (treePrm->topLevelItem(0)->text(0).compare("XmlFileInformation") == 0) {
         QTreeWidgetItem* tempItem = treePrm->takeTopLevelItem(0);
         delete tempItem;
-        axisCount = treePrm->topLevelItemCount();
-    } else {
-        axisCount = treePrm->topLevelItemCount();
     }
-    if (axisCount != 2 * m_dspNum && axisCount != m_dspNum) {
+    int treeAxisNum = treePrm->topLevelItemCount();
+    if (treeAxisNum != 2 * m_dspNum && treeAxisNum != m_dspNum) {
         emit sendWarnMsg(tr("Xml File Error! Please reselect file!"));
         return;
     }
@@ -106,7 +117,25 @@ void FlashClass::flash(int netId, QString hexPath, QString xmlPath, int dspNum, 
             treePrm->clear();
             delete treePrm;
             emit sendWarnMsg(tr("Download xml parameters file to servo complete successfully!"));
-
+            if (rpdChecked) {
+                QStringList rpdFilePath = getFilesFromExt("rpd", desPath, 1);
+                if (rpdFilePath.count() == 0) {
+                    rpdFilePath = getFilesFromExt("bin", desPath, 1);
+                    if (rpdFilePath.count() == 0) {
+                        emit sendWarnMsg(tr("Can not find FPGA firmware!"));
+                        return;
+                    }
+                }
+                QString rpdPath = rpdFilePath.at(0);
+                emit sendWarnMsg(tr("Downloading FPGA firmware!"));
+                ok = downloadFPGA(proBar, rpdPath);
+            }
+            if (!ok) {
+                emit sendWarnMsg(tr("Download FPGA firmware fails!"));
+                emit changeBarCount(0);
+                deleteDir(desPath);
+                return;
+            }
             if (xmlChecked) {
                 emit sendWarnMsg(tr("Downloading xml files!"));
                 ok = downloadXmlFiles(desPath, proBar);
@@ -206,6 +235,33 @@ bool FlashClass::downloadXmlFiles(const QString &desPath, QObject* proBar)
         return false;
     }
     return true;
+}
+
+bool FlashClass::downloadFPGA(QObject *proBar, const QString &rpdPath)
+{
+    bool ok = true;
+    for (int i = 0; i < m_fpgaNum; i++) {
+        wstring file = rpdPath.toStdWString();
+        const wchar_t* wp = file.c_str();
+        char* m_char = NULL;
+        int len = WideCharToMultiByte(CP_ACP, 0, wp, wcslen(wp), NULL, 0, NULL, NULL);
+        m_char = new char[len + 1];
+        WideCharToMultiByte(CP_ACP, 0, wp, wcslen(wp), m_char, len, NULL, NULL);
+        m_char[len] ='\0';
+        qint16 ret = GTSD_CMD_FirmwareFlashHandler(i * m_axisNum, file, updateProgessValueFPGA, proBar, m_netId, m_netRnStation);
+        qDebug()<<"fpga ret"<<ret;
+        if (ret != 0) {
+            ok = false;
+        }
+    }
+    if (ok) {
+        emit sendWarnMsg(tr("Download fpga successful!"));
+    } else {
+        emit sendWarnMsg(tr("Download fpga fail!"));
+    }
+    emit changeBarCount(0);
+    return ok;
+    qApp->processEvents();
 }
 
 bool FlashClass::deleteDir(const QString &path)

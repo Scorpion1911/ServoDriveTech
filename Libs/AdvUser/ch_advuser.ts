@@ -64,9 +64,9 @@
     </message>
     <message>
         <location filename="advusercompress.ui" line="57"/>
-        <source>Version (Format Example: F86032018040600000000):</source>
-        <oldsource>Version (Format Example: 20180406):</oldsource>
-        <translation>PFG固件版本(参考格式：F86032018040600000000)：</translation>
+        <source>Version (Format Example: F860300000000):</source>
+        <oldsource>Version (Format Example: F86032018040600000000):</oldsource>
+        <translation>FPGA固件版本(参考格式：F860300000000)：</translation>
     </message>
     <message>
         <location filename="advusercompress.ui" line="74"/>
@@ -445,22 +445,22 @@
         <translation>设备站号：</translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="52"/>
+        <location filename="advuserstation.cpp" line="51"/>
         <source>Device Station</source>
         <translation>站号设置</translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="66"/>
+        <location filename="advuserstation.cpp" line="65"/>
         <source>[%1] </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="136"/>
+        <location filename="advuserstation.cpp" line="129"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="136"/>
+        <location filename="advuserstation.cpp" line="129"/>
         <source>Setting Error</source>
         <translation>设置错误</translation>
     </message>

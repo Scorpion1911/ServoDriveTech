@@ -46,6 +46,12 @@ errcode_t ICom::close()
     return ret;
 }
 
+errcode_t ICom::readConflictDevSeq(uint8_t &deviceSequence)
+{
+    int16_t ret=GTSD_CMD_ReadConflictDevSeq(deviceSequence);
+    return ret;
+}
+
 NetCardInfo ICom::getNetCardInformation()
 {
     NetCardInfo carInf;

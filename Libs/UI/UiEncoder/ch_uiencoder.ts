@@ -970,7 +970,7 @@
         <translation>位数：</translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="683"/>
+        <location filename="graphencoder136.cpp" line="686"/>
         <source>Enc Lost</source>
         <translation>编码器丢失</translation>
     </message>

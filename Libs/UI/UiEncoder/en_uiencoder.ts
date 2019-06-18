@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en_US" sourcelanguage="en_US">
 <context>
     <name>EncConfigABZ</name>
     <message>
         <location filename="EncConfig/encconfigabz.cpp" line="8"/>
         <source>EncABZ</source>
-        <translation type="unfinished"></translation>
+        <translation>Encoder A/B/Z</translation>
     </message>
 </context>
 <context>
@@ -14,7 +14,7 @@
     <message>
         <location filename="EncConfig/encconfigduomoitem.cpp" line="6"/>
         <source>EncDuoMoChuan</source>
-        <translation type="unfinished"></translation>
+        <translation>TAMAGAWA</translation>
     </message>
 </context>
 <context>
@@ -22,7 +22,7 @@
     <message>
         <location filename="EncConfig/encconfighaidehanitem.cpp" line="6"/>
         <source>EncHaidehan</source>
-        <translation type="unfinished"></translation>
+        <translation>Endat 2.x</translation>
     </message>
 </context>
 <context>
@@ -30,7 +30,7 @@
     <message>
         <location filename="EncConfig/encconfighechuanitem.cpp" line="6"/>
         <source>EncHeChuan</source>
-        <translation type="unfinished"></translation>
+        <translation>HCFA</translation>
     </message>
 </context>
 <context>
@@ -38,12 +38,12 @@
     <message>
         <location filename="EncConfig/encconfignikangitem.cpp" line="14"/>
         <source>EncNiKang</source>
-        <translation type="unfinished"></translation>
+        <translation>Nikon</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfignikangitem.cpp" line="24"/>
         <source>baud:</source>
-        <translation type="unfinished"></translation>
+        <translation>Baud rate:</translation>
     </message>
 </context>
 <context>
@@ -51,12 +51,12 @@
     <message>
         <location filename="EncConfig/encconfigrotation.cpp" line="18"/>
         <source>EncRotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolver</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigrotation.cpp" line="30"/>
         <source>polesNum</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolver Poles</translation>
     </message>
 </context>
 <context>
@@ -64,7 +64,7 @@
     <message>
         <location filename="EncConfig/encconfigsanxieitem.cpp" line="6"/>
         <source>EncSanXie</source>
-        <translation type="unfinished"></translation>
+        <translation>SANKYO</translation>
     </message>
 </context>
 <context>
@@ -72,27 +72,27 @@
     <message>
         <location filename="EncConfig/encconfigsinendat.cpp" line="20"/>
         <source>EncSinEndat</source>
-        <translation type="unfinished"></translation>
+        <translation>Endat 2.x Protocal with Sine Signals</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinendat.cpp" line="34"/>
         <source>sinPerR</source>
-        <translation type="unfinished"></translation>
+        <translation>Sine Signals per Round</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinendat.cpp" line="35"/>
         <source>Abs LineNum</source>
-        <translation type="unfinished"></translation>
+        <translation>Abosolute Line Number</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinendat.cpp" line="38"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverse Direction</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinendat.cpp" line="50"/>
         <source>Abs Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Absolute Pos</translation>
     </message>
 </context>
 <context>
@@ -100,27 +100,27 @@
     <message>
         <location filename="EncConfig/encconfigsinhiperface.cpp" line="20"/>
         <source>SinHiperface</source>
-        <translation type="unfinished"></translation>
+        <translation>HIPERFACE with sine signals</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinhiperface.cpp" line="34"/>
         <source>sinPerR</source>
-        <translation type="unfinished"></translation>
+        <translation>Sine Signals per Round</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinhiperface.cpp" line="35"/>
         <source>Abs LineNum</source>
-        <translation type="unfinished"></translation>
+        <translation>Abosolute Line Number</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinhiperface.cpp" line="38"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverse Direction</translation>
     </message>
     <message>
         <location filename="EncConfig/encconfigsinhiperface.cpp" line="50"/>
         <source>Abs Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Absolute Pos</translation>
     </message>
 </context>
 <context>
@@ -133,7 +133,7 @@
     <message>
         <location filename="EncConfig/encconfigsinz.cpp" line="31"/>
         <source>sinPerR</source>
-        <translation type="unfinished"></translation>
+        <translation>Sine Signals per Round</translation>
     </message>
 </context>
 <context>
@@ -445,17 +445,17 @@
         <location filename="graphencoder130.ui" line="287"/>
         <location filename="graphencoder130.ui" line="353"/>
         <source>页</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="graphencoder130.ui" line="300"/>
         <source>Page 1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="graphencoder130.ui" line="340"/>
         <source>Page 2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="graphencoder130.ui" line="361"/>
@@ -709,7 +709,7 @@
         <location filename="graphencoder136.ui" line="534"/>
         <location filename="graphencoder136.ui" line="580"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Inverse Direction</translation>
     </message>
     <message>
         <location filename="graphencoder136.ui" line="570"/>
@@ -835,7 +835,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphencoder136.cpp" line="683"/>
+        <location filename="graphencoder136.cpp" line="686"/>
         <source>Enc Lost</source>
         <translation type="unfinished"></translation>
     </message>

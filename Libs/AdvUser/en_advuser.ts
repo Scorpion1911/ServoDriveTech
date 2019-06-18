@@ -64,8 +64,8 @@
     </message>
     <message>
         <location filename="advusercompress.ui" line="57"/>
-        <source>Version (Format Example: F86032018040600000000):</source>
-        <oldsource>Version (Format Example: 20180406):</oldsource>
+        <source>Version (Format Example: F860300000000):</source>
+        <oldsource>Version (Format Example: F86032018040600000000):</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -423,22 +423,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="52"/>
+        <location filename="advuserstation.cpp" line="51"/>
         <source>Device Station</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="66"/>
+        <location filename="advuserstation.cpp" line="65"/>
         <source>[%1] </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="136"/>
+        <location filename="advuserstation.cpp" line="129"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="advuserstation.cpp" line="136"/>
+        <location filename="advuserstation.cpp" line="129"/>
         <source>Setting Error</source>
         <translation type="unfinished"></translation>
     </message>

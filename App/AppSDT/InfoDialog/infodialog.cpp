@@ -29,9 +29,10 @@ void InfoDialog::uiInit(const QList<SevDevice*> &devList)
     for (int i = 0; i < m_devList.count(); i++) {
         DeviceIdHelper *idHelper = new DeviceIdHelper(m_devList.at(i)->socketCom(), 0);
         ui->table_Info->insertRow(i);
-        bool hasNickName = m_devList.count() > 1;
+//        bool hasNickName = m_devList.count() > 1;
         QString prefix;
-        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
+//        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
+        prefix = tr("[%1] ").arg(m_devList.at(i)->aliasName());
         ui->table_Info->setItem(i, COL_NAME, new QTableWidgetItem(prefix + m_devList.at(i)->modelName()));
         bool ok;
         quint32 pid = idHelper->readPwrId(ok);

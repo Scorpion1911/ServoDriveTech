@@ -34,7 +34,9 @@ public:
     QString m_rpdFilePath;
     QStringList m_xmlFilePaths;
     QList<SevDevice *> m_devList;
+    QList<QCheckBox *> m_boxList;
     SevDevice* m_crtDev;
+    int m_boxCount;
 };
 
 AdvUserFirmwareSegmentFlashPrivate::AdvUserFirmwareSegmentFlashPrivate()
@@ -80,19 +82,24 @@ void AdvUserFirmwareSegmentFlash::uiInit()
     Q_D(AdvUserFirmwareSegmentFlash);
     readAdv();
     d->m_crtDev = 0;
-    disconnect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onActionComboBoxIndexChange(int)));
-    ui->comboBox->clear();
+    d->m_boxCount = 0;
+    QVBoxLayout *vBox = new QVBoxLayout;
     if(d->m_devList.count() != 0){
         d->m_crtDev = d->m_devList.at(0);
-        for(int i = 0; i < d->m_devList.length(); i++){
-            bool hasNickName = d->m_devList.count() > 1;
+        for (int i = 0; i < d->m_devList.length(); i++){
+//            bool hasNickName = d->m_devList.count() > 1;
             QString prefix;
-            prefix = hasNickName?tr("[%1] ").arg(d->m_devList.at(i)->aliasName()):"";
-            ui->comboBox->addItem(prefix + d->m_devList.at(i)->modelName());
+//            prefix = hasNickName?tr("[%1] ").arg(d->m_devList.at(i)->aliasName()):"";
+            prefix = tr("[%1] ").arg(d->m_devList.at(i)->aliasName());
+            QCheckBox *box = new QCheckBox(prefix + d->m_devList.at(i)->modelName());
+            d->m_boxList.append(box);
+            vBox->addWidget(box);
+            connect(box, SIGNAL(clicked(bool)), this, SLOT(onSingleBoxClicked(bool)));
         }
     }
-    connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onActionComboBoxIndexChange(int)));
-    ui->comboBox->setCurrentIndex(0);
+    vBox->setSpacing(2);
+    ui->scrollAreaWidgetContents->setLayout(vBox);
+    connect(ui->checkBox_all, SIGNAL(clicked(bool)), this, SLOT(onAllBoxClicked(bool)));
     ui->lineEditDSP->clear();
     ui->lineEditFPGA->clear();
     ui->lineEditFLASH->clear();
@@ -313,34 +320,43 @@ void AdvUserFirmwareSegmentFlash::onActionDSPFlashBtnClicked()
     Q_D(AdvUserFirmwareSegmentFlash);
     ui->progressBar->setVisible(true);
     ui->plainTextEdit->appendPlainText(tr("Start download dsp!"));
-    bool ok = firmwareFlashCheck();
-    if(ok){
-        int dspNum = 0;
-        QString filePath = GTUtils::sysPath() + d->m_crtDev->typeName() + "/" + d->m_crtDev->modelName() + "/"\
-                            + d->m_crtDev->versionName() + "/" + "PrmFirmwareUpdate.xml";
-        QTreeWidget *tree = QtTreeManager::createTreeWidgetFromXmlFile(filePath);
-        QTreeWidgetItem *dspNameItem = GTUtils::findItem("dsp", tree, 0);
-        if(dspNameItem != NULL){
-            dspNum = dspNameItem->text(1).toInt();
-        }else{
-            dspNum = (d->m_crtDev->axisNum() + 1) / 2;
+    QString devStr = "";
+    for (int i = 0; i < d->m_boxList.count(); i++) {
+        if (!d->m_boxList.at(i)->isChecked()) {
+            continue;
         }
-        delete tree;
-        emit startDownload(false);
-        for (int i = 0; i < dspNum; i++) {
-            qint16 ret = d->m_crtDev->socketCom()->downLoadDSPFLASH(i, d->m_hexFilePath.toStdWString(), updateProgressBar, (void *)ui->progressBar);
-            ui->plainTextEdit->appendPlainText(tr("Downloading dsp:%1").arg(i+1));
-            if (ret != 0) {
-                ui->plainTextEdit->appendPlainText(tr("Download dsp:%1 fail!").arg(i+1));
-                ok = false;
+        d->m_crtDev = d->m_devList.at(i);
+        devStr = tr("Device%1: ").arg(d->m_crtDev->aliasName());
+        bool ok = firmwareFlashCheck();
+        if (ok) {
+            int dspNum = 0;
+            QString filePath = GTUtils::sysPath() + d->m_crtDev->typeName() + "/" + d->m_crtDev->modelName() + "/"\
+                               + d->m_crtDev->versionName() + "/" + "PrmFirmwareUpdate.xml";
+            QTreeWidget *tree = QtTreeManager::createTreeWidgetFromXmlFile(filePath);
+            QTreeWidgetItem *dspNameItem = GTUtils::findItem("dsp", tree, 0);
+            if (dspNameItem != NULL) {
+                dspNum = dspNameItem->text(1).toInt();
+            } else {
+                dspNum = (d->m_crtDev->axisNum() + 1) / 2;
             }
+            delete tree;
+            emit startDownload(false);
+            for (int i = 0; i < dspNum; i++) {
+                qint16 ret = d->m_crtDev->socketCom()->downLoadDSPFLASH(i, d->m_hexFilePath.toStdWString(), updateProgressBar, (void *)ui->progressBar);
+                ui->plainTextEdit->appendPlainText(devStr + tr("Downloading dsp:%1").arg(i+1));
+                if (ret != 0) {
+                    ui->plainTextEdit->appendPlainText(devStr + tr("Download dsp:%1 fail!").arg(i+1));
+                    ok = false;
+                    break;
+                }
+            }
+            emit startDownload(true);
         }
-        emit startDownload(true);
-    }
-    if(ok){
-        ui->plainTextEdit->appendPlainText(tr("Download dsp successful!"));
-    }else{
-        ui->plainTextEdit->appendPlainText(tr("Download dsp fail!"));
+        if (ok) {
+            ui->plainTextEdit->appendPlainText(devStr + tr("Download dsp successful!"));
+        } else {
+            ui->plainTextEdit->appendPlainText(devStr + tr("Download dsp fail!"));
+        }
     }
     ui->progressBar->setVisible(false);
     ui->progressBar->setValue(0);
@@ -352,43 +368,49 @@ void AdvUserFirmwareSegmentFlash::onActionFPGAFlashBtnClicked()
     Q_D(AdvUserFirmwareSegmentFlash);
     ui->progressBar->setVisible(true);
     ui->plainTextEdit->appendPlainText(tr("Start download fpga!"));
-    bool ok = firmwareFlashCheck();
-    if(ok){
-        int fpgaNum = 0;
-        int fpgaAxisNum = 0;
-        QString filePath = GTUtils::sysPath() + d->m_crtDev->typeName() + "/" + d->m_crtDev->modelName() + "/"\
-                            + d->m_crtDev->versionName() + "/" + "PrmFirmwareUpdate.xml";
-        qDebug()<<"filePath"<<filePath;
-        QTreeWidget *tree = QtTreeManager::createTreeWidgetFromXmlFile(filePath);
-        QTreeWidgetItem *fpgaNameItem = GTUtils::findItem("fpga", tree, 0);
-        if(fpgaNameItem != NULL){
-            fpgaNum = fpgaNameItem->text(1).toInt();
-            fpgaAxisNum = fpgaNameItem->child(0)->text(1).toInt();
-        }else{
-            fpgaNum = 1;
-            fpgaAxisNum = d->m_crtDev->axisNum();
+    QString devStr;
+    for (int i = 0; i < d->m_boxList.count(); i++) {
+        if (!d->m_boxList.at(i)->isChecked()) {
+            continue;
         }
-        delete tree;
-        emit startDownload(false);
-        for(int i = 0; i < fpgaNum; i++){
-            qDebug()<<"path"<<d->m_rpdFilePath;
-            qDebug()<<"1"<<i * fpgaAxisNum;
-            m_erasing = true;
-            m_downloading = true;
-            qint16 ret = d->m_crtDev->socketCom()->downLoadFPGAFLASH(i * fpgaAxisNum, d->m_rpdFilePath.toStdWString(), updateProgressValueFPGA, (void *)(this));
-            qDebug()<<"fpga ret"<<ret;
-            m_erasing = false;
-            m_downloading = false;
-            if(ret != 0){
-                ok = false;
+        d->m_crtDev = d->m_devList.at(i);
+        devStr = tr("Device%1: ").arg(d->m_crtDev->aliasName());
+        bool ok = firmwareFlashCheck();
+        if (ok) {
+            int fpgaNum = 0;
+            int fpgaAxisNum = 0;
+            QString filePath = GTUtils::sysPath() + d->m_crtDev->typeName() + "/" + d->m_crtDev->modelName() + "/"\
+                               + d->m_crtDev->versionName() + "/" + "PrmFirmwareUpdate.xml";
+            qDebug()<<"filePath"<<filePath;
+            QTreeWidget *tree = QtTreeManager::createTreeWidgetFromXmlFile(filePath);
+            QTreeWidgetItem *fpgaNameItem = GTUtils::findItem("fpga", tree, 0);
+            if (fpgaNameItem != NULL) {
+                fpgaNum = fpgaNameItem->text(1).toInt();
+                fpgaAxisNum = fpgaNameItem->child(0)->text(1).toInt();
+            } else {
+                fpgaNum = 1;
+                fpgaAxisNum = d->m_crtDev->axisNum();
             }
+            delete tree;
+            emit startDownload(false);
+            for (int i = 0; i < fpgaNum; i++) {
+                m_erasing = true;
+                m_downloading = true;
+                qint16 ret = d->m_crtDev->socketCom()->downLoadFPGAFLASH(i * fpgaAxisNum, d->m_rpdFilePath.toStdWString(), updateProgressValueFPGA, (void *)(this));
+                qDebug()<<"fpga ret"<<ret;
+                m_erasing = false;
+                m_downloading = false;
+                if (ret != 0) {
+                    ok = false;
+                }
+            }
+            emit startDownload(true);
         }
-        emit startDownload(true);
-    }
-    if(ok){
-        ui->plainTextEdit->appendPlainText(tr("Download fpga successful!"));
-    }else{
-        ui->plainTextEdit->appendPlainText(tr("Download fpga fail!"));
+        if (ok) {
+            ui->plainTextEdit->appendPlainText(devStr + tr("Download fpga successful!"));
+        } else {
+            ui->plainTextEdit->appendPlainText(devStr + tr("Download fpga fail!"));
+        }
     }
     ui->progressBar->setVisible(false);
     ui->progressBar->setValue(0);
@@ -400,26 +422,58 @@ void AdvUserFirmwareSegmentFlash::onActionFLASHFlashBtnClicked()
     Q_D(AdvUserFirmwareSegmentFlash);
     ui->progressBar->setVisible(true);
     ui->plainTextEdit->appendPlainText(tr("Start download flash!"));
-    bool ok = firmwareFlashCheck();
-    emit startDownload(false);
-    if(ok){
-        quint8 axis = 0;
-        short value = ui->progressBar->value();
-        QList<int> fileTypeList;
-        for (int i = 0; i < d->m_xmlFilePaths.length(); i++) {
-            fileTypeList.append(0);
+    QString devStr;
+    for (int i = 0; i < d->m_boxList.count(); i++) {
+        if (!d->m_boxList.at(i)->isChecked()) {
+            continue;
         }
-        ok = d->m_crtDev->writeXml(axis, d->m_xmlFilePaths, fileTypeList, d->m_xmlFilePaths.length(), updateProgressBar, (void *)ui->progressBar, value);        
-    }
-    emit startDownload(true);
-    if(ok){
-        ui->plainTextEdit->appendPlainText(tr("Download flash successful!"));
-    }else{
-        ui->plainTextEdit->appendPlainText(tr("Download flash fail!"));
+        d->m_crtDev = d->m_devList.at(i);
+        devStr = tr("Device%1: ").arg(d->m_crtDev->aliasName());
+        bool ok = firmwareFlashCheck();
+        emit startDownload(false);
+        if (ok) {
+            quint8 axis = 0;
+            short value = ui->progressBar->value();
+            QList<int> fileTypeList;
+            for (int i = 0; i < d->m_xmlFilePaths.length(); i++) {
+                fileTypeList.append(0);
+            }
+            ok = d->m_crtDev->writeXml(axis, d->m_xmlFilePaths, fileTypeList, d->m_xmlFilePaths.length(), updateProgressBar, (void *)ui->progressBar, value);
+        }
+        emit startDownload(true);
+        if (ok) {
+            ui->plainTextEdit->appendPlainText(devStr + tr("Download flash successful!"));
+        } else {
+            ui->plainTextEdit->appendPlainText(devStr + tr("Download flash fail!"));
+        }
     }
     ui->progressBar->setVisible(false);
     ui->progressBar->setValue(0);
     qApp->processEvents();
+}
+
+void AdvUserFirmwareSegmentFlash::onAllBoxClicked(bool checked)
+{
+    Q_D(AdvUserFirmwareSegmentFlash);
+    for (int i = 0; i < d->m_devList.count(); i++) {
+        d->m_boxList.at(i)->setChecked(checked);
+    }
+    d->m_boxCount = d->m_devList.count();
+}
+
+void AdvUserFirmwareSegmentFlash::onSingleBoxClicked(bool checked)
+{
+    Q_D(AdvUserFirmwareSegmentFlash);
+    if (checked) {
+        d->m_boxCount++;
+    } else {
+        d->m_boxCount--;
+    }
+    if (d->m_boxCount == d->m_devList.count()) {
+        ui->checkBox_all->setChecked(true);
+    } else {
+        ui->checkBox_all->setChecked(false);
+    }
 }
 
 

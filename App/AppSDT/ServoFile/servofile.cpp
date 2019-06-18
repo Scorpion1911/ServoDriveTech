@@ -316,9 +316,9 @@ bool ServoFile::downloadItem(SevDevice *dev, int axisIndex, QTreeWidgetItem *ite
     m_barCount++;
     if (m_barCount % 10 == 0) {
         qApp->processEvents();
-        emit sendProgressbarMsg(m_barCount * 100 / m_downloadItemNum, tr("Downloading axis%1").arg(QString::number(axisIndex + 1)) + item->text(GT::COL_FLASH_ALLAXIS_NAME));
+        emit sendProgressbarMsg(m_barCount * 100 / m_downloadItemNum, tr("Downloading device%1 axis%2").arg(QString::number(dev->stationId()), QString::number(axisIndex + 1)) + item->text(GT::COL_FLASH_ALLAXIS_NAME));
     }
-    if (item->text(GT::COL_FLASH_ALLAXIS_NAME).compare("-1") != 0) {
+    if (item->text(GT::COL_FLASH_ALLAXIS_ADDR).compare("-1") != 0) {
         bool ok;
         if (dev->isOffline()) {
             ok = dev->writeOfflineAdvItem(axisIndex, item);

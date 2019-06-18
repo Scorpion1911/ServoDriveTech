@@ -309,12 +309,15 @@ void GraphIOConf136::initUi()
     Q_D(GraphIOConf136);
     QVBoxLayout *inBox = new QVBoxLayout;
     QVBoxLayout *outBox = new QVBoxLayout;
+    QStringList srcList;
+    srcList<<tr("Controller")<<tr("Driver");
     for (int i = 0; i < INPUT_NUM; i++) {
         SingleIOWidget* inW = new SingleIOWidget;
         inW->setCheckable(false);
         inW->setIOStatus(false);
         inW->setIOName(tr("Input_%1").arg(i));
         inW->setIOFuncList(d->m_inputFuncList);
+        inW->setControlSrcList(srcList);
         inW->setReverseStatus(false);
         inW->setFuncListEnable(d->m_inputEnableList.at(i));
         inW->setPinName(d->m_inputPinList.at(i));
@@ -330,6 +333,7 @@ void GraphIOConf136::initUi()
         outW->setIOStatus(false);
         outW->setIOName(tr("Output_%1").arg(i));
         outW->setIOFuncList(d->m_outputFuncList);
+        outW->setControlSrcList(srcList);
         outW->setReverseStatus(false);
         outW->setPinName(d->m_outputPinList.at(i));
         outW->setIONote(d->m_outputNoteList.at(i));

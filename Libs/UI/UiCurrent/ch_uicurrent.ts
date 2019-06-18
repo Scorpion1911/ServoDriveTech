@@ -19,7 +19,7 @@
     <message>
         <location filename="graphcurrent130.cpp" line="77"/>
         <source>PID controller</source>
-        <translation>PID调节器</translation>
+        <translation>控制器</translation>
     </message>
     <message>
         <location filename="graphcurrent130.cpp" line="82"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="graphcurrent133.cpp" line="133"/>
         <source>PID controller</source>
-        <translation>PID控制器</translation>
+        <translation>控制器</translation>
     </message>
     <message>
         <location filename="graphcurrent133.cpp" line="138"/>

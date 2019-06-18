@@ -200,7 +200,7 @@ QString DeviceIdHelper::readFpgaId(bool &isOk)
   dayStr = QString("%1").arg(day, 4, 16, QLatin1Char('0'));
   noteAStr = QString("%1").arg(noteA, 4, 16, QLatin1Char('0'));
   noteBStr = QString("%1").arg(noteB, 4, 16, QLatin1Char('0'));
-  m_fpgaId = "F" + devStr + yearStr + dayStr + noteAStr + noteBStr;
+  m_fpgaId = "F" + devStr + noteAStr + noteBStr;
   return m_fpgaId;
 }
 

@@ -304,7 +304,7 @@ void EPROM::compareNode(QTreeWidgetItem *oldNode, QTreeWidgetItem *newNode, QTre
         QString newNodeName = newNode->child(i)->text(TREE_NAME);
         for (int j = 0; j < oldNode->childCount(); j++) {
             QString oldNodeName = oldNode->child(j)->text(TREE_NAME);
-            if (newNodeName.compare(oldNodeName) == 0) {
+            if (newNodeName.compare(oldNodeName) == 0 && newNodeName.compare("product number") != 0) {
                 emit sendWarnMsg(tr("Comparing: ") + newNodeName);
                 for (int k = 1; k < oldNode->columnCount(); k++) {
                     if (newNode->child(i)->text(k).toDouble() != oldNode->child(j)->text(k).toDouble()) {

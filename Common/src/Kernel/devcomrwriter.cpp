@@ -16,6 +16,7 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QTreeWidgetItemIterator>
+#include <QMessageBox>
 
 using namespace ComDriver;
 DevComRWriter::DevComRWriter(QObject *parent):IDevReadWriter(parent)
@@ -33,10 +34,14 @@ QList<DeviceConfig *>DevComRWriter::createConfig(void (*processCallback)(void *p
   if(com==NULL)
   {
     isOk=false;
-    SdtError::instance()->errorStringList()->append(tr("OpenError:"));
-    SdtError::instance()->errorStringList()->append(tr("  1 cable is not connect"));
-    SdtError::instance()->errorStringList()->append(tr("  2 cable connet to wrong com"));
-    SdtError::instance()->errorStringList()->append(tr("  3 device firmware error"));
+    if(m_conflictdeviceSeq != 0){
+        SdtError::instance()->errorStringList()->append(tr("Unable to open com\nDevice %1 is in conflict with the previous device").arg(m_conflictdeviceSeq));
+    }else{
+        SdtError::instance()->errorStringList()->append(tr("OpenError:"));
+        SdtError::instance()->errorStringList()->append(tr("  1 cable is not connect"));
+        SdtError::instance()->errorStringList()->append(tr("  2 cable connet to wrong com"));
+        SdtError::instance()->errorStringList()->append(tr("  3 device firmware error"));
+    }
     return list;
   }
 
@@ -126,8 +131,13 @@ ICom *DevComRWriter::openTragetCom(void (*processCallback)(void *pbar,short *val
 {
   ICom *com=new RnNet("RnNet");
   errcode_t err=com->open(processCallback,processbar);
+  m_conflictdeviceSeq = 0;
   if(err!=0)
   {
+      if(err == -108){
+         com->readConflictDevSeq(m_conflictdeviceSeq);
+//         QMessageBox::information(0, tr("Warning"), tr("Unable to open com\nDevice %1 is in conflict with the previous device").arg(deviceSequence), QMessageBox::Ok);
+      }
     com->close();
     delete com;
     com=new PcDebug("PcDebug");

@@ -20,6 +20,7 @@ protected:
 	CRingNetDriver* m_pDriver;
 	Uint16 m_axi_num;
 	Uint16 m_dsp_num;
+    int16              m_station_inf[MAX_STATION_NUM];
 	StDspAxiStationInf m_axi_inf[RN_MAX_SERVO_AXI_NUM]; // 每一个存储空间内存储的是对应这个axi的站号。
 //	StDspAxiStationInf m_dsp_inf[RN_MAX_SERVO_DSP_NUM]; // 每一个存储空间内存储的是对应这个axi的站号。
 protected:

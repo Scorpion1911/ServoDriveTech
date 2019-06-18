@@ -321,7 +321,7 @@ QWidget#widget{
             <item>
              <widget class="QCheckBox" name="checkBox_Hex">
               <property name="text">
-               <string>Hex</string>
+               <string>DSP</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -331,10 +331,13 @@ QWidget#widget{
             <item>
              <widget class="QCheckBox" name="checkBox_Rpd">
               <property name="enabled">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="text">
-               <string>Rpd</string>
+               <string>FPGA</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -446,6 +449,9 @@ QWidget#widget{
          </property>
          <item row="0" column="0">
           <widget class="QTabWidget" name="tabWidget">
+           <property name="focusPolicy">
+            <enum>Qt::TabFocus</enum>
+           </property>
            <property name="styleSheet">
             <string notr="true"/>
            </property>
@@ -553,6 +559,9 @@ QWidget#widget{
                    <height>0</height>
                   </size>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(255, 255, 255);</string>
                  </property>
@@ -582,6 +591,9 @@ QWidget#widget{
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
                  <property name="readOnly">
                   <bool>true</bool>
                  </property>
@@ -596,6 +608,9 @@ QWidget#widget{
                  <width>0</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::WheelFocus</enum>
                </property>
                <column>
                 <property name="text">
@@ -663,6 +678,9 @@ QWidget#widget{
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true"/>
                  </property>
@@ -713,6 +731,9 @@ QWidget#widget{
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="focusPolicy">
+                <enum>Qt::ClickFocus</enum>
+               </property>
                <property name="text">
                 <string>Read</string>
                </property>
@@ -726,6 +747,9 @@ QWidget#widget{
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="focusPolicy">
+                <enum>Qt::ClickFocus</enum>
+               </property>
                <property name="text">
                 <string>Compare</string>
                </property>
@@ -733,6 +757,9 @@ QWidget#widget{
              </item>
              <item row="0" column="0" colspan="3">
               <widget class="QTreeWidget" name="readTreeWidget">
+               <property name="focusPolicy">
+                <enum>Qt::WheelFocus</enum>
+               </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(255, 255, 255);</string>
                </property>
@@ -895,6 +922,9 @@ QWidget#widget{
                    <height>0</height>
                   </size>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(255, 255, 255);</string>
                  </property>
@@ -923,6 +953,9 @@ QWidget#widget{
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::StrongFocus</enum>
                  </property>
                  <property name="readOnly">
                   <bool>true</bool>
@@ -1008,6 +1041,9 @@ QWidget#widget{
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true"/>
                  </property>
@@ -1039,6 +1075,9 @@ QWidget#widget{
              </property>
              <item row="0" column="0" colspan="3">
               <widget class="QTreeWidget" name="readTreeWidget_2">
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(255, 255, 255);</string>
                </property>
@@ -1068,6 +1107,9 @@ QWidget#widget{
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="focusPolicy">
+                <enum>Qt::ClickFocus</enum>
+               </property>
                <property name="text">
                 <string>Read</string>
                </property>
@@ -1080,6 +1122,9 @@ QWidget#widget{
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::ClickFocus</enum>
                </property>
                <property name="text">
                 <string>Compare</string>
@@ -1143,6 +1188,9 @@ QWidget#widget{
            <width>60</width>
            <height>32</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="styleSheet">
           <string notr="true"/>

@@ -4,6 +4,7 @@
 #include <QDialog>
 
 class SevDevice;
+class QCheckBox;
 
 namespace Ui {
 class FirmwareFlashDialog;
@@ -19,7 +20,7 @@ public:
 
 signals:
     void startDownload(bool en);
-    void sendProcessMsg(int value);
+    void sendProcessMsg(int value, const QString &msg);
 private:
     void uiInit();
     void createConnections();
@@ -43,11 +44,17 @@ private:
     QString m_dspVersion;
     QString m_fpgVersion;
     int m_barCount;
+    QList<QCheckBox*> m_boxList;
+    int m_boxCount;
+    QString m_devStr;
+    SevDevice* m_curDevice;
 private slots:
     void onActnToolbtnClicked();
     void onActnFlashBtnClicked();
     void receiveProcessMsg(int value, QString msg);
     void onActnComboBoxIndexChanged(int index);
+    void onAllBoxClicked(bool checked);
+    void onSingleBoxClicked(bool checked);
 };
 
 #endif // FIRMWAREFLASHDIALOG_H

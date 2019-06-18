@@ -9,6 +9,7 @@
 
 #define XML_NODE_CURVE            "Curve"
 #define XML_NODE_DEVINX           "DevIndex"
+#define XML_NODE_STATION          "StationID"
 #define XML_NODE_AXISINX          "AxisIndex"
 #define XML_NODE_AXISCOUNT        "AxisCount"
 #define XML_NODE_NAME             "Name"
@@ -94,6 +95,10 @@ void ICurve::write(QTreeWidgetItem *treeItem)
   QTreeWidgetItem *devItem = new QTreeWidgetItem(treeItem);
   devItem->setText(COL_CURVE_XML_NAME,XML_NODE_DEVINX);
   devItem->setText(COL_CURVE_XML_VALUE,QString::number(dd.m_devInx));
+
+  QTreeWidgetItem *stationItem = new QTreeWidgetItem(treeItem);
+  stationItem->setText(COL_CURVE_XML_NAME,XML_NODE_STATION);
+  stationItem->setText(COL_CURVE_XML_VALUE,QString::number(dd.m_stationId));
 
   QTreeWidgetItem *axisItem = new QTreeWidgetItem(treeItem);
   axisItem->setText(COL_CURVE_XML_NAME,XML_NODE_AXISINX);
@@ -217,6 +222,7 @@ void ICurve::write(QTreeWidgetItem *treeItem)
 bool ICurve::read(QTreeWidgetItem *treeItem)
 {
   int devInx = 0;
+  quint8 stationId = 0;
   int axisInx = 0;
   int axisCount = 0;
   QString name;
@@ -233,9 +239,15 @@ bool ICurve::read(QTreeWidgetItem *treeItem)
   clrR = clrG = clrB = 0;
 
   QTreeWidgetItem *item = NULL;
-  item = GTUtils::findItemInItem(XML_NODE_CURVE,treeItem,COL_CURVE_XML_NAME);
+  item = GTUtils::findItemInItem(XML_NODE_DEVINX,treeItem,COL_CURVE_XML_NAME);
   if(item != NULL)
     devInx = item->text(COL_CURVE_XML_VALUE).toInt();
+  else
+    return false;
+
+  item = GTUtils::findItemInItem(XML_NODE_STATION,treeItem,COL_CURVE_XML_NAME);
+  if(item != NULL)
+    stationId = item->text(COL_CURVE_XML_VALUE).toInt();
   else
     return false;
 
@@ -341,6 +353,7 @@ bool ICurve::read(QTreeWidgetItem *treeItem)
     return false;
 
   setDevInx(devInx);
+  setStationId(stationId);
   setAxisInx(axisInx);
   setAxisCount(axisCount);
   setName(name);
@@ -466,15 +479,26 @@ int ICurve::devInx() const
 
 void ICurve::setDevInx(int devInx)
 {
-  dd.m_devInx = devInx;
+    dd.m_devInx = devInx;
+}
+
+quint8 ICurve::stationId() const
+{
+    return dd.m_stationId;
+}
+
+void ICurve::setStationId(quint8 value)
+{
+    dd.m_stationId = value;
 }
 
 QString ICurve::devName() const
 {
-  QByteArray byte;
-  byte.append(65+dd.m_devInx);
-  qDebug()<<"devInx "<<dd.m_devInx<<"name "<<QString::fromLatin1(byte);
-  return QString::fromLatin1(byte);
+  //QByteArray byte;
+//  byte.append(65+dd.m_devInx);
+//  qDebug()<<"devInx "<<dd.m_devInx<<"name "<<QString::fromLatin1(byte);
+//  return QString::fromLatin1(byte);
+  return QString::number(dd.m_stationId);
 }
 
 double ICurve::samplInterval() const

@@ -23,9 +23,10 @@ void UploadDialog::uiInit(QList<SevDevice *> &devList, const QString &uploadPath
     m_filePath = &filePath;
     m_index = &index;
     for (int i = 0; i < devList.count(); i++) {
-        bool hasNickName = devList.count() > 1;
+//        bool hasNickName = devList.count() > 1;
         QString prefix;
-        prefix = hasNickName?tr("[%1] ").arg(devList.at(i)->aliasName()):"";
+//        prefix = hasNickName?tr("[%1] ").arg(devList.at(i)->aliasName()):"";
+        prefix = tr("[%1] ").arg(devList.at(i)->aliasName());
         ui->comboBox_devUpload->addItem(prefix + devList.at(i)->modelName());
     }
     m_devList = devList;
