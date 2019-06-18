@@ -15,6 +15,9 @@
 #define XMLFILE_ROW_INDEX 0
 #define XMLFILE_CHILD_VERSION_ROW_INDEX 0
 #define XMLFILE_NODE_NAME "XmlFileInformation"
+#define XML_FILENAME_ALLAXIS "FlashPrm_AllAxis.xml"
+#define XML_FILENAME_RAM0    "PrmRAMAxis0.xml"
+#define XML_FILENAME_RAM1    "PrmRAMAxis1.xml"
 
 ServoFile::ServoFile(QObject *parent) :  QObject(parent)
 {
@@ -277,6 +280,85 @@ bool ServoFile::downLoadTree(QTreeWidget *downloadTree, SevDevice* dev)
     return true;
 }
 
+bool ServoFile::restoreFile(void (*processCallback)(void *pbar,short *value), void *processbar, SevDevice *dev)
+{
+    QString dspVersion;
+    quint16 version;
+    dev->socketCom()->readDSPVersion(0, version);
+    dspVersion = "V" + QString::number(version);
+    QString dspPath;
+    QString path = GTUtils::sysPath() + dev->typeName() + "/" + dev->modelName() + "/" \
+                   + dspVersion + "/";
+    QDir dir(path);
+    if (!dir.exists()) {
+        QString prmPath = GTUtils::sysPath() + dev->typeName() + "/" + dev->modelName() + "/" + dev->versionName() + "/prm/" + dspVersion + "/";
+        QDir prmDir(prmPath);
+        if (!prmDir.exists()) {
+            prmDir.mkdir(prmPath);
+        }
+        emit sendProgressbarMsg(0, tr("Reading Xml Files"));
+        bool ok = readXmlFromDsp(processCallback, (void*)processbar, prmPath, dev);
+        if (!ok) {
+            QMessageBox::information(0, tr("Error"), tr("Read xml file Error!"));
+            bool delOk = deleteDir(prmPath);
+            qDebug()<<"delOk"<<delOk;
+            return false;
+        }
+        dspPath = prmPath;
+    } else {
+        dspPath = path;
+    }
+    QString filePath = dspPath + XML_FILENAME_ALLAXIS;
+    QTreeWidget* recoverTree = QtTreeManager::createTreeWidgetFromXmlFile(filePath);
+    QString xmlNodeName = recoverTree->topLevelItem(XMLFILE_ROW_INDEX)->text(GT::COL_FLASH_ALLAXIS_NAME);
+    if (xmlNodeName.compare(XMLFILE_NODE_NAME) != 0) {
+        QMessageBox::information(0, tr("Info"), tr("This function is not supported under this DSP version."));
+        delete recoverTree;
+        return false;
+    }
+    QTreeWidgetItem *versionNodeItem;
+    versionNodeItem = recoverTree->takeTopLevelItem(XMLFILE_ROW_INDEX);
+    delete versionNodeItem;
+    m_downloadItemNum = getItemNum(recoverTree);
+    m_barCount = 0;
+    for (int i = 0; i < recoverTree->topLevelItemCount(); i++) {
+        bool downOk = downloadItem(dev, i, recoverTree->topLevelItem(i));
+        if (!downOk) {
+            delete recoverTree;
+            return false;
+        }
+    }
+    delete recoverTree;
+    return true;
+}
+
+bool ServoFile::restoreOfflineFile(SevDevice *dev)
+{
+    QString path = GTUtils::sysPath() + dev->typeName() + "/" + dev->modelName() + "/" \
+                   + dev->versionName() + "/" + XML_FILENAME_ALLAXIS;
+    QTreeWidget* recoverTree = QtTreeManager::createTreeWidgetFromXmlFile(path);
+    QString xmlNodeName = recoverTree->topLevelItem(XMLFILE_ROW_INDEX)->text(GT::COL_FLASH_ALLAXIS_NAME);
+    if (xmlNodeName.compare(XMLFILE_NODE_NAME) != 0) {
+        QMessageBox::information(0, tr("Info"), tr("This function is not supported under this DSP version."));
+        delete recoverTree;
+        return false;
+    }
+    QTreeWidgetItem *versionNodeItem;
+    versionNodeItem = recoverTree->takeTopLevelItem(XMLFILE_ROW_INDEX);
+    delete versionNodeItem;
+    m_downloadItemNum = getItemNum(recoverTree);
+    m_barCount = 0;
+    for (int i = 0; i < recoverTree->topLevelItemCount(); i++) {
+        bool downOk = downloadItem(dev, i, recoverTree->topLevelItem(i));
+        if (!downOk) {
+            delete recoverTree;
+            return false;
+        }
+    }
+    delete recoverTree;
+    return true;
+}
+
 //void ServoFile::updatePrmTree(QTreeWidget *downloadTree, QTreeWidget *dspTree)
 //{
 //    m_barCount = 0;
@@ -365,9 +447,9 @@ bool ServoFile::uploadItem(SevDevice *dev, int axisIndex, QTreeWidgetItem *item)
 
 bool ServoFile::readXmlFromDsp(void (*processCallback)(void *pbar, short *value), void *processbar, const QString &path, SevDevice* dev)
 {
-    QString path_allAxis = path + "FlashPrm_AllAxis.xml";
-    QString path_axis0 = path + "PrmRAMAxis0.xml";
-    QString path_axis1 = path + "PrmRAMAxis1.xml";
+    QString path_allAxis = path + XML_FILENAME_ALLAXIS;
+    QString path_axis0 = path + XML_FILENAME_RAM0;
+    QString path_axis1 = path + XML_FILENAME_RAM1;
     if (isFileExist(path_allAxis) && isFileExist(path_axis0) && isFileExist(path_axis1)) {
         return true;
     }

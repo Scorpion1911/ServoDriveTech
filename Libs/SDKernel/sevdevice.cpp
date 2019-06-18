@@ -1442,6 +1442,57 @@ bool SevDevice::writeFLASH16ByAddr(quint16 axisInx, quint16 addr, quint16 value)
     return err == 0;
 }
 
+bool SevDevice::readFLASH32ByAddr(quint16 axisInx, quint16 addr, quint32 &value)
+{
+    Q_D(SevDevice);
+    if (isConnecting() == false && !isOffline()) {
+        return false;
+    }
+    if (axisInx % 2 != 0) {
+        addr += 32768;
+    }
+    ComDriver::errcode_t err = 0;
+    ComDriver::int32_t v = 0;
+    if (isOffline()) {
+        double vv = v;
+        bool ok = readOffLinePrmByAddr(axisInx, addr, vv);
+        if (ok) {
+            err = 0;
+        } else {
+            err = 1;
+        }
+        value = vv;
+    } else {
+        err = d->m_socket->comObject()->readFLASH32(axisInx, addr, 0, v);
+        value = v;
+    }
+    return err == 0;
+}
+
+bool SevDevice::writeFLASH32ByAddr(quint16 axisInx, quint16 addr, quint32 value)
+{
+    Q_D(SevDevice);
+    if (isConnecting() == false && !isOffline()) {
+        return false;
+    }
+    if (axisInx % 2 != 0) {
+        addr += 32768;
+    }
+    ComDriver::errcode_t err = 0;
+    if (isOffline()) {
+        double vv = value;
+        bool ok = writeOffLinePrmByAddr(axisInx, addr, vv);
+        if (ok) {
+            err = 0;
+        } else {
+            err = 1;
+        }
+    } else {
+        err = d->m_socket->comObject()->writeFLASH32(axisInx, addr, 0, value);
+    }
+    return err == 0;
+}
+
 bool SevDevice::checkLoadParameters(QTreeWidget *tree, int itemNum)
 {
     Q_D(SevDevice);

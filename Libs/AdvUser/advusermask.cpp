@@ -87,7 +87,7 @@ void AdvUserMask::uiInit()
     QList<QTreeWidgetItem*> topItemList;
     for (int i = 0; i < d->m_devList.count(); i++) {
         SevDevice* dev = d->m_devList.at(i);
-        bool hasNickName = d->m_devList.count() > 1;
+        bool hasNickName = true;
         QString prefix;
         prefix = hasNickName?tr("[%1] ").arg(dev->aliasName()):"";
         QStringList strList;

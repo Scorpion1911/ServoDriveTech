@@ -82,7 +82,7 @@
          </property>
          <item>
           <property name="text">
-           <string>SD10</string>
+           <string>GTSD10_3kW</string>
           </property>
           <property name="text">
            <string>21000612</string>
@@ -90,7 +90,7 @@
          </item>
          <item>
           <property name="text">
-           <string>SD15_11</string>
+           <string>GTSD15_11kW</string>
           </property>
           <property name="text">
            <string>21000322</string>
@@ -98,7 +98,7 @@
          </item>
          <item>
           <property name="text">
-           <string>SD15_06</string>
+           <string>GTSD15_06kW</string>
           </property>
           <property name="text">
            <string>21000473</string>
@@ -106,7 +106,7 @@
          </item>
          <item>
           <property name="text">
-           <string>SD15_15</string>
+           <string>GTSD15_15kW</string>
           </property>
           <property name="text">
            <string>21000387</string>
@@ -114,7 +114,7 @@
          </item>
          <item>
           <property name="text">
-           <string>SD15_7.5</string>
+           <string>GTSD15_7.5kW</string>
           </property>
           <property name="text">
            <string>21000326</string>
@@ -130,7 +130,7 @@
          </property>
          <item>
           <property name="text">
-           <string>HD11_3A</string>
+           <string>GTHD11_3A</string>
           </property>
           <property name="text">
            <string>31000025</string>
@@ -138,7 +138,7 @@
          </item>
          <item>
           <property name="text">
-           <string>HD11_6A</string>
+           <string>GTHD11_6A</string>
           </property>
           <property name="text">
            <string>31000028</string>
@@ -146,10 +146,23 @@
          </item>
          <item>
           <property name="text">
-           <string>HD11_13A</string>
+           <string>GTHD11_13A</string>
           </property>
           <property name="text">
            <string>31000029</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>series3</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>GTD10_15kW</string>
+          </property>
+          <property name="text">
+           <string>21000704</string>
           </property>
          </item>
         </item>
@@ -164,10 +177,23 @@
          </property>
          <item>
           <property name="text">
-           <string>SD21</string>
+           <string>GTSD20_6kW</string>
           </property>
           <property name="text">
            <string>21000645</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>series2</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>GTD20_15kW</string>
+          </property>
+          <property name="text">
+           <string>21000702</string>
           </property>
          </item>
         </item>
@@ -188,7 +214,7 @@
          </property>
          <item>
           <property name="text">
-           <string>SD42</string>
+           <string>GTSD42_3kW</string>
           </property>
           <property name="text">
            <string>21000501</string>
@@ -196,7 +222,7 @@
          </item>
          <item>
           <property name="text">
-           <string>SD43</string>
+           <string>GTSD42_3kW_BD</string>
           </property>
           <property name="text">
            <string>21000650</string>
@@ -204,7 +230,7 @@
          </item>
          <item>
           <property name="text">
-           <string>SD45</string>
+           <string>GTSD42_6kW</string>
           </property>
           <property name="text">
            <string>21000648</string>
@@ -238,7 +264,7 @@
          </property>
          <item>
           <property name="text">
-           <string>SD61_MINI</string>
+           <string>GTSD61_3kW</string>
           </property>
           <property name="text">
            <string>21000595</string>
@@ -246,7 +272,7 @@
          </item>
          <item>
           <property name="text">
-           <string>SD61_PLUS</string>
+           <string>GTSD61_6kW</string>
           </property>
           <property name="text">
            <string>21000541</string>

@@ -131,7 +131,7 @@ int16 CFPGAUpdate::SetRemoteUpdataEnableBit()
 	return rtn;
 
 }
-int16 CFPGAUpdate::GetFPGAInfo(int16& FPGAType, uint32& flash_ofst_addr)
+int16 CFPGAUpdate::GetFPGAInfo(int16& FPGAType, uint32& flash_ofst_addr, uint16& sector_erase)
 {
 	//读FPGA类型
 	int16 iRet;
@@ -148,6 +148,7 @@ int16 CFPGAUpdate::GetFPGAInfo(int16& FPGAType, uint32& flash_ofst_addr)
 	{
 		FPGAType = FPGA_ALTERA;
 		flash_ofst_addr = 0;
+		sector_erase = 0;
 		return RTN_SUCCESS;
 	}
 	else if (pCom->GetComProtocolType() == COM_PROTOCO_RINGNET)
@@ -162,6 +163,7 @@ int16 CFPGAUpdate::GetFPGAInfo(int16& FPGAType, uint32& flash_ofst_addr)
 	}
 	if (FPGAType == FPGA_XILINX)
 	{
+		sector_erase = 1;
 		com_addr = RN_REMOTE_FPGA_FILE_START;
 		base_addr = FPGA_RN_RMT_START_OFST;
 		comAddr = base_addr + (com_addr);
@@ -175,6 +177,15 @@ int16 CFPGAUpdate::GetFPGAInfo(int16& FPGAType, uint32& flash_ofst_addr)
 	else
 	{
 		flash_ofst_addr = 0;
+		com_addr = RN_REMOTE_FPGA_CTL;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+		iRet = pCom->ComRdFpgaHandle(comAddr, &data, comNum, m_des_id, NULL);////查询完成标志
+		if (iRet != 0)
+		{
+			return iRet;
+		}
+		sector_erase = (data >> 4) & 0x1;
 	}
 	return iRet;
 }
@@ -383,7 +394,7 @@ int16 CFPGAUpdate::EraseData(void(*tpfUpdataProgressPt)(void*, int16*), void* pt
 		return iRet;
 	}
 
-	int32 num = 100;// 0000;
+	int32 num = 20000;
 	//!progress高16位置1，用来给界面提示当前正处于擦除状态
 	int16 highSet;
 	highSet = (int16)(1 << 15);
@@ -752,7 +763,7 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 	void* ptr = ptrv;
 	int iRet;
 	int16 FPGAType;
-	iRet = GetFPGAInfo(FPGAType,m_addr_ofst);
+	iRet = GetFPGAInfo(FPGAType,m_addr_ofst,sector_erase);
  	if (iRet != 0)
 	{
 		return iRet;
@@ -762,7 +773,7 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 	string ext;
 	ext = sFileName.substr(sFileName.find_last_of('.'));
 	if (ext == ".rpd" || ext == ".RPD")
-    {
+		{
 		if (FPGAType != FPGA_ALTERA)
 			return RTN_FILE_FORMAT_ERR;
 	}	
@@ -827,11 +838,23 @@ int16 CFPGAUpdate::WriteFPGAFileToFlash(char* pFileName, void(*tpfUpdataProgress
 	{
 		return iRet;
 	}
-	iRet = EraseFPGAData(m_byte_write, m_addr_ofst, tpfUpdataProgressPt, ptr, progress);
-	if (iRet)
+	if (sector_erase == 1)
 	{
-		return iRet;
+		iRet = EraseFPGAData(m_byte_write, m_addr_ofst, tpfUpdataProgressPt, ptr, progress);
+		if (iRet)
+		{
+			return iRet;
+		}
 	}
+	else
+	{
+		iRet = EraseData(tpfUpdataProgressPt, ptr, progress);
+		if (iRet)
+		{
+			return iRet;
+		}
+	}
+
 
 // 	iRet = EraseData(tpfUpdataProgressPt, ptr, progress); //清除fpga flash
 // 	if (iRet != 0)

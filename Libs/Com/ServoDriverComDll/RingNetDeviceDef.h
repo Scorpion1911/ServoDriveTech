@@ -1,7 +1,9 @@
 #pragma once
 #define TB_MARVIE11	0x8110
-#define TB_MARVIE21	0x8200 //
+#define TB_GTSD15   0x8120
+#define TB_GTHD11   0x8130
 #define TB_GTD10    0x8140
+#define TB_MARVIE21	0x8200 //
 #define TB_GTD20    0x8210
 #define TB_MARVIE31	0x8300
 #define TB_MARVIE41	0x8400
@@ -11,7 +13,6 @@
 #define TB_MARVIE71	0x8700
 #define TB_MARVIE81	0x8800
 #define TB_GTSD13	0x8100
-#define TB_GTSD15   0x8120
 #define TB_MC3		0x300	
 #define TB_MC4		0x400
 #define TB_MC6		0x600
@@ -19,4 +20,3 @@
 #define TB_N455		0x9001	//n455 bf607 ¿ØÖÆÆ÷
 #define TB_3308		0x9102	//3308 8Öá¿ØÖÆÆ÷
 #define TB_BF607	0x9000	//²å¿¨Ê½BF607¿¨
-#define TB_GTHD11   0x8130

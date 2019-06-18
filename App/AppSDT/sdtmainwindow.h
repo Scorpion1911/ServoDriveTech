@@ -111,6 +111,7 @@ private slots:
   void onActnUploadClicked();
   void onActnProduceClicked();
   void onActnAdvUserClicked();
+  void onActnRecoverClicked();
   void onActnCompareClicked();
   void onActnUpdateFirmwareClicked();
   void onActnResetDspClicked();
@@ -170,6 +171,7 @@ private:
   QAction *m_actnOption;
   //QAction *m_actnProduce;
   QAction *m_actnAdvUser;
+  QAction *m_actnRecover;
   SdtStatusBar *m_statusBar;
   QProgressBar *mp_progressBar;
   UiShowStatus m_currentUiStatus;

@@ -22,13 +22,15 @@ CONFIG(debug, debug|release){
 SOURCES += uivelocity.cpp \
     graphvelocity129.cpp \
     graphvelocity133.cpp \
-    velpid133.cpp
+    velpid133.cpp \
+    VelAutoTurning/velautoturning133.cpp
 
 HEADERS += uivelocity.h\
         uivelocity_global.h \
     graphvelocity129.h \
     graphvelocity133.h \
-    velpid133.h
+    velpid133.h \
+    VelAutoTurning/velautoturning133.h
 
 unix {
     target.path = /usr/lib

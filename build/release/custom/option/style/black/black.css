@@ -622,6 +622,21 @@ QLabel#label_currentEndText,QLabel#label_currentStartText{
 	border:none;
 }
 
+QLabel#label_curPidTitle ,QLabel#label_curDirControl{
+	padding-bottom:10px;
+	margin-bottom:5px;
+	color:black;
+	border:1px solid transparent;
+	border-bottom-color:#BBB9B9;
+	font-weight:bold;
+}
+
+QWidget#widget_curDir{
+	background-color: #E0DDDD;
+	border:2px solid #BBB9B9;
+	border-radius:10px;
+}
+
 /*====================Velocity 速度控制器页面==================*/
 
 QWidget#widget_velPid{
@@ -647,6 +662,18 @@ QLabel#label_velPidTitle{
 	border:1px solid transparent;
 	border-bottom-color:#BBB9B9;
 	font-weight:bold;
+}
+
+QWidget#widget_spdCtl_autoTurning{
+	background-color: #E0DDDD;
+	border:2px solid #BBB9B9;
+	border-radius:10px;
+}
+
+QWidget#widget_velDir{
+	background-color: #E0DDDD;
+	border:2px solid #BBB9B9;
+	border-radius:10px;
 }
 
 QLabel#label_velInputFilter,QLabel#label_velOutputFilter{
@@ -680,6 +707,21 @@ QLabel#label_velTextPositiveMaxTq,QLabel#label_velTextNegativeMaxTq{
 	border:none;
 }
 
+QLabel#label_velDirControl,QLabel#label_spdCtl_autoTurning {
+	padding-bottom:10px;
+	margin-bottom:5px;
+	color:black;
+	border:1px solid transparent;
+	border-bottom-color:#BBB9B9;
+	font-weight:bold;
+}
+
+QPushButton#btn_spdCtl_autoStart:checked{
+border:1px solid red;
+background-color:red;
+color:white;
+}
+
 /*====================Position 位置控制器页面===================*/
 QFrame#line,QFrame#line_2,QFrame#line_3{
 	background-color: #BBB9B9;
@@ -705,6 +747,7 @@ QWidget#widget_posDir{
 	border:2px solid #BBB9B9;
 	border-radius:10px;
 }
+
 QWidget#widget_posFFacc{
 	background-color: #E0DDDD;
 	border:2px solid #BBB9B9;
@@ -720,7 +763,7 @@ QWidget#widget_posSaturation:hover{
 	border-radius:5px;
 }
 
-QLabel#label_posPidTitle ,QLabel#label_posDirControl,QLabel#label_nolinearCtl_autoTurning {
+QLabel#label_posPidTitle ,QLabel#label_posDirControl,QLabel#label_nolinearCtl_autoTurning{
 	padding-bottom:10px;
 	margin-bottom:5px;
 	color:black;

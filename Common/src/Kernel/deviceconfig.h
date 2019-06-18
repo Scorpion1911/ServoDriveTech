@@ -14,8 +14,8 @@ public:
   quint32 m_devId;
   quint8 m_comType;
   quint8 m_axisNum;
-  QString m_typeName;//SD4x
-  QString m_modeName;//SD42
+  QString m_typeName;//GTSD4x
+  QString m_modeName;//GTSD42
   QString m_version;
 
   quint32 m_pwrId;   //id->SD?? 通过一个id映射表获得名字

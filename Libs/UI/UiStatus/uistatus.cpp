@@ -50,6 +50,7 @@ void UiStatus::setUiActive(bool actived)
    d->m_graphStatus->setTimerActive(actived);
   else
     d->m_graphStatus->setTimerActive(false);
+  d->m_graphStatus->updateCurCheckBox();
 }
 
 bool UiStatus::hasConfigFunc()

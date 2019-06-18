@@ -13,8 +13,9 @@
 #include <QDebug>
 #include <QTreeWidget>
 #include <QDoubleSpinBox>
+#include <QRadioButton>
 
-#define PID_POS_X -50
+#define PID_POS_X 100
 #define PID_POS_Y -100
 
 #define TID_INX 0
@@ -28,6 +29,7 @@
 #define PRM_FN_NCH 8
 #define PRM_QX_NCH 9
 #define PRM_KN_NCH 10
+#define CUR_DIR_INDEX 11
 
 
 class GraphCurrent133Private:public IGraphCurrentPrivate
@@ -39,6 +41,11 @@ public:
 
 protected:
   IIRFilter *m_iirFilter;
+  WidgetItem *m_dirItem;
+  QRadioButton *m_cwRBtn;
+  QRadioButton *m_ccwRBtn;
+  ArrowItem *m_A6;
+
 };
 
 GraphCurrent133::GraphCurrent133(QWidget *parent) :
@@ -168,6 +175,35 @@ void GraphCurrent133::createPidControllerItem()
 
 }
 
+void GraphCurrent133::createDirItem()
+{
+    Q_D(GraphCurrent133);
+    d->m_dirItem = new WidgetItem;
+    QWidget *dirWidget = new QWidget;
+    dirWidget->setObjectName("widget_curDir");
+    QVBoxLayout *vlayout = new QVBoxLayout(dirWidget);
+    QLabel *label = new QLabel(tr("DirCtl"),dirWidget);
+    label->setAlignment(Qt::AlignCenter);
+    label->setObjectName("label_curDirControl");
+    QHBoxLayout *hlayout = new QHBoxLayout;
+    d->m_cwRBtn = new QRadioButton(dirWidget);
+    d->m_cwRBtn->setText(tr("CW"));
+    d->m_cwRBtn->setChecked(true);
+    d->m_ccwRBtn = new QRadioButton(dirWidget);
+    d->m_ccwRBtn->setText(tr("CCW"));
+    d->m_ccwRBtn->setChecked(false);
+    connect(d->m_cwRBtn,SIGNAL(clicked(bool)),this,SLOT(onRadioBtnClicked(bool)));
+    connect(d->m_ccwRBtn,SIGNAL(clicked(bool)),this,SLOT(onRadioBtnClicked(bool)));
+    hlayout->addWidget(d->m_cwRBtn);
+    hlayout->addWidget(d->m_ccwRBtn);
+    vlayout->addWidget(label);
+    vlayout->addLayout(hlayout);
+    dirWidget->setLayout(vlayout);
+    d->m_dirItem->setWidget(dirWidget,true);
+    d->m_scene->addItem(d->m_dirItem);
+    d->m_widgetItemList.append(d->m_dirItem);
+}
+
 void GraphCurrent133::onIIRFilterConfigClicked()
 {
   Q_D(GraphCurrent133);
@@ -191,9 +227,82 @@ void GraphCurrent133::onIIRFilterSaveClicked()
   d->m_uiWidget->writePageFLASH();
 }
 
+void GraphCurrent133::onRadioBtnClicked(bool checked)
+{
+    Q_D(GraphCurrent133);
+    Q_UNUSED(checked);
+    int dir;
+    if (d->m_cwRBtn->isChecked()) {
+        dir = 0;
+    } else {
+        dir = 1;
+    }
+    d->m_treeWidget->topLevelItem(CUR_DIR_INDEX)->setText(GT::COL_PAGE_TREE_VALUE,QString::number(dir));
+}
+
 QPointF GraphCurrent133::pidInitPos()
 {
-  return QPointF(PID_POS_X,PID_POS_Y);
+    return QPointF(PID_POS_X,PID_POS_Y);
+}
+
+void GraphCurrent133::setUpItemPosAnchors()
+{
+    Q_D(GraphCurrent133);
+    d->m_UPID->setPos(pidInitPos());
+    d->m_anchorHelper->addAnchor(d->m_UPID,d->m_USUM,AnchorItemHelper::AnchorLeft,-3*d->m_USUM->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_UPID,d->m_USUM,AnchorItemHelper::AnchorVerticalCenter);
+
+    d->m_anchorHelper->addAnchor(d->m_USUM,d->m_UIF,AnchorItemHelper::AnchorRight,-3*d->m_USUM->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_USUM,d->m_UIF,AnchorItemHelper::AnchorVerticalCenter);
+
+    d->m_anchorHelper->addAnchor(d->m_UIF,d->m_dirItem,AnchorItemHelper::AnchorLeft,-1.5*d->m_UIF->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_UIF,d->m_dirItem,AnchorItemHelper::AnchorVerticalCenter);
+
+    d->m_anchorHelper->addAnchor(d->m_dirItem,d->m_Tstart,AnchorItemHelper::AnchorLeft,-1.5*d->m_dirItem->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_dirItem,d->m_Tstart,AnchorItemHelper::AnchorVerticalCenter);
+
+    d->m_anchorHelper->addAnchor(d->m_UPID,d->m_UCB,AnchorItemHelper::AnchorHorizontalCenter);
+    d->m_anchorHelper->addAnchor(d->m_UPID,d->m_UCB,AnchorItemHelper::AnchorBottom,2.2*d->m_UCB->boundingRect().height());
+
+    d->m_anchorHelper->addAnchor(d->m_UCB,d->m_T0,AnchorItemHelper::AnchorRight,1*d->m_UCB->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_UCB,d->m_T0,AnchorItemHelper::AnchorVerticalCenter);
+
+    d->m_anchorHelper->addAnchor(d->m_UPID,d->m_Tend,AnchorItemHelper::AnchorRight,1.5*d->m_UPID->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_UPID,d->m_Tend,AnchorItemHelper::AnchorVerticalCenter);
+
+    d->m_anchorHelper->addAnchor(d->m_Tstart,d->m_TextStart,AnchorItemHelper::AnchorLeft,1.2*d->m_Tstart->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_Tstart,d->m_TextStart,AnchorItemHelper::AnchorBottom,-15);
+
+    d->m_anchorHelper->addAnchor(d->m_Tend,d->m_TextEnd,AnchorItemHelper::AnchorRight,-1.2*d->m_Tend->boundingRect().width());
+    d->m_anchorHelper->addAnchor(d->m_Tend,d->m_TextEnd,AnchorItemHelper::AnchorBottom,-15);
+}
+
+void GraphCurrent133::createArrowItems()
+{
+    Q_D(GraphCurrent133);
+    d->m_A0=new ArrowItem(d->m_Tstart->pointF(WidgetItem::POINT_TYPE_RIGHT),d->m_dirItem->pointF(WidgetItem::POINT_TYPE_LEFT));
+    d->m_A6=new ArrowItem(d->m_dirItem->pointF(WidgetItem::POINT_TYPE_RIGHT),d->m_UIF->pointF(WidgetItem::POINT_TYPE_LEFT));
+    d->m_A1=new ArrowItem(d->m_UIF->pointF(WidgetItem::POINT_TYPE_RIGHT),d->m_USUM->pointF(WidgetItem::POINT_TYPE_LEFT));
+    d->m_A2=new ArrowItem(d->m_USUM->pointF(WidgetItem::POINT_TYPE_RIGHT),d->m_UPID->pointF(WidgetItem::POINT_TYPE_LEFT));
+    d->m_A3=new ArrowItem(d->m_UPID->pointF(WidgetItem::POINT_TYPE_RIGHT),d->m_Tend->pointF(WidgetItem::POINT_TYPE_LEFT));
+    d->m_A4=new ArrowItem(d->m_T0->pointF(WidgetItem::POINT_TYPE_LEFT),d->m_UCB->pointF(WidgetItem::POINT_TYPE_RIGHT));
+    d->m_A5=new ArrowItem(d->m_UCB->pointF(WidgetItem::POINT_TYPE_LEFT),d->m_USUM->pointF(WidgetItem::POINT_TYPE_BOTTOM),ArrowItem::ARROW_TYPE_CORNER,"-");
+
+    d->m_scene->addItem(d->m_A0);
+    d->m_scene->addItem(d->m_A1);
+    d->m_scene->addItem(d->m_A2);
+    d->m_scene->addItem(d->m_A3);
+    d->m_scene->addItem(d->m_A4);
+    d->m_scene->addItem(d->m_A5);
+    d->m_scene->addItem(d->m_A6);
+
+    d->m_arrowList.append(d->m_A0);
+    d->m_arrowList.append(d->m_A1);
+    d->m_arrowList.append(d->m_A2);
+    d->m_arrowList.append(d->m_A3);
+    d->m_arrowList.append(d->m_A4);
+    d->m_arrowList.append(d->m_A5);
+    d->m_arrowList.append(d->m_A6);
 }
 
 

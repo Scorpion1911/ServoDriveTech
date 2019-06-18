@@ -57,6 +57,7 @@ private:
   quint32 m_waitCount;
   quint32 m_waitMaxCount;
   qint8 m_progressValue;
+  GT::SevTurningMode m_prevTurnMode;
   GT::ModeCtlType m_prevMode;
   GT::SevControlSrc m_prevSrc;
 

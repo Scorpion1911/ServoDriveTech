@@ -8,6 +8,10 @@ class AnchorItemHelper;
 class WidgetItem;
 class ArrowItem;
 class QDoubleSpinBox;
+class QProgressBar;
+class QPushButton;
+class QRadioButton;
+class QLabel;
 
 class IUIWIDGETSHARED_EXPORT IGraphVelocityPrivate:public IGraphWidgetPrivate
 {
@@ -40,6 +44,8 @@ protected:
   ArrowItem *m_A6;
   ArrowItem *m_A7;
 
+  ArrowItem *m_A13;
+
   QList<ArrowItem *>m_arrowList;
   QList<WidgetItem *>m_widgetItemList;
 
@@ -68,6 +74,24 @@ protected:
 
   WidgetItem *m_TextMaxTqPositive;
   WidgetItem *m_TextMaxTqNegative;
+
+  WidgetItem *m_autoTnItem;
+  QDoubleSpinBox* m_spdBox;
+  QProgressBar *m_bar;
+  QPushButton *m_btnAutoStart;
+
+  WidgetItem *m_dirItem;
+  QRadioButton *m_cwRBtn;
+  QRadioButton *m_ccwRBtn;
+
+  QRadioButton *m_jmYesBtn;
+  QRadioButton *m_jmNoBtn;
+
+  QLabel *m_jmLabel;
+  QLabel *m_jmTextLabel;
+
+  QLabel *m_cycleLable;
+  QDoubleSpinBox *m_cycleTimeBox;
 };
 
 #endif // IGRAPHBRAKE_P_H

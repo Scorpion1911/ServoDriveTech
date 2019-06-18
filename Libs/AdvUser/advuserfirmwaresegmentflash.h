@@ -33,6 +33,7 @@ protected:
     static void updateProgressBar(void *arg,qint16 *value);
     static void updateProgressValueFPGA(void *arg, qint16 *value);
     bool firmwareFlashCheck();
+    void clearLayout(QWidget* widget);
 
 private slots:
     void onActionComboBoxIndexChange(int index);

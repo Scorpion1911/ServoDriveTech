@@ -150,6 +150,11 @@ void IGraphCurrent::createArrowItems()
 
 }
 
+void IGraphCurrent::createDirItem()
+{
+    return;
+}
+
 void IGraphCurrent::createCurrentFeedbackItem()
 {
   Q_D(IGraphCurrent);
@@ -289,6 +294,7 @@ void IGraphCurrent::createItems()
   createSumItem();
   createInputFilterItem();
   createStartEndTargetItems();
+  createDirItem();
   createCurrentFeedbackItem();
   createCurrentFeedbackTargetItem();
   createStartTextItem();

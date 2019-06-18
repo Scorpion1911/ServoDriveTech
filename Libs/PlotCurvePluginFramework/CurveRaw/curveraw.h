@@ -20,7 +20,7 @@ public:
 
   void reset() Q_DECL_OVERRIDE;
 
-  QString name() Q_DECL_OVERRIDE {return QString("abc");}
+  QString name() Q_DECL_OVERRIDE;
   QString note() Q_DECL_OVERRIDE {return QString("efg");}
 
   QString displayName() Q_DECL_OVERRIDE;

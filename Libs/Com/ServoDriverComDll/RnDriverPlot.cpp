@@ -1,6 +1,5 @@
-﻿#include "stdafx.h"
+#include "stdafx.h"
 #include "RnDriverPlot.h"
-#include <QDebug>
 
 
 CRnDriverPlot::CRnDriverPlot()
@@ -104,7 +103,6 @@ int16 CRnDriverPlot::PW_StartDspPlot(Uint16 dsp_station_id, Uint16 wave_num, Uin
 {
 	for (int i = 0; i < m_wave_num; i++)
 	{
-        qDebug()<<"id "<<m_pWaveList[i].m_dsp_id;
 		if (dsp_station_id == m_pWaveList[i].m_dsp_id)
 		{
 			return m_pWaveList[i].InitDspWaveVar(wave_num, wave_byte_size_list);

@@ -28,8 +28,8 @@ public :
   quint8 m_comType;
   quint8 m_rnStationId;
   quint8 m_axisNum;
-  QString m_typeName;//SD4x
-  QString m_modeName;//SD42
+  QString m_typeName;//GTSD4x
+  QString m_modeName;//GTSD42
   QString m_version;
   bool m_connected;
 

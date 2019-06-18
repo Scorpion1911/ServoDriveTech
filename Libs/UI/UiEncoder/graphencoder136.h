@@ -54,7 +54,7 @@ private slots:
   void onEncTypeChanged(int index);
   void receiveLineNum(int num);
   void onLineNumChanged(int num);
-
+  void onSearchTypeChanged(int index);
 
 private:
   void initDial(QwtDial *dial);

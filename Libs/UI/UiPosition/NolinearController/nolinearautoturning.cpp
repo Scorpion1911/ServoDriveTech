@@ -5,6 +5,8 @@
 #include <QTimer>
 #include <QDebug>
 
+#define CMD_AUTO_TURNING_MODE "gSevDrv.sev_obj.vel.atn.prm.cfg_flag.all"  //118
+
 NolinearAutoTurning::NolinearAutoTurning(SevDevice *sev, quint16 axisInx, QObject *parent) : QObject(parent),
   m_sev(sev),
   m_axisInx(axisInx),
@@ -80,7 +82,7 @@ void NolinearAutoTurning::recoverStatus()
     m_sev->setAxisServoOn(m_axisInx,false);
     m_sev->setControlSrc(m_axisInx,m_prevSrc);
     m_sev->setCurrentTaskServoMode(m_axisInx,m_prevMode);
-
+    m_sev->genCmdWrite(CMD_AUTO_TURNING_MODE, m_prevTurnMode, m_axisInx);
   }
 }
 
@@ -165,6 +167,8 @@ bool NolinearAutoTurning::start()
 //    return true;
   m_prevMode = (GT::ModeCtlType)m_sev->currentTaskServoMode(m_axisInx);
   m_prevSrc = m_sev->controlSrc(m_axisInx);
+  bool ok;
+  m_prevTurnMode = (GT::SevTurningMode)m_sev->genCmdRead(CMD_AUTO_TURNING_MODE, m_axisInx, ok);
   m_sev->cmdSetPosRef(m_axisInx,0);
   m_sev->cmdSetPosRef(m_axisInx,0);
 
@@ -202,6 +206,20 @@ bool NolinearAutoTurning::start()
   {
     recoverStatus();
     return false;
+  }
+
+  bool turningOk = false;
+  for (int i = 0; i < 100;i++) {
+      m_sev->genCmdWrite(CMD_AUTO_TURNING_MODE, GT::SEV_TURNING_VELOCITY, m_axisInx);
+      GTUtils::delayms(10);
+      if (GT::SEV_TURNING_VELOCITY == m_sev->genCmdRead(CMD_AUTO_TURNING_MODE, m_axisInx, ok)) {
+          turningOk = true;
+          break;
+      }
+  }
+  if (!turningOk) {
+      recoverStatus();
+      return false;
   }
 
 

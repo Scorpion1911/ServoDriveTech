@@ -68,7 +68,7 @@ void FirmwareFlashDialog::uiInit()
     ui->widget_firm->setVisible(false);
     QVBoxLayout *vBox = new QVBoxLayout;
     for (int i = 0; i < m_devList.length(); i++) {
-        bool hasNickName = m_devList.count() > 1;
+        bool hasNickName = true;
         QString prefix;
         prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
         QCheckBox *box = new QCheckBox(prefix + m_devList.at(i)->modelName());
@@ -85,7 +85,7 @@ void FirmwareFlashDialog::createConnections()
 {
     connect(ui->toolBtn_firm, SIGNAL(clicked()), this, SLOT(onActnToolbtnClicked()));
     connect(ui->btn_firmFlash, SIGNAL(clicked()), this, SLOT(onActnFlashBtnClicked()));
-    connect(this, SIGNAL(sendProcessMsg(int)), this, SLOT(receiveProcessMsg(int, QString)));
+    connect(this, SIGNAL(sendProcessMsg(int, QString)), this, SLOT(receiveProcessMsg(int, QString)));
 }
 
 void FirmwareFlashDialog::processCallBack(void *argv, short *value)
@@ -241,7 +241,7 @@ void FirmwareFlashDialog::onActnFlashBtnClicked()
         ui->progressBar_firm->setVisible(true);
 
         m_curDevice = m_devList.at(i);
-        m_devStr = tr("Device%1: ").arg(QString::number(m_curDevice->stationId()));
+        m_devStr = tr("Device[%1]: ").arg(QString::number(m_curDevice->stationId()));
         DeviceIdHelper *idHelper = new DeviceIdHelper(m_curDevice->socketCom(), 0);
         bool ok = true;
         int servoIndex = -1;
@@ -391,7 +391,11 @@ void FirmwareFlashDialog::onAllBoxClicked(bool checked)
     for (int i = 0; i < m_devList.count(); i++) {
         m_boxList.at(i)->setChecked(checked);
     }
-    m_boxCount = m_devList.count();
+    if (checked) {
+        m_boxCount = m_devList.count();
+    } else {
+        m_boxCount = 0;
+    }
 }
 
 void FirmwareFlashDialog::onSingleBoxClicked(bool checked)
@@ -401,7 +405,6 @@ void FirmwareFlashDialog::onSingleBoxClicked(bool checked)
     } else {
         m_boxCount--;
     }
-    qDebug()<<"count"<<m_boxCount;
     if (m_boxCount == m_devList.count()) {
         ui->checkBox_all->setChecked(true);
     } else {

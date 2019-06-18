@@ -16,6 +16,7 @@ class UISTATUSSHARED_EXPORT GraphStatus129 : public IGraphStatus
 public:
   explicit GraphStatus129(QWidget *parent = 0);
   ~GraphStatus129();
+    void updateCurCheckBox() Q_DECL_OVERRIDE;
 
 protected:
   void setUiVersionName() Q_DECL_OVERRIDE;
@@ -26,6 +27,7 @@ protected:
   quint32 alarmCode() Q_DECL_OVERRIDE;
   bool hasError() Q_DECL_OVERRIDE;
   void updateUiLabelText() Q_DECL_OVERRIDE;
+
 
 private slots:
   void onBtnClearAlarmClicked();

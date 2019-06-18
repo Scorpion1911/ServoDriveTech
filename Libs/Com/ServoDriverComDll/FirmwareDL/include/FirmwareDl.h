@@ -53,6 +53,7 @@ public:
 
 	Uint32 m_byte_write;
 	Uint32 m_addr_ofst;
+	uint16 sector_erase;
 	static const Uint16						DSPA_COMADDR = 0x0400;				 //µØÖ·ÎªshortµØÖ·
 	static const Uint16						DSPB_COMADDR = 0x8400;
 
@@ -66,7 +67,7 @@ public:
 	int16 ResetVar();
 	int16 SetRemoteUpdataStartbit(int16 com_type, int16 stationId);
 	int16 CheckRemoteUpdataState(int16 com_type, int16 stationId, int32 delaytimes = DELAY_TIMES);
-	int16 GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType,uint32& flash_ofst_addr);
+	int16 GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType,uint32& flash_ofst_addr, uint16& sector_erase);
 	int16 SetRemoteUpdataEnableBit(int16 com_type, int16 stationId);
 	int16 SetRemoteUpdataReadRequest(int16 com_type, Uint32 flash_addr, Uint16 iLength, int16 stationId);
 	int16 ProtectOff(int16 com_type, int16 stationId );

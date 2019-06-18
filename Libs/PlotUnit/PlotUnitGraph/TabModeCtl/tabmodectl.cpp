@@ -4,6 +4,7 @@
 #include "Option"
 #include "gtutils.h"
 #include "sdtglobaldef.h"
+#include "modectlpanel.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -17,15 +18,20 @@
 #define GEN_CMD_DEC "gSevDrv.sev_obj.pos.mkr.prm.decrate"
 #define GEN_CMD_MOVEMODE "gSevDrv.sev_obj.pos.seq.prm.move_mode"
 #define GEN_CMD_MAXVEL "gSevDrv.sev_obj.pos.mkr.prm.maxspd"
-#define GEN_CMD_AUT_FINISH "gSevDrv.sev_obj.vel.atn.finish_flag"
+#define GEN_CMD_AUT_FINISH "gSevDrv.sev_obj.vel.atn.jm_idf_finish_flag"
+#define GEN_CMD_AUT_VEL_AMP "gSevDrv.sev_obj.vel.atn.prm.spd_cmd_amp"
+#define GEN_CMD_AUT_CYC_TIME "gSevDrv.sev_obj.vel.atn.prm.idf_mov_tim"
+#define GEN_CMD_MOTOR_JM    "gSevDrv.sev_obj.cur.mot.Jm_1"
+#define GEN_CMD_AUT_MODE    "gSevDrv.sev_obj.vel.atn.prm.cfg_flag.all"
+
 
 class ModeCtlPrms
 {
 public:
   ModeCtlPrms():m_isChecked(false),
     m_curMode(GT::MODE_IDLE),m_ipa(0),m_uaref(0),m_ubref(0),m_ucref(0),m_udref(0),
-    m_uqref(0),m_idref(0),m_iqref(0),m_vcl(0),m_vpl(0),m_vsl(0),m_pt(0),m_autAcc(0),
-    m_autDec(0),m_autfgd(0),m_autfgi(0),m_autfgn(0),m_autfgp(0),m_autPulse(0),m_autVel(0)
+    m_uqref(0),m_idref(0),m_iqref(0),m_vcl(0),m_vpl(0),m_vsl(0),m_pt(0),m_autVel(0),
+    m_cycleTime(0),m_autJm(0)
   {
 
   }
@@ -53,15 +59,10 @@ public:
   qreal m_pt;
 
   //mode aut
-  qreal m_autDec;
-  qreal m_autAcc;
   qreal m_autVel;
-  qreal m_autPulse;
+  qreal m_cycleTime;
 
-  qreal m_autfgd;
-  qreal m_autfgp;
-  qreal m_autfgi;
-  qreal m_autfgn;
+  qreal m_autJm;
 };
 
 
@@ -91,11 +92,8 @@ TabModeCtl::TabModeCtl(const QString &name, SevDevice *sev, QWidget *parent) :
   ui->spinBox_mode_vpl->installEventFilter(this);
   ui->spinBox_mode_vsl->installEventFilter(this);
   ui->spinBox_mode_pt->installEventFilter(this);
-
-  ui->doubleSpinBox_mode_autAcc->installEventFilter(this);
-  ui->doubleSpinBox_mode_autDec->installEventFilter(this);
-  ui->doubleSpinBox_mode_autMaxVel->installEventFilter(this);
-  ui->doubleSpinBox_mode_aut_pulse->installEventFilter(this);
+  ui->spinBox_mode_autMaxVel->installEventFilter(this);
+  ui->spinBox_autCycle->installEventFilter(this);
 
   ui->tbtn_plot_servoOnMode->setCheckable(true);
   ui->label_plot_servo_onoff->setText(tr("SEV OFF"));
@@ -118,10 +116,8 @@ TabModeCtl::TabModeCtl(const QString &name, SevDevice *sev, QWidget *parent) :
   connect(ui->spinBox_mode_vpl,SIGNAL(valueChanged(int)),this,SLOT(onModeSpinBoxValueChanged(int)));
   connect(ui->spinBox_mode_vsl,SIGNAL(valueChanged(int)),this,SLOT(onModeSpinBoxValueChanged(int)));
   connect(ui->spinBox_mode_pt,SIGNAL(valueChanged(int)),this,SLOT(onModeSpinBoxValueChanged(int)));
-  connect(ui->doubleSpinBox_mode_aut_pulse, SIGNAL(valueChanged(double)), this, SLOT(onModeDoubleSpinBoxValueChanged(double)));
-  connect(ui->doubleSpinBox_mode_autAcc, SIGNAL(valueChanged(double)), this, SLOT(onModeDoubleSpinBoxValueChanged(double)));
-  connect(ui->doubleSpinBox_mode_autDec, SIGNAL(valueChanged(double)), this, SLOT(onModeDoubleSpinBoxValueChanged(double)));
-  connect(ui->doubleSpinBox_mode_autMaxVel, SIGNAL(valueChanged(double)), this, SLOT(onModeDoubleSpinBoxValueChanged(double)));
+  connect(ui->spinBox_mode_autMaxVel, SIGNAL(valueChanged(int)), this, SLOT(onModeSpinBoxValueChanged(int)));
+  connect(ui->spinBox_autCycle, SIGNAL(valueChanged(int)), this, SLOT(onModeSpinBoxValueChanged(int)));
   connect(ui->tbtn_plot_servoOnMode,SIGNAL(clicked(bool)),this,SLOT(onBtnServoOnClicked(bool)));
 }
 
@@ -250,30 +246,17 @@ bool TabModeCtl::eventFilter(QObject *obj, QEvent *event)
       }
       else if (ui->stackedWidget_plot_mode->currentIndex() == 13) {
           bool ok;
-          quint64 nos = m_sev->genCmdReadNos(axisInx, ok);
-          double scale = nos / (pow(2, 24));
-          modePrms->m_autAcc = ui->doubleSpinBox_mode_autAcc->value();
-          modePrms->m_autDec = ui->doubleSpinBox_mode_autDec->value();
-          modePrms->m_autVel = ui->doubleSpinBox_mode_autMaxVel->value();
-          modePrms->m_autPulse = ui->doubleSpinBox_mode_aut_pulse->value();
-          m_sev->genCmdWritePlanSpdAcc(axisInx, modePrms->m_autAcc / 360.0 * 65536);
-          m_sev->genCmdWritePlanSpdDec(axisInx, modePrms->m_autDec / 360.0 * 65536);
-          m_sev->genCmdWritePlanSpdMax(axisInx, modePrms->m_autVel / scale);
-          m_sev->cmdSetPosRef(axisInx, modePrms->m_autPulse * 65536);
+          modePrms->m_autVel = ui->spinBox_mode_autMaxVel->value();
+          m_sev->genCmdWrite(GEN_CMD_AUT_VEL_AMP, modePrms->m_autVel, axisInx);
 
-          modePrms->m_autfgd = m_sev->genCmdReadAutoTurnningFgd(axisInx, ok);
-          ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
-          modePrms->m_autfgp = m_sev->genCmdReadAutoTurnningFgp(axisInx, ok);
-          ui->label_mode_aut_fgp->setText(QString::number(modePrms->m_autfgp));
-          modePrms->m_autfgi = m_sev->genCmdReadAutoTurnningFgi(axisInx, ok);
-          ui->label_mode_aut_fgi->setText(QString::number(modePrms->m_autfgi));
-          modePrms->m_autfgn = m_sev->genCmdReadAutoTurnningFgn(axisInx, ok);
-          ui->label_mode_aut_fgn->setText(QString::number(modePrms->m_autfgn));
+          modePrms->m_cycleTime = ui->spinBox_autCycle->value();
+          m_sev->genCmdWrite(GEN_CMD_AUT_CYC_TIME, modePrms->m_cycleTime, axisInx);
 
-          ui->doubleSpinBox_mode_autAcc->setStyleSheet("color:black");
-          ui->doubleSpinBox_mode_autDec->setStyleSheet("color:black");
-          ui->doubleSpinBox_mode_autMaxVel->setStyleSheet("color:black");
-          ui->doubleSpinBox_mode_aut_pulse->setStyleSheet("color:black");
+          modePrms->m_autJm = m_sev->genCmdRead(GEN_CMD_MOTOR_JM, axisInx, ok);
+          ui->label_mode_aut_Jm->setText(QString::number(modePrms->m_autJm));
+
+          ui->spinBox_mode_autMaxVel->setStyleSheet("color:black");
+          ui->spinBox_autCycle->setStyleSheet("color:black");
       }
       return true;
     }
@@ -376,41 +359,24 @@ void TabModeCtl::onModeCtlPanelModeChanged(quint16 axis, int mode)
     {
         if (m_sev->isConnecting()) {
             bool ok;
-            quint64 nos = m_sev->genCmdReadNos(axis, ok);
-            double scale = nos / (pow(2, 24));
-            modePrms->m_autAcc = m_sev->genCmdRead(GEN_CMD_ACC, axis, ok) / 65536.0 * 360;
-            ui->doubleSpinBox_mode_autAcc->setValue(modePrms->m_autAcc);
-            modePrms->m_autDec = m_sev->genCmdRead(GEN_CMD_DEC, axis, ok) / 65536.0 * 360;
-            ui->doubleSpinBox_mode_autDec->setValue(modePrms->m_autDec);
-            modePrms->m_autVel = m_sev->genCmdRead(GEN_CMD_MAXVEL, axis, ok) * scale;
-            ui->doubleSpinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
+            ok = m_sev->genCmdWrite(GEN_CMD_AUT_MODE, 2, axis);
 
-            modePrms->m_autfgd = m_sev->genCmdReadAutoTurnningFgd(axis, ok);
-            ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
-            modePrms->m_autfgp = m_sev->genCmdReadAutoTurnningFgp(axis, ok);
-            ui->label_mode_aut_fgp->setText(QString::number(modePrms->m_autfgp));
-            modePrms->m_autfgi = m_sev->genCmdReadAutoTurnningFgi(axis, ok);
-            ui->label_mode_aut_fgi->setText(QString::number(modePrms->m_autfgi));
-            modePrms->m_autfgn = m_sev->genCmdReadAutoTurnningFgn(axis, ok);
-            ui->label_mode_aut_fgn->setText(QString::number(modePrms->m_autfgn));
+            modePrms->m_autVel = m_sev->genCmdRead(GEN_CMD_AUT_VEL_AMP, axis, ok);
+            ui->spinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
+            modePrms->m_cycleTime = m_sev->genCmdRead(GEN_CMD_AUT_CYC_TIME, axis, ok);
+            ui->spinBox_autCycle->setValue(modePrms->m_cycleTime);
+
+            modePrms->m_autJm = m_sev->genCmdRead(GEN_CMD_MOTOR_JM, axis, ok);
+            ui->label_mode_aut_Jm->setText(QString::number(modePrms->m_autJm));
         }
-        ui->doubleSpinBox_mode_aut_pulse->setValue(modePrms->m_autPulse);
-        ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
-        ui->label_mode_aut_fgp->setText(QString::number(modePrms->m_autfgp));
-        ui->label_mode_aut_fgi->setText(QString::number(modePrms->m_autfgi));
-        ui->label_mode_aut_fgn->setText(QString::number(modePrms->m_autfgn));
-        ui->doubleSpinBox_mode_autAcc->setValue(modePrms->m_autAcc);
-        ui->doubleSpinBox_mode_autDec->setValue(modePrms->m_autDec);
-        ui->doubleSpinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
 
-        ui->doubleSpinBox_mode_aut_pulse->setStyleSheet("color:black");
-        ui->label_mode_aut_fgd->setStyleSheet("color:black");
-        ui->label_mode_aut_fgi->setStyleSheet("color:black");
-        ui->label_mode_aut_fgn->setStyleSheet("color:black");
-        ui->label_mode_aut_fgp->setStyleSheet("color:black");
-        ui->doubleSpinBox_mode_autAcc->setStyleSheet("color:black");
-        ui->doubleSpinBox_mode_autDec->setStyleSheet("color:black");
-        ui->doubleSpinBox_mode_autMaxVel->setStyleSheet("color:black");
+        ui->label_mode_aut_Jm->setText(QString::number(modePrms->m_autJm));
+        ui->spinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
+        ui->spinBox_autCycle->setValue(modePrms->m_cycleTime);
+
+        ui->label_mode_aut_Jm->setStyleSheet("color:black");
+        ui->spinBox_mode_autMaxVel->setStyleSheet("color:black");
+        ui->spinBox_autCycle->setStyleSheet("color:black");
     }
     break;
     case GT::MODE_HOME:break;
@@ -493,29 +459,17 @@ void TabModeCtl::onModeCtlPanelCheckChanged(quint16 axis, int mode)
     case GT::MODE_AUT:
     {
         bool ok;
-        quint64 nos = m_sev->genCmdReadNos(axis, ok);
-        double scale = nos / (pow(2, 24));
-        modePrms->m_autAcc = m_sev->genCmdRead(GEN_CMD_ACC, axis, ok) / 65536.0 * 360;
-        ui->doubleSpinBox_mode_autAcc->setValue(modePrms->m_autAcc);
-        modePrms->m_autDec = m_sev->genCmdRead(GEN_CMD_DEC, axis, ok) / 65536.0 * 360;
-        ui->doubleSpinBox_mode_autDec->setValue(modePrms->m_autDec);
-        modePrms->m_autVel = m_sev->genCmdRead(GEN_CMD_MAXVEL, axis, ok) * scale;
-        ui->doubleSpinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
+        modePrms->m_autVel = m_sev->genCmdRead(GEN_CMD_AUT_VEL_AMP, axis, ok);
+        ui->spinBox_mode_autMaxVel->setValue(modePrms->m_autVel);
 
-        ui->doubleSpinBox_mode_aut_pulse->setValue(modePrms->m_autPulse);
-        ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
-        ui->label_mode_aut_fgp->setText(QString::number(modePrms->m_autfgp));
-        ui->label_mode_aut_fgi->setText(QString::number(modePrms->m_autfgi));
-        ui->label_mode_aut_fgn->setText(QString::number(modePrms->m_autfgn));
+        modePrms->m_cycleTime = m_sev->genCmdRead(GEN_CMD_AUT_CYC_TIME, axis, ok);
+        ui->spinBox_autCycle->setValue(modePrms->m_cycleTime);
 
-        ui->doubleSpinBox_mode_aut_pulse->setStyleSheet("color:black");
-        ui->label_mode_aut_fgd->setStyleSheet("color:black");
-        ui->label_mode_aut_fgi->setStyleSheet("color:black");
-        ui->label_mode_aut_fgn->setStyleSheet("color:black");
-        ui->label_mode_aut_fgp->setStyleSheet("color:black");
-        ui->doubleSpinBox_mode_autAcc->setStyleSheet("color:black");
-        ui->doubleSpinBox_mode_autDec->setStyleSheet("color:black");
-        ui->doubleSpinBox_mode_autMaxVel->setStyleSheet("color:black");
+        ui->label_mode_aut_Jm->setText(QString::number(modePrms->m_autJm));
+
+        ui->label_mode_aut_Jm->setStyleSheet("color:black");
+        ui->spinBox_mode_autMaxVel->setStyleSheet("color:black");
+        ui->spinBox_autCycle->setStyleSheet("color:black");
     }
     break;
     case GT::MODE_HOME:break;
@@ -564,14 +518,8 @@ void TabModeCtl::onCheckingAutoTurning()
             m_finishList.replace(count, finish);
             if (m_finishList.at(count) == 1) {
                 ModeCtlPrms* modePrms = m_dataList.at(i);
-                modePrms->m_autfgd = m_sev->genCmdReadAutoTurnningFgd(i, isOk);
-                ui->label_mode_aut_fgd->setText(QString::number(modePrms->m_autfgd));
-                modePrms->m_autfgp = m_sev->genCmdReadAutoTurnningFgp(i, isOk);
-                ui->label_mode_aut_fgp->setText(QString::number(modePrms->m_autfgp));
-                modePrms->m_autfgi = m_sev->genCmdReadAutoTurnningFgi(i, isOk);
-                ui->label_mode_aut_fgi->setText(QString::number(modePrms->m_autfgi));
-                modePrms->m_autfgn = m_sev->genCmdReadAutoTurnningFgn(i, isOk);
-                ui->label_mode_aut_fgn->setText(QString::number(modePrms->m_autfgn));
+                modePrms->m_autJm = m_sev->genCmdRead(GEN_CMD_MOTOR_JM, i, isOk);
+                ui->label_mode_aut_Jm->setText(QString::number(modePrms->m_autJm));
             }
             count++;
         }
@@ -581,5 +529,6 @@ void TabModeCtl::onCheckingAutoTurning()
             break;
         }
         m_timer.stop();
+        onBtnServoOnClicked(false);
     }
 }

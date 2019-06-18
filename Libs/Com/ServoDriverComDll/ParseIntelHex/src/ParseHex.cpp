@@ -42,7 +42,14 @@ Uint16 Hex::GetRecordLength()
 		m_nRecordLength[1]	= m_cBuffer[1];
 		m_nRecordLength[2]	= '\0';
 		int8 *p = NULL;
-		return (Uint16)strtol(m_nRecordLength, &p, 16);  //将字符串转化为整形
+//+++++++++++++++++++++2019.05.28modification+++++++++++++++++++
+        Uint16 len = (Uint16)strtol(m_nRecordLength, &p, 16);  //将字符串转化为整形
+        delete m_nRecordLength;
+        m_nRecordLength		= NULL;
+        return len;
+//--------------------------------------------------------------
+//    	return (Uint16)strtol(m_nRecordLength, &p, 16);  //将字符串转化为整形
+//==============================================================
 	}
 	else
 	{
@@ -139,8 +146,14 @@ Uint16 Hex::GetChecksum()
 
 int16 Hex::ResetVar()
 {
-	m_hex_frame_read.clear();
-	m_hex_frame_write.clear();
+//+++++++++++++++++++++2019.05.28modification+++++++++++++++++++
+    vector<INTEL_HEX_FRAME>().swap(m_hex_frame_read);
+    vector<INTEL_HEX_FRAME>().swap(m_hex_frame_write);
+//--------------------------------------------------------------
+
+//==============================================================
+    m_hex_frame_read.clear();
+    m_hex_frame_write.clear();
 	dataLenth = 0;
 	return 0;
 }
@@ -148,97 +161,99 @@ int16 Hex::ResetVar()
 //解析Hex文件中的每一条记录
 int16 Hex::ParseRecord(int8 ch)
 {
-	INTEL_HEX_FRAME tmp;
-	int32 buf_len				= strlen(m_cBuffer);
-	if ((m_bRecvStatus == false) &&(ch!=0x0A) && (ch != 0x0D))
-	{
-		if (GetRecordMark() != ch)
-		{
-			return 1;
-		}
-		else
-		{
-			m_bRecvStatus = true;
-			m_cBuffer[0] = '\0';
-			return 0;
-		}
-	}
-	
-	if ((buf_len == (GetRecordLength() + 5) * 2 - 1))
-	{
-		//接收最后一个字符
-		m_cBuffer[buf_len]		= ch;
-		m_cBuffer[buf_len + 1]	= '\0';
-		//检验接收的数据
-		int8 temp[3];
-		int8 *p					= NULL;
-		int32 checksum		= 0;
-		for (Uint16 i = 0; i < strlen(m_cBuffer); i += 2)
-		{
-			temp[0]				= m_cBuffer[i];
-			temp[1]				= m_cBuffer[i + 1];
-			temp[2]				= '\0';
-			checksum			+= strtol(temp, &p, 16);
-			temp[0]				= '\0';
-		}
-		checksum				&= 0x00ff;//取计算结果的低8位
-		if (checksum == 0)//checksum为0说明接收的数据无误
-		{
-			
-			tmp.lenth			= GetRecordLength();
-			tmp.addr			= GetLoadOffset() + (m_baseAddr);
-			tmp.type			= GetRecordType();
-			memcpy_s(&(tmp.data[0]), tmp.lenth*sizeof(int16), GetData(), tmp.lenth*sizeof(int16));
-			tmp.checksum		= GetChecksum();
+    INTEL_HEX_FRAME tmp;
+    int32 buf_len				= strlen(m_cBuffer);
+    if ((m_bRecvStatus == false) &&(ch!=0x0A) && (ch != 0x0D))
+    {
+        if (GetRecordMark() != ch)
+        {
+            return 1;
+        }
+        else
+        {
+            m_bRecvStatus = true;
+            m_cBuffer[0] = '\0';
+            return 0;
+        }
+    }
+    if ((buf_len == (GetRecordLength() + 5) * 2 - 1))
+    {
+        //接收最后一个字符
+        m_cBuffer[buf_len]		= ch;
+        m_cBuffer[buf_len + 1]	= '\0';
+        //检验接收的数据
+        int8 temp[3];
+        int8 *p					= NULL;
+        int32 checksum		= 0;
+        for (Uint16 i = 0; i < strlen(m_cBuffer); i += 2)
+        {
+            temp[0]				= m_cBuffer[i];
+            temp[1]				= m_cBuffer[i + 1];
+            temp[2]				= '\0';
+            checksum			+= strtol(temp, &p, 16);
+            temp[0]				= '\0';
+        }
+        checksum				&= 0x00ff;//取计算结果的低8位
+        if (checksum == 0)//checksum为0说明接收的数据无误
+        {
+            tmp.lenth			= GetRecordLength();
+            tmp.addr			= GetLoadOffset() + (m_baseAddr);
+            tmp.type			= GetRecordType();
+            memcpy_s(&(tmp.data[0]), tmp.lenth*sizeof(int16), GetData(), tmp.lenth*sizeof(int16));
+            tmp.checksum		= GetChecksum();
 
-			if (tmp.type == 4) //线性扩展地址
-			{
-				m_baseAddr = (((tmp.data[0] << 8) | (tmp.data[1]))<<16);
-			}
-			else if (tmp.type == 5)//起始线性地址
-			{
-				m_baseAddr = (((tmp.data[0] << 24) | (tmp.data[1]<<16)|(tmp.data[2]<<8)|(tmp.data[3])));
-			}
-			else if (tmp.type == 1)//停止
-			{
+            if (tmp.type == 4) //线性扩展地址
+            {
+                m_baseAddr = (((tmp.data[0] << 8) | (tmp.data[1]))<<16);
+            }
+            else if (tmp.type == 5)//起始线性地址
+            {
+                m_baseAddr = (((tmp.data[0] << 24) | (tmp.data[1]<<16)|(tmp.data[2]<<8)|(tmp.data[3])));
+            }
+            else if (tmp.type == 1)//停止
+            {
 
-			}
-			else if (tmp.type == 0)//数据
-			{
-				m_hex_frame_write.push_back(tmp);
-				dataLenth += tmp.lenth;
-			}
-			else
-			{
-			}	
-		}
-		else//否则接收数据有误
-		{
-			return 1;
-		}
-		m_cBuffer[0] = '\0';
-		m_bRecvStatus = false;
+            }
+            else if (tmp.type == 0)//数据
+            {
+                m_hex_frame_write.push_back(tmp);
+                dataLenth += tmp.lenth;
+            }
+            else
+            {
+            }
+        }
+        else//否则接收数据有误
+        {
+            return 1;
+        }
+        m_cBuffer[0] = '\0';
+        m_bRecvStatus = false;
 
-		delete m_nRecordLength;						//记录长度
-		delete m_pLoadOffset;						//装载偏移
-		delete m_pRecordType;						//记录类型
-		delete m_pData;								//数据字段
-		if (tmp.type != 1){ delete m_pDataValid; }//有效数据
-		delete m_pChecksum;							//校验和
+//+++++++++++++++++++++2019.05.28modification+++++++++++++++++++
 
-		m_nRecordLength		= NULL;
-		m_pLoadOffset		= NULL;
-		m_pRecordType		= NULL;
-		m_pData				= NULL;
-		m_pDataValid		= NULL;
-		m_pChecksum			= NULL;
-		m_bRecvStatus		= false;
-	}
-	else if (m_bRecvStatus)
-	{
-		m_cBuffer[buf_len]			= ch;
-		m_cBuffer[buf_len + 1]		= '\0';
-	}
+//--------------------------------------------------------------
+//    	delete m_nRecordLength;						//记录长度
+//==============================================================
+        delete m_pLoadOffset;						//装载偏移
+        delete m_pRecordType;						//记录类型
+        delete m_pData;								//数据字段
+        if (tmp.type != 1){ delete m_pDataValid; }//有效数据
+        delete m_pChecksum;							//校验和
+
+        m_nRecordLength		= NULL;
+        m_pLoadOffset		= NULL;
+        m_pRecordType		= NULL;
+        m_pData				= NULL;
+        m_pDataValid		= NULL;
+        m_pChecksum			= NULL;
+        m_bRecvStatus		= false;
+    }
+    else if (m_bRecvStatus)
+    {
+        m_cBuffer[buf_len]			= ch;
+        m_cBuffer[buf_len + 1]		= '\0';
+    }
 	return 0;
 }
 
@@ -366,15 +381,15 @@ int16 Hex::ParseHex(string filename)
 	}
 	char tmp;
 	int16 flag = 0;
-	while(!file.eof())
-	{
-		file.get(tmp);
-		if (ParseRecord(tmp)!=0)
-		{
-			flag = 1;
-			break;
-		}
-	}
+    while(!file.eof())
+    {
+        file.get(tmp);
+        if (ParseRecord(tmp)!=0)
+        {
+            flag = 1;
+            break;
+        }
+    }
 	file.close();
 	if (flag != 0)
 	{

@@ -71,6 +71,7 @@ QList<DeviceConfig *>DevComRWriter::createConfig(void (*processCallback)(void *p
     }
     QVector<int16_t> v;
     v=QVector<int16_t>::fromStdVector(vtr);
+
     if(v.isEmpty())
     {
       isOk=false;
@@ -113,6 +114,7 @@ QList<DeviceConfig *>DevComRWriter::createConfig(void (*processCallback)(void *p
 
   com->close();
   delete com;
+
   return list;
 }
 

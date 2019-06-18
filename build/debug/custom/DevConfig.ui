@@ -57,73 +57,18 @@
                                 <string>0</string>
                             </property>
                             <property name="text">
-                                <string>15</string>
+                                <string>240</string>
                             </property>
                             <item>
                                 <property name="text">
-                                    <string>HD1x</string>
+                                    <string>GTHD1x</string>
                                 </property>
                                 <property name="text">
                                     <string>1</string>
                                 </property>
                                 <item>
                                     <property name="text">
-                                        <string>HD11_3A</string>
-                                    </property>
-                                    <property name="text">
-                                        <string>1</string>
-                                    </property>
-                                    <property name="text">
-                                        <string>31000025</string>
-                                    </property>
-                                    <item>
-                                        <property name="text">
-                                            <string>V141</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>NULL</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>0</string>
-                                        </property>
-                                    </item>
-                                </item>
-                            </item>
-                        </item>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>Device</string>
-                        </property>
-                        <property name="text">
-                            <string>NULL</string>
-                        </property>
-                        <property name="text">
-                            <string>1</string>
-                        </property>
-                        <item>
-                            <property name="text">
-                                <string>RnNet</string>
-                            </property>
-                            <property name="text">
-                                <string>1</string>
-                            </property>
-                            <property name="text">
-                                <string>1</string>
-                            </property>
-                            <property name="text">
-                                <string>1</string>
-                            </property>
-                            <item>
-                                <property name="text">
-                                    <string>HD1x</string>
-                                </property>
-                                <property name="text">
-                                    <string>1</string>
-                                </property>
-                                <item>
-                                    <property name="text">
-                                        <string>HD11_3A</string>
+                                        <string>GTHD11_3A</string>
                                     </property>
                                     <property name="text">
                                         <string>1</string>

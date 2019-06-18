@@ -46,6 +46,7 @@
 #include "qttreemanager.h"
 #include "downloaddialog.h"
 #include "uploaddialog.h"
+#include "recoverdialog.h"
 #include "servofile.h"
 #include "firmwareflashdialog.h"
 #include "comparisondialog.h"
@@ -229,6 +230,7 @@ void SDTMainWindow::createActions()
   //m_actnProduce=new QAction(tr("produce"),m_tbtnMore);
 
   m_actnAdvUser = new QAction(tr("Advanced User"), m_tbtnMore);
+  m_actnRecover = new QAction(tr("Recover paramaters"), m_tbtnMore);
 
 //  m_tbtnMore->addAction(m_actnOnMode);
 //  m_tbtnMore->addAction(m_actnOffMode);
@@ -248,6 +250,7 @@ void SDTMainWindow::createActions()
   menu->addAction(m_actnOption);
   //menu->addAction(m_actnProduce);
   menu->addAction(m_actnAdvUser);
+  menu->addAction(m_actnRecover);
 //  menu->addMenu(menuSoftMode);
 //  menuSoftMode->addAction(m_actnOnMode);
 //  menuSoftMode->addAction(m_actnOffMode);
@@ -299,6 +302,7 @@ void SDTMainWindow::createConnections()
   connect(m_actnConfig,SIGNAL(triggered(bool)),this,SLOT(onActnConfigClicked()));
   //connect(m_actnProduce, SIGNAL(triggered()), this, SLOT(onActnProduceClicked()));
   connect(m_actnAdvUser, SIGNAL(triggered()), this, SLOT(onActnAdvUserClicked()));
+  connect(m_actnRecover, SIGNAL(triggered()), this, SLOT(onActnRecoverClicked()));
   connect(m_actnCompare,SIGNAL(triggered(bool)),this,SLOT(onActnCompareClicked()));
   connect(m_actnUpdateFlash, SIGNAL(triggered()), this, SLOT(onActnUpdateFirmwareClicked()));
   connect(m_actnDownload, SIGNAL(triggered(bool)), this, SLOT(onActnDownloadClicked()));
@@ -436,7 +440,7 @@ void SDTMainWindow::navigationTreeInit()
   QTreeWidgetItem *globalItem=NULL;
   SdAssembly * sd;
   int pageIndex=0;
-  bool hasNickName=m_sdAssemblyList.count()>1;
+  bool hasNickName=true;
 
   QHash<QString ,QString>navTreeNameSwitchHash;
   navTreeNameSwitchHash.insert("Motor",tr("Motor"));
@@ -727,6 +731,57 @@ void SDTMainWindow::onActnAdvUserClicked()
         }
     }
     dialogAdv.exec();
+}
+
+void SDTMainWindow::onActnRecoverClicked()
+{
+    if (!m_connecting && !m_isOffline) {
+        QMessageBox::information(0, tr("Warning"), tr("Please open com first!"));
+        return;
+    }
+    QList<int> recoverIndexList;
+    QList<SevDevice *> devList = sevList();
+    if (devList.count() == 1) {
+        recoverIndexList.append(0);
+    } else {
+        RecoverDialog recoverDialog;
+        recoverDialog.uiInit(devList, recoverIndexList);
+        recoverDialog.exec();
+    }
+    if (recoverIndexList.count() == 0) {
+        return;
+    }
+    QMessageBox::StandardButton rb = QMessageBox::information(this, tr("Recover"), tr("Are you sure to recover the parameters?"));
+    if (rb == QMessageBox::No) {
+        return;
+    }
+    ServoFile *paraManager = new ServoFile;
+    m_statusBar->statusProgressBar()->setVisible(true);
+    m_statusBar->statusProgressBar()->setValue(0);
+    connect(paraManager, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
+    bool ok;
+    for (int i = 0; i < recoverIndexList.count(); i++) {
+        int devIndex = recoverIndexList.at(i);
+        SevDevice *sev = m_sdAssemblyList.at(devIndex)->sevDevice();
+        if (m_connecting) {
+            ok = paraManager->restoreFile(processCallBack, mp_progressBar, sev);
+        } else if (m_isOffline) {
+            ok = paraManager->restoreOfflineFile(sev);
+        }
+        if (!ok) {
+            m_statusBar->setMsg(tr("Recovery fails on Device[%1]").arg(i));
+            break;
+        }
+    }
+    disconnect(paraManager, SIGNAL(sendProgressbarMsg(int,QString)), this, SLOT(onProgressInfo(int,QString)));
+    if (m_isOffline) {
+        activeCurrentUi();
+    }
+    if (ok) {
+        m_statusBar->setMsg(tr("Recover Successfully! Please reset DSP!"));
+    }
+    m_statusBar->statusProgressBar()->setVisible(false);
+    delete paraManager;
 }
 
 void SDTMainWindow::onActnCompareClicked()
@@ -1232,6 +1287,7 @@ void SDTMainWindow::onOptUserChanged(bool isAdmin)
 {
     if (isAdmin) {
         m_actnAdvUser->setVisible(true);
+        m_actnRecover->setVisible(true);
         for (int i = 0; i < ui->treeWidget->topLevelItemCount(); i++) {
             for (int j = 0; j < ui->treeWidget->topLevelItem(i)->childCount(); j++) {
                 QTreeWidgetItem *flashItem = GTUtils::findItemInItem(FLASH_NAME, ui->treeWidget->topLevelItem(i)->child(j), 0);
@@ -1246,6 +1302,7 @@ void SDTMainWindow::onOptUserChanged(bool isAdmin)
         }
     } else {
         m_actnAdvUser->setVisible(false);
+        m_actnRecover->setVisible(false);
         for (int i = 0; i < ui->treeWidget->topLevelItemCount(); i++) {
             for (int j = 0; j < ui->treeWidget->topLevelItem(i)->childCount(); j++) {
                 QTreeWidgetItem *flashItem = GTUtils::findItemInItem(FLASH_NAME, ui->treeWidget->topLevelItem(i)->child(j), 0);

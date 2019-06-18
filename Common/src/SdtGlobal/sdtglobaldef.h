@@ -111,6 +111,13 @@ typedef enum {
 }PrmPrtyColumn;
 
 typedef enum {
+    SEV_TURNING_NONLINEAR = 0,
+    SEV_TURNING_VELOCITY = 9,
+    SEV_TURNING_JM = 2,
+    SEV_TURNING_VEL_JM = 2
+} SevTurningMode;
+
+typedef enum {
   SEV_CTL_SRC_PC,
   SEV_CTL_SRC_GLINK2,
   SEV_CTL_SRC_IO
@@ -134,6 +141,14 @@ typedef enum{
     MODE_HOME,
     MODE_MID
 }ModeCtlType;
+
+typedef enum {
+    USER_MODE_IDLE,
+    USER_MODE_PT,
+    USER_MODE_VSL,
+    USER_MODE_ANAVEL,
+    USER_MODE_DIRPULSE
+}UserModeType;
 
 template <typename T>
 static void deepClearList(QList<T*>&list)

@@ -129,7 +129,7 @@ int16 CEeprom::EepromWrite8bit(Uint16 byte_addr, Uint8 byte_data)
 	stEepromCtl.all = 0;
 	stEepromCtl.bit.ctl_read_write = 0;
 	stEepromCtl.bit.enable_RW = 1;
-    stEepromCtl.bit.addr_chip = (byte_addr >> 8);
+	stEepromCtl.bit.addr_chip = (byte_addr >> 8);
 	data_tmp[0] = stEepromCtl.all;
 	data_tmp[2] = (Uint8)byte_addr;
 	data_tmp[4] = byte_data;
