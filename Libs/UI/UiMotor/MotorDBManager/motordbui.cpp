@@ -219,6 +219,8 @@ void MotorDBUi::onActionNewBtnClicked()
     ui->lineEdit_motor_newName->clear();
     ui->widget_motor->setVisible(false);
     ui->widget_newMotor->setVisible(true);
+    ui->listWidget_motor_company->setEnabled(false);
+    ui->listWidget_motor_motor->setEnabled(false);
     m_motorParaList.clear();
     for (int i = 0; i < ui->table_motor_para->rowCount(); i++) {
         QTableWidgetItem *valueItem = new QTableWidgetItem("0");
@@ -317,6 +319,9 @@ void MotorDBUi::onActionOkBtnClicked()
     m_dbManager->addMotor(motorInfoList);
     m_dbManager->close();
 
+    ui->listWidget_motor_company->setEnabled(true);
+    ui->listWidget_motor_motor->setEnabled(true);
+
     //onCompanyRowChanged(ui->listWidget_motor_company->currentRow());
     if (ui->listWidget_motor_company->currentRow() == USER_INDEX - 1) {
         onCompanyRowChanged(ui->listWidget_motor_company->currentRow());
@@ -338,6 +343,7 @@ void MotorDBUi::onActionOkBtnClicked()
     ui->lineEdit_motor_newName->clear();
     ui->widget_motor->setVisible(true);
     ui->widget_newMotor->setVisible(false);
+
 }
 
 void MotorDBUi::onActionCancelBtnClicked()
@@ -345,6 +351,8 @@ void MotorDBUi::onActionCancelBtnClicked()
     ui->lineEdit_motor_newName->clear();
     ui->widget_motor->setVisible(true);
     ui->widget_newMotor->setVisible(false);
+    ui->listWidget_motor_company->setEnabled(true);
+    ui->listWidget_motor_motor->setEnabled(true);
     onMotorRowChanged(ui->listWidget_motor_motor->currentRow());
 }
 

@@ -9,6 +9,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QDoubleSpinBox>
+#include <QRadioButton>
 #include <QDebug>
 #include <QGraphicsSimpleTextItem>
 #include <QTreeWidgetItem>
@@ -46,6 +47,8 @@ void IGraphVelocity::createItems()
   createSaturationItem();
   createOutputFilterItem();
   createVelocityFeedbackItem();
+  createVelDirItem();
+  createAutoTuningWidget();
 
   createTargetItems();
 
@@ -211,6 +214,16 @@ void IGraphVelocity::createVelocityFeedbackItem()
   d->m_scene->addItem(d->m_UVB);
 
   d->m_widgetItemList.append(d->m_UVB);
+}
+
+void IGraphVelocity::createAutoTuningWidget()
+{
+    return;
+}
+
+void IGraphVelocity::createVelDirItem()
+{
+    return;
 }
 
 void IGraphVelocity::createTargetItems()
@@ -459,7 +472,7 @@ void IGraphVelocity::setUpItemPosAnchors()
   d->m_anchorHelper->addAnchor(d->m_USUM,d->m_UIF,AnchorItemHelper::AnchorLeft,-1*d->m_UIF->boundingRect().width()-d->m_USUM->boundingRect().width());
   d->m_anchorHelper->addAnchor(d->m_USUM,d->m_UIF,AnchorItemHelper::AnchorVerticalCenter);
 
-  d->m_anchorHelper->addAnchor(d->m_UIF,d->m_Tstart,AnchorItemHelper::AnchorLeft,-100);
+  d->m_anchorHelper->addAnchor(d->m_UIF,d->m_Tstart,AnchorItemHelper::AnchorLeft,-1*d->m_Tstart->boundingRect().width()-d->m_UIF->boundingRect().width());
   d->m_anchorHelper->addAnchor(d->m_UIF,d->m_Tstart,AnchorItemHelper::AnchorVerticalCenter);
 
   d->m_anchorHelper->addAnchor(d->m_UPID,d->m_UVB,AnchorItemHelper::AnchorHorizontalCenter,50);
@@ -531,7 +544,13 @@ bool IGraphVelocity::eventFilter(QObject *obj, QEvent *event)
 
 void IGraphVelocity::onSaturationClicked(bool checked)
 {
-  setSaturationConfigVisible(checked);
+    setSaturationConfigVisible(checked);
+}
+
+void IGraphVelocity::onRadioBtnClicked(bool checked)
+{
+    Q_UNUSED(checked);
+    return;
 }
 
 void IGraphVelocity::setSaturationConfigVisible(bool enable)

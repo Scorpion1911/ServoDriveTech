@@ -22,76 +22,136 @@ ControlServo::~ControlServo()
 //写单个树结点
 void ControlServo::writeServoFlash(QTreeWidgetItem *item, int axisIndex, COM_TYPE comtype,short comStation)
 {
-  int16 value16 = 0;
-  int32 value32 = 0;
-  int64 value64 = 0;
-  int64 value = 0;
-  int16 offsetValue = 0;
+  Uint16 offsetValue = 0;
   QString itemType;
   int16 result=0;//0代表成功返回
 
-  offsetValue = item->text(COL_ADDRESS).toInt();
-  if (offsetValue != -1)
+  QString offsetStr = item->text(COL_ADDRESS);
+  offsetValue = offsetStr.toUShort();
+  if (offsetStr.compare("-1") != 0)
   {
-    value=item->text(COL_VALUE).toLongLong();
-    itemType = item->text(COL_TYPE);
-    if (itemType.contains("64"))
-    {
-      result=GTSD_CMD_Fram_Write64BitByAdr(axisIndex,(int16)offsetValue,(int64)value,(int16)comtype,comStation);
-      if(result!=0)
-        result=GTSD_CMD_Fram_Write64BitByAdr(axisIndex,(int16)offsetValue,(int64)value,(int16)comtype,comStation);
-
-      if(result==0)
+      itemType = item->text(COL_TYPE);
+      if(itemType == "Uint16")
       {
-//        qDebug()<<"write value to servo flash";
-        result=GTSD_CMD_Fram_Read64BitByAdr(axisIndex, (int16)offsetValue, &value64, (int16)comtype,comStation);
-        if(result==0)
-        {
-          if(itemType.contains("U"))
-            item->setText(COL_VALUE, QString::number((Uint64)value64));
-          else
-            item->setText(COL_VALUE, QString::number(value64));
-        }
+        uint16 wv;
+        int16 rv;
+        double value=0;
+        value = item->text(COL_VALUE).toDouble()+0.5;
+        wv = (uint16)value;
+        quint8 tryCount = 0;
+        do {
+            result = GTSD_CMD_Fram_Write16BitByAdr(axisIndex, offsetValue, (int16)wv, (int16)comtype, comStation);
+            result = GTSD_CMD_Fram_Read16BitByAdr(axisIndex, offsetValue, &rv, (int16)comtype, comStation);
+            tryCount++;
+        } while (((uint16)rv != wv)&&(tryCount < 2));
+        if(tryCount >= 2)
+          return;
       }
-    }
-    else if (itemType.contains("32"))
-    {
-      result=GTSD_CMD_Fram_Write32BitByAdr(axisIndex,(int16)offsetValue,(int32)value,(int16)comtype,comStation);
-      if(result!=0)
-        result=GTSD_CMD_Fram_Write32BitByAdr(axisIndex,(int16)offsetValue,(int32)value,(int16)comtype,comStation);
-
-      if(result==0)
+      else if(itemType=="int16")
       {
-//        qDebug()<<"write value to servo flash";
-        result=GTSD_CMD_Fram_Read32BitByAdr(axisIndex, (int16)offsetValue, &value32, (int16)comtype,comStation);
-        if(result==0)
-        {
-          if(itemType.contains("U"))
-            item->setText(COL_VALUE, QString::number((Uint32)value32));
-          else
-            item->setText(COL_VALUE, QString::number(value32));
-        }
-      }
-    }
-    else
-    {
-      result=GTSD_CMD_Fram_Write16BitByAdr(axisIndex,(int16)offsetValue,(int16)value,(int16)comtype,comStation);
-      if(result!=0)
-        result=GTSD_CMD_Fram_Write16BitByAdr(axisIndex,(int16)offsetValue,(int16)value,(int16)comtype,comStation);
+        int16 wv;
+        int16 rv;
+        wv=item->text(COL_VALUE).toShort();
 
-      if(result==0)
-      {
-//        qDebug()<<"write value to servo flash";
-        result=GTSD_CMD_Fram_Read16BitByAdr(axisIndex, (int16)offsetValue, &value16, (int16)comtype,comStation);
-        if(result==0)
-        {
-          if(itemType.contains("U"))
-            item->setText(COL_VALUE, QString::number((Uint16)value16));
-          else
-            item->setText(COL_VALUE, QString::number(value16));
-        }
+        quint8 tryCount=0;
+        do {
+          result = GTSD_CMD_Fram_Write16BitByAdr(axisIndex, offsetValue, wv, (int16)comtype, comStation);
+          result = GTSD_CMD_Fram_Read16BitByAdr(axisIndex, offsetValue, &rv, (int16)comtype, comStation);
+          tryCount++;
+        }while((rv!=wv)&&(tryCount<2));
+        //qDebug()<<"tryCount"<<tryCount<<"rv ="<<rv<<"wv ="<<wv;
+        if(tryCount>=2)
+          return;
       }
-    }
+      else if(itemType=="Uint32")
+      {
+        uint32 wv;
+        int32 rv;
+        double value=0;
+        value=item->text(COL_VALUE).toDouble()+0.5;
+        wv=(uint32)value;
+        //wv=item->text(COL_PAGE_TREE_VALUE).toULong();
+
+        quint8 tryCount=0;
+        do{
+          result = GTSD_CMD_Fram_Write32BitByAdr(axisIndex, offsetValue, (int32)wv, (int16)comtype, comStation);
+          result = GTSD_CMD_Fram_Read32BitByAdr(axisIndex, offsetValue, &rv, (int16)comtype, comStation);
+          tryCount++;
+        }while(((uint32)rv!=wv)&&(tryCount<2));
+        if(tryCount>=2)
+          return;
+      }
+      else if(itemType=="int32")
+      {
+        int32 wv;
+        int32 rv;
+        //wv=item->text(COL_PAGE_TREE_VALUE).toLong();
+        double value=0;
+        value=item->text(COL_VALUE).toDouble()+0.5;
+        wv=(int32)value;
+        quint8 tryCount=0;
+        do{
+          result = GTSD_CMD_Fram_Write32BitByAdr(axisIndex, offsetValue, wv, (int16)comtype, comStation);
+          result = GTSD_CMD_Fram_Read32BitByAdr(axisIndex, offsetValue, &rv, (int16)comtype, comStation);
+          tryCount++;
+        }while((rv!=wv)&&(tryCount<2));
+        if(tryCount>=2)
+          return;
+      }
+      else if(itemType=="Uint64")
+      {
+        uint64 wv;
+        int64 rv;
+        double value=0;
+        value=item->text(COL_VALUE).toDouble()+0.5;
+        wv=(uint64)value;
+        //wv=item->text(COL_PAGE_TREE_VALUE).toULongLong();
+
+        quint8 tryCount=0;
+        do{
+          result = GTSD_CMD_Fram_Write64BitByAdr(axisIndex, offsetValue, (int64)wv, (int16)comtype, comStation);
+          result = GTSD_CMD_Fram_Read64BitByAdr(axisIndex, offsetValue, &rv, (int16)comtype, comStation);
+          tryCount++;
+        }while(((uint64)rv!=wv)&&(tryCount<2));
+        if(tryCount>=2)
+          return;
+      }
+      else if(itemType=="int64")
+      {
+        int64 wv;
+        int64 rv;
+        double value=0;
+        value=item->text(COL_VALUE).toDouble()+0.5;
+        wv=(int64)value;
+        //wv=item->text(COL_PAGE_TREE_VALUE).toLongLong();
+
+        quint8 tryCount=0;
+        do{
+          result = GTSD_CMD_Fram_Write64BitByAdr(axisIndex, offsetValue, wv, (int16)comtype, comStation);
+          result = GTSD_CMD_Fram_Read64BitByAdr(axisIndex, offsetValue, &rv, (int16)comtype, comStation);
+          tryCount++;
+        }while((rv!=wv)&&(tryCount<2));
+        if(tryCount>=2)
+          return;
+      }
+      else
+      {
+        uint16 wv;
+        int16 rv;
+        double value=0;
+        value=item->text(COL_VALUE).toDouble()+0.5;
+        wv=(uint16)value;
+        //wv=item->text(COL_PAGE_TREE_VALUE).toUShort();
+
+        quint8 tryCount=0;
+        do{
+          result = GTSD_CMD_Fram_Write16BitByAdr(axisIndex, offsetValue, (int16)wv, (int16)comtype, comStation);
+          result = GTSD_CMD_Fram_Read16BitByAdr(axisIndex, offsetValue, &rv, (int16)comtype, comStation);
+          tryCount++;
+        }while(((uint16)rv!=wv)&&(tryCount<2));
+        if(tryCount>=2)
+          return;
+      }
   }
 }
 

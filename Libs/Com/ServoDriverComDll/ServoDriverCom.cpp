@@ -7,72 +7,72 @@
 
 CServoDriverCom::CServoDriverCom()
 {
-    m_pDriver = NULL;
-    m_pPlot = NULL;
-    m_pMapping = NULL;
-    m_pEeprom = NULL;
-    m_station_id = 0xF0;
+	m_pDriver = NULL;
+	m_pPlot = NULL;
+	m_pMapping = NULL;
+	m_pEeprom = NULL;
+	m_station_id = 0xF0;
 }
 
 
 CServoDriverCom::~CServoDriverCom()
 {
-    if (m_pPlot)
-    {
-        delete m_pPlot;
-        m_pPlot = NULL;
-    }
-    if (m_pMapping)
-    {
-        delete m_pMapping;
-    }
+	if (m_pPlot)
+	{
+		delete m_pPlot;
+		m_pPlot = NULL;
+	}
+	if (m_pMapping)
+	{
+		delete m_pMapping;
+	}
 }
 short CServoDriverCom::InitialEeprom(CEeprom* pEeprom)
 {
-    if (pEeprom == NULL)
-    {
-        return RTN_NULL_POINT;
-    }
-
-    m_pEeprom = pEeprom;
-
-    return RTN_SUCCESS;
+	if (pEeprom == NULL)
+	{
+		return RTN_NULL_POINT;
+	}
+	
+	m_pEeprom = pEeprom;
+	
+	return RTN_SUCCESS;
 }
 
 short CServoDriverCom::Initial(CRingNetInterface* pDriver)
 {
-    if (pDriver == NULL)
-    {
-        return RTN_NULL_POINT;
-    }
-    if (m_pMapping == NULL)
-    {
-        m_pMapping = new CRnServoAxiMapping;
-        if (m_pMapping == NULL)
-        {
-            return RTN_MALLOC_FAIL;
-        }
-    }
-    m_pDriver = pDriver;
-    short rtn = m_pMapping->InitialMapping(pDriver);
-    if (rtn != RTN_SUCCESS)
-    {
-        return rtn;
-    }
+	if (pDriver == NULL)
+	{
+		return RTN_NULL_POINT;
+	}
+	if (m_pMapping == NULL)
+	{
+		m_pMapping = new CRnServoAxiMapping;
+		if (m_pMapping == NULL)
+		{
+			return RTN_MALLOC_FAIL;
+		}
+	}
+	m_pDriver = pDriver;
+	short rtn = m_pMapping->InitialMapping(pDriver);
+	if (rtn != RTN_SUCCESS)
+	{
+		return rtn;
+	}
 
-    if (m_pPlot == NULL)
-    {
-        m_pPlot = new CRnDriverPlot;
-        if (m_pPlot == NULL)
-        {
-            return RTN_MALLOC_FAIL;
-        }
+	if (m_pPlot == NULL)
+	{
+		m_pPlot = new CRnDriverPlot;
+		if (m_pPlot == NULL)
+		{
+			return RTN_MALLOC_FAIL;
+		}
 // 		Uint16 dsp_list[3] = {0xF001, 0xF002, 0xF003};
 // 		for (int i = 0; i < 3; i++)
 // 		{
 // 			dsp_list[i] = m_pMapping->ConvertDspToStationId(i);
 // 		}
-//
+// 		
 // 		short rtn = m_pPlot->PW_CreateDspWave(3, dsp_list);
 // 		if (rtn != RTN_SUCCESS)
 // 		{
@@ -144,6 +144,7 @@ short CServoDriverCom::Initial(CRingNetInterface* pDriver)
 }
 
 //
+
 // int16 Cmd_PlotDataBuffer[10000] = { 0 };
 
 
@@ -156,10 +157,10 @@ static const int32			FPGA_MODE_WR = 0x1;							//FPGA§Õ????
 //??????ID?????????????short??????bit[0-11]?????ID, bit[12 - 15]?????
 int16 CServoDriverCom::GetCmdIDAndAxisNum(short cmdID, short motorNum)
 {
-    short ret;
-    ret = cmdID;
-    ret += (motorNum << 12);
-    return ret;
+	short ret;
+	ret = cmdID;
+	ret += (motorNum << 12);
+	return ret;
 }
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -248,6 +249,7 @@ int16 CServoDriverCom::GTSD_CMD_SetServoOn(int16 axis)
     {
         return RTN_SUCCESS;
     }
+
 }
 //////////////////////////////////////////////////////////////////////////
 //?????
@@ -285,6 +287,7 @@ int16 CServoDriverCom::GTSD_CMD_SetServoOff(int16 axis)
     {
         return RTN_SUCCESS;
     }
+
 }
 //////////////////////////////////////////////////////////////////////////
 //????????
@@ -327,6 +330,7 @@ int16 CServoDriverCom::GTSD_CMD_GetServoState(int16 axis, SERVO_STATE* serv)
         serv->serv_ready = dspdata[4];
         return RTN_SUCCESS;
     }
+
 }
 //////////////////////////////////////////////////////////////////////////
 //?????????????
@@ -1523,11 +1527,11 @@ int16 CServoDriverCom::GTSD_CMD_Set16bitFPGAByAddr(int16 dsp_number, int16 com_a
         //??????2????????????dsp???????éí????????0
     }
 
-    Uint16 station_id = m_pMapping->ConvertDspToStationId(dsp_number);
-    int16 comAddr = m_pMapping->ConvertFpgaByteAddrByDspId(dsp_number, com_addr);
-    int16 comNum = 1;
+	Uint16 station_id = m_pMapping->ConvertDspToStationId(dsp_number);
+	int16 comAddr = m_pMapping->ConvertFpgaByteAddrByDspId(dsp_number, com_addr);
+	int16 comNum = 1;
 
-    return m_pDriver->RnNetCom_FPGA_ComHandler(GTSD_COM_MODE_WRITE, comAddr, &value, comNum, station_id >> 8);
+	return m_pDriver->RnNetCom_FPGA_ComHandler(GTSD_COM_MODE_WRITE, comAddr, &value, comNum, station_id >> 8);
 }
 //////////////////////////////////////////////////////////////////////////
 //?????????16bit??fpga
@@ -1558,7 +1562,7 @@ int16 CServoDriverCom::GTSD_CMD_Set32bitFPGAByAddr(int16 dsp_number, int16 com_a
     int16 comAddr = m_pMapping->ConvertFpgaByteAddrByDspId(dsp_number, com_addr);
     int16 comNum = 2;
 
-    return m_pDriver->RnNetCom_FPGA_ComHandler(GTSD_COM_MODE_WRITE, comAddr, (int16*)&value, comNum, station_id >> 8);
+	return m_pDriver->RnNetCom_FPGA_ComHandler(GTSD_COM_MODE_WRITE, comAddr, (int16*)&value, comNum, station_id >> 8);
 }
 //////////////////////////////////////////////////////////////////////////
 //?????????32bit??fpga
@@ -1657,13 +1661,13 @@ int16 CServoDriverCom::GTSD_CMD_GetWaveBuf(int16 dsp_number, tWaveBufCmd* ctrlwo
 //??????????????????
 int16 CServoDriverCom::GTSD_CMD_GetWaveData(int16 dsp_number, int16* read_num, int16** data)
 {
-    return RTN_OBJECT_UNCREATED;
+	return RTN_OBJECT_UNCREATED;
 }
 //////////////////////////////////////////////////////////////////////////
 //????fpga??FIFO
 int16 CServoDriverCom::GTSD_CMD_ClearFpgaFifo(int16 dsp_number)
 {
-    return RTN_OBJECT_UNCREATED;
+	return RTN_OBJECT_UNCREATED;
 }
 
 /////////////////////////////////com vs dsp/////////////////////////////////////////
@@ -1928,7 +1932,6 @@ int16 CServoDriverCom::GTSD_CMD_StartPlot(int16 axis, WAVE_BUF_PRM& wave)
     Uint16 dsp_id = m_pMapping->ConvertAxiToDspId(axis);
     rtn = GTSD_CMD_SetWaveBuf(dsp_id, wave);
     return rtn;
-
 }
 int16 CServoDriverCom::GTSD_CMD_StopPlot(int16 axis, WAVE_BUF_PRM& wave)
 {
@@ -1955,7 +1958,7 @@ int16 CServoDriverCom::GTSD_CMD_PcGetWaveData(int16 axis, double** data, int32& 
 }
 bool CServoDriverCom::GTSD_CMD_CheckPlotState(int16 axis)
 {
-    return false;
+	return false;
 }
 /////////////////////////Dsp FLash Operate/////////////////////////////////////////////////
 int16 CServoDriverCom::GTSD_CMD_FlashWrite(int16 axis, INTEL_HEX_FRAME* packet)
@@ -2149,9 +2152,9 @@ int16 CServoDriverCom::GTSD_CMD_ProcessorGeneralFunc(int16 axis, GENERALFUNCTION
     {
       rtn = COM_NET_ERROR;
     }
-        return rtn;
-    }
-    return RTN_SUCCESS;
+		return rtn;
+	}
+	return RTN_SUCCESS;
 
 }
 
@@ -2340,15 +2343,15 @@ int16 CServoDriverCom::GTSD_CMD_ReadFirmwareVersion(int16 axis, Uint16& ver)
     int16 dsp_id = m_pMapping->ConvertAxiToDspId(axis);;
     int16 com_addr = (int16)FPGA_VERSION;
 
-    int16 rtn = GTSD_CMD_Get16bitFPGAByAddr(dsp_id, com_addr, (int16*)(&ver));
-    if (rtn != RTN_SUCCESS)
-    {
-        return rtn;
-    }
-    else
-    {
-        return RTN_SUCCESS;
-    }
+	int16 rtn = GTSD_CMD_Get16bitFPGAByAddr(dsp_id, com_addr, (int16*)(&ver));
+	if (rtn != RTN_SUCCESS)
+	{
+		return rtn;
+	}
+	else
+	{
+		return RTN_SUCCESS;
+	}
 }
 
 int16 CServoDriverCom::GTSD_CMD_ClrAlarm(int16 axis)
@@ -2388,7 +2391,7 @@ int16 CServoDriverCom::GTSD_CMD_ClrAlarm(int16 axis)
 // {
 // 	short rtn;
 // 	rtn = m_pSerial->open(axis, baudRate);
-//
+// 
 // 	if (rtn == RTN_SUCCESS)
 // 	{
 // 		return RTN_SUCCESS;
@@ -2397,14 +2400,14 @@ int16 CServoDriverCom::GTSD_CMD_ClrAlarm(int16 axis)
 // 	{
 // 		return rtn;
 // 	}
-//
+// 
 // }
-//
+// 
 // int16 CServoDriverCom::GTSD_CMD_CloseSerialPort(int16 axis)
 // {
 // 	bool rtn;
 // 	rtn = m_pSerial->close(axis);
-//
+// 
 // 	if (rtn == true)
 // 	{
 // 		return RTN_SUCCESS;
@@ -2414,12 +2417,12 @@ int16 CServoDriverCom::GTSD_CMD_ClrAlarm(int16 axis)
 // 		return Net_Rt_SerialPort_Err;
 // 	}
 // }
-//
+// 
 // int16 CServoDriverCom::GTSD_CMD_ReadSerialPort(int16 axis, Uint8 *buf, int32 length, int32 *length_read)
 // {
 // 	bool rtn;
 // 	rtn = m_pSerial->read(axis, buf, length, length_read);
-//
+// 
 // 	if (rtn == true)
 // 	{
 // 		return RTN_SUCCESS;
@@ -2429,12 +2432,12 @@ int16 CServoDriverCom::GTSD_CMD_ClrAlarm(int16 axis)
 // 		return Net_Rt_SerialPort_Err;
 // 	}
 // }
-//
+// 
 // int16 CServoDriverCom::GTSD_CMD_WriteSerialPort(int16 axis, Uint8 *buf, int32 length, int32 *length_written)
 // {
 // 	bool rtn;
 // 	rtn = m_pSerial->write(axis, buf, length, length_written);
-//
+// 
 // 	if (rtn == true)
 // 	{
 // 		return RTN_SUCCESS;
@@ -2538,10 +2541,10 @@ int16 CServoDriverCom::GTSD_CMD_ReadLogAlarmTimes(int16 axis, Uint16* alarmTimes
 }
 int16 CServoDriverCom::GTSD_CMD_ReadEEPROM(int16 axis, Uint16 ofst, Uint8* value, Uint16 num)
 {
-    if (axis >= COM_AXIS_MAX)
-    {
-        return RTN_PARAM_OVERFLOW;
-    }
+	if (axis >= COM_AXIS_MAX)
+	{
+		return RTN_PARAM_OVERFLOW;
+	}
 
     int16 dspdata[64] = { 0 };											//???????
     Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis); 													//????
@@ -2556,16 +2559,21 @@ int16 CServoDriverCom::GTSD_CMD_ReadEEPROM(int16 axis, Uint16 ofst, Uint8* value
         return RTN_OBJECT_UNCREATED;
     }
 
-    m_pEeprom->m_des_id = station_id >> 8;
-    return m_pEeprom->EepromRead(ofst, value, num);
+	if (NULL == m_pEeprom)
+	{
+		return RTN_OBJECT_UNCREATED;
+	}
+	
+	m_pEeprom->m_des_id = station_id >> 8;
+	return m_pEeprom->EepromRead(ofst, value, num);
 }
 
 int16 CServoDriverCom::GTSD_CMD_WriteEEPROM(int16 axis, Uint16 ofst, Uint8* value, Uint16 num)
 {
-    if (axis >= COM_AXIS_MAX)
-    {
-        return RTN_PARAM_OVERFLOW;
-    }
+	if (axis >= COM_AXIS_MAX)
+	{
+		return RTN_PARAM_OVERFLOW;
+	}
 
     int16 dspdata[64] = { 0 };											//???????
     Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis); 													//????
@@ -2575,21 +2583,21 @@ int16 CServoDriverCom::GTSD_CMD_WriteEEPROM(int16 axis, Uint16 ofst, Uint8* valu
         return RTN_OBJECT_UNCREATED;
     }
 
-    if (NULL == m_pEeprom)
-    {
-        return RTN_OBJECT_UNCREATED;
-    }
+	if (NULL == m_pEeprom)
+	{
+		return RTN_OBJECT_UNCREATED;
+	}
 
-    m_pEeprom->m_des_id = station_id >> 8;
-    return m_pEeprom->EepromWrite(ofst, value, num);
+	m_pEeprom->m_des_id = station_id >> 8;
+	return m_pEeprom->EepromWrite(ofst, value, num);
 }
 
 int16 CServoDriverCom::GTSD_CMD_ReadEEPROMExt(int16 axis, Uint16 ofst, Uint8* value, Uint16 num)
 {
-    if (axis >= COM_AXIS_MAX)
-    {
-        return RTN_PARAM_OVERFLOW;
-    }
+	if (axis >= COM_AXIS_MAX)
+	{
+		return RTN_PARAM_OVERFLOW;
+	}
 
     int16 dspdata[64] = { 0 };											//???????
     Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis); 													//????
@@ -2599,24 +2607,24 @@ int16 CServoDriverCom::GTSD_CMD_ReadEEPROMExt(int16 axis, Uint16 ofst, Uint8* va
         return RTN_OBJECT_UNCREATED;
     }
 
-    if (NULL == m_pEeprom)
-    {
-        return RTN_OBJECT_UNCREATED;
-    }
+	if (NULL == m_pEeprom)
+	{
+		return RTN_OBJECT_UNCREATED;
+	}
 
-    m_pEeprom->m_des_id = station_id >> 8;
-    m_pEeprom->m_eeprom_id = FPGA_EXT_EEPROM;
-    short rtn = m_pEeprom->EepromRead(ofst, value, num);
-    m_pEeprom->m_eeprom_id = FPGA_NORMAL_EEPROM;
-    return rtn;
+	m_pEeprom->m_des_id = station_id >> 8;
+	m_pEeprom->m_eeprom_id = FPGA_EXT_EEPROM;
+	short rtn = m_pEeprom->EepromRead(ofst, value, num);
+	m_pEeprom->m_eeprom_id = FPGA_NORMAL_EEPROM;
+	return rtn;
 }
 
 int16 CServoDriverCom::GTSD_CMD_WriteEEPROMExt(int16 axis, Uint16 ofst, Uint8* value, Uint16 num)
 {
-    if (axis >= COM_AXIS_MAX)
-    {
-        return RTN_PARAM_OVERFLOW;
-    }
+	if (axis >= COM_AXIS_MAX)
+	{
+		return RTN_PARAM_OVERFLOW;
+	}
 
     int16 dspdata[64] = { 0 };											//???????
     Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis); 													//????
@@ -2626,115 +2634,115 @@ int16 CServoDriverCom::GTSD_CMD_WriteEEPROMExt(int16 axis, Uint16 ofst, Uint8* v
         return RTN_OBJECT_UNCREATED;
     }
 
-    if (NULL == m_pEeprom)
-    {
-        return RTN_OBJECT_UNCREATED;
-    }
+	if (NULL == m_pEeprom)
+	{
+		return RTN_OBJECT_UNCREATED;
+	}
 
-    m_pEeprom->m_des_id = station_id >> 8;
-    m_pEeprom->m_eeprom_id = FPGA_EXT_EEPROM;
-    short rtn = m_pEeprom->EepromWrite(ofst, value, num);
-    m_pEeprom->m_eeprom_id = FPGA_NORMAL_EEPROM;
-    return rtn;
+	m_pEeprom->m_des_id = station_id >> 8;
+	m_pEeprom->m_eeprom_id = FPGA_EXT_EEPROM;
+	short rtn = m_pEeprom->EepromWrite(ofst, value, num);
+	m_pEeprom->m_eeprom_id = FPGA_NORMAL_EEPROM;
+	return rtn;
 }
 
 Uint16 CServoDriverCom::GTSD_CMD_FroceCheckMode(Uint16 mode)
 {
-    if (m_pDriver == NULL)
-    {
-        return RTN_OBJECT_UNCREATED;
-    }
-    return m_pDriver->RnNetCom_DSP_FroceCheckMode(mode);
+	if (m_pDriver == NULL)
+	{
+		return RTN_OBJECT_UNCREATED;
+	}
+	return m_pDriver->RnNetCom_DSP_FroceCheckMode(mode);
 }
 
 
 short CServoDriverCom::GTSD_CMD_XmlWriteFile(int16 axis, char* pFileNameList[], int pFileTypeList[], int file_num,
-    void(*tpfUpdataProgressPt)(void*, short*), void* ptrv, short& progress)
+	void(*tpfUpdataProgressPt)(void*, short*), void* ptrv, short& progress)
 {
 
-    if (axis >= COM_AXIS_MAX)
-    {
-        return RTN_PARAM_OVERFLOW;
-    }
+	if (axis >= COM_AXIS_MAX)
+	{
+		return RTN_PARAM_OVERFLOW;
+	}
 
-    short rtn;
-    Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis);
+	short rtn;
+	Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis);
 
-    CXmlCodeUpdate firmware;
-    if (m_pDriver == NULL)
-    {
-        return RTN_OBJECT_UNCREATED;
-    }
-    CComBase* pComBase = m_pDriver;
-    firmware.m_pCom = &pComBase;
+	CXmlCodeUpdate firmware;
+	if (m_pDriver == NULL)
+	{
+		return RTN_OBJECT_UNCREATED;
+	}
+	CComBase* pComBase = m_pDriver;
+	firmware.m_pCom = &pComBase;
     firmware.m_des_id = station_id >> 8;
 
 
-    rtn = firmware.WriteFile(pFileNameList, pFileTypeList, file_num, tpfUpdataProgressPt, ptrv, progress);
-    return rtn;
+	rtn = firmware.WriteFile(pFileNameList, pFileTypeList, file_num, tpfUpdataProgressPt, ptrv, progress);
+	return rtn;
 
 }
 
 short CServoDriverCom::GTSD_CMD_XmlReadFile(int16 axis, char* pFileNameList[], int pFileTypeList[], int& file_num,
-    void(*tpfUpdataProgressPt)(void*, short*), void* ptrv, short& progress)
+	void(*tpfUpdataProgressPt)(void*, short*), void* ptrv, short& progress)
 {
-    if (axis >= COM_AXIS_MAX)
-    {
-        return RTN_PARAM_OVERFLOW;
-    }
+	if (axis >= COM_AXIS_MAX)
+	{
+		return RTN_PARAM_OVERFLOW;
+	}
 
-    short rtn;
-    Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis);
+	short rtn;
+	Uint16 station_id = m_pMapping->ConvertAxiToStationId(axis);
 
-    CXmlCodeUpdate firmware;
-    if (m_pDriver == NULL)
-    {
-        return RTN_OBJECT_UNCREATED;
-    }
-    CComBase* pComBase = m_pDriver;
-    firmware.m_pCom = &pComBase;
+	CXmlCodeUpdate firmware;
+	if (m_pDriver == NULL)
+	{
+		return RTN_OBJECT_UNCREATED;
+	}
+	CComBase* pComBase = m_pDriver;
+	firmware.m_pCom = &pComBase;
     firmware.m_des_id = station_id >> 8;
 
 
-    rtn = firmware.ReadFile(pFileNameList, pFileTypeList, file_num, tpfUpdataProgressPt, ptrv, progress);
-    return rtn;
+	rtn = firmware.ReadFile(pFileNameList, pFileTypeList, file_num, tpfUpdataProgressPt, ptrv, progress);
+	return rtn;
 }
 
 //add by luo.mj 20180328
 short CServoDriverCom::SetStationId(Uint16 station_id)
 {
-    Uint8 i =  0;
+	Uint8 i =  0;
+	
+	for (i = 0; i<m_pDriver->m_device_num; i++)
+	{
+		if (station_id == m_pDriver->m_pRnDeviceOnline[i]->m_CNS.m_online_msg.bit.device_id)
+		{
+			m_station_id = station_id;
+			m_pMapping->m_map_type = 1;
+			m_pMapping->m_station_id = station_id;
+			return RTN_SUCCESS;
+		}
+	}
 
-    for (i = 0; i<m_pDriver->m_device_num; i++)
-    {
-        if (station_id == m_pDriver->m_pRnDeviceOnline[i]->m_CNS.m_online_msg.bit.device_id)
-        {
-            m_station_id = station_id;
-            m_pMapping->m_map_type = 1;
-            m_pMapping->m_station_id = station_id;
-            return RTN_SUCCESS;
-        }
-    }
+	m_station_id = 0xF0;
 
-    m_station_id = 0xF0;
-
-    return RTN_SUCCESS;
+	return RTN_SUCCESS;
 }
 
 short CServoDriverCom::GetStationIdList(vector<int16>& stationIdList)
 {
-    int16 stationId = 0;
+	int16 stationId = 0;
 
-    stationIdList.clear();
-    for (int16 i = 0; i < m_pDriver->m_device_num; i++)
-    {
+	stationIdList.clear();
+	for (int16 i = 0; i < m_pDriver->m_device_num; i++)
+	{
 // 		switch (m_pDriver->m_pRnDeviceOnline[i]->m_CNS.m_station_msg.bit.station_msg)
 // 		{
-            if (0x8000 == ((m_pDriver->m_pRnDeviceOnline[i]->m_staion_type) & 0xF000))
-            {
-                stationId = m_pDriver->m_pRnDeviceOnline[i]->m_CNS.m_online_msg.bit.device_id;
-                stationIdList.push_back(stationId);
-            }
+			if (0x8000 == ((m_pDriver->m_pRnDeviceOnline[i]->m_staion_type) & 0xF000))
+			{
+				stationId = m_pDriver->m_pRnDeviceOnline[i]->m_CNS.m_online_msg.bit.device_id;
+				stationIdList.push_back(stationId);
+			}
 // 		case TB_MARVIE11:
 // 		case TB_MARVIE21:
 // 		case TB_MARVIE41:
@@ -2746,20 +2754,20 @@ short CServoDriverCom::GetStationIdList(vector<int16>& stationIdList)
 // 		default:
 // 			break;
 //		}
-    }
-    return RTN_SUCCESS;
+	}
+	return RTN_SUCCESS;
 }
 
 short CServoDriverCom::GetStationAxisNum(int16* axisNum)
 {
-    if (0x8000 == ((m_pDriver->m_pRnDevice[m_station_id]->m_staion_type) & 0xF000))
-    {
-        *axisNum = (((m_pDriver->m_pRnDevice[m_station_id]->m_staion_type) & 0x0F00) >> 8);
-    }
-    else
-    {
-        return RTN_PARAM_ERR;
-    }
+	if (0x8000 == ((m_pDriver->m_pRnDevice[m_station_id]->m_staion_type) & 0xF000))
+	{
+		*axisNum = (((m_pDriver->m_pRnDevice[m_station_id]->m_staion_type) & 0x0F00) >> 8);
+	}
+	else
+	{
+		return RTN_PARAM_ERR;
+	}
 // 	switch (m_pDriver->m_pRnDevice[m_station_id]->m_staion_type)
 // 	{
 // 	case TB_MARVIE11:
@@ -2779,6 +2787,6 @@ short CServoDriverCom::GetStationAxisNum(int16* axisNum)
 // 		return RTN_PARAM_ERR;
 // 		break;
 // 	}
-    return RTN_SUCCESS;
+	return RTN_SUCCESS;
 }
 /////////////////////////////////////////////

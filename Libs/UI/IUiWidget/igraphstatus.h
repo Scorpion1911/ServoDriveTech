@@ -19,6 +19,7 @@ public:
   virtual ~IGraphStatus();
   void visit(IUiWidget *uiWidget) Q_DECL_OVERRIDE;
   void setTimerActive(bool active);
+  virtual void updateCurCheckBox() = 0;
 
 protected:
   virtual void setUiVersionName()Q_DECL_OVERRIDE =0;
@@ -32,6 +33,7 @@ protected:
   virtual quint32 alarmCode()=0;
   virtual bool hasError()=0;
   virtual void updateUiLabelText()=0;
+
 
 
 

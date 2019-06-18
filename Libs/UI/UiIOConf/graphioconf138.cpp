@@ -15,9 +15,9 @@
 #define OUTPUT_NUM 7
 
 #define INPUT_FUNC_INDEX 9
-#define OUTPUT_FUNC_INDEX 18
-#define INPUT_REVERSE_INDEX 19
-#define OUTPUT_REVERSE_INDEX 20
+#define OUTPUT_FUNC_INDEX 19
+#define INPUT_REVERSE_INDEX 20
+#define OUTPUT_REVERSE_INDEX 21
 
 #define CMD_READ_INPUT_EN "gSevDrv.sev_obj.pos.apio.io_in_reg"
 #define CMD_READ_OUTPUT_EN "gSevDrv.sev_obj.pos.apio.io_out_reg"
@@ -99,7 +99,8 @@ GraphIOConf138::GraphIOConf138(QWidget *parent) :
                 <<tr("6 Is Servo Ready")
                <<tr("7 Is Homing Finished")
               <<tr("8 Is Phase Searched")
-             <<tr("9 Is Current out  of Range");
+             <<tr("9 Is Current out  of Range")
+            <<tr("10 Is Brake on");
 
     d->m_inputPinList<<tr("C_3")
                 <<tr("C_20")

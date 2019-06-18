@@ -58,6 +58,11 @@ void CurveRaw::reset()
   dd.m_varInputs.clear();
 }
 
+QString CurveRaw::name()
+{
+    return dd.m_name.split('.').last();
+}
+
 QString CurveRaw::displayName()
 {
   return dd.m_name.split('.').last();

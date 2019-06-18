@@ -60,7 +60,7 @@ void AdvUserStation::uiInit()
     if (d->m_devList.count() != 0) {
          d->m_curDev = d->m_devList.at(0);
          for (int i = 0; i < d->m_devList.length(); i++) {
-//             bool hasNickName = d->m_devList.count() > 1;
+             bool hasNickName = true;
              QString prefix;
 //             prefix = hasNickName?tr("[%1] ").arg(d->m_devList.at(i)->aliasName()):"";
              prefix = tr("[%1] ").arg(d->m_devList.at(i)->aliasName());

@@ -24,8 +24,8 @@ DeviceIdHelper::DeviceIdHelper(QObject *parent):QObject(parent),
   m_ctrId(0),
   m_fpgaId("0"),
   m_axisNum(4),
-  m_typeName("SD4x"),
-  m_modeName("SD42"),
+  m_typeName("GTSD4x"),
+  m_modeName("GTSD42"),
   m_hasPwrId(true)
 {
 
@@ -36,8 +36,8 @@ DeviceIdHelper::DeviceIdHelper(ComDriver::ICom *com, QObject *parent) : QObject(
   m_ctrId(0),
   m_fpgaId("0"),
   m_axisNum(4),
-  m_typeName("SD4x"),
-  m_modeName("SD42"),
+  m_typeName("GTSD4x"),
+  m_modeName("GTSD42"),
   m_hasPwrId(true)
 {
 
@@ -54,9 +54,9 @@ void DeviceIdHelper::setCom(ComDriver::ICom *com)
 quint32 DeviceIdHelper::readPwrId(bool &isOk)
 {
   //需要从硬件读取
-//  quint32 id=21000509;//test for SD42
+//  quint32 id=21000509;//test for GTSD42
 //  m_com->readEEPROM();//从硬件读取ID
-  //m_pwrId=21000541;//test for SD61
+  //m_pwrId=21000541;//test for GTSD61
         isOk = true;
     QString boardPath = GTUtils::databasePath() + "Board/PB/";
     QString indexPath = boardPath + INDEX_POWER_FILENAME;
@@ -239,8 +239,8 @@ QString DeviceIdHelper::readVersion(bool &isOk)
 
 QString DeviceIdHelper::modeNameFromIdMap(quint32 pwrId)
 {
-//  return "SD42";
-//  return "SD61";
+//  return "GTSD42";
+//  return "GTSD61";
     m_modeName = "";
     QString idMapPath=GTUtils::databasePath()+"Board/PB/"+IDMAP_FILENAME;
     QTreeWidget* idMapTree=QtTreeManager::createTreeWidgetFromXmlFile(idMapPath);

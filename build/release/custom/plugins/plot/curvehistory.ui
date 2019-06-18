@@ -26,6 +26,627 @@
                             <string>Value</string>
                         </property>
                     </column>
+                    <item>
+                        <property name="text">
+                            <string>Curve</string>
+                        </property>
+                        <property name="text">
+                            <string>CurveUsrIu</string>
+                        </property>
+                        <item>
+                            <property name="text">
+                                <string>DevIndex</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>StationID</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>AxisIndex</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>AxisCount</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Name</string>
+                            </property>
+                            <property name="text">
+                                <string>Iu</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Note</string>
+                            </property>
+                            <property name="text">
+                                <string>U相电流</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Color</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>255</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>0</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>0</string>
+                                </property>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>IsDraw</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Unit</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>1000.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>10mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>100.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>100mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>10.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>A</string>
+                                </property>
+                                <property name="text">
+                                    <string>1.00000</string>
+                                </property>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>ConstInputs</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>const</string>
+                                </property>
+                                <property name="text">
+                                    <string>gSevDrv.sev_obj.cur.mot.Imax_1</string>
+                                </property>
+                                <item>
+                                    <property name="text">
+                                        <string>BaseAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>0</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>OffsetAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>478</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>Bytes</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>2</string>
+                                    </property>
+                                </item>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>VarInputs</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>Var</string>
+                                </property>
+                                <property name="text">
+                                    <string>gSevDrv.sev_obj.cur.adc.ia</string>
+                                </property>
+                                <item>
+                                    <property name="text">
+                                        <string>BaseAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>0</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>OffsetAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>584</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>Bytes</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>2</string>
+                                    </property>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Curve</string>
+                        </property>
+                        <property name="text">
+                            <string>CurveUsrIv</string>
+                        </property>
+                        <item>
+                            <property name="text">
+                                <string>DevIndex</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>StationID</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>AxisIndex</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>AxisCount</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Name</string>
+                            </property>
+                            <property name="text">
+                                <string>Iv</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Note</string>
+                            </property>
+                            <property name="text">
+                                <string>V相电流</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Color</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>0</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>255</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>0</string>
+                                </property>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>IsDraw</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Unit</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>1000.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>10mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>100.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>100mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>10.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>A</string>
+                                </property>
+                                <property name="text">
+                                    <string>1.00000</string>
+                                </property>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>ConstInputs</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>const</string>
+                                </property>
+                                <property name="text">
+                                    <string>gSevDrv.sev_obj.cur.mot.Imax_1</string>
+                                </property>
+                                <item>
+                                    <property name="text">
+                                        <string>BaseAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>0</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>OffsetAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>478</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>Bytes</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>2</string>
+                                    </property>
+                                </item>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>VarInputs</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>Var</string>
+                                </property>
+                                <property name="text">
+                                    <string>gSevDrv.sev_obj.cur.adc.ib</string>
+                                </property>
+                                <item>
+                                    <property name="text">
+                                        <string>BaseAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>0</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>OffsetAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>586</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>Bytes</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>2</string>
+                                    </property>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Curve</string>
+                        </property>
+                        <property name="text">
+                            <string>CurveUsrIw</string>
+                        </property>
+                        <item>
+                            <property name="text">
+                                <string>DevIndex</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>StationID</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>AxisIndex</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>AxisCount</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Name</string>
+                            </property>
+                            <property name="text">
+                                <string>Iw</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Note</string>
+                            </property>
+                            <property name="text">
+                                <string>W相电流</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Color</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>0</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>0</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>ColorR</string>
+                                </property>
+                                <property name="text">
+                                    <string>255</string>
+                                </property>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>IsDraw</string>
+                            </property>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Unit</string>
+                            </property>
+                            <property name="text">
+                                <string>0</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>1000.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>10mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>100.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>100mA</string>
+                                </property>
+                                <property name="text">
+                                    <string>10.00000</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>A</string>
+                                </property>
+                                <property name="text">
+                                    <string>1.00000</string>
+                                </property>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>ConstInputs</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>const</string>
+                                </property>
+                                <property name="text">
+                                    <string>gSevDrv.sev_obj.cur.mot.Imax_1</string>
+                                </property>
+                                <item>
+                                    <property name="text">
+                                        <string>BaseAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>0</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>OffsetAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>478</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>Bytes</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>2</string>
+                                    </property>
+                                </item>
+                            </item>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>VarInputs</string>
+                            </property>
+                            <item>
+                                <property name="text">
+                                    <string>Var</string>
+                                </property>
+                                <property name="text">
+                                    <string>gSevDrv.sev_obj.cur.adc.ic</string>
+                                </property>
+                                <item>
+                                    <property name="text">
+                                        <string>BaseAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>0</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>OffsetAddr</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>588</string>
+                                    </property>
+                                </item>
+                                <item>
+                                    <property name="text">
+                                        <string>Bytes</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>2</string>
+                                    </property>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
                 </widget>
             </item>
         </layout>

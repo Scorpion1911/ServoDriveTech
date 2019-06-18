@@ -87,7 +87,7 @@
    </item>
    <item row="1" column="0">
     <widget class="QWidget" name="widget_srcTree" native="true">
-     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,1">
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
@@ -124,7 +124,7 @@
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
        <widget class="QWidget" name="widget_rnCtlPanel" native="true">
-        <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0,0,1,0">
+        <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0,1,0">
          <property name="spacing">
           <number>9</number>
          </property>
@@ -132,23 +132,22 @@
           <number>9</number>
          </property>
          <item>
-          <widget class="QLabel" name="label_3">
+          <widget class="QLabel" name="label_stationInfo">
            <property name="text">
-            <string>input rnnet station:</string>
+            <string>station info:</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QComboBox" name="comboBox_rnStation">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="insertPolicy">
             <enum>QComboBox::InsertAtBottom</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_stationInfo">
-           <property name="text">
-            <string>station info:</string>
            </property>
           </widget>
          </item>

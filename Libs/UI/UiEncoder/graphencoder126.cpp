@@ -250,7 +250,9 @@ void GraphEncoder126::onUpdateTimeOut()
 //  if(strPosIn!=="NULL")
 //      gauge.value=360*parseInt(strPosIn)/precision;
   quint32 lineNumber=getLineNumber();
-  double machineValue=360*posIn/lineNumber;
+  double posInDouble = posIn;
+  double lineNumDouble = lineNumber;
+  double machineValue= 360 * (posInDouble / lineNumDouble);
   ui->Dial_encMachine->setValue(machineValue);
 
   double temp=(machineValue*ppn);

@@ -97,6 +97,111 @@ void GraphHome136::createHomeItems()
     IHomeConfigItem *item0 = new HomeItem0(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
     d->m_homeConfigManage->addHomeItem(item0);
 
+    IHomeConfigItem *item1 = new HomeItem1(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item1);
+
+    IHomeConfigItem *item2 = new HomeItem2(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item2);
+
+    IHomeConfigItem *item3 = new HomeItem3(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item3);
+
+    IHomeConfigItem *item4 = new HomeItem4(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item4);
+
+    IHomeConfigItem *item5 = new HomeItem5(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item5);
+
+    IHomeConfigItem *item6 = new HomeItem6(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item6);
+
+    IHomeConfigItem *item7 = new HomeItem7(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item7);
+
+    IHomeConfigItem *item8 = new HomeItem8(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item8);
+
+    IHomeConfigItem *item9 = new HomeItem9(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item9);
+
+    IHomeConfigItem *item10 = new HomeItem10(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item10);
+
+    IHomeConfigItem *item11 = new HomeItem11(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item11);
+
+    IHomeConfigItem *item12 = new HomeItem12(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item12);
+
+    IHomeConfigItem *item13 = new HomeItem13(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item13);
+
+    IHomeConfigItem *item14 = new HomeItem14(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item14);
+
+    IHomeConfigItem *item15 = new HomeItem15(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item15);
+
+    IHomeConfigItem *item16 = new HomeItem16(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item16);
+
+    IHomeConfigItem *item17 = new HomeItem17(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item17);
+
+    IHomeConfigItem *item18 = new HomeItem18(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item18);
+
+    IHomeConfigItem *item19 = new HomeItem19(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item19);
+
+    IHomeConfigItem *item20 = new HomeItem20(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item20);
+
+    IHomeConfigItem *item21 = new HomeItem21(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item21);
+
+    IHomeConfigItem *item22 = new HomeItem22(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item22);
+
+    IHomeConfigItem *item23 = new HomeItem23(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item23);
+
+    IHomeConfigItem *item24 = new HomeItem24(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item24);
+
+    IHomeConfigItem *item25 = new HomeItem25(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item25);
+
+    IHomeConfigItem *item26 = new HomeItem26(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item26);
+
+    IHomeConfigItem *item27 = new HomeItem27(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item27);
+
+    IHomeConfigItem *item28 = new HomeItem28(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item28);
+
+    IHomeConfigItem *item29 = new HomeItem29(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item29);
+
+    IHomeConfigItem *item30 = new HomeItem30(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item30);
+
+    IHomeConfigItem *item31 = new HomeItem31(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item31);
+
+    IHomeConfigItem *item32 = new HomeItem32(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item32);
+
+    IHomeConfigItem *item33 = new HomeItem33(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item33);
+
+    IHomeConfigItem *item34 = new HomeItem34(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item34);
+
+    IHomeConfigItem *item35 = new HomeItem35(d->m_uiWidget->uiIndexs().axisInx, d->m_dev);
+    d->m_homeConfigManage->addHomeItem(item35);
+
     ui->comboBox_homeType->addItems(d->m_homeConfigManage->itemNames());
 }
 

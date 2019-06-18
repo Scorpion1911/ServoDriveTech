@@ -23,11 +23,15 @@ protected:
   void setUiVersionName() Q_DECL_OVERRIDE;
   void setupDataMappings() Q_DECL_OVERRIDE;
   void createPidControllerItem() Q_DECL_OVERRIDE;
+  void createDirItem() Q_DECL_OVERRIDE;
   QPointF pidInitPos() Q_DECL_OVERRIDE;
+  void setUpItemPosAnchors() Q_DECL_OVERRIDE;
+  void createArrowItems() Q_DECL_OVERRIDE;
 
 private slots:
   void onIIRFilterConfigClicked();
   void onIIRFilterSaveClicked();
+  void onRadioBtnClicked(bool checked);
 
 };
 

@@ -24,6 +24,7 @@
 #define KEY_NAME_ENC_INFO     "gSevDrv.sev_obj.cur.pro.enc_info.all"
 #define KEY_NAME_LOST         "gSevDrv.sev_obj.cur.rsv.prm.abs_type.all"
 #define KEY_NAME_HOME_POS     "gSevDrv.sev_obj.pos.seq.prm.fix_pos"
+#define KEY_SEARCH_TYPE       "gSevDrv.sev_obj.mfj.prm.pos_adj_mod"
 #define KEY_ABS_POS           "FPGA.ENC.ABS_POS"
 
 #define PRM_POS_OFFSET_INX 1
@@ -71,6 +72,10 @@ GraphEncoder136::GraphEncoder136(QWidget *parent) :
   comList<<"11"<<"13"<<"17"<<"20"<<"21"<<"22"<<"23"<<"24";
   ui->comboBox_encBitNum->addItems(comList);
 
+  QStringList typeList;
+  typeList<<"Slow Mode"<<"Fast Mode"<<"High Fre Injection";
+  ui->comboBox_searchType->addItems(typeList);
+
   QStringList inputPulseList;
   inputPulseList<<tr("AB Pulse")<<tr("Direction Pulse")<<tr("Positive and Negative Pulse");
   ui->comboBox_pulseCmd->addItems(inputPulseList);
@@ -107,12 +112,15 @@ GraphEncoder136::GraphEncoder136(QWidget *parent) :
   connect(ui->btn_encSaveHome, SIGNAL(clicked(bool)), this, SLOT(onBtnSaveHomePosClicked()));
   connect(ui->listWidget_encItems,SIGNAL(currentRowChanged(int)),this,SLOT(onEncConfigListWidgetRowChanged(int)));
   connect(ui->btn_encClearErr,SIGNAL(clicked(bool)),this,SLOT(onBtnClearEcnAlarmClicked()));
+  connect(ui->btn_Clear,SIGNAL(clicked(bool)),this,SLOT(onBtnClearEcnAlarmClicked()));
+
 
   connect(ui->rbtn_encBit,SIGNAL(toggled(bool)),this,SLOT(onRadioBtnClicked()));
   connect(ui->rbtn_encLine,SIGNAL(toggled(bool)),this,SLOT(onRadioBtnClicked()));
   connect(ui->btn_encSearch,SIGNAL(clicked(bool)),this,SLOT(onBtnSearchPhaseClicked()));
   connect(ui->btn_encSavePhase,SIGNAL(clicked(bool)),this,SLOT(onBtnSavePhaseClicked()));
   connect(ui->spinBox_encLine, SIGNAL(valueChanged(int)), this, SLOT(onLineNumChanged(int)));
+  connect(ui->comboBox_searchType, SIGNAL(activated(int)), this, SLOT(onSearchTypeChanged(int)));
 
   connect(ui->checkBox_gear,SIGNAL(clicked(bool)),this,SLOT(onCheckBoxGearAssociationClicked(bool)));
 }
@@ -272,7 +280,9 @@ void GraphEncoder136::onUpdateTimeOut()
 //      gauge.value=360*parseInt(strPosIn)/precision;
   quint32 lineNumber=getLineNumber();
   //qDebug()<<"lineNumer"<<lineNumber;
-  double machineValue=360*posIn/lineNumber;
+  double posInDouble = posIn;
+  double lineNumDouble = lineNumber;
+  double machineValue= 360 * (posInDouble / lineNumDouble);
 
   ui->Dial_encMachine->setValue(machineValue);
 
@@ -398,7 +408,15 @@ void GraphEncoder136::readGearPrm()
 void GraphEncoder136::onEncActive()
 {
   qDebug()<<"onEncActive";
+  Q_D(GraphEncoder136);
   onBtnEncConfigClicked(ui->btn_encConfig->isChecked());
+  bool ok;
+  quint64 value = d->m_dev->genCmdRead(KEY_SEARCH_TYPE, d->m_uiWidget->uiIndexs().axisInx, ok);
+  if (ok) {
+      if (value >= 0 && value < ui->comboBox_searchType->count()) {
+          ui->comboBox_searchType->setCurrentIndex(value);
+      }
+  }
   //initCurEncConfigItem();
 
   //读取电子齿轮参数
@@ -431,15 +449,27 @@ void GraphEncoder136::receiveLineNum(int num)
 
 void GraphEncoder136::onLineNumChanged(int num)
 {
-    int max = num / 16;
-    if (max == 0) {
-        max = 1;
+//    int max = num / 16;
+//    if (max == 0) {
+//        max = 1;
+//    }
+//    if (max > 65535) {
+//        max = 65535;
+//    }
+    ui->spinBox_inResolution->setMaximum(num);
+    ui->spinBox_outResolution->setMaximum(num);
+}
+
+void GraphEncoder136::onSearchTypeChanged(int index)
+{
+    Q_D(GraphEncoder136);
+    bool ok = d->m_dev->genCmdWrite(KEY_SEARCH_TYPE, index, d->m_uiWidget->uiIndexs().axisInx);
+    if (ok) {
+        quint64 value = d->m_dev->genCmdRead(KEY_SEARCH_TYPE, d->m_uiWidget->uiIndexs().axisInx, ok);
+        if (value >= 0 && value < ui->comboBox_searchType->count()) {
+            ui->comboBox_searchType->setCurrentIndex(value);
+        }
     }
-    if (max > 65535) {
-        max = 65535;
-    }
-    ui->spinBox_inResolution->setMaximum(max);
-    ui->spinBox_outResolution->setMaximum(max);
 }
 
 void GraphEncoder136::onBtnEncConfigSaveClicked()
@@ -463,16 +493,16 @@ void GraphEncoder136::onBtnEncConfigSaveClicked()
       d->m_curEncConfigItem->setLineNumber(ui->spinBox_encLine->value());
     qDebug()<<"lineNumer"<<d->m_curEncConfigItem->lineNumber();
 
-    int outRevolusion = ui->spinBox_outResolution->value();
+    int outResolution = ui->spinBox_outResolution->value();
 
 //    quint16 shiftNum = findExpIndex(d->m_curEncConfigItem->lineNumber() / 16);
 //    d->m_curEncConfigItem->setShiftNum(shiftNum);
 
 //    d->m_curEncConfigItem->setDen((d->m_curEncConfigItem->lineNumber() / 16) >> shiftNum);
     d->m_curEncConfigItem->setDen(d->m_curEncConfigItem->lineNumber() / 16);
-    d->m_curEncConfigItem->setNum(outRevolusion);
+    d->m_curEncConfigItem->setNum(outResolution);
 
-    d->m_curEncConfigItem->setPulseZCount(outRevolusion - 1);
+    d->m_curEncConfigItem->setPulseZCount(outResolution - 1);
 
     int index = ui->comboBox_outputType->currentIndex();
     bool outputReverse = ui->checkBox_outputReverse->isChecked();
@@ -495,6 +525,8 @@ void GraphEncoder136::onBtnEncConfigSaveClicked()
     d->m_iDataBinding->multiBind(static_cast<QObject*>(d->m_curEncConfigItem),d->m_treeWidget);
     d->m_iDataBinding->syncMultiUiDataToTree();
   }
+
+  d->m_treeWidget->topLevelItem(20)->setText(GT::COL_PAGE_TREE_VALUE, QString::number(ui->comboBox_searchType->currentIndex()));
   //d->m_uiWidget->writePageFLASH();
 
   //写电子齿轮参数
@@ -637,7 +669,9 @@ void GraphEncoder136::updateEncConfigUiByCurrentConfigItem()
     if (dd == 0) {
         dd = 1;
     }
-    qint64 inValue = (qint64)POW2_24 * c / dd;
+    double cDouble = c;
+    double ddDouble = dd;
+    qint64 inValue = POW2_24 * (cDouble / ddDouble);
     ui->spinBox_inResolution->setValue(inValue);
 
     quint16 aufCfg = d->m_curEncConfigItem->aufCfg();

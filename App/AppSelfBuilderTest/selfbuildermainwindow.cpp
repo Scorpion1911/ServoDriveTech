@@ -30,14 +30,15 @@ SelfBuilderMainWindow::SelfBuilderMainWindow(QWidget *parent) :
 //    SelfBuilder::RtnSelf rtn =  builder->buildFromEprom(0, 0, &para);
 //    qDebug()<<"rtn = "<<rtn;
 
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(onOpenClicked()));
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(onAssignClicked()));
-    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(onSaveClicked()));
+//    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(onOpenClicked()));
+//    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(onAssignClicked()));
+//    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(onSaveClicked()));
 
-    QTreeWidget* newTree = QtTreeManager::createTreeWidgetFromXmlFile("C:/Users/googol/Desktop/3/PrmPrtyTree.xml");
-    QTreeWidget* oldTree = QtTreeManager::createTreeWidgetFromXmlFile("E:/Jiang/ServoDriveTech/build/debug/sysconfig/SD6x/SD61_PLUS/V139/PrmPrtyTree.xml");
-    QList<QTreeWidgetItem*> list0;
-    QList<QTreeWidgetItem*> list1;
+//    QTreeWidget* newTree = QtTreeManager::createTreeWidgetFromXmlFile("C:/Users/googol/Desktop/3/PrmPrtyTree.xml");
+//    QTreeWidget* oldTree = QtTreeManager::createTreeWidgetFromXmlFile("E:/Jiang/ServoDriveTech/build/debug/sysconfig/SD6x/SD61_PLUS/V139/PrmPrtyTree.xml");
+//    QList<QTreeWidgetItem*> list0;
+//    QList<QTreeWidgetItem*> list1;
+
 //    for (int i = 5; i < 10; i++) {
 //        list0.append(newTree->topLevelItem(0)->child(0)->child(2)->child(i)->clone());
 //        list1.append(newTree->topLevelItem(1)->child(0)->child(2)->child(i)->clone());
@@ -67,17 +68,24 @@ SelfBuilderMainWindow::SelfBuilderMainWindow(QWidget *parent) :
 //    delete newTree;
 
 
-    for (int i = 0; i < oldTree->topLevelItemCount(); i++) {
-        list0.clear();
-        for (int j = 5; j < 10; j++) {
-            list0.append(newTree->topLevelItem(0)->child(0)->child(2)->child(j)->clone());
-        }
-        oldTree->topLevelItem(i)->child(0)->child(2)->addChildren(list0);
-    }
-    QtTreeManager::writeTreeWidgetToXmlFile("E:/Jiang/ServoDriveTech/build/debug/sysconfig/SD6x/SD61_PLUS/V139/PrmPrtyTree.xml", oldTree);
-    delete oldTree;
-    delete newTree;
-    qDebug()<<"finish";
+//    for (int i = 0; i < oldTree->topLevelItemCount(); i++) {
+//        list0.clear();
+//        for (int j = 5; j < 10; j++) {
+//            list0.append(newTree->topLevelItem(0)->child(0)->child(2)->child(j)->clone());
+//        }
+//        oldTree->topLevelItem(i)->child(0)->child(2)->addChildren(list0);
+//    }
+//    QtTreeManager::writeTreeWidgetToXmlFile("E:/Jiang/ServoDriveTech/build/debug/sysconfig/SD6x/SD61_PLUS/V139/PrmPrtyTree.xml", oldTree);
+//    delete oldTree;
+//    delete newTree;
+//    qDebug()<<"finish";
+
+    quint32 a = 12055488;
+    quint32 b = 16777216;
+    qint64 dd = a * 360;
+    qDebug()<<"dd = "<<dd;
+    double c = dd / b;
+    qDebug()<<"c = "<<c;
 }
 
 SelfBuilderMainWindow::~SelfBuilderMainWindow()

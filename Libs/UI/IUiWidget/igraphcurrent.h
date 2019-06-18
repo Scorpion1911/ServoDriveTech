@@ -42,6 +42,7 @@ protected:
   virtual void createSumItem();
 
   virtual void createArrowItems();
+  virtual void createDirItem();
 
   void createStartEndTargetItems();
   void createCurrentFeedbackTargetItem();

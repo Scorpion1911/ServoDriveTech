@@ -142,7 +142,7 @@ int16 CFirmwareDL::SetRemoteUpdataEnableBit(int16 com_type, int16 stationId)
 	return rtn;
 
 }
-int16 CFirmwareDL::GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType, uint32& flash_ofst_addr)
+int16 CFirmwareDL::GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType, uint32& flash_ofst_addr, uint16& sector_erase)
 {
 	//读FPGA类型
 	int16 iRet;
@@ -157,6 +157,7 @@ int16 CFirmwareDL::GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType,
 	{
 		FPGAType = FPGA_ALTERA;
 		flash_ofst_addr = 0;
+		sector_erase = 0;
 		return RTN_SUCCESS;
 	}
 	else if (com_type == GTSD_COM_TYPE_RNNET)
@@ -171,6 +172,7 @@ int16 CFirmwareDL::GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType,
 	}
 	if (FPGAType == FPGA_XILINX)
 	{
+		sector_erase = 1;
 		com_addr = RN_REMOTE_FPGA_FILE_START;
 		base_addr = FPGA_RN_RMT_START_OFST;
 		comAddr = base_addr + (com_addr);
@@ -184,6 +186,15 @@ int16 CFirmwareDL::GetFPGAInfo(int16 com_type, int16 stationId, int16& FPGAType,
 	else
 	{
 		flash_ofst_addr = 0;
+		com_addr = RN_REMOTE_FPGA_CTL;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+		iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_READ, comAddr, &data, comNum, stationId);
+		if (iRet != 0)
+		{
+			return iRet;
+		}
+		sector_erase = (data >> 4) & 0x1;
 	}
 	return iRet;
 }
@@ -377,7 +388,7 @@ int16 CFirmwareDL::EraseData(int16 com_type, void(*tpfUpdataProgressPt)(void*, i
 		return iRet;
 	}
 
-  int32 num = 100;//0000;
+  int32 num = 20000;
   //!progress高16位置1，用来给界面提示当前正处于擦除状态
   int16 highSet;
   highSet = (int16)(1 << 15);
@@ -703,7 +714,7 @@ int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*
     void* ptr = ptrv;
 	int iRet; 
 	int16 FPGAType;
-	iRet = GetFPGAInfo(com_type, stationId, FPGAType,m_addr_ofst);
+	iRet = GetFPGAInfo(com_type, stationId, FPGAType, m_addr_ofst, sector_erase);
  	if (iRet != 0)
 	{
 		return iRet;
@@ -759,11 +770,23 @@ int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*
 	{
 		return iRet;
 	}
-	iRet = EraseFPGAData(com_type, m_byte_write, m_addr_ofst, tpfUpdataProgressPt, ptr, progress, stationId);
-	if (iRet)
+	if (sector_erase == 1)
 	{
-		return iRet;
+		iRet = EraseFPGAData(com_type, m_byte_write, m_addr_ofst, tpfUpdataProgressPt, ptr, progress, stationId);
+		if (iRet)
+		{
+			return iRet;
+		}
 	}
+	else
+	{
+		iRet = EraseData(com_type, tpfUpdataProgressPt, ptr, progress, stationId);
+		if (iRet)
+		{
+			return iRet;
+		}
+	}
+
 
 // 	iRet = EraseData(tpfUpdataProgressPt, ptr, progress); //清除fpga flash
 // 	if (iRet != 0)

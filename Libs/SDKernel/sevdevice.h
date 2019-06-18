@@ -170,6 +170,9 @@ public:
   bool readFLASH16ByAddr(quint16 axisInx, quint16 addr, quint16 &value);
   bool writeFLASH16ByAddr(quint16 axisInx, quint16 addr, quint16 value);
 
+  bool readFLASH32ByAddr(quint16 axisInx, quint16 addr, quint32 &value);
+  bool writeFLASH32ByAddr(quint16 axisInx, quint16 addr, quint32 value);
+
 
 signals:
   void initProgressInfo(int value,QString msg);

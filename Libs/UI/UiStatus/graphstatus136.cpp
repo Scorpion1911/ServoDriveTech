@@ -10,6 +10,7 @@
 
 #include <QGridLayout>
 #include <QTreeWidget>
+#include <QMessageBox>
 #include <QDebug>
 
 #define CURR_STATE_INX    0
@@ -19,6 +20,10 @@
 #define CMD_ID_INX        4
 #define CURR_ID_INX       5
 #define USR_MODE_INX      6
+
+#define ALARM_ADDR        500
+#define READ_MASK_CODE    0x0020
+#define WRITE_MASK_CODE   0xFFDF
 
 
 
@@ -38,6 +43,7 @@ GraphStatus136::GraphStatus136(QWidget *parent) :
   ui->btn_statusClearAlarm->setText(tr("ClearAlarm"));
   connect(ui->btn_statusClearAlarm,SIGNAL(clicked(bool)),this,SLOT(onBtnClearAlarmClicked()));
   connect(ui->btn_status_history, SIGNAL(clicked()), this, SLOT(onBtnAlarmHistoryClicked()));
+  connect(ui->checkBox_curFold, SIGNAL(clicked(bool)), this, SLOT(onCurFoldClicked(bool)));
 }
 
 GraphStatus136::~GraphStatus136()
@@ -128,6 +134,18 @@ void GraphStatus136::updateUiLabelText()
 
 }
 
+void GraphStatus136::updateCurCheckBox()
+{
+    Q_D(GraphStatus136);
+    quint32 value;
+    bool ok = d->m_dev->readFLASH32ByAddr(d->m_uiWidget->uiIndexs().axisInx, ALARM_ADDR, value);
+    if (!ok) {
+        return;
+    }
+    int check = (value & READ_MASK_CODE) >> 5;
+    ui->checkBox_curFold->setChecked((check == 1));
+}
+
 void GraphStatus136::onBtnClearAlarmClicked()
 {
   Q_D(GraphStatus136);
@@ -141,5 +159,32 @@ void GraphStatus136::onBtnAlarmHistoryClicked()
     QTreeWidgetItem *item = d->m_treeWidget->topLevelItem(ALM_CODE_ALL_INX);
     AlarmHistoryDia136 historyDia = AlarmHistoryDia136(d->m_uiWidget->uiIndexs().axisInx, d->m_dev, item, 0);
     historyDia.exec();
+}
+
+void GraphStatus136::onCurFoldClicked(bool checked)
+{
+    Q_D(GraphStatus136);
+    quint32 value;
+    quint32 maskValue;
+    bool ok = d->m_dev->readFLASH32ByAddr(d->m_uiWidget->uiIndexs().axisInx, ALARM_ADDR, value);
+    if (!ok) {
+        return;
+    }
+    QString actStr;
+    if (checked) {
+        actStr = tr("actived");
+        maskValue = value | READ_MASK_CODE;
+    } else {
+        actStr = tr("disactived");
+        maskValue = value & WRITE_MASK_CODE;
+    }
+    ok = d->m_dev->writeFLASH32ByAddr(d->m_uiWidget->uiIndexs().axisInx, ALARM_ADDR, value);
+    if (!ok) {
+        return;
+    }
+    updateCurCheckBox();
+    if (d->m_dev->isConnecting()) {
+        QMessageBox::information(0, tr("Info"), tr("The current foldback is ") + actStr + tr(". Please Reset DSP!"));
+    }
 }
 

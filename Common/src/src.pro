@@ -20,7 +20,7 @@ INCLUDEPATH+=../../Libs/Com/Communication\
               $${PWD}/UiFactory\
               $${PWD}/Kernel\
               $${PWD}/SdtGlobal\
-              $${PWD}/FolderCompressor
+              $${PWD}/HalfAutoDialog
 
 CONFIG(debug, debug|release){
     COMMONSRC_OUT_PATH=$${PWD}/../../build/debug/bin
@@ -96,7 +96,8 @@ SOURCES += main.cpp \
     test.c \
     SdtGlobal/sdtglobaldef.cpp \
     Kernel/sdterror.cpp \
-    ledalarm.cpp
+    ledalarm.cpp \
+    HalfAutoDialog/halfautodialog.cpp
 
 
 HEADERS += \
@@ -115,7 +116,11 @@ HEADERS += \
     test.h \
     SdtGlobal/sdtglobaldef.h \
     Kernel/sdterror.h \
-    ledalarm.h
+    ledalarm.h \
+    HalfAutoDialog/halfautodialog.h
+
+FORMS += \
+    HalfAutoDialog/halfautodialog.ui
 
 
 

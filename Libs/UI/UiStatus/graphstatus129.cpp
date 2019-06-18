@@ -126,6 +126,11 @@ void GraphStatus129::updateUiLabelText()
 
 }
 
+void GraphStatus129::updateCurCheckBox()
+{
+    return;
+}
+
 void GraphStatus129::onBtnClearAlarmClicked()
 {
   Q_D(GraphStatus129);

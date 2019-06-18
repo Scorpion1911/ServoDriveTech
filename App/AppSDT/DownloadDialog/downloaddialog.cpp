@@ -25,7 +25,7 @@ void DownloadDialog::uiInit(const QList<SevDevice *> &devList, const QString &do
     m_devNum = devList.count();
     QVBoxLayout *vBox = new QVBoxLayout;
     for (int i = 0; i < m_devNum; i++) {
-//        bool hasNickName = m_devNum > 1;
+        bool hasNickName = true;
         QString prefix;
 //        prefix = hasNickName?tr("[%1] ").arg(devList.at(i)->aliasName());
         prefix = tr("[%1] ").arg(devList.at(i)->aliasName());
@@ -60,7 +60,9 @@ void DownloadDialog::onAllBoxClicked(bool checked)
     m_indexList->clear();
     for (int i = 0; i < m_devNum; i++) {
         m_boxList.at(i)->setChecked(checked);
-        m_indexList->append(i);
+        if (checked) {
+            m_indexList->append(i);
+        }
     }
 }
 

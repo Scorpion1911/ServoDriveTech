@@ -29,7 +29,7 @@ void InfoDialog::uiInit(const QList<SevDevice*> &devList)
     for (int i = 0; i < m_devList.count(); i++) {
         DeviceIdHelper *idHelper = new DeviceIdHelper(m_devList.at(i)->socketCom(), 0);
         ui->table_Info->insertRow(i);
-//        bool hasNickName = m_devList.count() > 1;
+        bool hasNickName = true;
         QString prefix;
 //        prefix = hasNickName?tr("[%1] ").arg(m_devList.at(i)->aliasName()):"";
         prefix = tr("[%1] ").arg(m_devList.at(i)->aliasName());

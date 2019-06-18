@@ -113,6 +113,19 @@
           </property>
          </item>
         </item>
+        <item>
+         <property name="text">
+          <string>series3</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>21000705</string>
+          </property>
+          <property name="text">
+           <string>21000705</string>
+          </property>
+         </item>
+        </item>
        </item>
        <item>
         <property name="text">
@@ -128,6 +141,19 @@
           </property>
           <property name="text">
            <string>21000507</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>series2</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>21000706</string>
+          </property>
+          <property name="text">
+           <string>21000706</string>
           </property>
          </item>
         </item>

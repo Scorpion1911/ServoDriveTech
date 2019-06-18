@@ -6,6 +6,7 @@
 #include "itabwidget.h"
 #include "TabModeCtl/tabmodectl.h"
 #include "TabMotion/tabmotion.h"
+#include "TabUserMode/tabusermode.h"
 #include <QDebug>
 
 //#define ICON_NAME_SERVO_ON      "plot_son.png"
@@ -35,6 +36,9 @@ TabCtlPanel129::TabCtlPanel129(SevDevice *sev, QWidget *parent) : QWidget(parent
   m_tabWidgetList.append(tab);
   connect(tab,SIGNAL(motionStart()),this,SIGNAL(motionStart()));
   connect(tab,SIGNAL(motionStop()),this,SIGNAL(motionStop()));
+
+  tab = new TabUserMode(tr("UserMode"),m_sev,0);
+  m_tabWidgetList.append(tab);
 
   for(int i=0;i<m_tabWidgetList.size();i++)
   {

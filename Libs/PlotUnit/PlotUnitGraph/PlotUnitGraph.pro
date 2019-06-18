@@ -89,7 +89,9 @@ SOURCES += \
     TabModeCtl/modectlpanel.cpp \
     ExistedCurveManager/existedcurvemanager.cpp \
     DFTDialog/dftdialog.cpp \
-    DFTDialog/dftsettingdialog.cpp
+    DFTDialog/dftsettingdialog.cpp\
+    TabUserMode/tabusermode.cpp \
+    TabUserMode/usermodepanel.cpp
 
 HEADERS += \
         plotunitgraph_global.h \
@@ -116,7 +118,9 @@ HEADERS += \
     TabModeCtl/modectlpanel.h \
     ExistedCurveManager/existedcurvemanager.h \
     DFTDialog/dftdialog.h \
-    DFTDialog/dftsettingdialog.h
+    DFTDialog/dftsettingdialog.h\
+    TabUserMode/tabusermode.h \
+    TabUserMode/usermodepanel.h
 
 unix {
     target.path = /usr/lib
@@ -130,6 +134,7 @@ FORMS += \
     TabModeCtl/tabmodectl.ui \
     TabMotion/tabmotion.ui \
     DFTDialog/dftdialog.ui \
-    DFTDialog/dftsettingdialog.ui
+    DFTDialog/dftsettingdialog.ui\
+    TabUserMode/tabusermode.ui
 
 TRANSLATIONS    += ch_plotunit.ts en_plotunit.ts

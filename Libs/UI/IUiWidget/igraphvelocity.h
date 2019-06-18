@@ -34,6 +34,8 @@ protected:
   virtual void createSaturationItem();
   virtual void createOutputFilterItem();
   virtual void createVelocityFeedbackItem();
+  virtual void createAutoTuningWidget();
+  virtual void createVelDirItem();
 
   virtual void createTargetItems();
 
@@ -52,6 +54,7 @@ protected:
 
 protected slots:
   void onSaturationClicked(bool checked);
+  void onRadioBtnClicked(bool checked);
 private :
   void setSaturationConfigVisible(bool enable);
 

@@ -19,6 +19,8 @@ public:
     bool upLoadOfflineFile(const QString &xmlPath, SevDevice *dev);
     void updatePrmTree(QTreeWidget *downloadTree, QTreeWidget *dspTree);
     bool downLoadTree(QTreeWidget *downloadTree, SevDevice *dev);
+    bool restoreFile(void (*processCallback)(void *pbar,short *value), void *processbar, SevDevice* dev);
+    bool restoreOfflineFile(SevDevice* dev);
 
 
 signals:

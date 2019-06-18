@@ -226,7 +226,9 @@ void GraphEncoder130::onUpdateTimeOut()
 //      gauge.value=360*parseInt(strPosIn)/precision;
   quint32 lineNumber=getLineNumber();
   //qDebug()<<"lineNumer"<<lineNumber;
-  double machineValue=360*posIn/lineNumber;
+  double posInDouble = posIn;
+  double lineNumDouble = lineNumber;
+  double machineValue= 360 * (posInDouble / lineNumDouble);
 
   ui->Dial_encMachine->setValue(machineValue);
 

@@ -83,11 +83,14 @@ void AdvUserFirmwareSegmentFlash::uiInit()
     readAdv();
     d->m_crtDev = 0;
     d->m_boxCount = 0;
+    d->m_boxList.clear();
+    ui->checkBox_all->setChecked(false);
+    clearLayout(ui->scrollAreaWidgetContents);
     QVBoxLayout *vBox = new QVBoxLayout;
     if(d->m_devList.count() != 0){
         d->m_crtDev = d->m_devList.at(0);
         for (int i = 0; i < d->m_devList.length(); i++){
-//            bool hasNickName = d->m_devList.count() > 1;
+            bool hasNickName = true;
             QString prefix;
 //            prefix = hasNickName?tr("[%1] ").arg(d->m_devList.at(i)->aliasName()):"";
             prefix = tr("[%1] ").arg(d->m_devList.at(i)->aliasName());
@@ -98,6 +101,7 @@ void AdvUserFirmwareSegmentFlash::uiInit()
         }
     }
     vBox->setSpacing(2);
+    ui->scrollAreaWidgetContents->layout();
     ui->scrollAreaWidgetContents->setLayout(vBox);
     connect(ui->checkBox_all, SIGNAL(clicked(bool)), this, SLOT(onAllBoxClicked(bool)));
     ui->lineEditDSP->clear();
@@ -195,6 +199,21 @@ bool AdvUserFirmwareSegmentFlash::firmwareFlashCheck()
             QMessageBox::warning(this,tr("Warning!"), tr("Axis of the current device is serving!"), QMessageBox::Ok);
     }
     return ok;
+}
+
+void AdvUserFirmwareSegmentFlash::clearLayout(QWidget *widget)
+{
+    if (widget->layout() != 0) {
+        int itemCount = widget->layout()->count();
+        for (int i = itemCount - 1; i >= 0; --i) {
+            QLayoutItem *item = widget->layout()->takeAt(i);
+            if (item != 0) {
+                widget->layout()->removeWidget(item->widget());
+                delete item->widget();
+            }
+        }
+    delete widget->layout();
+    }
 }
 
 void AdvUserFirmwareSegmentFlash::onActionComboBoxIndexChange(int index)
@@ -326,7 +345,7 @@ void AdvUserFirmwareSegmentFlash::onActionDSPFlashBtnClicked()
             continue;
         }
         d->m_crtDev = d->m_devList.at(i);
-        devStr = tr("Device%1: ").arg(d->m_crtDev->aliasName());
+        devStr = tr("Device[%1]: ").arg(d->m_crtDev->aliasName());
         bool ok = firmwareFlashCheck();
         if (ok) {
             int dspNum = 0;
@@ -374,7 +393,7 @@ void AdvUserFirmwareSegmentFlash::onActionFPGAFlashBtnClicked()
             continue;
         }
         d->m_crtDev = d->m_devList.at(i);
-        devStr = tr("Device%1: ").arg(d->m_crtDev->aliasName());
+        devStr = tr("Device[%1]: ").arg(d->m_crtDev->aliasName());
         bool ok = firmwareFlashCheck();
         if (ok) {
             int fpgaNum = 0;
@@ -428,7 +447,7 @@ void AdvUserFirmwareSegmentFlash::onActionFLASHFlashBtnClicked()
             continue;
         }
         d->m_crtDev = d->m_devList.at(i);
-        devStr = tr("Device%1: ").arg(d->m_crtDev->aliasName());
+        devStr = tr("Device[%1]: ").arg(d->m_crtDev->aliasName());
         bool ok = firmwareFlashCheck();
         emit startDownload(false);
         if (ok) {
@@ -458,7 +477,11 @@ void AdvUserFirmwareSegmentFlash::onAllBoxClicked(bool checked)
     for (int i = 0; i < d->m_devList.count(); i++) {
         d->m_boxList.at(i)->setChecked(checked);
     }
-    d->m_boxCount = d->m_devList.count();
+    if (checked) {
+        d->m_boxCount = d->m_devList.count();
+    } else {
+        d->m_boxCount = 0;
+    }
 }
 
 void AdvUserFirmwareSegmentFlash::onSingleBoxClicked(bool checked)
@@ -469,6 +492,7 @@ void AdvUserFirmwareSegmentFlash::onSingleBoxClicked(bool checked)
     } else {
         d->m_boxCount--;
     }
+    qDebug()<<"box count"<<d->m_boxCount;
     if (d->m_boxCount == d->m_devList.count()) {
         ui->checkBox_all->setChecked(true);
     } else {
